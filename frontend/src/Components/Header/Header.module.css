@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  /* width: 100%; */
+  align-content: center;
+  img{
+    width: 30%;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+.buttonsContainer {
+  padding: 20px;
+  align-content: center;
+}
+
+.button {
+  padding: 8px 15px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
