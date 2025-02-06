@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logoContainer}>
-        <img className={styles.logo} src="/src/assets/images/logo_placeholder.png" alt="Company Logo"  />
+        <img className={styles.logo} src="/src/assets/images/logo.png" alt="Logo Aurora Motors"  />
         <span className={styles.slogan}>Lema de la empresa</span>
       </Link>
       <nav className={styles.buttonsContainer}>
