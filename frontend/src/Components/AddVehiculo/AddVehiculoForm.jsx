@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { UploadImage } from "./UploadImage";
-// import axios from "axios";
-import { api } from "../../services/api";
+import axios from "axios";
 
 export const AddVehiculoForm = () => {
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
     matricula: "",
     anio: "",
     marca: "",
@@ -12,8 +10,9 @@ export const AddVehiculoForm = () => {
     numeroAsientos: "",
     descripcion: "",
     categoriaVehiculo: "",
-    imagen: "",
   });
+  const [imagen, setImagen] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   // const [error, setError] = useState({
   //   marca: "",
@@ -28,98 +27,129 @@ export const AddVehiculoForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-
-    console.log(e.target.value);
+    setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    const imageFile = e.target.files[0];
+
+    if (imageFile) {
+      setImagen(imageFile);
+      setPreview(URL.createObjectURL(imageFile));
+    }
+  };
+
+  // este handler incluye la imagen
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //! realizo la request de post a la API
-    const vehiculoData = { ...data };
+    const form = new FormData();
+    form.append("matricula", formData.matricula);
+    form.append("anio", formData.anio);
+    form.append("marca", formData.marca);
+    form.append("modelo", formData.modelo);
+    form.append("numeroAsientos", formData.numeroAsientos);
+    form.append("descripcion", formData.descripcion);
+    form.append("categoriaVehiculo", formData.categoriaVehiculo);
+    if (imagen) form.append("imagen", imagen);
 
     try {
-      await api.post("/vehiculos", vehiculoData);
+
+      await axios.post("http://localhost:8080/api/vehiculos", form);
       console.log("Vehiculo guardado exitosamente");
+      console.log(form);
     } catch (error) {
       console.log("error guardando vehiculo: ", error);
     }
-    console.log(data);
+    
   };
 
   return (
     <div>
-      <form action="">
-        <label htmlFor="marca">Marca</label>
-        <input
-          type="text"
-          name="marca"
-          value={data.marca}
-          onChange={handleChange}
-        />
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="marca">Marca</label>
+          <input
+            type="text"
+            name="marca"
+            value={formData.marca}
+            onChange={handleChange}
+          />
 
-        <label htmlFor="matricula">Matricula</label>
-        <input
-          type="text"
-          name="matricula"
-          value={data.matricula}
-          onChange={handleChange}
-        />
+          <label htmlFor="matricula">Matricula</label>
+          <input
+            type="text"
+            name="matricula"
+            value={formData.matricula}
+            onChange={handleChange}
+          />
 
-        <label htmlFor="anio">Año de fabricación</label>
-        <input
-          type="text"
-          name="anio"
-          onChange={handleChange}
-          value={data.anio}
-        />
-        <label htmlFor="modelo">Modelo</label>
-        <input
-          type="text"
-          name="modelo"
-          value={data.modelo}
-          onChange={handleChange}
-        />
+          <label htmlFor="anio">Año de fabricación</label>
+          <input
+            type="text"
+            name="anio"
+            onChange={handleChange}
+            value={formData.anio}
+          />
+          <label htmlFor="modelo">Modelo</label>
+          <input
+            type="text"
+            name="modelo"
+            value={formData.modelo}
+            onChange={handleChange}
+          />
 
-        <label htmlFor="descripcion">Descripcion</label>
-        <input
-          type="text"
-          name="descripcion"
-          value={data.descripcion}
-          onChange={handleChange}
-        />
+          <label htmlFor="descripcion">Descripcion</label>
+          <input
+            type="text"
+            name="descripcion"
+            value={formData.descripcion}
+            onChange={handleChange}
+          />
 
-        <label htmlFor="numeroAsientos">Numero de asientos</label>
-        <input
-          type="number"
-          name="numeroAsientos"
-          id=""
-          value={data.numeroAsientos}
-          onChange={handleChange}
-        />
+          <label htmlFor="numeroAsientos">Numero de asientos</label>
+          <input
+            type="number"
+            name="numeroAsientos"
+            id=""
+            value={formData.numeroAsientos}
+            onChange={handleChange}
+          />
 
-        <label htmlFor="categoriaVehiculo">Categoria del vehiculo</label>
-        <select
-          name="categoriaVehiculo"
-          id=""
-          value={data.categoriaVehiculo}
-          onChange={handleChange}
-        >
-          <option value="">Seleccione una categoria</option>
-          <option value="SUV">SUV</option>
-          <option value="VEHICULO_CAMIONETA_PICKUP">CAMIONETA PICK-UP</option>
-          <option value="VEHICULO_SEDAN">SEDAN</option>
-          <option value="VEHICULO_FURGON">Furgon</option>
-        </select>
+          <label htmlFor="categoriaVehiculo">Categoria del vehiculo</label>
+          <select
+            name="categoriaVehiculo"
+            id=""
+            value={formData.categoriaVehiculo}
+            onChange={handleChange}
+          >
+            <option value="">Seleccione una categoria</option>
+            <option value="SUV">SUV</option>
+            <option value="VEHICULO_CAMIONETA_PICKUP">CAMIONETA PICK-UP</option>
+            <option value="VEHICULO_SEDAN">SEDAN</option>
+            <option value="VEHICULO_FURGON">Furgon</option>
+          </select>
 
-        <UploadImage onCargaExitosa={(filename) => setData((prevData) => ({ ...prevData, imagen: filename }))} />
-
-      </form>
-
-      <button type="submit" onClick={handleSubmit}>
+          <div>
+            <label htmlFor="imagen">Imagen</label>
+            <input
+              type="file"
+              name="imagen"
+              accept="image/*"
+              id="imagen"
+              onChange={handleImageChange}
+            />
+            {preview && (
+              <img src={preview} alt="imagen para subir" width="100" />
+            )}
+          </div>
+        </div>
+        <button type="submit">
         Añadir Vehiculo
       </button>
+      </form>
+
+      
     </div>
   );
 };
