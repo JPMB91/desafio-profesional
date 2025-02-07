@@ -4,22 +4,21 @@ import { api } from "../../services/api";
 
 export const ShowVehiculos = () => {
   const [vehiculos, setVehiculos] = useState([]);
-  const [isLoading, setIsloading]= useState(true);
+  const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
-    const fetchVehiculos = async() =>{
+    const fetchVehiculos = async () => {
       try {
         const response = await api.get("/vehiculos");
-        setVehiculos(response.data)
+        setVehiculos(response.data);
       } catch (error) {
         console.log("Error al obtener vehiculos: ", error);
-      } finally{
-        setIsloading(false)
+      } finally {
+        setIsloading(false);
       }
-    }
-    fetchVehiculos()
+    };
+    fetchVehiculos();
   }, []);
-
 
   return (
     <div>
@@ -27,11 +26,20 @@ export const ShowVehiculos = () => {
       {isLoading ? (
         <p>LOADING...</p>
       ) : (
-        <ul>
+        <div>
           {vehiculos.map((vehiculo) => (
-            <li key={vehiculo.id}>{vehiculo.marca}</li>
+            <div key={vehiculo.id}>
+              <h2>{vehiculo.marca}</h2>
+              {vehiculo.imagen && (
+                <img
+                  src={`http://localhost:8080/api/vehiculos/uploads/${vehiculo.imagen}`}
+                  alt={vehiculo.marca}
+                  style={{ width: "100%", height: "auto" }}
+                />
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
