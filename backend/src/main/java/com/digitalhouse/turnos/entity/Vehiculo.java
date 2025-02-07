@@ -16,11 +16,13 @@ public class Vehiculo {
     private String descripcion;
     @Enumerated(EnumType.STRING)
     private CategoriaVehiculo categoriaVehiculo;
+    private String imagen;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String matricula, int anio, String marca, String modelo, int numeroAsientos, String descripcion, CategoriaVehiculo categoriaVehiculo) {
+    public Vehiculo(String matricula, int anio, String marca, String modelo, int numeroAsientos, String descripcion,
+                    CategoriaVehiculo categoriaVehiculo, String imagen) {
         this.matricula = matricula;
         this.anio = anio;
         this.marca = marca;
@@ -28,6 +30,15 @@ public class Vehiculo {
         this.numeroAsientos = numeroAsientos;
         this.descripcion = descripcion;
         this.categoriaVehiculo = categoriaVehiculo;
+        this.imagen = imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
     }
 
     public Long getId() {
@@ -60,10 +71,6 @@ public class Vehiculo {
 
     public CategoriaVehiculo getCategoriaVehiculo() {
         return categoriaVehiculo;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setMatricula(String matricula) {
