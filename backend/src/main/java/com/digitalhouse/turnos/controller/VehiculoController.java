@@ -1,5 +1,6 @@
 package com.digitalhouse.turnos.controller;
 
+import com.digitalhouse.turnos.entity.CategoriaVehiculo;
 import com.digitalhouse.turnos.entity.Vehiculo;
 import com.digitalhouse.turnos.service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,49 +30,50 @@ public class VehiculoController {
     }
 
     @GetMapping
-    public List<Vehiculo> getAllVehiculo(){
+    public List<Vehiculo> getAllVehiculo() {
         return vehiculoService.getAllVehiculos();
     }
 
-    @PostMapping ResponseEntity<Vehiculo> createVehiculo(@RequestBody Vehiculo vehiculo){
-        Vehiculo vehiculoGuardado = vehiculoService.saveVehiculo(vehiculo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(vehiculoGuardado);
-    }
+    @PostMapping
+    ResponseEntity<?> createVehiculo(@RequestParam("matricula") String matricula,
+                                     @RequestParam("anio") Integer anio,
+                                     @RequestParam("marca") String marca,
+                                     @RequestParam("modelo") String modelo,
+                                     @RequestParam("numeroAsientos") int numeroAsientos,
+                                     @RequestParam("descripcion") String descripcion,
+                                     @RequestParam("categoriaVehiculo") CategoriaVehiculo categoriaVehiculo,
+                                     @RequestParam("imagen") MultipartFile imagen) {
 
-    // guardado de imagen
-    // Modificar esto para que no maneje lógica
-    @GetMapping("/upload")
-    public ResponseEntity<String> uploadImage(@RequestParam("imagen")MultipartFile file){
-        try{
-            if(file.isEmpty()){
-                return ResponseEntity.badRequest().body("Seleccione una imagen para guardar");
-            }
+        try {
 
-            // Se le asigna un nombre y se guarda en el directorio uploads
-            String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+            // guardar imagen
+            String fileName = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
 
             String UPLOAD_DIR = "uploads/";
             Path filePath = Paths.get(UPLOAD_DIR + fileName);
 
             Files.createDirectories(filePath.getParent());
+            Files.write(filePath, imagen.getBytes());
 
-            Files.write(filePath, file.getBytes());
+            //guardar vehiculo
+            Vehiculo vehiculo = new Vehiculo(matricula, anio, marca, modelo, numeroAsientos, descripcion,
+                    categoriaVehiculo, fileName);
+            vehiculoService.saveVehiculo(vehiculo);
 
-            // cambiar a que entregue un mensaje exito en string
-            return ResponseEntity.ok(fileName);
-
+            return ResponseEntity.status(HttpStatus.CREATED).body(vehiculo);
         } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("La carga de imagen ha fallado");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar imagen " + e.getMessage());
         }
+
     }
 
     @GetMapping("/uploads/{filename}")
-    public ResponseEntity<byte[]> getImage(@PathVariable String filename){
-        try{
-            Path filePath = Paths.get("uploads/"+filename);
+    public ResponseEntity<byte[]> getImage(@PathVariable String filename) {
+        try {
+            Path filePath = Paths.get("uploads/" + filename);
             byte[] imageBytes = Files.readAllBytes(filePath);
             return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
-        }catch (IOException e) {
+        } catch (IOException e) {
             return ResponseEntity.notFound().build();
         }
     }
