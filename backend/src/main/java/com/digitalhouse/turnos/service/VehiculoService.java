@@ -5,6 +5,7 @@ import com.digitalhouse.turnos.repository.VehiculoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehiculoService {
@@ -21,5 +22,9 @@ public class VehiculoService {
 
     public Vehiculo saveVehiculo(Vehiculo vehiculo){
         return vehiculoRepository.save(vehiculo);
+    }
+
+    public Optional<Vehiculo> getVehiculo(Long id){
+        return vehiculoRepository.findById(id);
     }
 }

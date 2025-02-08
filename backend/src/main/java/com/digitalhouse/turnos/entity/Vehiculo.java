@@ -1,6 +1,7 @@
 package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name = "vehiculos")
@@ -17,6 +18,8 @@ public class Vehiculo {
     @Enumerated(EnumType.STRING)
     private CategoriaVehiculo categoriaVehiculo;
     private String imagen;
+    @Formula("concat(marca, ' ', modelo)")
+    private String nombre;
 
     public Vehiculo() {
     }
@@ -31,6 +34,11 @@ public class Vehiculo {
         this.descripcion = descripcion;
         this.categoriaVehiculo = categoriaVehiculo;
         this.imagen = imagen;
+    }
+
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setImagen(String imagen) {

@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -43,7 +44,6 @@ public class VehiculoController {
                                      @RequestParam("descripcion") String descripcion,
                                      @RequestParam("categoriaVehiculo") CategoriaVehiculo categoriaVehiculo,
                                      @RequestParam("imagen") MultipartFile imagen) {
-
         try {
 
             // guardar imagen
@@ -65,6 +65,11 @@ public class VehiculoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar imagen " + e.getMessage());
         }
 
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Vehiculo> getVehiculo(@PathVariable Long id){
+        return vehiculoService.getVehiculo(id);
     }
 
     @GetMapping("/uploads/{filename}")
