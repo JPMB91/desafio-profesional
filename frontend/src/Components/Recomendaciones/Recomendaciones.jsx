@@ -1,12 +1,9 @@
-import { AddVehiculoForm } from "../AddVehiculo/AddVehiculoForm"
-import { ShowVehiculos } from "../PruebaVehiculos/ShowVehiculos"
+import { VehiculoCard } from "../VehiculoCard/VehiculoCard"
 
 export const Recomendaciones = () => {
   return (
     <>
-     <ShowVehiculos />
-     <AddVehiculoForm />
+     <VehiculoCard />
     </>
-   
   )
 }
