@@ -3,6 +3,8 @@ package com.digitalhouse.turnos.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Formula;
 
+import java.util.List;
+
 @Entity
 @Table(name = "vehiculos")
 public class Vehiculo {
@@ -17,15 +19,19 @@ public class Vehiculo {
     private String descripcion;
     @Enumerated(EnumType.STRING)
     private CategoriaVehiculo categoriaVehiculo;
-    private String imagen;
+
+    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Imagen> imagenes;
+
     @Formula("concat(marca, ' ', modelo)")
     private String nombre;
+
 
     public Vehiculo() {
     }
 
     public Vehiculo(String matricula, int anio, String marca, String modelo, int numeroAsientos, String descripcion,
-                    CategoriaVehiculo categoriaVehiculo, String imagen) {
+                    CategoriaVehiculo categoriaVehiculo) {
         this.matricula = matricula;
         this.anio = anio;
         this.marca = marca;
@@ -33,20 +39,18 @@ public class Vehiculo {
         this.numeroAsientos = numeroAsientos;
         this.descripcion = descripcion;
         this.categoriaVehiculo = categoriaVehiculo;
-        this.imagen = imagen;
     }
 
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public String getImagen() {
-        return imagen;
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.digitalhouse.turnos.controller;
 
 import com.digitalhouse.turnos.entity.CategoriaVehiculo;
+import com.digitalhouse.turnos.entity.Imagen;
 import com.digitalhouse.turnos.entity.Vehiculo;
 import com.digitalhouse.turnos.service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -43,32 +45,49 @@ public class VehiculoController {
                                      @RequestParam("numeroAsientos") int numeroAsientos,
                                      @RequestParam("descripcion") String descripcion,
                                      @RequestParam("categoriaVehiculo") CategoriaVehiculo categoriaVehiculo,
-                                     @RequestParam("imagen") MultipartFile imagen) {
+                                     @RequestParam("imagen") MultipartFile[] imagenes) {
         try {
 
-            // guardar imagen
-            String fileName = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
+            // Create Vehiculo
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setMatricula(matricula);
+            vehiculo.setAnio(anio);
+            vehiculo.setMarca(marca);
+            vehiculo.setModelo(modelo);
+            vehiculo.setNumeroAsientos(numeroAsientos);
+            vehiculo.setDescripcion(descripcion);
+            vehiculo.setCategoriaVehiculo(categoriaVehiculo);
 
+            // Save images
             String UPLOAD_DIR = "uploads/";
-            Path filePath = Paths.get(UPLOAD_DIR + fileName);
+            Files.createDirectories(Path.of(UPLOAD_DIR));
 
-            Files.createDirectories(filePath.getParent());
-            Files.write(filePath, imagen.getBytes());
+            List<Imagen> imagenList = new ArrayList<>();
+            for (MultipartFile imagen : imagenes) {
+                if (!imagen.isEmpty()) {
+                    String fileName = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
+                    Path filePath = Path.of(UPLOAD_DIR + fileName);
+                    Files.write(filePath, imagen.getBytes());
 
-            //guardar vehiculo
-            Vehiculo vehiculo = new Vehiculo(matricula, anio, marca, modelo, numeroAsientos, descripcion,
-                    categoriaVehiculo, fileName);
+                    Imagen img = new Imagen();
+                    img.setFilename(fileName);
+                    img.setVehiculo(vehiculo);
+                    imagenList.add(img);
+                }
+            }
+
+            vehiculo.setImagenes(imagenList);
             vehiculoService.saveVehiculo(vehiculo);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(vehiculo);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar imagen " + e.getMessage());
         }
-
     }
 
+
     @GetMapping("/{id}")
-    public Optional<Vehiculo> getVehiculo(@PathVariable Long id){
+    public Optional<Vehiculo> getVehiculo(@PathVariable Long id) {
         return vehiculoService.getVehiculo(id);
     }
 
