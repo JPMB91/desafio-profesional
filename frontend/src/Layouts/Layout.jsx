@@ -4,9 +4,11 @@ import { Footer } from "../Components/Footer/Footer";
 
 export const Layout = () => {
   return (
-    <div className="App">
+    <div className="layout">
       <Header />
-      <Outlet />
+      <main className="content">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

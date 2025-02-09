@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./Routes/Home.jsx";
 import { AdminPanel } from "./Routes/AdminPanel.jsx";
+import { Detail } from "./Components/Detail/Detail.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/vehiculo/:id" element={<Detail/> }/>
         </Route>
       </Routes>
     </BrowserRouter>

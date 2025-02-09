@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  background-color: #333;
+  color: white;
+  width: 100%;
+  padding: 10px 20px;
+  position: relative; 
+}
+
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin: 18px;
+  gap: 20px;
+}
+
+.logo{
+  width:120px;
+  border-radius: 5px;
+}

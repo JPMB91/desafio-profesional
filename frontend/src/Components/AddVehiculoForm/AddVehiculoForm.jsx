@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import styles from "./AddVehiculoForm.module.css"
+import styles from "./AddVehiculoForm.module.css";
 
 export const AddVehiculoForm = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +12,8 @@ export const AddVehiculoForm = () => {
     descripcion: "",
     categoriaVehiculo: "",
   });
-  const [imagen, setImagen] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [imagenes, setImagenes] = useState([]);
+  const [previews, setPreviews] = useState([]);
 
   // const [error, setError] = useState({
   //   marca: "",
@@ -31,19 +31,52 @@ export const AddVehiculoForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    const imageFile = e.target.files[0];
+  // const handleImageChange = (e) => {
+  //   const imageFile = e.target.files[0];
 
-    if (imageFile) {
-      setImagen(imageFile);
-      setPreview(URL.createObjectURL(imageFile));
-    }
+  //   if (imageFile) {
+  //     setImagenes(imageFile);
+  //     setPreviews(URL.createObjectURL(imageFile));
+  //   }
+  // };
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files); // Convert FileList to an array
+    setImagenes(files);
+    const previewUrls = files.map(file => URL.createObjectURL(file));
+    setPreviews(previewUrls);
   };
+  
 
   // este handler incluye la imagen
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const form = new FormData();
+  //   form.append("matricula", formData.matricula);
+  //   form.append("anio", formData.anio);
+  //   form.append("marca", formData.marca);
+  //   form.append("modelo", formData.modelo);
+  //   form.append("numeroAsientos", formData.numeroAsientos);
+  //   form.append("descripcion", formData.descripcion);
+  //   form.append("categoriaVehiculo", formData.categoriaVehiculo);
+  //   imagenes.forEach((imagen, index) => {
+  //     form.append(`imagen${index}`, imagen);
+  //   });
+
+  //   try {
+
+  //     await axios.post("http://localhost:8080/api/vehiculos", form);
+  //     console.log("Vehiculo guardado exitosamente");
+  //     console.log(form);
+  //   } catch (error) {
+  //     console.log("error guardando vehiculo: ", error);
+  //   }
+
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const form = new FormData();
     form.append("matricula", formData.matricula);
     form.append("anio", formData.anio);
@@ -52,19 +85,20 @@ export const AddVehiculoForm = () => {
     form.append("numeroAsientos", formData.numeroAsientos);
     form.append("descripcion", formData.descripcion);
     form.append("categoriaVehiculo", formData.categoriaVehiculo);
-    if (imagen) form.append("imagen", imagen);
-
+  
+    // Append each image using the same key "imagen"
+    imagenes.forEach((imagen) => {
+      form.append("imagen", imagen);
+    });
+  
     try {
-
       await axios.post("http://localhost:8080/api/vehiculos", form);
       console.log("Vehiculo guardado exitosamente");
-      console.log(form);
     } catch (error) {
       console.log("error guardando vehiculo: ", error);
     }
-    
   };
-
+  
   return (
     <div>
       <form onSubmit={handleSubmit} className={styles.formulario}>
@@ -146,18 +180,23 @@ export const AddVehiculoForm = () => {
               id="imagen"
               onChange={handleImageChange}
               className={styles.inputText}
+              multiple
             />
-            {preview && (
-              <img src={preview} alt="imagen para subir" width="100" />
-            )}
+            {previews.length > 0 &&
+              previews.map((preview, index) => (
+                <img
+                  key={index}
+                  src={preview}
+                  alt="imagen para subir"
+                  width="100"
+                />
+              ))}
           </div>
         </div>
         <button type="submit" className={styles.formButton}>
-        Añadir Vehiculo
-      </button>
+          Añadir Vehiculo
+        </button>
       </form>
-
-      
     </div>
   );
 };

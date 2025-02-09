@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./VehiculoCard.module.css";
+import { Link } from "react-router-dom";
 
 export const VehiculoCard = () => {
   const [vehiculos, setVehiculos] = useState([]);
@@ -26,17 +27,22 @@ export const VehiculoCard = () => {
       ) : (
         <div className={styles.cardContainer}>
           {vehiculos.map((vehiculo) => (
-            <div key={vehiculo.id} className={styles.card}>
-              <h2 className={styles.NombreVehiculo}>{vehiculo.marca + " " + vehiculo.modelo}</h2>
-              {vehiculo.imagen && (
-                <img
-                  src={`http://localhost:8080/api/vehiculos/uploads/${vehiculo.imagen}`}
-                  alt={vehiculo.marca}
-                  style={{ width: "100%", height: "auto" }}
-                  className={styles.cardImage}
-                />
+
+             <div className={styles.card} key={vehiculo.id}>
+              <h2 className={styles.NombreVehiculo}>{vehiculo.nombre}</h2>
+              {vehiculo.imagenes &&
+                vehiculo.imagenes.length > 0 && (
+                  <Link to={`/vehiculo/${vehiculo.id}`}>
+                    <img
+                      src={`http://localhost:8080/api/vehiculos/uploads/${vehiculo.imagenes[0].filename}`}
+                      alt={vehiculo.marca}
+                      className={styles.cardImage}
+                    />
+                  </Link>
               )}
             </div>
+            
+           
           ))}
         </div>
       )}
