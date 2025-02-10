@@ -12,17 +12,19 @@ export const AddVehiculoForm = () => {
     descripcion: "",
     categoriaVehiculo: "",
   });
+
   const [imagenes, setImagenes] = useState([]);
   const [previews, setPreviews] = useState([]);
 
-  // const [error, setError] = useState({
-  //   marca: "",
-  //   matricula: "",
-  //   anio: "",
-  //   descripcion: "",
-  //   asientos: "",
-  //   categoria: "",
-  // });
+  const [error, setError] = useState({
+    marca: "",
+    matricula: "",
+    anio: "",
+    descripcion: "",
+    asientos: "",
+    categoria: "",
+    nombre: "",
+  });
 
   // const [message, setMessage] = useState("");
 
@@ -31,52 +33,16 @@ export const AddVehiculoForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleImageChange = (e) => {
-  //   const imageFile = e.target.files[0];
-
-  //   if (imageFile) {
-  //     setImagenes(imageFile);
-  //     setPreviews(URL.createObjectURL(imageFile));
-  //   }
-  // };
-
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files); // Convert FileList to an array
     setImagenes(files);
-    const previewUrls = files.map(file => URL.createObjectURL(file));
+    const previewUrls = files.map((file) => URL.createObjectURL(file));
     setPreviews(previewUrls);
   };
-  
 
-  // este handler incluye la imagen
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const form = new FormData();
-  //   form.append("matricula", formData.matricula);
-  //   form.append("anio", formData.anio);
-  //   form.append("marca", formData.marca);
-  //   form.append("modelo", formData.modelo);
-  //   form.append("numeroAsientos", formData.numeroAsientos);
-  //   form.append("descripcion", formData.descripcion);
-  //   form.append("categoriaVehiculo", formData.categoriaVehiculo);
-  //   imagenes.forEach((imagen, index) => {
-  //     form.append(`imagen${index}`, imagen);
-  //   });
-
-  //   try {
-
-  //     await axios.post("http://localhost:8080/api/vehiculos", form);
-  //     console.log("Vehiculo guardado exitosamente");
-  //     console.log(form);
-  //   } catch (error) {
-  //     console.log("error guardando vehiculo: ", error);
-  //   }
-
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const form = new FormData();
     form.append("matricula", formData.matricula);
     form.append("anio", formData.anio);
@@ -85,20 +51,40 @@ export const AddVehiculoForm = () => {
     form.append("numeroAsientos", formData.numeroAsientos);
     form.append("descripcion", formData.descripcion);
     form.append("categoriaVehiculo", formData.categoriaVehiculo);
-  
+
     // Append each image using the same key "imagen"
     imagenes.forEach((imagen) => {
       form.append("imagen", imagen);
     });
-  
+
     try {
       await axios.post("http://localhost:8080/api/vehiculos", form);
       console.log("Vehiculo guardado exitosamente");
-    } catch (error) {
-      console.log("error guardando vehiculo: ", error);
+    } catch (err) {
+      if (err.response && err.response.data) {
+        const errMsg = err.response.data;
+
+        // Exact error matching
+        switch (errMsg) {
+          case "Error: El nombre del vehiculo debe ser único.":
+            setError((prev) => ({ ...prev, nombre: errMsg }));
+            break;
+
+          case "Error: La matrícula ya está registrada.":
+            setError((prev) => ({ ...prev, matricula: errMsg }));
+            break;
+
+          default:
+            setError((prev) => ({
+              ...prev,
+              general: "Ocurrió un error desconocido.",
+            }));
+            break;
+        }
+      }
     }
   };
-  
+
   return (
     <div>
       <form onSubmit={handleSubmit} className={styles.formulario}>
@@ -112,14 +98,15 @@ export const AddVehiculoForm = () => {
             className={styles.inputText}
           />
 
-          <label htmlFor="matricula">Matricula</label>
+          <label htmlFor="modelo">Modelo</label>
           <input
             type="text"
-            name="matricula"
-            value={formData.matricula}
+            name="modelo"
+            value={formData.modelo}
             onChange={handleChange}
             className={styles.inputText}
           />
+          {error.nombre && <p>{error.nombre}</p>}
 
           <label htmlFor="anio">Año de fabricación</label>
           <input
@@ -129,23 +116,15 @@ export const AddVehiculoForm = () => {
             value={formData.anio}
             className={styles.inputText}
           />
-          <label htmlFor="modelo">Modelo</label>
-          <input
-            type="text"
-            name="modelo"
-            value={formData.modelo}
-            onChange={handleChange}
-            className={styles.inputText}
-          />
 
           <label htmlFor="descripcion">Descripcion</label>
-          <input
+          <textarea
             type="text"
             name="descripcion"
             value={formData.descripcion}
             onChange={handleChange}
             className={styles.inputText}
-          />
+          ></textarea>
 
           <label htmlFor="numeroAsientos">Numero de asientos</label>
           <input
@@ -171,6 +150,14 @@ export const AddVehiculoForm = () => {
             <option value="VEHICULO_FURGON">Furgon</option>
           </select>
 
+          <label htmlFor="matricula">Matricula</label>
+          <input
+            type="text"
+            name="matricula"
+            value={formData.matricula}
+            onChange={handleChange}
+            className={styles.inputText}
+          />
           <div>
             <label htmlFor="imagen">Imagen</label>
             <input
