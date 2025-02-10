@@ -3,6 +3,8 @@ package com.digitalhouse.turnos.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "imagenes")
@@ -14,6 +16,7 @@ public class Imagen {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehiculo_id")
+    @OnDelete(action = OnDeleteAction.CASCADE) //
     @JsonIgnore
     private Vehiculo vehiculo;
 

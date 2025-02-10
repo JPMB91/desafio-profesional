@@ -5,6 +5,7 @@ import com.digitalhouse.turnos.entity.Imagen;
 import com.digitalhouse.turnos.entity.Vehiculo;
 import com.digitalhouse.turnos.service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -80,8 +81,15 @@ public class VehiculoController {
             vehiculoService.saveVehiculo(vehiculo);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(vehiculo);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar imagen " + e.getMessage());
+        } catch (DataIntegrityViolationException ex) {
+
+            //Solo permite nombres unicos
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Error: El nombre del vehiculo debe ser único.");
+
+        } catch (IOException ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al guardar imagen: " + ex.getMessage());
         }
     }
 

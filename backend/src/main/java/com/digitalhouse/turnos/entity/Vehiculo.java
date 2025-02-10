@@ -16,6 +16,7 @@ public class Vehiculo {
     private String marca;
     private String modelo;
     private int numeroAsientos;
+    @Column(length = 1000)
     private String descripcion;
     @Enumerated(EnumType.STRING)
     private CategoriaVehiculo categoriaVehiculo;
@@ -23,8 +24,9 @@ public class Vehiculo {
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Imagen> imagenes;
 
-    @Formula("concat(marca, ' ', modelo)")
+    @Column(unique = true)
     private String nombre;
+
 
 
     public Vehiculo() {
@@ -39,6 +41,12 @@ public class Vehiculo {
         this.numeroAsientos = numeroAsientos;
         this.descripcion = descripcion;
         this.categoriaVehiculo = categoriaVehiculo;
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void setNombre() {
+        this.nombre = marca + " " + modelo;
     }
 
     public void setImagenes(List<Imagen> imagenes) {
