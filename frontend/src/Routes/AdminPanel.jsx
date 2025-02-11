@@ -1,10 +1,11 @@
-import { AddVehiculoForm } from "../Components/AddVehiculoForm/AddVehiculoForm";
-
+import { Link } from "react-router-dom";
 
 export const AdminPanel = () => {
   return (
     <>
-      <AddVehiculoForm />
+        <Link to="/admin/add-vehiculo">
+        <button>Add Vehiculo</button>
+      </Link>
     </>
   );
 };

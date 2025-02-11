@@ -1,7 +1,9 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #333;
+  /* background-color: #333; */
+  background: rgb(6,8,9);
+background: linear-gradient(90deg, rgba(6,8,9,1) 8%, rgba(13,18,17,1) 62%, rgba(54,57,60,1) 100%);
   color: white;
   /* width: 100%; */
   align-content: center;

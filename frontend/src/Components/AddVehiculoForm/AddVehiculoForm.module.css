@@ -1,4 +1,10 @@
-.formulario {
+.formContainer{
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem;
+}
+
+.form {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -6,9 +12,8 @@
   border-radius: 7px;
   width: 40%;
   height: 50%;
-  margin: 0 auto;
   gap: 1rem;
-  margin-top: 1rem;
+  align-content: center;
 }
 
 .formButton{
@@ -28,9 +33,16 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   display: block;
   width: 80%;
-  margin: 0.1rem;
+  margin: 0.5rem;
 }
 
+select{
+  display: block;
+  margin: 0.5rem ;
+}
+option{
+  max-width: 80%;
+}
 form input:focus {
   border-color: #007BFF;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);

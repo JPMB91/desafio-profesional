@@ -86,8 +86,8 @@ export const AddVehiculoForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={styles.formulario}>
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div>
           <label htmlFor="marca">Marca</label>
           <input
@@ -144,13 +144,13 @@ export const AddVehiculoForm = () => {
             onChange={handleChange}
           >
             <option value="">Seleccione una categoria</option>
-            <option value="SUV">SUV</option>
+            <option value="VEHICULO_SUV">SUV</option>
             <option value="VEHICULO_CAMIONETA_PICKUP">CAMIONETA PICK-UP</option>
             <option value="VEHICULO_SEDAN">SEDAN</option>
             <option value="VEHICULO_FURGON">Furgon</option>
           </select>
 
-          <label htmlFor="matricula">Matricula</label>
+          <label htmlFor="matricula">Matrícula</label>
           <input
             type="text"
             name="matricula"

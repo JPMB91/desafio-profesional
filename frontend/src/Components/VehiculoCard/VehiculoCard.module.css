@@ -1,14 +1,8 @@
 .cardContainer {
-
   gap: 1rem;
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  max-width: calc(5 * 200px + 4 * 1rem);
-  margin: 0 auto; */
-
 }
 
 .card {
@@ -17,27 +11,45 @@
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
+  text-align: center;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
-.NombreVehiculo {
-  text-align: center;
+
+.cardImageContainer {
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
 .cardImage {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  border-radius: 5px;
-
+  height: 100%;
+  object-fit: cover;
 }
 
 .nombreVehiculo {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-top: 0.5rem;
+  height: 1rem;
+}
 
+@media (max-width: 768px) {
+  .nombreVehiculo{
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 }

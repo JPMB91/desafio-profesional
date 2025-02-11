@@ -29,15 +29,18 @@ export const VehiculoCard = () => {
           {vehiculos.map((vehiculo) => (
 
              <div className={styles.card} key={vehiculo.id}>
-              <h2 className={styles.NombreVehiculo}>{vehiculo.nombre}</h2>
+              <h2 className={styles.nombreVehiculo}>{vehiculo.nombre}</h2>
               {vehiculo.imagenes &&
                 vehiculo.imagenes.length > 0 && (
                   <Link to={`/vehiculo/${vehiculo.id}`}>
+                    <div className={styles.cardImageContainer}>
                     <img
                       src={`http://localhost:8080/api/vehiculos/uploads/${vehiculo.imagenes[0].filename}`}
-                      alt={vehiculo.marca}
+                      alt={vehiculo.nombre}
                       className={styles.cardImage}
                     />
+                    </div>
+                   
                   </Link>
               )}
             </div>
