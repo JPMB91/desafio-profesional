@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/admin/add-vehiculo" element={<AddVehiculoForm/>}/>
-          <Route path="/vehiculo/:id" element={<Detail/> }/>
+          <Route path="/vehicle/:id" element={<Detail/> }/>
         </Route>
       </Routes>
     </BrowserRouter>

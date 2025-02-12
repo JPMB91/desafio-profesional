@@ -192,22 +192,6 @@ export const AddVehiculoForm = () => {
             ))}
           </select>
 
-          {/* <label htmlFor="categoryId">Categoria del vehiculo</label>
-          <select
-            name="categoryId"
-            value={formData.categoryId}
-            onChange={handleChange}
-          >
-            <option value="">Seleccione una categoria</option>
-            {categories.map((category) => (
-              
-              <option key={category.id} value={category.id}>
-                {category.name}
-                {console.log("esto hay dentro:", category.id)}
-              </option>
-            ))}
-          </select> */}
-
           <label htmlFor="gearShift">Tipo de transmisión</label>
           <select
             name="gearShift"

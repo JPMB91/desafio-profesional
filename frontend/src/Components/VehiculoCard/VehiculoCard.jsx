@@ -28,12 +28,11 @@ export const VehiculoCard = () => {
       ) : (
         <div className={styles.cardContainer}>
           {vehicles.map((vehiculo) => (
-
              <div className={styles.card} key={vehiculo.id}>
               <h2 className={styles.NombreVehiculo}>{vehiculo.name}</h2>
               {vehiculo.images &&
                 vehiculo.images.length > 0 && (
-                  <Link to={`/vehicle/${vehicles.id}`}>
+                  <Link to={`/vehicle/${vehiculo.id}`}>
                     <img
                       src={`http://localhost:8080/api/vehicles/uploads/${vehiculo.images[0].filename}`}
                       alt={vehiculo.brand}
