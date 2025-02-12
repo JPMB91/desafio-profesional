@@ -10,7 +10,7 @@ export const VehiculoCard = () => {
   useEffect(() => {
     const fetchVehiculos = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/vehicles");
+        const response = await axios.get("http://localhost:8080/api/vehicles/random");
         setVehicles(response.data);
       } catch (error) {
         console.log("Error al obtener vehiculos: ", error);
