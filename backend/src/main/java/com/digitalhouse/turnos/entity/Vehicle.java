@@ -1,32 +1,54 @@
 package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.time.Year;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "vehiculos")
 public class Vehiculo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+//    private String registrationPlate;
     private String matricula;
+//    private Year manufacturingYear;
     private int anio;
+//    private String brand;
     private String marca;
+//    private String model;
     private String modelo;
+//    private int numberOfSeats;
     private int numeroAsientos;
-    @Column(length = 1000)
-    private String descripcion;
+    //    @Column(length = 1000)
+//    private String description;
     @Enumerated(EnumType.STRING)
     private CategoriaVehiculo categoriaVehiculo;
+    @Column(length = 1000)
+    private String descripcion;
 
+//    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Image> images;
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Imagen> imagenes;
 
+//    @Column(unique = true)
+//    private String name;
     @Column(unique = true)
     private String nombre;
 
+//    private double dailyCost;
+
+//    @Enumerated(EnumType.STRING)
+//    private Enum fuelType
+
+//    private String o enum gearShift
+    //manual, automática, semiautomática y CVT
+
+//    private int numberOfDoors
 
 
     public Vehiculo() {
@@ -61,7 +83,7 @@ public class Vehiculo {
         return nombre;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

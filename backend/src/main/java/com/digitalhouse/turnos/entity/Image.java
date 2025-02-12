@@ -18,7 +18,7 @@ public class Imagen {
     @JoinColumn(name = "vehiculo_id")
     @OnDelete(action = OnDeleteAction.CASCADE) //
     @JsonIgnore
-    private Vehiculo vehiculo;
+    private Vehicle vehicle;
 
     public Long getId() {
         return id;
@@ -32,11 +32,11 @@ public class Imagen {
         this.filename = filename;
     }
 
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public Vehicle getVehiculo() {
+        return vehicle;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculo(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
