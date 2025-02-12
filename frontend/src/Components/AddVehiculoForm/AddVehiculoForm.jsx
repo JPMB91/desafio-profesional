@@ -1,41 +1,73 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./AddVehiculoForm.module.css";
 
 export const AddVehiculoForm = () => {
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
-    matricula: "",
-    anio: "",
-    marca: "",
-    modelo: "",
-    numeroAsientos: "",
-    descripcion: "",
-    categoriaVehiculo: "",
+    registrationPlate: "",
+    manufacturingYear: "",
+    brand: "",
+    model: "",
+    numberOfSeats: "",
+    description: "",
+    categoryId: "",
+    gearShift: "",
+    numberOfDoors: "",
+    dailyCost: "",
+    fuelType: "",
   });
 
-  const [imagenes, setImagenes] = useState([]);
+  const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
 
   const [error, setError] = useState({
-    marca: "",
-    matricula: "",
-    anio: "",
-    descripcion: "",
-    asientos: "",
-    categoria: "",
-    nombre: "",
+    brand: "",
+    registrationPlate: "",
+    manufacturingYear: "",
+    description: "",
+    numberOfSeats: "",
+    categoryId: "",
+    name: "",
+    gearShift: "",
+    numberOfDoors: "",
+    dailyCost: "",
+    fuelType: "",
   });
 
-  // const [message, setMessage] = useState("");
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/categories")
+      .then((response) => setCategories(response.data))
+      .catch((err) => console.error("Error fetching categories", err));
+  }, []);
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+
+  //   if (name === "categoryId") {
+  //     // setFormData({ ...formData, categoryId: value });
+  //     setFormData({ ...formData, categoryId: parseInt(value, 10) });
+  //   } else {
+  //     setFormData({ ...formData, [name]: value });
+  //   }
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === "categoryId") {
+      setFormData((prev) => ({
+        ...prev,
+        categoryId: parseInt(value, 10) || "",
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files); // Convert FileList to an array
-    setImagenes(files);
+    setImages(files);
     const previewUrls = files.map((file) => URL.createObjectURL(file));
     setPreviews(previewUrls);
   };
@@ -44,34 +76,39 @@ export const AddVehiculoForm = () => {
     e.preventDefault();
 
     const form = new FormData();
-    form.append("matricula", formData.matricula);
-    form.append("anio", formData.anio);
-    form.append("marca", formData.marca);
-    form.append("modelo", formData.modelo);
-    form.append("numeroAsientos", formData.numeroAsientos);
-    form.append("descripcion", formData.descripcion);
-    form.append("categoriaVehiculo", formData.categoriaVehiculo);
+    form.append("registrationPlate", formData.registrationPlate);
+    form.append("manufacturingYear", formData.manufacturingYear);
+    form.append("brand", formData.brand);
+    form.append("model", formData.model);
+    form.append("numberOfSeats", formData.numberOfSeats);
+    form.append("description", formData.description);
+    form.append("gearShift", formData.gearShift);
+    form.append("numberOfDoors", formData.numberOfDoors);
+    form.append("dailyCost", formData.dailyCost);
+    form.append("fuelType", formData.fuelType);
 
-    // Append each image using the same key "imagen"
-    imagenes.forEach((imagen) => {
-      form.append("imagen", imagen);
+    form.append("categoryId", formData.categoryId);
+
+    images.forEach((image) => {
+      form.append("images", image);
     });
 
     try {
-      await axios.post("http://localhost:8080/api/vehiculos", form);
+      await axios.post("http://localhost:8080/api/vehicles", form);
       console.log("Vehiculo guardado exitosamente");
     } catch (err) {
+      console.log("formData: ", formData);
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
 
-        // Exact error matching
+        // errores
         switch (errMsg) {
           case "Error: El nombre del vehiculo debe ser único.":
-            setError((prev) => ({ ...prev, nombre: errMsg }));
+            setError((prev) => ({ ...prev, name: errMsg }));
             break;
 
           case "Error: La matrícula ya está registrada.":
-            setError((prev) => ({ ...prev, matricula: errMsg }));
+            setError((prev) => ({ ...prev, registrationPlate: errMsg }));
             break;
 
           default:
@@ -89,82 +126,158 @@ export const AddVehiculoForm = () => {
     <div>
       <form onSubmit={handleSubmit} className={styles.formulario}>
         <div>
-          <label htmlFor="marca">Marca</label>
+          <label htmlFor="brand">Marca</label>
           <input
             type="text"
-            name="marca"
-            value={formData.marca}
+            name="brand"
+            value={formData.brand}
             onChange={handleChange}
             className={styles.inputText}
           />
 
-          <label htmlFor="modelo">Modelo</label>
+          <label htmlFor="model">Modelo</label>
           <input
             type="text"
-            name="modelo"
-            value={formData.modelo}
+            name="model"
+            value={formData.model}
             onChange={handleChange}
             className={styles.inputText}
           />
-          {error.nombre && <p>{error.nombre}</p>}
+          {error.name && <p>{error.name}</p>}
 
-          <label htmlFor="anio">Año de fabricación</label>
+          <label htmlFor="manufacturingYear">Año de fabricación</label>
           <input
             type="text"
-            name="anio"
+            name="manufacturingYear"
             onChange={handleChange}
-            value={formData.anio}
+            value={formData.manufacturingYear}
             className={styles.inputText}
           />
 
-          <label htmlFor="descripcion">Descripcion</label>
+          <label htmlFor="description">Descripcion</label>
           <textarea
             type="text"
-            name="descripcion"
-            value={formData.descripcion}
+            name="description"
+            value={formData.description}
             onChange={handleChange}
             className={styles.inputText}
           ></textarea>
 
-          <label htmlFor="numeroAsientos">Numero de asientos</label>
-          <input
+          <label htmlFor="numberOfSeats">Numero de asientos</label>
+          <select
             type="number"
-            name="numeroAsientos"
-            id=""
-            value={formData.numeroAsientos}
+            name="numberOfSeats"
+            value={formData.numberOfSeats}
             onChange={handleChange}
             className={styles.inputText}
-          />
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
 
-          <label htmlFor="categoriaVehiculo">Categoria del vehiculo</label>
           <select
-            name="categoriaVehiculo"
-            id=""
-            value={formData.categoriaVehiculo}
+            name="categoryId"
+            value={formData.categoryId || ""}
             onChange={handleChange}
           >
             <option value="">Seleccione una categoria</option>
-            <option value="SUV">SUV</option>
-            <option value="VEHICULO_CAMIONETA_PICKUP">CAMIONETA PICK-UP</option>
-            <option value="VEHICULO_SEDAN">SEDAN</option>
-            <option value="VEHICULO_FURGON">Furgon</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
 
-          <label htmlFor="matricula">Matricula</label>
+          {/* <label htmlFor="categoryId">Categoria del vehiculo</label>
+          <select
+            name="categoryId"
+            value={formData.categoryId}
+            onChange={handleChange}
+          >
+            <option value="">Seleccione una categoria</option>
+            {categories.map((category) => (
+              
+              <option key={category.id} value={category.id}>
+                {category.name}
+                {console.log("esto hay dentro:", category.id)}
+              </option>
+            ))}
+          </select> */}
+
+          <label htmlFor="gearShift">Tipo de transmisión</label>
+          <select
+            name="gearShift"
+            id="gearShift"
+            value={formData.gearShift}
+            onChange={handleChange}
+          >
+            <option value="">Seleccione un tipo de transmisión</option>
+            <option value="AUTOMATIC">Automatic</option>
+            <option value="MANUAL">Manual</option>
+            <option value="SEMIAUTOMATIC">Semi Automatic</option>
+            <option value="CVT">CVT</option>
+          </select>
+
+          <label htmlFor="numberOfDoors">Número de puertas</label>
+          <select
+            type="number"
+            name="numberOfDoors"
+            id="numberOfDoors"
+            value={formData.numberOfDoors}
+            onChange={handleChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <label htmlFor="fuelType">Tipo de combustible</label>
+          <select
+            type="text"
+            name="fuelType"
+            id="fuelType"
+            value={formData.fuelType}
+            onChange={handleChange}
+          >
+            <option value="">
+              Seleccione tipo de combustible del vehiculo
+            </option>
+            <option value="GASOLINE">GASOLINA</option>
+            <option value="ELECTRIC">ELECTRICO</option>
+            <option value="DIESEL">DIESEL</option>
+            <option value="HYBRID">HIBRIDO</option>
+            <option value="BIODIESEL">BIODIESEL</option>
+          </select>
+          <label htmlFor="registrationPlate">Matricula</label>
           <input
             type="text"
-            name="matricula"
-            value={formData.matricula}
+            name="registrationPlate"
+            value={formData.registrationPlate}
             onChange={handleChange}
             className={styles.inputText}
           />
+
+          <label htmlFor="dailyCost">Costo diario</label>
+          <input
+            type="number"
+            name="dailyCost"
+            value={formData.dailyCost}
+            onChange={handleChange}
+          />
+
           <div>
-            <label htmlFor="imagen">Imagen</label>
+            <label htmlFor="images">Imagenes</label>
             <input
               type="file"
-              name="imagen"
+              name="images"
               accept="image/*"
-              id="imagen"
+              id="images"
               onChange={handleImageChange}
               className={styles.inputText}
               multiple
@@ -174,7 +287,7 @@ export const AddVehiculoForm = () => {
                 <img
                   key={index}
                   src={preview}
-                  alt="imagen para subir"
+                  alt={`formData.name ${index}`}
                   width="100"
                 />
               ))}

@@ -10,7 +10,7 @@ export const Detail = () => {
     const getDetail = async () => {
       try {
         await axios
-          .get(`http://localhost:8080/api/vehiculos/${id}`)
+          .get(`http://localhost:8080/api/vehicles/${id}`)
           .then((response) => {
             setVehiculoData(response.data);
           });
