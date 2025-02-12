@@ -7,15 +7,15 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "imagenes")
-public class Imagen {
+@Table(name = "images")
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String filename;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehiculo_id")
+    @JoinColumn(name = "vehicle_id")
     @OnDelete(action = OnDeleteAction.CASCADE) //
     @JsonIgnore
     private Vehicle vehicle;
@@ -32,11 +32,11 @@ public class Imagen {
         this.filename = filename;
     }
 
-    public Vehicle getVehiculo() {
+    public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public void setVehiculo(Vehicle vehicle) {
+    public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 }

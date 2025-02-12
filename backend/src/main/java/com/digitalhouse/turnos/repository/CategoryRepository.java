@@ -1,2 +1,9 @@
-package com.digitalhouse.turnos.repository;public class CategoryRepository {
+package com.digitalhouse.turnos.repository;
+
+import com.digitalhouse.turnos.entity.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+
+
 }

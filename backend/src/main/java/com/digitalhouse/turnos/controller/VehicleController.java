@@ -1,6 +1,5 @@
 package com.digitalhouse.turnos.controller;
 
-import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.entity.FuelType;
 import com.digitalhouse.turnos.entity.GearShift;
 import com.digitalhouse.turnos.entity.Vehicle;
@@ -23,14 +22,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/vehiculos")
+@RequestMapping("/api/vehicles")
 @CrossOrigin(origins = "http://localhost:5173")
-public class VehiculoController {
+public class VehicleController {
 
     @Autowired
     private final VehicleService vehicleService;
 
-    public VehiculoController(VehicleService vehicleService) {
+    public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
     }
 
@@ -46,7 +45,7 @@ public class VehiculoController {
                                      @RequestParam("model") String model,
                                      @RequestParam("numberOfSeats") int numberOfSeats,
                                      @RequestParam("description") String description,
-                                     @RequestParam("category") Category category,
+                                     @RequestParam("categoryId") Long categoryId,
                                      @RequestParam("images") MultipartFile[] images,
                                      @RequestParam("gearShift") GearShift gearShift,
                                      @RequestParam("numberOfDoors") int numberOfDoors,
@@ -61,7 +60,7 @@ public class VehiculoController {
                     model,
                     numberOfSeats,
                     description,
-                    category,
+                    categoryId,
                     images,
                     gearShift,
                     numberOfDoors,
@@ -76,7 +75,8 @@ public class VehiculoController {
                     .body("Error: El nombre del vehiculo debe ser único.");
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error saving images: " + e.getMessage());
         }
     }
 

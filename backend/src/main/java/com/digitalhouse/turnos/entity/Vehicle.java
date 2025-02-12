@@ -1,145 +1,177 @@
 package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.Year;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "vehiculos")
-public class Vehiculo {
+@Table(name = "vehicles")
+public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-//    private String registrationPlate;
-    private String matricula;
-//    private Year manufacturingYear;
-    private int anio;
-//    private String brand;
-    private String marca;
-//    private String model;
-    private String modelo;
-//    private int numberOfSeats;
-    private int numeroAsientos;
-    //    @Column(length = 1000)
-//    private String description;
-    @Enumerated(EnumType.STRING)
-    private CategoriaVehiculo categoriaVehiculo;
+
+    private String registrationPlate;
+
+    private Year manufacturingYear;
+
+    private String brand;
+
+    private String model;
+
+    private int numberOfSeats;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
     @Column(length = 1000)
-    private String descripcion;
+    private String description;
 
-//    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Image> images;
-    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Imagen> imagenes;
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images;
 
-//    @Column(unique = true)
-//    private String name;
     @Column(unique = true)
-    private String nombre;
+    private String name;
 
-//    private double dailyCost;
+    private double dailyCost;
 
-//    @Enumerated(EnumType.STRING)
-//    private Enum fuelType
+    private int numberOfDoors;
 
-//    private String o enum gearShift
-    //manual, automática, semiautomática y CVT
+    @Enumerated(EnumType.STRING)
+    private FuelType fuelType;
 
-//    private int numberOfDoors
+    @Enumerated(EnumType.STRING)
+    private GearShift gearShift;
 
-
-    public Vehiculo() {
+    public Vehicle() {
     }
 
-    public Vehiculo(String matricula, int anio, String marca, String modelo, int numeroAsientos, String descripcion,
-                    CategoriaVehiculo categoriaVehiculo) {
-        this.matricula = matricula;
-        this.anio = anio;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.numeroAsientos = numeroAsientos;
-        this.descripcion = descripcion;
-        this.categoriaVehiculo = categoriaVehiculo;
+    public Vehicle(String brand , String model, Year manufacturingYear, String description, Category category, int numberOfSeats, GearShift gearShift, FuelType fuelType,
+                   int numberOfDoors, double dailyCost, String registrationPlate) {
+
+        this.gearShift = gearShift;
+        this.fuelType = fuelType;
+        this.numberOfDoors = numberOfDoors;
+        this.dailyCost = dailyCost;
+        this.description = description;
+        this.category = category;
+        this.numberOfSeats = numberOfSeats;
+        this.model = model;
+        this.brand = brand;
+        this.manufacturingYear = manufacturingYear;
+        this.registrationPlate = registrationPlate;
     }
 
     @PrePersist
     @PreUpdate
-    private void setNombre() {
-        this.nombre = marca + " " + modelo;
+    private void setName() {
+        this.name = brand + " " + model;
     }
 
-    public void setImagenes(List<Imagen> imagenes) {
-        this.imagenes = imagenes;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
-    public List<Imagen> getImagenes() {
-        return imagenes;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getRegistrationPlate() {
+        return registrationPlate;
     }
 
-    public int getAnio() {
-        return anio;
+    public Year getManufacturingYear() {
+        return manufacturingYear;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getBrand() {
+        return brand;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getModel() {
+        return model;
     }
 
-    public int getNumeroAsientos() {
-        return numeroAsientos;
+    public int getNumberOfSeats() {
+        return numberOfSeats;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public CategoriaVehiculo getCategoriaVehiculo() {
-        return categoriaVehiculo;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setRegistrationPlate(String registrationPlate) {
+        this.registrationPlate = registrationPlate;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setManufacturingYear(Year manufacturingYear) {
+        this.manufacturingYear = manufacturingYear;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public void setNumeroAsientos(int numeroAsientos) {
-        this.numeroAsientos = numeroAsientos;
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setCategoriaVehiculo(CategoriaVehiculo categoriaVehiculo) {
-        this.categoriaVehiculo = categoriaVehiculo;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setGearShift(GearShift gearShift) {
+        this.gearShift = gearShift;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public void setNumberOfDoors(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public void setDailyCost(double dailyCost) {
+        this.dailyCost = dailyCost;
+    }
+
+    public double getDailyCost() {
+        return dailyCost;
+    }
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public GearShift getGearShift() {
+        return gearShift;
     }
 }
