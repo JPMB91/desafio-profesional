@@ -50,7 +50,7 @@ public class VehicleController {
                                      @RequestParam("gearShift") GearShift gearShift,
                                      @RequestParam("numberOfDoors") int numberOfDoors,
                                      @RequestParam("dailyCost") double dailyCost,
-                                     @RequestParam("fuelType")FuelType fuelType) {
+                                     @RequestParam("fuelType") FuelType fuelType) {
         try {
 
             // Create Vehiculo
@@ -112,5 +112,11 @@ public class VehicleController {
         vehicleService.deleteVehiculo(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("Vehiculo borrado con exito");
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<List<Vehicle>> getRandomVehicles() {
+        List<Vehicle> randomVehicles = vehicleService.getRandomVehicles();
+        return ResponseEntity.status(HttpStatus.OK).body(randomVehicles);
     }
 }

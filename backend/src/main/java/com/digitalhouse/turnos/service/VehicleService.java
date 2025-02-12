@@ -11,10 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class VehicleService {
@@ -95,5 +92,13 @@ public class VehicleService {
     @Transactional
     public void deleteVehiculo(UUID id){
         vehiculoRepository.deleteById(id);
+    }
+
+    // Lista de vehiculos random
+    public List<Vehicle> getRandomVehicles(){
+        List<Vehicle> vehicles = vehiculoRepository.findAll();
+        Collections.shuffle(vehicles);
+        int limitOfVehicles = (Math.min(10, vehicles.size()));
+        return vehicles.subList(0, limitOfVehicles);
     }
 }
