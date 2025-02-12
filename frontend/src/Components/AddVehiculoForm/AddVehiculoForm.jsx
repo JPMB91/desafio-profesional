@@ -42,17 +42,6 @@ export const AddVehiculoForm = () => {
       .catch((err) => console.error("Error fetching categories", err));
   }, []);
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-
-  //   if (name === "categoryId") {
-  //     // setFormData({ ...formData, categoryId: value });
-  //     setFormData({ ...formData, categoryId: parseInt(value, 10) });
-  //   } else {
-  //     setFormData({ ...formData, [name]: value });
-  //   }
-  // };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -66,7 +55,7 @@ export const AddVehiculoForm = () => {
   };
 
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files); // Convert FileList to an array
+    const files = Array.from(e.target.files);
     setImages(files);
     const previewUrls = files.map((file) => URL.createObjectURL(file));
     setPreviews(previewUrls);

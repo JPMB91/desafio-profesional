@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./Detail.module.css"
+import styles from "./Detail.module.css";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 
 export const Detail = () => {
@@ -14,7 +14,9 @@ export const Detail = () => {
   useEffect(() => {
     const getDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/vehicles/${id}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/vehicles/${id}`
+        );
         setVehicleData(response.data);
       } catch (error) {
         console.log("Error obteniendo detalle del vehiculo: ", error);
@@ -60,20 +62,19 @@ export const Detail = () => {
               />
             ))}
 
-          
-              <button
-                className={styles.viewMore}
-                onClick={() => setShowModal(true)}
-              >
-                Ver más
-              </button>
-
+            <button
+              className={styles.viewMore}
+              onClick={() => setShowModal(true)}
+            >
+              Ver más
+            </button>
           </div>
 
           {showModal && (
             <ImageGallery
               images={vehicleData.images}
-              onClose={() => setShowModal(false)}
+              close={() => setShowModal(false)}
+              showModal={showModal}
             />
           )}
         </div>

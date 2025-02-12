@@ -1,13 +1,16 @@
 import styles from "./ImageGallery.module.css";
 
-export const ImageGallery = ({ images, onClose }) => {
-  return (
-    <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <button className={styles.closeButton} onClick={onClose}>
+export const ImageGallery = ({ images, close, showModal }) => {
+
+  return showModal ? (
+    <div className={styles.overlay} onClick={() =>{
+      close()
+    }}>
+      <div className={styles.modal} >
+        <button className={styles.closeButton} onClick={close}>
           ✖️
         </button>
-        <div className={styles.gallery}>
+        <div className={styles.modalGallery}>
           {images.map((img, index) => (
             <img
               key={index}
@@ -18,5 +21,5 @@ export const ImageGallery = ({ images, onClose }) => {
         </div>
       </div>
     </div>
-  );
-};
+  ) : null
+}
