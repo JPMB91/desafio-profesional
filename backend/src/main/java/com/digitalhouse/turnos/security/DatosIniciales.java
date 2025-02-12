@@ -2,7 +2,6 @@ package com.digitalhouse.turnos.security;
 
 import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.repository.CategoryRepository;
-import com.digitalhouse.turnos.repository.VehiculoRepository;
 import com.digitalhouse.turnos.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -27,10 +26,10 @@ public class DatosIniciales implements ApplicationRunner {
         Category category3 = new Category("Sedan", "Sedan");
         Category category4 = new Category("Van", "Van");
 
-        categoryRepository.save(category);
-        categoryRepository.save(category2);
-        categoryRepository.save(category3);
-        categoryRepository.save(category4);
+//        categoryRepository.save(category);
+//        categoryRepository.save(category2);
+//        categoryRepository.save(category3);
+//        categoryRepository.save(category4);
 
     }
 }
