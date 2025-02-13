@@ -1,3 +1,4 @@
+import Proptypes from "prop-types"
 import styles from "./ImageGallery.module.css";
 
 export const ImageGallery = ({ images, close, showModal }) => {
@@ -22,4 +23,10 @@ export const ImageGallery = ({ images, close, showModal }) => {
       </div>
     </div>
   ) : null
+}
+
+ImageGallery.propTypes = {
+  images: Proptypes.array.isRequired,
+  close: Proptypes.func.isRequired,
+  showModal: Proptypes.bool.isRequired
 }

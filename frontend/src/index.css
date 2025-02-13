@@ -1,3 +1,11 @@
+@import "tailwindcss";
+
+/* Plugins */
+/* @plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography'; */
+
+/* Class based dark mode */
+/* @variant dark (&:where(.dark, .dark *)); */
 body {
   margin: 0;
   min-height: 100dvh;

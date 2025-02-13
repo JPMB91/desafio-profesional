@@ -7,6 +7,7 @@ import { Home } from "./Routes/Home.jsx";
 import { AdminPanel } from "./Routes/AdminPanel.jsx";
 import { Detail } from "./Components/Detail/Detail.jsx";
 import { AddVehiculoForm } from "./Components/AddVehiculoForm/AddVehiculoForm.jsx";
+import { VehicleList } from "./Components/VehicleList/VehicleList.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,8 +15,9 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/admin/add-vehiculo" element={<AddVehiculoForm/>}/>
+          <Route path="/administracion" element={<AdminPanel />} />
+          <Route path="/administracion/add-vehiculo" element={<AddVehiculoForm/>}/>
+          <Route path="/administracion/lista-vehiculos" element={<VehicleList />}/>
           <Route path="/vehicle/:id" element={<Detail/> }/>
         </Route>
       </Routes>

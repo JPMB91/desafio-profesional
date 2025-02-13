@@ -10,7 +10,7 @@ export const Header = () => {
       </Link>
       <nav className={styles.buttonsContainer}>
         <button className={styles.button}>Crear Cuenta</button>
-        <button className={styles.button}>Iniciar sesión</button>
+        <button className={styles.button + "btn btn-blue"}>Iniciar sesión</button>
       </nav>
     </header>
   );
