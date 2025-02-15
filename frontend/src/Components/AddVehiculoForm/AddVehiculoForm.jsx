@@ -136,7 +136,9 @@ export const AddVehiculoForm = () => {
 
           <label htmlFor="manufacturingYear">Año de fabricación</label>
           <input
-            type="text"
+            type="number"
+            min={1980}
+            max={new Date()}
             name="manufacturingYear"
             onChange={handleChange}
             value={formData.manufacturingYear}
