@@ -60,7 +60,7 @@ export const Pagination = ({
       {Array.from({ length: totalPages }, (_, index) => (
         <button
           key={index}
-          className={`min-w-9 rounded-xl py-2 px-3.5 text-center text-sm transition-all shadow-md ml-2 ${
+          className={`text-ellipsis md:text-clip min-w-9 rounded-xl py-2 px-3.5 text-center text-sm transition-all shadow-md ml-2 ${
             currentPage === index + 1
               ? "bg-slate-800 text-white"
               : "border border-slate-300 text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800"

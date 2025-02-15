@@ -75,14 +75,16 @@ export const VehiculoCard = () => {
         </div>
       )}
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageClick}
-        onPageReset={handlePageReset}
-        onPrevPage={handlePrevPage}
-        onNextPage={handleNextPage}
-      />
+      {vehicles.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageClick}
+          onPageReset={handlePageReset}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,4 @@
+2025-02-14 23:13:33.813658-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "delete from vehicles where id = c1a09f91-0313-4077-8[*]a1b-283282c99fae"
+Syntax error in SQL statement "delete from vehicles where id = c1a09f91-0313-4077-8[*]a1b-283282c99fae"; SQL statement:
+delete from vehicles where id = c1a09f91-0313-4077-8a1b-283282c99fae [42000-232]
