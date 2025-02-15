@@ -5,7 +5,8 @@
   background-color: #1A1A1A;
   color: white;
   width: auto;
-  padding: 10px 20px;
+  
+  padding: 1.2rem;
   position: relative; 
 }
 
@@ -15,4 +16,6 @@
   align-items: center;
   margin: 18px;
   gap: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
