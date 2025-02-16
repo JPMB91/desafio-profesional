@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background: rgb(6, 8, 9);
-  background: linear-gradient(90deg, rgba(6, 8, 9, 1) 8%, rgb(22, 28, 28) 62%, rgb(76, 78, 82) 100%);
+  background: linear-gradient(90deg, rgba(6, 8, 9, 1) 8%, rgb(22, 28, 28) 55%, rgb(76, 78, 82) 100%);
   color: white;
   width: 100%;
   padding: 1.5rem 2rem;
@@ -17,7 +17,7 @@
 }
 
 .logo {
-  width: 120px;
+  width: 150px;
   border-radius: 3px;
 }
 .slogan{

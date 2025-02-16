@@ -71,6 +71,7 @@ export const AddVehiculoForm = () => {
       setError(formValidated.newErrors);
       return;
     }
+
     const form = new FormData();
     form.append("registrationPlate", formData.registrationPlate.trim());
     form.append("manufacturingYear", formData.manufacturingYear.trim());

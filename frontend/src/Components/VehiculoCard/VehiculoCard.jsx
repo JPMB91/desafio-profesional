@@ -58,10 +58,10 @@ export const VehiculoCard = () => {
         <p>LOADING...</p>
       ) : (
         //
-        <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+        <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
           {currentVehicles.map((vehiculo) => (
             <div
-              className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+              className="w-96 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
               key={vehiculo.id}
             >
               {vehiculo.images && vehiculo.images.length > 0 && (
@@ -69,7 +69,7 @@ export const VehiculoCard = () => {
                   <img
                     src={`http://localhost:8080/api/vehicles/uploads/${vehiculo.images[0].filename}`}
                     alt={vehiculo.name}
-                    className="h-80 w-72 object-cover rounded-t-xl"
+                    className="h-80 w-96 object-cover rounded-t-xl"
                   />
                 </Link>
               )}
