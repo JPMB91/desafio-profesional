@@ -87,6 +87,10 @@ public class Vehicle {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getRegistrationPlate() {
         return registrationPlate;
     }

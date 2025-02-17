@@ -27,11 +27,11 @@ import java.util.UUID;
 public class VehicleController {
 
     @Autowired
-    private final VehicleService vehicleService;
+    private VehicleService vehicleService;
 
-    public VehicleController(VehicleService vehicleService) {
-        this.vehicleService = vehicleService;
-    }
+//    public VehicleController(VehicleService vehicleService) {
+//        this.vehicleService = vehicleService;
+//    }
 
     @GetMapping
     public List<Vehicle> getAllVehiculo() {

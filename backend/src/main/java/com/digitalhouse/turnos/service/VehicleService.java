@@ -5,6 +5,7 @@ import com.digitalhouse.turnos.entity.Image;
 import com.digitalhouse.turnos.entity.Vehicle;
 import com.digitalhouse.turnos.repository.CategoryRepository;
 import com.digitalhouse.turnos.repository.VehiculoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,15 +17,18 @@ import java.util.*;
 @Service
 public class VehicleService {
 
-    private final VehiculoRepository vehiculoRepository;
-   private final ImageSavingService imageSavingService;
-   private final CategoryRepository categoryRepository;
+    @Autowired
+    private VehiculoRepository vehiculoRepository;
+    @Autowired
+   private ImageSavingService imageSavingService;
+    @Autowired
+   private CategoryRepository categoryRepository;
 
-    public VehicleService(VehiculoRepository vehiculoRepository, ImageSavingService imageSavingService, CategoryRepository categoryRepository) {
-        this.vehiculoRepository = vehiculoRepository;
-        this.imageSavingService = imageSavingService;
-        this.categoryRepository = categoryRepository;
-    }
+//    public VehicleService(VehiculoRepository vehiculoRepository, ImageSavingService imageSavingService, CategoryRepository categoryRepository) {
+//        this.vehiculoRepository = vehiculoRepository;
+//        this.imageSavingService = imageSavingService;
+//        this.categoryRepository = categoryRepository;
+//    }
 
     @Transactional
     public Vehicle createVehicle(String registrationPlate,
@@ -96,9 +100,10 @@ public class VehicleService {
 
     // Lista de vehiculos random
     public List<Vehicle> getRandomVehicles(){
-        List<Vehicle> vehicles = vehiculoRepository.findAll();
-        Collections.shuffle(vehicles);
-        int limitOfVehicles = (Math.min(10, vehicles.size()));
-        return vehicles.subList(0, limitOfVehicles);
+        List<Vehicle> randomVehicles = vehiculoRepository.findAll();
+        Collections.shuffle(randomVehicles);
+//        int limitOfVehicles = (Math.min(10, vehicles.size()));
+//        return vehicles.subList(0, limitOfVehicles);
+        return randomVehicles;
     }
 }

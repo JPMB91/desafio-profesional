@@ -2,6 +2,7 @@ package com.digitalhouse.turnos.service;
 
 import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,13 +12,11 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-    private final CategoryRepository categoryRepository;
-    private final ImageSavingService imageSavingService;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private ImageSavingService imageSavingService;
 
-    public CategoryService(CategoryRepository categoryRepository, ImageSavingService imageSavingService) {
-        this.categoryRepository = categoryRepository;
-        this.imageSavingService = imageSavingService;
-    }
 
     public Category createCategory(String name, String description) throws IOException {
 
