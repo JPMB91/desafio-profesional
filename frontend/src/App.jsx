@@ -1,10 +1,13 @@
 import "./App.css";
+import { DesktopProvider } from "./context/Desktop.context";
 import { Layout } from "./Layouts/Layout";
 
 function App() {
   return (
     <>
-      <Layout />
+      <DesktopProvider>
+        <Layout />
+      </DesktopProvider>
     </>
   );
 }

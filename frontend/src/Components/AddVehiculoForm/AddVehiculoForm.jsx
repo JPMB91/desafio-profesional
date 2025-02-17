@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
+import { useDesktop } from "../../context/Desktop.context";
+import DesktopOnly from "../DesktopOnly";
 
 export const AddVehiculoForm = () => {
+  const { isDesktop } = useDesktop();
+
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     registrationPlate: "",
@@ -106,7 +110,8 @@ export const AddVehiculoForm = () => {
         dailyCost: "",
         fuelType: "",
       });
-      setError({ brand: "",
+      setError({
+        brand: "",
         registrationPlate: "",
         manufacturingYear: "",
         description: "",
@@ -117,8 +122,9 @@ export const AddVehiculoForm = () => {
         numberOfDoors: "",
         dailyCost: "",
         fuelType: "",
-        images: "",})
-        setPreviews([]);
+        images: "",
+      });
+      setPreviews([]);
     } catch (err) {
       console.log("formData: ", formData);
       if (err.response && err.response.data) {
@@ -145,7 +151,9 @@ export const AddVehiculoForm = () => {
     }
   };
 
-  return (
+  return !isDesktop ? (
+    <DesktopOnly />
+  ) : (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
         Ingrese un nuevo Vehiculo
@@ -202,8 +210,10 @@ export const AddVehiculoForm = () => {
             value={formData.manufacturingYear}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
-           {error.manufacturingYear && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.manufacturingYear}</p>
+          {error.manufacturingYear && (
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.manufacturingYear}
+            </p>
           )}
         </div>
         <div>
@@ -222,8 +232,10 @@ export const AddVehiculoForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
             rows={5}
           ></textarea>
-           {error.description && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.description}</p>
+          {error.description && (
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.description}
+            </p>
           )}
         </div>
         <div>
@@ -248,7 +260,9 @@ export const AddVehiculoForm = () => {
             ))}
           </select>
           {error.categoryId && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.categoryId}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.categoryId}
+            </p>
           )}
         </div>
         <div>
@@ -272,7 +286,9 @@ export const AddVehiculoForm = () => {
             <option value="CVT">CVT</option>
           </select>
           {error.gearShift && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.gearShift}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.gearShift}
+            </p>
           )}
         </div>
         <div>
@@ -299,11 +315,12 @@ export const AddVehiculoForm = () => {
             <option value="6">6</option>
           </select>
           {error.numberOfSeats && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfSeats}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.numberOfSeats}
+            </p>
           )}
         </div>
-        
-       
+
         <div>
           <label
             htmlFor="numberOfDoors"
@@ -327,7 +344,9 @@ export const AddVehiculoForm = () => {
             <option value="5">5</option>
           </select>
           {error.numberOfDoors && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfDoors}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.numberOfDoors}
+            </p>
           )}
         </div>
         <div>
@@ -355,7 +374,9 @@ export const AddVehiculoForm = () => {
             <option value="BIODIESEL">BIODIESEL</option>
           </select>
           {error.fuelType && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.fuelType}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.fuelType}
+            </p>
           )}
         </div>
         <div>
@@ -373,8 +394,10 @@ export const AddVehiculoForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
-           {error.registrationPlate && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.registrationPlate}</p>
+          {error.registrationPlate && (
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.registrationPlate}
+            </p>
           )}
         </div>
         <div>
@@ -392,8 +415,10 @@ export const AddVehiculoForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
-           {error.dailyCost && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.dailyCost}</p>
+          {error.dailyCost && (
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.dailyCost}
+            </p>
           )}
         </div>
 

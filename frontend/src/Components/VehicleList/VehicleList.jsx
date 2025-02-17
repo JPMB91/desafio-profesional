@@ -1,8 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useDesktop } from "../../context/Desktop.context";
+import DesktopOnly from "../DesktopOnly";
 
 export const VehicleList = () => {
+  const { isDesktop } = useDesktop();
+
   const [vehiclesData, setVehiclesData] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
@@ -24,8 +28,10 @@ export const VehicleList = () => {
   const handleDelete = async (vehicleId) => {
     const confirmDelete = Swal.mixin({
       customClass: {
-        confirmButton: "bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-2 rounded mr-4",
-        cancelButton: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded",
+        confirmButton:
+          "bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-2 rounded mr-4",
+        cancelButton:
+          "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded",
       },
       buttonsStyling: false,
     });
@@ -61,55 +67,60 @@ export const VehicleList = () => {
       });
     }
   };
+
+  if (!isDesktop) {
+    return <DesktopOnly />;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-500 border-t-transparent"></div>
+      </div>
+    );
+  }
+  
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">
         Lista de Vehiculos disponibles
       </h1>
-      {isLoading ? (
-        <div className="flex justify-center items-center h-40">
-          <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-500 border-t-transparent"></div>
-        </div>
-      ) : (
-        <div className="overflow-x-auto shadow-lg rounded-lg">
-          <table className="min-w-full table-auto border-collapse">
-            <thead className="bg-gray-300">
-              <tr>
-                <th className="text-left py-2 px-4 border border-gray-300">
-                  ID
-                </th>
-                <th className="text-left py-2 px-4 border border-gray-300">
-                  Name
-                </th>
-                <th className="text-left py-2 px-4 border border-gray-300">
-                  Actions
-                </th>
+      <div className="overflow-x-auto shadow-lg rounded-lg">
+        <table className="min-w-full table-auto border-collapse">
+          <thead className="bg-gray-300">
+            <tr>
+              <th className="text-left py-2 px-4 border border-gray-300">ID</th>
+              <th className="text-left py-2 px-4 border border-gray-300">
+                Name
+              </th>
+              <th className="text-left py-2 px-4 border border-gray-300">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {vehiclesData.map((vehicle) => (
+              <tr key={vehicle.id} className="hover:bg-gray-50">
+                <td className="py-2 px-4 border border-gray-300">
+                  {vehicle.id}
+                </td>
+                <td className="py-2 px-4 border border-gray-300">
+                  {vehicle.name}
+                </td>
+                <td className="py-2 px-4 border border-gray-300">
+                  <button
+                    type="button"
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                    onClick={() => handleDelete(vehicle.id)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {vehiclesData.map((vehicle) => (
-                <tr key={vehicle.id} className="hover:bg-gray-50">
-                  <td className="py-2 px-4 border border-gray-300">
-                    {vehicle.id}
-                  </td>
-                  <td className="py-2 px-4 border border-gray-300">
-                    {vehicle.name}
-                  </td>
-                  <td className="py-2 px-4 border border-gray-300">
-                    <button
-                      type="button"
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                      onClick={() => handleDelete(vehicle.id)}
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

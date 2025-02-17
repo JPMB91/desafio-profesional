@@ -1,43 +1,25 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDesktop } from "../context/Desktop.context";
+import DesktopOnly from "../Components/DesktopOnly";
 
 export const AdminPanel = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [isMobile, setIsMobile] = useState(false);
+  const { isDesktop } = useDesktop();
 
-  const handleWindowSizeChange = () => {
-    setWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    const mobileCheck = () => {
-      if (width <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    mobileCheck();
-  }, [width]);
-
-  return isMobile ? (
-    <p>Contenido no está disponible para mobile</p>
+  return !isDesktop ? (
+    <DesktopOnly />
   ) : (
-    <>
+    <div className="flex justify-center m-2 alig font-black justify-items-center gap-4">
       <Link to="/administracion/add-vehiculo">
-        <button>Add Vehiculo</button>
+        <button className="py-2 px-2 bg-blue-900 rounded hover:cursor-pointer hover:bg-blue-700">
+          Add Vehiculo
+        </button>
       </Link>
 
       <Link to="/administracion/lista-vehiculos">
-      <button>Lista de Vehiculos</button>
+        <button className="py-2 px-2 bg-blue-900 rounded hover:cursor-pointer hover:bg-blue-700">
+          Lista de Vehiculos
+        </button>
       </Link>
-    </>
+    </div>
   );
 };
