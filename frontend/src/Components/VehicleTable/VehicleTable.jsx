@@ -5,7 +5,7 @@ import { useDesktop } from "../../context/Desktop.context";
 import DesktopOnly from "../DesktopOnly";
 import { LoadingSpinner } from "../LoadingSpinner";
 
-export const VehicleList = () => {
+export const VehicleTable = () => {
   const { isDesktop } = useDesktop();
 
   const [vehiclesData, setVehiclesData] = useState([]);

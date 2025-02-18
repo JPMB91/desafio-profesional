@@ -6,7 +6,7 @@
   background: linear-gradient(90deg, rgba(6, 8, 9, 1) 8%, rgb(22, 28, 28) 55%, rgb(76, 78, 82) 100%);
   color: white;
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: .5rem .5rem;
   box-sizing: border-box;
 }
 
@@ -17,8 +17,8 @@
 }
 
 .logo {
-  width: 150px;
-  border-radius: 3px;
+  width: 140px;
+
 }
 .slogan{
   font-weight: bold;
@@ -53,7 +53,7 @@ a {
   }
 
   .logo {
-    width: 100px;
+    width: 120px;
   }
 
   .buttonsContainer {
@@ -81,7 +81,7 @@ a {
     font-size: 1rem;
   }
   .logo {
-    width: 80px;
+    width: 150px;
   }
 
   .buttonsContainer {
