@@ -10,13 +10,13 @@ export const AdminPanel = () => {
   ) : (
     <div className="flex justify-center m-2 alig font-black justify-items-center gap-4">
       <Link to="/administracion/add-vehiculo">
-        <button className="py-2 px-2 bg-blue-900 rounded hover:cursor-pointer hover:bg-blue-700">
+        <button className="py-2 px-2 bg-[#0076DC] rounded hover:cursor-pointer hover:bg-blue-700 border-blue-900">
           Add Vehiculo
         </button>
       </Link>
 
       <Link to="/administracion/lista-vehiculos">
-        <button className="py-2 px-2 bg-blue-900 rounded hover:cursor-pointer hover:bg-blue-700">
+        <button className="py-2 px-2 bg-[#0076DC] rounded hover:cursor-pointer hover:bg-blue-700 border-blue-900">
           Lista de Vehiculos
         </button>
       </Link>

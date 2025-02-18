@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useDesktop } from "../../context/Desktop.context";
 import DesktopOnly from "../DesktopOnly";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 export const VehicleList = () => {
   const { isDesktop } = useDesktop();
@@ -74,9 +75,7 @@ export const VehicleList = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-40">
-        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-500 border-t-transparent"></div>
-      </div>
+      <LoadingSpinner />
     );
   }
   
