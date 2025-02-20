@@ -1,10 +1,10 @@
 package com.digitalhouse.turnos.service;
 
-import com.digitalhouse.turnos.entity.Category;
-import com.digitalhouse.turnos.entity.Image;
-import com.digitalhouse.turnos.entity.Vehicle;
+import com.digitalhouse.turnos.entity.*;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import com.digitalhouse.turnos.repository.ImageRepository;
 import com.digitalhouse.turnos.repository.VehiculoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,15 +20,11 @@ public class VehicleService {
     @Autowired
     private VehiculoRepository vehiculoRepository;
     @Autowired
-   private ImageSavingService imageSavingService;
+    private ImageSavingService imageSavingService;
     @Autowired
-   private CategoryRepository categoryRepository;
-
-//    public VehicleService(VehiculoRepository vehiculoRepository, ImageSavingService imageSavingService, CategoryRepository categoryRepository) {
-//        this.vehiculoRepository = vehiculoRepository;
-//        this.imageSavingService = imageSavingService;
-//        this.categoryRepository = categoryRepository;
-//    }
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private ImageRepository imageRepository;
 
     @Transactional
     public Vehicle createVehicle(String registrationPlate,
@@ -39,10 +35,10 @@ public class VehicleService {
                                  String description,
                                  Long categoryId,
                                  MultipartFile[] images,
-                                 com.digitalhouse.turnos.entity.GearShift gearShift,
+                                 GearShift gearShift,
                                  int numberOfDoors,
                                  double dailyCost,
-                                 com.digitalhouse.turnos.entity.FuelType fuelType) throws IOException {
+                                 FuelType fuelType) throws IOException {
 
         Category categoryFind = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category id: " + categoryId));
@@ -63,10 +59,9 @@ public class VehicleService {
 
         vehicle = vehiculoRepository.save(vehicle);
 
-        // Process and save images using the ImageService; imageService returns a list of Imagen entities
         List<Image> imageList = new ArrayList<>();
 
-        for(MultipartFile image : images){
+        for (MultipartFile image : images) {
             if (!image.isEmpty()) {
                 String fileName = imageSavingService.saveImage(image);
                 Image img = new Image();
@@ -81,29 +76,95 @@ public class VehicleService {
     }
 
 
-    public Vehicle saveVehiculo(Vehicle vehicle){
+    public Vehicle saveVehiculo(Vehicle vehicle) {
         return vehiculoRepository.save(vehicle);
     }
 
-    public List<Vehicle> getAllVehiculos(){
+    public List<Vehicle> getAllVehiculos() {
         return vehiculoRepository.findAll();
     }
 
-    public Optional<Vehicle> getVehiculo(UUID id){
+    public Optional<Vehicle> getVehiculo(UUID id) {
         return vehiculoRepository.findById(id);
     }
 
     @Transactional
-    public void deleteVehiculo(UUID id){
+    public void deleteVehiculo(UUID id) {
         vehiculoRepository.deleteById(id);
     }
 
     // Lista de vehiculos random
-    public List<Vehicle> getRandomVehicles(){
+    public List<Vehicle> getRandomVehicles() {
         List<Vehicle> randomVehicles = vehiculoRepository.findAll();
         Collections.shuffle(randomVehicles);
 //        int limitOfVehicles = (Math.min(10, vehicles.size()));
 //        return vehicles.subList(0, limitOfVehicles);
         return randomVehicles;
+    }
+
+
+    @Transactional
+    public Vehicle updateVehicle(UUID id,
+                                 String registrationPlate,
+                                 Year manufacturingYear,
+                                 String brand,
+                                 String model,
+                                 int numberOfSeats,
+                                 String description,
+                                 Long categoryId,
+                                 MultipartFile[] newImages,
+                                 GearShift gearShift,
+                                 int numberOfDoors,
+                                 double dailyCost,
+                                 FuelType fuelType,
+                                 String[] fileImagesToDelete) throws IOException {
+
+        // busco el vehiculo antes de actualizar
+        Vehicle vehicle = vehiculoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Vehiculo no encontrado"));
+
+        // actualizo los campos segun lo recibido desde front
+        vehicle.setRegistrationPlate(registrationPlate);
+        vehicle.setManufacturingYear(manufacturingYear);
+        vehicle.setBrand(brand);
+        vehicle.setModel(model);
+        vehicle.setNumberOfSeats(numberOfSeats);
+        vehicle.setDescription(description);
+
+        //actualizo la categoria
+
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new EntityNotFoundException("Categoria no existe"));
+
+        vehicle.setCategory(category);
+        vehicle.setGearShift(gearShift);
+        vehicle.setNumberOfDoors(numberOfDoors);
+        vehicle.setDailyCost(dailyCost);
+        vehicle.setFuelType(fuelType);
+
+        // si se enviaron archivos para borrar los elimino
+        if (fileImagesToDelete != null) {
+            for (String filename : fileImagesToDelete) {
+                imageRepository.deleteByFilename(filename);
+                imageSavingService.deleteImageFile(filename);
+            }
+        }
+
+        // si vienen nuevas imagenes las guardo y agrego al vehiculo
+        if (newImages != null) {
+            List<Image> newImagesList = new ArrayList<>();
+            for (MultipartFile image : newImages) {
+                if (!image.isEmpty()) {
+                    String fileName = imageSavingService.saveImage(image);
+                    Image img = new Image();
+                    img.setFilename(fileName);
+                    img.setVehicle(vehicle);
+                    newImagesList.add(img);
+                }
+            }
+            vehicle.getImages().addAll(newImagesList);
+        }
+
+        return vehiculoRepository.save(vehicle);
     }
 }

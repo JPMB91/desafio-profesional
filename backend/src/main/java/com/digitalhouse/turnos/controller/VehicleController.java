@@ -118,5 +118,47 @@ public class VehicleController {
     public ResponseEntity<List<Vehicle>> getRandomVehicles() {
         List<Vehicle> randomVehicles = vehicleService.getRandomVehicles();
         return ResponseEntity.status(HttpStatus.OK).body(randomVehicles);
+
     }
+    @PutMapping(value = "/update/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Vehicle> updateVehicle(
+            @PathVariable UUID id,
+            @RequestParam("registrationPlate") String registrationPlate,
+            @RequestParam("manufacturingYear") Year manufacturingYear,
+            @RequestParam("brand") String brand,
+            @RequestParam("model") String model,
+            @RequestParam("numberOfSeats") int numberOfSeats,
+            @RequestParam("description") String description,
+            @RequestParam("categoryId") Long categoryId,
+            @RequestParam(value = "newImages", required = false) MultipartFile[] newImages,
+            @RequestParam("gearShift") GearShift gearShift,
+            @RequestParam("numberOfDoors") int numberOfDoors,
+            @RequestParam("dailyCost") double dailyCost,
+            @RequestParam("fuelType") FuelType fuelType,
+            @RequestParam(value = "fileImagesToDelete", required = false) String[] fileImagesToDelete) {
+
+        try {
+            Vehicle updatedVehicle = vehicleService.updateVehicle(
+                    id,
+                    registrationPlate,
+                    manufacturingYear,
+                    brand,
+                    model,
+                    numberOfSeats,
+                    description,
+                    categoryId,
+                    newImages,
+                    gearShift,
+                    numberOfDoors,
+                    dailyCost,
+                    fuelType,
+                    fileImagesToDelete);
+            return ResponseEntity.ok(updatedVehicle);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+        }
+    }
+
 }
+
