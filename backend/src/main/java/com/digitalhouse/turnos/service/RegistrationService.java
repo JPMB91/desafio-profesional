@@ -3,9 +3,11 @@ package com.digitalhouse.turnos.service;
 import com.digitalhouse.turnos.dto.UserDTO;
 import com.digitalhouse.turnos.entity.Role;
 import com.digitalhouse.turnos.entity.User;
+import com.digitalhouse.turnos.exception.UserAlreadyExistsException;
 import com.digitalhouse.turnos.repository.RoleRepository;
 import com.digitalhouse.turnos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +27,11 @@ public class RegistrationService {
     private RoleRepository roleRepository;
 
 
-    //Agregar a Global exception
     public void registerUser(UserDTO userDTO) {
 
         // revisar si ya existe
         if (userRepository.getByEmail(userDTO.getEmail()) != null) {
-            throw new RuntimeException("Usuario ya existe");
+            throw new DataIntegrityViolationException("Usuario ya existe");
         }
 
         // crear al usuario

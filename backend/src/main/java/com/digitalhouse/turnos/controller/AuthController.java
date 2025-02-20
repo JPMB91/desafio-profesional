@@ -3,5 +3,7 @@ package com.digitalhouse.turnos.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class AccountController {
+public class AuthController {
+
+
 }

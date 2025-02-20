@@ -27,20 +27,5 @@ public class DatosIniciales implements ApplicationRunner {
         Category category3 = new Category("Sedan", "Sedan");
         Category category4 = new Category("Van", "Van");
 
-//        categoryRepository.save(category);
-//        categoryRepository.save(category2);
-//        categoryRepository.save(category3);
-//        categoryRepository.save(category4);
-
-//        Role role =  new Role("ROLE_USER", "Usuario registrado normalmente");
-//        Role role1 =  new Role("ROLE_ADMIN", "Usuario registrado con permisos administrativos");
-//        Role role2 = new Role("ROLE_VISITOR", "Usuario que no ha iniciado sesión o no se ha registrado");
-//
-//        roleRepository.save(role);
-//        roleRepository.save(role1);
-//        roleRepository.save(role2);
-
-
-
     }
 }
