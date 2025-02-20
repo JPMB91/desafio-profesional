@@ -18,7 +18,7 @@ export const validateForm = ({images, ...formData}) => {
     newErrors.description = "Descripción es requerida";
     isValid = false;
   }
-  if (!formData.numberOfSeats.trim()) {
+  if (!formData.numberOfSeats) {
     newErrors.numberOfSeats = "Número de asientos es requerido";
     isValid = false;
   }
@@ -30,7 +30,7 @@ export const validateForm = ({images, ...formData}) => {
     newErrors.gearShift = "Tipo de transmisión es requerido";
     isValid = false;
   }
-  if (!formData.numberOfDoors.trim()) {
+  if (!formData.numberOfDoors) {
     newErrors.numberOfDoors = "Número de puertas es requerido";
     isValid = false;
   }

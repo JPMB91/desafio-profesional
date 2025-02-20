@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useDesktop } from "../../context/Desktop.context";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
-import { useDesktop } from "../../context/Desktop.context";
-import DesktopOnly from "../DesktopOnly";
+import { useParams } from "react-router-dom";
 
-export const AddVehiculoForm = () => {
-  const { isDesktop } = useDesktop();
+export const UpdateVehicle = () => {
+  const { id } = useParams();
+  // const { isDesktop } = useDesktop();
 
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
@@ -20,10 +21,13 @@ export const AddVehiculoForm = () => {
     numberOfDoors: "",
     dailyCost: "",
     fuelType: "",
+    images: "",
   });
 
   const [images, setImages] = useState([]);
+  const [newImages, setNewImages] = useState([]);
   const [previews, setPreviews] = useState([]);
+  const [imagesToDelete, setImagesToDelete] = useState([]);
 
   const [error, setError] = useState({
     brand: "",
@@ -40,6 +44,46 @@ export const AddVehiculoForm = () => {
     images: "",
   });
 
+  useEffect(() => {
+    const getVehicleData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/vehicles/${id}`
+        );
+        console.log(response.data);
+
+        setFormData({
+          registrationPlate: response.data.registrationPlate || "",
+          manufacturingYear: response.data.manufacturingYear || "",
+          brand: response.data.brand || "",
+          model: response.data.model || "",
+          numberOfSeats: response.data.numberOfSeats || "",
+          description: response.data.description || "",
+          categoryId: response.data.category.id || "",
+          gearShift: response.data.gearShift || "",
+          numberOfDoors: response.data.numberOfDoors || "",
+          dailyCost: response.data.dailyCost || "",
+          fuelType: response.data.fuelType || "",
+        });
+
+        if (response.data.images && response.data.images.length > 0) {
+          setImages(response.data.images);
+          const originalPreviews = await response.data.images.map(
+            (img) =>
+              `http://localhost:8080/api/vehicles/uploads/${img.filename}`
+          );
+          setPreviews(originalPreviews);
+        }
+
+        console.log("imagenes:", images);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getVehicleData();
+  }, []);
+
   // categorias desde la BBDD
   useEffect(() => {
     axios
@@ -48,6 +92,7 @@ export const AddVehiculoForm = () => {
       .catch((err) => console.error("Error fetching categories", err));
   }, []);
 
+  // para campos de texto
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -62,41 +107,69 @@ export const AddVehiculoForm = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages(files);
-    console.log("estos files del form crear: ", files);
-    const previewUrls = files.map((file) => URL.createObjectURL(file));
-    setPreviews(previewUrls);
+    setNewImages(files);
+
+    console.log("estos files: ", files);
+    const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviews((prev) => [...prev, ...newPreviewUrls]);
+
   };
+
+  const handleRemoveImage = (index) => {
+    // quito la imagen del preview
+    setPreviews((prev) => prev.filter((_, i) => i !== index));
+    if (index < images.length) {
+      // si se trata de imagenes que ya estan persistidad
+      // agrega su filename a imagesToDelete para que las reciba el back-end
+      setImagesToDelete((prev) => [...prev, images[index].filename]);
+     
+      // las quita del estado de images que refleja las ya persistidas
+      setImages((prev) => prev.filter((_, i) => i !== index));
+    } else {
+      // si es nueva imagen las quita del estado de newImages
+      const newIndex = index - images.length;
+      setNewImages((prev) => prev.filter((_, i) => i !== newIndex));
+    }
+  };
+  
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formValidated = validateForm({ images, ...formData });
+    // const formValidated = validateForm({ images, ...formData });
 
-    if (!formValidated.isValid) {
-      setError(formValidated.newErrors);
-      return;
-    }
+    // if (!formValidated.isValid) {
+    //   setError(formValidated.newErrors);
+    //   return;
+    // }
 
     const form = new FormData();
     form.append("registrationPlate", formData.registrationPlate.trim());
     form.append("manufacturingYear", formData.manufacturingYear.trim());
     form.append("brand", formData.brand.trim());
     form.append("model", formData.model.trim());
-    form.append("numberOfSeats", formData.numberOfSeats.trim());
+    form.append("numberOfSeats", formData.numberOfSeats);
     form.append("description", formData.description.trim());
     form.append("gearShift", formData.gearShift.trim());
-    form.append("numberOfDoors", formData.numberOfDoors.trim());
-    form.append("dailyCost", formData.dailyCost.trim());
+    form.append("numberOfDoors", formData.numberOfDoors);
+    form.append("dailyCost", formData.dailyCost);
     form.append("fuelType", formData.fuelType.trim());
-
     form.append("categoryId", formData.categoryId);
 
-    images.forEach((image) => {
-      form.append("images", image);
+
+    // agrego las nuevas imagenes al form para enviar a backend
+    newImages.forEach((file) => {
+      form.append("newImages", file);
     });
+
+    // envio los nombres de las imagenes a borrar
+    imagesToDelete.forEach((imgId) => {
+      form.append("fileImagesToDelete", imgId);
+    });
+  
     try {
-      await axios.post("http://localhost:8080/api/vehicles", form);
-      console.log("Vehiculo guardado exitosamente");
+      await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form);
 
       setFormData({
         registrationPlate: "",
@@ -111,6 +184,7 @@ export const AddVehiculoForm = () => {
         dailyCost: "",
         fuelType: "",
       });
+
       setError({
         brand: "",
         registrationPlate: "",
@@ -126,11 +200,12 @@ export const AddVehiculoForm = () => {
         images: "",
       });
       setPreviews([]);
+      setImages([]);
+      setNewImages([]);
+
     } catch (err) {
-      console.log("formData: ", formData);
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
-
         // errores
         switch (errMsg) {
           case "Error: El nombre del vehiculo debe ser único.":
@@ -152,14 +227,15 @@ export const AddVehiculoForm = () => {
     }
   };
 
-  return !isDesktop ? (
-    <DesktopOnly />
-  ) : (
+  // !isDesktop ? (
+  //   <DesktopOnly />
+  // ) :
+  return (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
-        Ingrese un nuevo Vehiculo
+        Actualizar Vehiculo
       </div>
-      <form onSubmit={handleSubmit} className="py-4 px-6">
+      <form className="py-4 px-6">
         <div className="mb-4">
           <label htmlFor="brand" className="block text-gray-700 font-bold mb-2">
             Marca
@@ -470,13 +546,7 @@ export const AddVehiculoForm = () => {
                 />
                 <button
                   onClick={() => {
-                    const newPreviews = [...previews];
-                    newPreviews.splice(index, 1);
-                    setPreviews(newPreviews);
-
-                    const newImages = [...images];
-                    newImages.splice(index, 1);
-                    setImages(newImages);
+                    handleRemoveImage(index);
                   }}
                   className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center hover:bg-red-700 focus:outline-none"
                 >
@@ -496,8 +566,9 @@ export const AddVehiculoForm = () => {
           <button
             type="submit"
             className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+            onClick={handleSubmit}
           >
-            Añadir Vehiculo
+            Editar Vehiculo
           </button>
         </div>
       </form>

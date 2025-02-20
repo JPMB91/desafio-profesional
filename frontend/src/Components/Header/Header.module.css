@@ -34,9 +34,9 @@
   padding: 0.4rem 1.8rem;
   cursor: pointer;
   margin: 2px;
-  border: 1.3px solid white; 
-  border-radius: 5px; 
-  background-color: transparent; 
+    border: 1.3px solid transparent; 
+  border-radius: 4px; 
+  background-color: transparent;
   color: white; 
   font-weight: 600;
 }

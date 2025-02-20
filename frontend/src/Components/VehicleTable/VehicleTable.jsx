@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useDesktop } from "../../context/Desktop.context";
 import DesktopOnly from "../DesktopOnly";
 import { LoadingSpinner } from "../LoadingSpinner";
+import { Link } from "react-router-dom";
 
 export const VehicleTable = () => {
   const { isDesktop } = useDesktop();
@@ -74,11 +75,9 @@ export const VehicleTable = () => {
   }
 
   if (isLoading) {
-    return (
-      <LoadingSpinner />
-    );
+    return <LoadingSpinner />;
   }
-  
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">
@@ -114,6 +113,12 @@ export const VehicleTable = () => {
                   >
                     Eliminar
                   </button>
+
+                  <Link to={`/administracion/actualizar/${vehicle.id}`}>
+                    <button className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-1 px-2 rounded m-1">
+                      Actualizar
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
