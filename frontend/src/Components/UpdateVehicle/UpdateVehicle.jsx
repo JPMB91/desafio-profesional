@@ -3,6 +3,7 @@ import { useDesktop } from "../../context/Desktop.context";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
 import { useParams } from "react-router-dom";
+import ImageIcon from "../../assets/images-input.svg?react";
 
 export const UpdateVehicle = () => {
   const { id } = useParams();
@@ -50,7 +51,6 @@ export const UpdateVehicle = () => {
         const response = await axios.get(
           `http://localhost:8080/api/vehicles/${id}`
         );
-        console.log(response.data);
 
         setFormData({
           registrationPlate: response.data.registrationPlate || "",
@@ -84,12 +84,17 @@ export const UpdateVehicle = () => {
     getVehicleData();
   }, []);
 
-  // categorias desde la BBDD
+  // categorias actualizadas desde la BBDD
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/categories")
-      .then((response) => setCategories(response.data))
-      .catch((err) => console.error("Error fetching categories", err));
+    const getCategories = async() =>{
+      try {
+        const response = await axios.get("http://localhost:8080/api/categories");
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories", err);
+      }
+    }
+    getCategories()
   }, []);
 
   // para campos de texto
@@ -112,7 +117,6 @@ export const UpdateVehicle = () => {
     console.log("estos files: ", files);
     const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
     setPreviews((prev) => [...prev, ...newPreviewUrls]);
-
   };
 
   const handleRemoveImage = (index) => {
@@ -122,7 +126,7 @@ export const UpdateVehicle = () => {
       // si se trata de imagenes que ya estan persistidad
       // agrega su filename a imagesToDelete para que las reciba el back-end
       setImagesToDelete((prev) => [...prev, images[index].filename]);
-     
+
       // las quita del estado de images que refleja las ya persistidas
       setImages((prev) => prev.filter((_, i) => i !== index));
     } else {
@@ -131,9 +135,6 @@ export const UpdateVehicle = () => {
       setNewImages((prev) => prev.filter((_, i) => i !== newIndex));
     }
   };
-  
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -157,7 +158,6 @@ export const UpdateVehicle = () => {
     form.append("fuelType", formData.fuelType.trim());
     form.append("categoryId", formData.categoryId);
 
-
     // agrego las nuevas imagenes al form para enviar a backend
     newImages.forEach((file) => {
       form.append("newImages", file);
@@ -167,7 +167,7 @@ export const UpdateVehicle = () => {
     imagesToDelete.forEach((imgId) => {
       form.append("fileImagesToDelete", imgId);
     });
-  
+
     try {
       await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form);
 
@@ -202,7 +202,6 @@ export const UpdateVehicle = () => {
       setPreviews([]);
       setImages([]);
       setNewImages([]);
-
     } catch (err) {
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
@@ -519,20 +518,8 @@ export const UpdateVehicle = () => {
             htmlFor="images"
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-500 shadow-inner cursor-pointer flex items-center justify-center"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 mr-2 text-gray-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16v4a2 2 0 012 2h12a2 2 0 012-2v-4l-7-5 7-5V5a2 2 0 01-2-2H6a2 2 0 01-2 2v6l7 5-7 5z"
-              />
-            </svg>
+            <ImageIcon width="50" height="50" />
+
             <span>Agregar imágenes</span>
           </label>
 
