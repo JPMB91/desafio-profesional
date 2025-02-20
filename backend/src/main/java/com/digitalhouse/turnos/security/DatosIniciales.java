@@ -1,7 +1,9 @@
 package com.digitalhouse.turnos.security;
 
 import com.digitalhouse.turnos.entity.Category;
+import com.digitalhouse.turnos.entity.Role;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import com.digitalhouse.turnos.repository.RoleRepository;
 import com.digitalhouse.turnos.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -11,12 +13,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatosIniciales implements ApplicationRunner {
 
-    private final CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    public DatosIniciales(CategoryService categoryService, CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
+    private RoleRepository roleRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -30,6 +31,16 @@ public class DatosIniciales implements ApplicationRunner {
 //        categoryRepository.save(category2);
 //        categoryRepository.save(category3);
 //        categoryRepository.save(category4);
+
+//        Role role =  new Role("ROLE_USER", "Usuario registrado normalmente");
+//        Role role1 =  new Role("ROLE_ADMIN", "Usuario registrado con permisos administrativos");
+//        Role role2 = new Role("ROLE_VISITOR", "Usuario que no ha iniciado sesión o no se ha registrado");
+//
+//        roleRepository.save(role);
+//        roleRepository.save(role1);
+//        roleRepository.save(role2);
+
+
 
     }
 }
