@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { RegisterForm } from "../RegisterForm/RegisterForm";
 
 export const Header = () => {
   return (
@@ -9,7 +10,10 @@ export const Header = () => {
         <span className={styles.slogan}>Muevete con Confianza</span>
       </Link>
       <nav className={styles.buttonsContainer}>
+        <Link to={"/register"}>
         <button className={styles.button}>Crear Cuenta</button>
+        </Link>
+        
         <button className={styles.button}>Iniciar sesión</button>
       </nav>
     </header>

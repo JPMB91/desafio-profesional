@@ -17,6 +17,7 @@ export const RegisterForm = () => {
     email: "",
     password: "",
     repeatPassword: "",
+    userExists: "", // !continuar aqui
   });
 
   const handleInputChange = (e) => {
@@ -40,26 +41,27 @@ export const RegisterForm = () => {
       email: "",
       password: "",
       repeatPassword: "",
+      userExists: "",
     });
-  
+
     const validatedForm = validateRegisterForm(formData);
-  
+
     // reemplazo la data por data limpia
-    setFormData(validatedForm.cleanedFormData)
+    setFormData(validatedForm.cleanedFormData);
 
     if (!validatedForm.isValid) {
       setError(validatedForm.newErrors);
       return;
     }
-  
+
     try {
-      await axios.post("http://localhost:8080/api/register", formData,{
-        headers:{
-          "Content-Type": "application/json"
-        }
+      await axios.post("http://localhost:8080/api/register", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       console.log("Usuario creado");
-  
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -67,7 +69,7 @@ export const RegisterForm = () => {
         password: "",
         repeatPassword: "",
       });
-  
+
       setError({
         firstName: "",
         lastName: "",
@@ -78,17 +80,16 @@ export const RegisterForm = () => {
     } catch (error) {
       if (error.response && error.response.data) {
         const errMsg = error.response.data;
-  
         // errores
         switch (errMsg) {
-          case "Error: El nombre del vehiculo debe ser único.":
-            setError((prev) => ({ ...prev, name: errMsg }));
+          case "Error: Usuario ya existe":
+            setError((prev) => ({
+              ...prev,
+              userExists:
+                "Este correo electrónico ya está registrado. Por favor, inicia sesión o utiliza otro.",
+            }));
             break;
-  
-          case "Error: La matrícula ya está registrada.":
-            setError((prev) => ({ ...prev, registrationPlate: errMsg }));
-            break;
-  
+
           default:
             setError((prev) => ({
               ...prev,
@@ -101,138 +102,148 @@ export const RegisterForm = () => {
   };
 
   return (
-    <section
-      className="bg-gray-100
-     min-h-screen flex items-center justify-center p-6"
-    >
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
-        <div className="flex justify-center">
+    <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
+      
+      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-[#0C1010] p-2 flex flex-col items-center">
           <img className="w-32" src="/logo.png" alt="Logo" />
         </div>
+        <div>
+          <h2 className="text-black text-2xl font-bold p-4 flex flex-col items-center">
+            Crear una cuenta
+          </h2>
+        </div>
+        <div className="p-8 space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  onChange={handleInputChange}
+                  required
+                />
+                {error.firstName && (
+                  <p className="text-red-600 text-sm font-medium mt-1">
+                    {error.firstName}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  onChange={handleInputChange}
+                  required
+                />
+                {error.lastName && (
+                  <p className="text-red-600 text-sm font-medium mt-1">
+                    {error.lastName}
+                  </p>
+                )}
+              </div>
+            </div>
 
-        <form className="space-y-4">
-          <div>
-            <label
-              htmlFor="firstName"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              className="mt-1 w-full p-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              onChange={handleInputChange}
-              // required
-            />
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-gray-700"
+              >
+                Correo Electrónico
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={handleInputChange}
+                required
+              />
+              {error.email && (
+                <p className="text-red-600 text-sm font-medium mt-1">
+                  {error.email}
+                </p>
+              )}
+              {error.userExists && (
+                <p className="text-red-600 text-sm font-medium mt-1">
+                  {error.userExists}
+                </p>
+              )}
+            </div>
 
-            {error.name && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.name}
-              </p>
-            )}
-          </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  minLength={6}
+                  className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  onChange={handleInputChange}
+                  required
+                />
+                {error.password && (
+                  <p className="text-red-600 text-sm font-medium mt-1">
+                    {error.password}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <label
+                  htmlFor="repeatPassword"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Repita la contraseña
+                </label>
+                <input
+                  type="password"
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  minLength={6}
+                  className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  onChange={handleInputChange}
+                  required
+                />
+                {error.repeatPassword && (
+                  <p className="text-red-600 text-sm font-medium mt-1">
+                    {error.repeatPassword}
+                  </p>
+                )}
+              </div>
+            </div>
 
-          <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Apellido
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              className="mt-1 w-full p-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              onChange={handleInputChange}
-              // required
-            />
-
-            {error.lastName && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.lastName}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="mt-1 w-full p-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              onChange={handleInputChange}
-              // required
-            />
-            {error.email && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.email}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Contraseña
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              minLength={6}
-              className="mt-1 w-full p-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              onChange={handleInputChange}
-              // required
-            />
-            {error.password && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.password}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="repeatPassword"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Repita la contraseña
-            </label>
-            <input
-              type="password"
-              id="repeatPassword"
-              name="repeatPassword"
-              minLength={6}
-              className="mt-1 w-full p-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-              onChange={handleInputChange}
-              // required
-            />
-            {error.repeatPassword && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.repeatPassword}
-              </p>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-3 rounded-lg transition shadow-md focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700"
-            onClick={handleSubmit}
-          >
-            Registrarse
-          </button>
-        </form>
+            <div className="pt-4">
+              <button
+                type="submit"
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 shadow-md"
+              >
+                Registrarse
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
