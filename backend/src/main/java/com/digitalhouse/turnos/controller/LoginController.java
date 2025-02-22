@@ -9,16 +9,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class LoginController {
 
     @Autowired
@@ -33,24 +29,47 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         try {
-            // Authenticate the user and retrieve the Authentication object
+
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword())
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            // Generate JWT token using the Authentication object
+            // Genera el token
             String token = jwtUtil.generateToken(authentication);
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("token", token);
-            response.put("message", "Login successful");
-
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(new AuthenticationResponse(token));
         } catch (Exception e) {
-            return ResponseEntity.status(401).body("Invalid credentials");
+            return ResponseEntity.status(401).body(new MessageResponse("Credenciales inválidas"));
+        }
+    }
+
+
+    static class AuthenticationResponse {
+        private String token;
+
+        public AuthenticationResponse(String token) {
+            this.token = token;
+        }
+
+        public String getToken() {
+            return token;
+        }
+    }
+
+    static class MessageResponse {
+        private String message;
+
+        public MessageResponse(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
         }
     }
 
 
 }
+
+
