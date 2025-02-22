@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import { RegisterForm } from "../RegisterForm/RegisterForm";
+
 
 export const Header = () => {
   return (
@@ -13,8 +13,10 @@ export const Header = () => {
         <Link to={"/register"}>
         <button className={styles.button}>Crear Cuenta</button>
         </Link>
-        
+        <Link to={"/login"}>
         <button className={styles.button}>Iniciar sesión</button>
+        </Link>
+        
       </nav>
     </header>
   );
