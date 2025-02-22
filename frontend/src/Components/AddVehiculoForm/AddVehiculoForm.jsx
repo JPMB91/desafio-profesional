@@ -127,13 +127,12 @@ export const AddVehiculoForm = () => {
       });
       setPreviews([]);
     } catch (err) {
-      console.log("formData: ", formData);
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
 
         // errores
         switch (errMsg) {
-          case "Error: El nombre del vehiculo debe ser único.":
+          case "Error: Violación de integridad de datos.":
             setError((prev) => ({ ...prev, name: errMsg }));
             break;
 

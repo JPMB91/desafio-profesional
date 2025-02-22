@@ -13,7 +13,7 @@ public class Turno {
     private Date fechaInicio;
     private Date fechaFin;
     @ManyToOne
-    private Usuario usuario;
+    private User user;
     @ManyToOne
     private Vehicle vehicle;
     @Enumerated(EnumType.STRING)
@@ -22,10 +22,10 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(Date fechaInicio, Date fechaFin, Usuario usuario, Vehicle vehicle, EstadoSolicitud estadoSolicitud) {
+    public Turno(Date fechaInicio, Date fechaFin, User user, Vehicle vehicle, EstadoSolicitud estadoSolicitud) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.usuario = usuario;
+        this.user = user;
         this.vehicle = vehicle;
         this.estadoSolicitud = estadoSolicitud;
     }
@@ -54,12 +54,12 @@ public class Turno {
         this.fechaFin = fechaFin;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public User getUsuario() {
+        return user;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(User user) {
+        this.user = user;
     }
 
     public Vehicle getVehiculo() {
