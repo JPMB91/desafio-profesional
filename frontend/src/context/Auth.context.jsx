@@ -29,10 +29,16 @@ export const AuthProvider = ({ children }) => {
   const login = (newToken) => {
     setLoading(true);
     setToken(newToken);
+    setUser(user)
   };
 
+  const logout = () =>{
+    setToken(null);
+    setUser(null),
+    setIsAuthenticated(false)
+  }
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, token, login, loading }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, token, login, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );
