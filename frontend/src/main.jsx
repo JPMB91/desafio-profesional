@@ -34,10 +34,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="lista-vehiculos" element={<VehicleTable />} />
             <Route path="actualizar/:id" element={<UpdateVehicle />} />
           </Route>
-          {/* <Route path="/administracion" element={<AdminPanel />} />
-          <Route path="/administracion/add-vehiculo" element={<AddVehiculoForm/>}/>
-          <Route path="/administracion/lista-vehiculos" element={<VehicleTable />}/>
-          <Route path="/administracion/actualizar/:id" element={<UpdateVehicle/>}/> */}
+
           <Route path="/vehicle/:id" element={<Detail />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />

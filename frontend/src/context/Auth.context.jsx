@@ -1,4 +1,4 @@
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("token", token || "");
@@ -14,26 +15,27 @@ export const AuthProvider = ({ children }) => {
 
     if (token) {
       try {
-        const decodedToken = jwtDecode(token);
-        setUser(decodedToken);
+        setUser(jwtDecode(token));
       } catch (error) {
-        console.error("Error: Error decodificando token");
+        console.error("Error decoding token", error);
         setToken(null);
       }
     } else {
       setUser(null);
     }
-  }, [isAuthenticated, token]);
+    setLoading(false);
+  }, [token, isAuthenticated]);
 
   const login = (newToken) => {
+    setLoading(true);
     setToken(newToken);
   };
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, token, login, }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, token, login, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => useContext(AuthContext);
-
