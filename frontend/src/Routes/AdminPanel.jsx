@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDesktop } from "../context/Desktop.context";
 import DesktopOnly from "../Components/DesktopOnly";
+// import { useAuth } from "../context/Auth.Context";
 
 export const AdminPanel = () => {
   const { isDesktop } = useDesktop();

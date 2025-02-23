@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { UserAvatar } from "../UserAvatar/UserAvatar";
 
 
 export const Header = () => {
@@ -17,6 +18,7 @@ export const Header = () => {
         <button className={styles.button}>Iniciar sesión</button>
         </Link>
         
+        <UserAvatar />
       </nav>
     </header>
   );
