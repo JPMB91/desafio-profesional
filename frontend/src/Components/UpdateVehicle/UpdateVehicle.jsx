@@ -4,9 +4,11 @@ import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
 import { useParams } from "react-router-dom";
 import ImageIcon from "../../assets/images-input.svg?react";
+import { useAuth } from "../../context/Auth.Context";
 
 export const UpdateVehicle = () => {
   const { id } = useParams();
+  const {token} = useAuth()
   // const { isDesktop } = useDesktop();
 
   const [categories, setCategories] = useState([]);
@@ -169,7 +171,11 @@ export const UpdateVehicle = () => {
     });
 
     try {
-      await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form);
+      await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form,{
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
 
       setFormData({
         registrationPlate: "",

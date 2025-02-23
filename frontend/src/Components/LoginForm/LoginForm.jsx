@@ -1,8 +1,11 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, NavigationType, replace, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/Auth.Context";
 
 export const LoginForm = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -11,6 +14,7 @@ export const LoginForm = () => {
 
   const [error, setError] = useState({
     email: "",
+    general: "",
     // password: "",
   });
 
@@ -31,18 +35,9 @@ export const LoginForm = () => {
 
     setError({
       email: "",
+      general: "",
       // password: "",
     });
-
-    // const validatedForm = validateRegisterForm(formData);
-
-    // // reemplazo la data por data limpia
-    // setFormData(validatedForm.cleanedFormData);
-
-    // if (!validatedForm.isValid) {
-    //   setError(validatedForm.newErrors);
-    //   return;
-    // }
 
     try {
       const response = await axios.post(
@@ -54,15 +49,18 @@ export const LoginForm = () => {
           },
         }
       );
-      console.log(response);
 
-      // Store the token (important!)
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
+      const token = response.data.token;
+      login(token);
 
-      console.log(formData);
-      console.log(response.data.token);
+      const decodedToken = jwtDecode(token);
+      const roles = decodedToken.roles || [];
 
+      if (roles.includes("ROLE_ADMIN")) {   
+          navigate("/administracion")
+      } else if (roles.includes("ROLE_USER")) {
+          navigate("/");
+      }
       setFormData({
         email: "",
         password: "",
@@ -75,14 +73,14 @@ export const LoginForm = () => {
     } catch (error) {
       if (error.response && error.response.data) {
         const { message } = error.response.data;
-        
+
         if (message === "Credenciales inválidas") {
-          setError(prev => ({
+          setError((prev) => ({
             ...prev,
             password: "Credenciales inválidas",
           }));
         } else {
-          setError(prev => ({
+          setError((prev) => ({
             ...prev,
             general: "Ocurrió un error desconocido.",
           }));
@@ -124,7 +122,6 @@ export const LoginForm = () => {
                   {error.email}
                 </p>
               )}
-        
             </div>
 
             <div className="grid gap-6">

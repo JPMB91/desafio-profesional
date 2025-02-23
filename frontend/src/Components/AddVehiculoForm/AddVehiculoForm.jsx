@@ -3,9 +3,11 @@ import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
 import { useDesktop } from "../../context/Desktop.context";
 import DesktopOnly from "../DesktopOnly";
+import { useAuth } from "../../context/Auth.Context";
 
 export const AddVehiculoForm = () => {
   const { isDesktop } = useDesktop();
+  const {token} = useAuth();
 
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
@@ -95,7 +97,11 @@ export const AddVehiculoForm = () => {
       form.append("images", image);
     });
     try {
-      await axios.post("http://localhost:8080/api/vehicles", form);
+      await axios.post("http://localhost:8080/api/vehicles", form,{
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
       console.log("Vehiculo guardado exitosamente");
 
       setFormData({

@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import { useDesktop } from "../context/Desktop.context";
 import DesktopOnly from "../Components/DesktopOnly";
+import { useAuth } from "../context/Auth.Context";
 
 export const AdminPanel = () => {
   const { isDesktop } = useDesktop();
+  const {isAuthenticated, user} = useAuth()
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  // if (!user || !user.roles.includes("ROLE_ADMIN")) {
+  //   return <Navigate to="/unauthorized" />;
+  // }
 
   return !isDesktop ? (
     <DesktopOnly />

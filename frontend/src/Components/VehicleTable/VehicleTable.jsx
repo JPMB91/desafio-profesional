@@ -5,9 +5,11 @@ import { useDesktop } from "../../context/Desktop.context";
 import DesktopOnly from "../DesktopOnly";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/Auth.Context";
 
 export const VehicleTable = () => {
   const { isDesktop } = useDesktop();
+  const {token} = useAuth()
 
   const [vehiclesData, setVehiclesData] = useState([]);
   const [isLoading, setIsloading] = useState(true);
@@ -47,7 +49,11 @@ export const VehicleTable = () => {
         cancelButtonText: "Cancelar",
       });
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:8080/api/vehicles/${vehicleId}`);
+        await axios.delete(`http://localhost:8080/api/vehicles/${vehicleId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setVehiclesData(vehiclesData.filter((v) => v.id !== vehicleId));
 
         await confirmDelete.fire({
