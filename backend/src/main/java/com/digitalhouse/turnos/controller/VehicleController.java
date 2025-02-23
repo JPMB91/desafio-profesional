@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,15 +30,12 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-//    public VehicleController(VehicleService vehicleService) {
-//        this.vehicleService = vehicleService;
-//    }
-
     @GetMapping
     public List<Vehicle> getAllVehiculo() {
         return vehicleService.getAllVehiculos();
     }
 
+    @PreAuthorize("hasRole('USER_ADMIN')")
     @PostMapping
     ResponseEntity<?> createVehiculo(@RequestParam("registrationPlate") String registrationPlate,
                                      @RequestParam("manufacturingYear") Year manufacturingYear,
@@ -103,6 +101,7 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('USER_ADMIN')")
     public ResponseEntity<?> deleteVehiculo(@PathVariable UUID id) {
 
         if (vehicleService.getVehiculo(id).isEmpty()) {
@@ -120,6 +119,7 @@ public class VehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(randomVehicles);
 
     }
+    @PreAuthorize("hasRole('USER_ADMIN')")
     @PutMapping(value = "/update/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Vehicle> updateVehicle(
             @PathVariable UUID id,
