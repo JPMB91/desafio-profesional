@@ -13,6 +13,7 @@ import { RegisterForm } from "./Components/RegisterForm/RegisterForm.jsx";
 import { LoginForm } from "./Components/LoginForm/LoginForm.jsx";
 import { AdminFilter } from "./Components/AdminFilter/AdminFilter.jsx";
 import { Unauthorized } from "./Components/AdminFilter/Unauthorized.jsx";
+import { UserTable } from "./Components/UserTable/UserTable.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -33,6 +34,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="add-vehiculo" element={<AddVehiculoForm />} />
             <Route path="lista-vehiculos" element={<VehicleTable />} />
             <Route path="actualizar/:id" element={<UpdateVehicle />} />
+            <Route path="listar-usuarios" element={<UserTable />}/>
           </Route>
 
           <Route path="/vehicle/:id" element={<Detail />} />
