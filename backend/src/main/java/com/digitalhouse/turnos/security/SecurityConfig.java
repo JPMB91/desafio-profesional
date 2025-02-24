@@ -5,6 +5,7 @@ package com.digitalhouse.turnos.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -45,6 +46,8 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/register/**").permitAll()
 
+
+                        .requestMatchers(HttpMethod.OPTIONS, "/admin/users").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -70,6 +73,20 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+//@Bean
+//public CorsConfigurationSource corsConfigurationSource() {
+//    CorsConfiguration configuration = new CorsConfiguration();
+//    configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+//    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//    configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Important!
+//    configuration.setAllowCredentials(true);
+//    configuration.setMaxAge(3600L);
+//
+//    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//    source.registerCorsConfiguration("/admin/users", configuration); // <--- More specific
+//    source.registerCorsConfiguration("/api/**", configuration); //If you have other api endpoints
+//    return source;
+//}
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

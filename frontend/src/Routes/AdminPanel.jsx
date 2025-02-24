@@ -21,6 +21,12 @@ export const AdminPanel = () => {
           Lista de Vehiculos
         </button>
       </Link>
+
+      <Link to="/administracion/listar-usuarios">
+        <button className="py-2 px-2 bg-[#0076DC] rounded hover:cursor-pointer hover:bg-blue-700 border-blue-900">
+          Lista de Usuario
+        </button>
+      </Link>
     </div>
   );
 };
