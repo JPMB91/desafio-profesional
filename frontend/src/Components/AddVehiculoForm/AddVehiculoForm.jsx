@@ -7,7 +7,7 @@ import { useAuth } from "../../context/Auth.Context";
 
 export const AddVehiculoForm = () => {
   const { isDesktop } = useDesktop();
-  const {token} = useAuth();
+  const { token } = useAuth();
 
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
@@ -44,10 +44,18 @@ export const AddVehiculoForm = () => {
 
   // categorias desde la BBDD
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/categories")
-      .then((response) => setCategories(response.data))
-      .catch((err) => console.error("Error fetching categories", err));
+    const getCategories = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/categories");
+        setCategories(response.data);
+
+        console.log("categories, response: ", response.data);
+      } catch (error) {
+        console.error("Error fetching categories", err);
+      }
+    };
+
+    getCategories()
   }, []);
 
   const handleInputChange = (e) => {
@@ -96,11 +104,12 @@ export const AddVehiculoForm = () => {
     images.forEach((image) => {
       form.append("images", image);
     });
+
     try {
-      await axios.post("http://localhost:8080/api/vehicles", form,{
+      await axios.post("http://localhost:8080/api/vehicles", form, {
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       console.log("Vehiculo guardado exitosamente");
 

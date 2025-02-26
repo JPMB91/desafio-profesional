@@ -14,6 +14,8 @@ import { LoginForm } from "./Components/LoginForm/LoginForm.jsx";
 import { AdminFilter } from "./Components/AdminFilter/AdminFilter.jsx";
 import { Unauthorized } from "./Components/AdminFilter/Unauthorized.jsx";
 import { UserTable } from "./Components/UserTable/UserTable.jsx";
+import { AddCharacteristicForm } from "./Components/AddCharacteristicForm/AddCharacteristicForm.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -35,6 +37,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="lista-vehiculos" element={<VehicleTable />} />
             <Route path="actualizar/:id" element={<UpdateVehicle />} />
             <Route path="listar-usuarios" element={<UserTable />}/>
+            <Route path="agregar-caracteristica" element={<AddCharacteristicForm />}/>
           </Route>
 
           <Route path="/vehicle/:id" element={<Detail />} />

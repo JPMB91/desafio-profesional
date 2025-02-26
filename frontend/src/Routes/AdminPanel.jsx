@@ -27,6 +27,13 @@ export const AdminPanel = () => {
           Lista de Usuario
         </button>
       </Link>
+
+      <Link to="/administracion/agregar-caracteristica">
+        <button className="py-2 px-2 bg-[#0076DC] rounded hover:cursor-pointer hover:bg-blue-700 border-blue-900">
+          Agregar Caracteristica
+        </button>
+      </Link>
+      
     </div>
   );
 };
