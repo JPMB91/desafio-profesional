@@ -3,7 +3,9 @@ package com.digitalhouse.turnos.entity;
 import jakarta.persistence.*;
 
 import java.time.Year;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -12,15 +14,10 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     private String registrationPlate;
-
     private Year manufacturingYear;
-
     private String brand;
-
     private String model;
-
     private int numberOfSeats;
 
     @ManyToOne
@@ -31,7 +28,8 @@ public class Vehicle {
     private String description;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Image> images;
+
+    private List<VehicleImage> images;
 
     @Column(unique = true)
     private String name;
@@ -46,23 +44,35 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private GearShift gearShift;
 
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(name = "vehicles_characteristics", joinColumns = @JoinColumn(name = "vehicle_id"), inverseJoinColumns
+//            = @JoinColumn(name = "characteristic_id"))
+//    private Set<Characteristic> characteristics = new HashSet<>();
+
+
     public Vehicle() {
     }
 
-    public Vehicle(String brand , String model, Year manufacturingYear, String description, Category category, int numberOfSeats, GearShift gearShift, FuelType fuelType,
-                   int numberOfDoors, double dailyCost, String registrationPlate) {
 
-        this.gearShift = gearShift;
-        this.fuelType = fuelType;
-        this.numberOfDoors = numberOfDoors;
-        this.dailyCost = dailyCost;
-        this.description = description;
-        this.category = category;
-        this.numberOfSeats = numberOfSeats;
-        this.model = model;
-        this.brand = brand;
-        this.manufacturingYear = manufacturingYear;
+    public Vehicle(String registrationPlate, Year manufacturingYear, String brand, String model, int numberOfSeats,
+                   Category category, String description, List<VehicleImage> images, String name, double dailyCost,
+                   int numberOfDoors, FuelType fuelType, GearShift gearShift)
+//                   Set<Characteristic> characteristics)
+    {
         this.registrationPlate = registrationPlate;
+        this.manufacturingYear = manufacturingYear;
+        this.brand = brand;
+        this.model = model;
+        this.numberOfSeats = numberOfSeats;
+        this.category = category;
+        this.description = description;
+        this.images = images;
+        this.name = name;
+        this.dailyCost = dailyCost;
+        this.numberOfDoors = numberOfDoors;
+        this.fuelType = fuelType;
+        this.gearShift = gearShift;
+//        this.characteristics = characteristics;
     }
 
     @PrePersist
@@ -71,12 +81,12 @@ public class Vehicle {
         this.name = brand + " " + model;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public List<VehicleImage> getImages() {
+        return images;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public void setImages(List<VehicleImage> images) {
+        this.images = images;
     }
 
     public String getName() {
@@ -178,4 +188,13 @@ public class Vehicle {
     public GearShift getGearShift() {
         return gearShift;
     }
+
+
+//    public Set<Characteristic> getCharacteristics() {
+//        return characteristics;
+//    }
+//
+//    public void setCharacteristics(Set<Characteristic> characteristics) {
+//        this.characteristics = characteristics;
+//    }
 }

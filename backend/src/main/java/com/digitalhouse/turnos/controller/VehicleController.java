@@ -1,5 +1,6 @@
 package com.digitalhouse.turnos.controller;
 
+import com.digitalhouse.turnos.entity.Characteristic;
 import com.digitalhouse.turnos.entity.FuelType;
 import com.digitalhouse.turnos.entity.GearShift;
 import com.digitalhouse.turnos.entity.Vehicle;
@@ -20,6 +21,7 @@ import java.nio.file.Paths;
 import java.time.Year;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -48,7 +50,10 @@ public class VehicleController {
                                      @RequestParam("gearShift") GearShift gearShift,
                                      @RequestParam("numberOfDoors") int numberOfDoors,
                                      @RequestParam("dailyCost") double dailyCost,
-                                     @RequestParam("fuelType") FuelType fuelType) {
+                                     @RequestParam("fuelType") FuelType fuelType
+//            ,
+//                                     @RequestParam("characteristics")Set<Characteristic> characteristics
+    ) {
         try {
 
             // Create Vehiculo
@@ -63,7 +68,10 @@ public class VehicleController {
                     gearShift,
                     numberOfDoors,
                     dailyCost,
-                    fuelType);
+                    fuelType
+//                    ,
+//                    characteristics
+            );
 
             return ResponseEntity.status(HttpStatus.CREATED).body(vehicle);
         } catch (DataIntegrityViolationException ex) {
@@ -74,7 +82,7 @@ public class VehicleController {
 
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error saving images: " + e.getMessage());
+                    .body("Error guardando la imagen del vehiculo: " + e.getMessage());
         }
     }
 
