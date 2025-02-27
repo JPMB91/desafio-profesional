@@ -22,7 +22,7 @@ export const AddCharacteristicForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
+    formData.append("name", name.trim());
     formData.append("characteristicImage", characteristicImage);
 
     try {
@@ -97,6 +97,7 @@ export const AddCharacteristicForm = () => {
           <input
             type="file"
             id="characteristicImage"
+            accept="image/*"
             onChange={handleImageChange}
             required
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
