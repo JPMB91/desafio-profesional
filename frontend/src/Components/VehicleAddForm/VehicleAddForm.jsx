@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { useDesktop } from "../../context/Desktop.context";
 import axios from "axios";
-import { validateForm } from "../../utils/validateForm";
-import { useParams } from "react-router-dom";
+import { validateForm } from "../../utils/validateForm.js";
+import { useDesktop } from "../../context/Desktop.context.jsx";
+import DesktopOnly from "../DesktopOnly.jsx";
+import { useAuth } from "../../context/Auth.context.jsx";
+import { MultiSelectDropDown } from "../MultiSelectDropDown/MultiSelectDropDown.jsx";
 import ImageIcon from "../../assets/images-input.svg?react";
-import { useAuth } from "../../context/Auth.context";
 
-
-export const UpdateVehicle = () => {
-  const { id } = useParams();
-  const {token} = useAuth()
-  // const { isDesktop } = useDesktop();
+export const VehicleAddForm = () => {
+  const { isDesktop } = useDesktop();
+  const { token } = useAuth();
+  const [characteristics, setCharacteristics] = useState([]);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
 
   const [categories, setCategories] = useState([]);
-  const [formData, setFormData] = useState({
+
+  const initialFormState = {
     registrationPlate: "",
     manufacturingYear: "",
     brand: "",
@@ -25,13 +27,11 @@ export const UpdateVehicle = () => {
     numberOfDoors: "",
     dailyCost: "",
     fuelType: "",
-    images: "",
-  });
+  };
+  const [formData, setFormData] = useState(initialFormState);
 
   const [images, setImages] = useState([]);
-  const [newImages, setNewImages] = useState([]);
   const [previews, setPreviews] = useState([]);
-  const [imagesToDelete, setImagesToDelete] = useState([]);
 
   const [error, setError] = useState({
     brand: "",
@@ -48,59 +48,27 @@ export const UpdateVehicle = () => {
     images: "",
   });
 
+  // categorias y characteristicas
   useEffect(() => {
-    const getVehicleData = async () => {
+    const getData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/vehicles/${id}`
+        const [categoriesResponse, characteristicsResponse] = await Promise.all(
+          [
+            axios.get("http://localhost:8080/api/categories"),
+            axios.get("http://localhost:8080/api/characteristics"),
+          ]
         );
 
-        setFormData({
-          registrationPlate: response.data.registrationPlate || "",
-          manufacturingYear: response.data.manufacturingYear || "",
-          brand: response.data.brand || "",
-          model: response.data.model || "",
-          numberOfSeats: response.data.numberOfSeats || "",
-          description: response.data.description || "",
-          categoryId: response.data.category.id || "",
-          gearShift: response.data.gearShift || "",
-          numberOfDoors: response.data.numberOfDoors || "",
-          dailyCost: response.data.dailyCost || "",
-          fuelType: response.data.fuelType || "",
-        });
-
-        if (response.data.images && response.data.images.length > 0) {
-          setImages(response.data.images);
-          const originalPreviews = await response.data.images.map(
-            (img) =>
-              `http://localhost:8080/api/vehicles/uploads/${img.filename}`
-          );
-          setPreviews(originalPreviews);
-        }
-
-        console.log("imagenes:", images);
+        setCategories(categoriesResponse.data);
+        setCharacteristics(characteristicsResponse.data);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    getVehicleData();
+    getData();
   }, []);
 
-  // categorias actualizadas desde la BBDD
-  useEffect(() => {
-    const getCategories = async() =>{
-      try {
-        const response = await axios.get("http://localhost:8080/api/categories");
-        setCategories(response.data);
-      } catch (error) {
-        console.error("Error fetching categories", err);
-      }
-    }
-    getCategories()
-  }, []);
-
-  // para campos de texto
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -115,83 +83,52 @@ export const UpdateVehicle = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setNewImages(files);
-
-    console.log("estos files: ", files);
-    const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
-    setPreviews((prev) => [...prev, ...newPreviewUrls]);
-  };
-
-  const handleRemoveImage = (index) => {
-    // quito la imagen del preview
-    setPreviews((prev) => prev.filter((_, i) => i !== index));
-    if (index < images.length) {
-      // si se trata de imagenes que ya estan persistidad
-      // agrega su filename a imagesToDelete para que las reciba el back-end
-      setImagesToDelete((prev) => [...prev, images[index].filename]);
-
-      // las quita del estado de images que refleja las ya persistidas
-      setImages((prev) => prev.filter((_, i) => i !== index));
-    } else {
-      // si es nueva imagen las quita del estado de newImages
-      const newIndex = index - images.length;
-      setNewImages((prev) => prev.filter((_, i) => i !== newIndex));
-    }
+    setImages(files);
+    console.log("Selected files:", files);
+    const previewUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviews(previewUrls);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const formValidated = validateForm({ images, ...formData });
+    const formValidated = validateForm({ images, ...formData });
 
-    // if (!formValidated.isValid) {
-    //   setError(formValidated.newErrors);
-    //   return;
-    // }
-
+    if (!formValidated.isValid) {
+      setError(formValidated.newErrors);
+      return;
+    }
+    
     const form = new FormData();
     form.append("registrationPlate", formData.registrationPlate.trim());
     form.append("manufacturingYear", formData.manufacturingYear.trim());
     form.append("brand", formData.brand.trim());
     form.append("model", formData.model.trim());
-    form.append("numberOfSeats", formData.numberOfSeats);
+    form.append("numberOfSeats", formData.numberOfSeats.trim());
     form.append("description", formData.description.trim());
     form.append("gearShift", formData.gearShift.trim());
-    form.append("numberOfDoors", formData.numberOfDoors);
-    form.append("dailyCost", formData.dailyCost);
+    form.append("numberOfDoors", formData.numberOfDoors.trim());
+    form.append("dailyCost", formData.dailyCost.trim());
     form.append("fuelType", formData.fuelType.trim());
+
     form.append("categoryId", formData.categoryId);
 
-    // agrego las nuevas imagenes al form para enviar a backend
-    newImages.forEach((file) => {
-      form.append("newImages", file);
-    });
-
-    // envio los nombres de las imagenes a borrar
-    imagesToDelete.forEach((imgId) => {
-      form.append("fileImagesToDelete", imgId);
+    selectedCharacteristics.forEach((c) =>{
+      form.append("characteristics", c)
+    })
+    
+    images.forEach((image) => {
+      form.append("images", image);
     });
 
     try {
-      await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form,{
+      await axios.post("http://localhost:8080/api/vehicles", form, {
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },  
       });
+      console.log("Vehiculo guardado exitosamente");
 
-      setFormData({
-        registrationPlate: "",
-        manufacturingYear: "",
-        brand: "",
-        model: "",
-        numberOfSeats: "",
-        description: "",
-        categoryId: "",
-        gearShift: "",
-        numberOfDoors: "",
-        dailyCost: "",
-        fuelType: "",
-      });
-
+      setFormData(initialFormState);
       setError({
         brand: "",
         registrationPlate: "",
@@ -207,11 +144,10 @@ export const UpdateVehicle = () => {
         images: "",
       });
       setPreviews([]);
-      setImages([]);
-      setNewImages([]);
     } catch (err) {
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
+
         // errores
         switch (errMsg) {
           case "Error: El nombre del vehiculo debe ser único.":
@@ -233,15 +169,17 @@ export const UpdateVehicle = () => {
     }
   };
 
-  // !isDesktop ? (
-  //   <DesktopOnly />
-  // ) :
-  return (
+  return !isDesktop ? (
+    <DesktopOnly />
+  ) : (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
-        Actualizar Vehiculo
+        Ingrese un nuevo Vehiculo
       </div>
-      <form className="py-4 px-6">
+      <form
+        onSubmit={handleSubmit}
+        className="py-4 px-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
         <div className="mb-4">
           <label htmlFor="brand" className="block text-gray-700 font-bold mb-2">
             Marca
@@ -254,7 +192,6 @@ export const UpdateVehicle = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
-
           {error.brand && (
             <p className="text-red-500 text-sm font-bold mt-1">{error.brand}</p>
           )}
@@ -274,7 +211,9 @@ export const UpdateVehicle = () => {
           {error.model && (
             <p className="text-red-500 text-sm font-bold mt-1">{error.model}</p>
           )}
-          {error.name && <p>{error.name}</p>}
+          {error.name && (
+            <p className="text-red-500 text-sm font-bold mt-1">{error.name}</p>
+          )}
         </div>
         <div>
           <label
@@ -313,7 +252,7 @@ export const UpdateVehicle = () => {
             value={formData.description}
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-            rows={5}
+            rows={3}
           ></textarea>
           {error.description && (
             <p className="text-red-500 text-sm font-bold mt-1">
@@ -403,7 +342,6 @@ export const UpdateVehicle = () => {
             </p>
           )}
         </div>
-
         <div>
           <label
             htmlFor="numberOfDoors"
@@ -447,9 +385,7 @@ export const UpdateVehicle = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
-            <option value="">
-              Seleccione tipo de combustible del vehiculo
-            </option>
+            <option value="">Seleccione tipo de combustible</option>
             <option value="GASOLINE">GASOLINA</option>
             <option value="ELECTRIC">ELECTRICO</option>
             <option value="DIESEL">DIESEL</option>
@@ -461,6 +397,20 @@ export const UpdateVehicle = () => {
               {error.fuelType}
             </p>
           )}
+        </div>
+        <div>
+          <label
+            htmlFor="characteristics"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Caracteristicas para el vehiculo
+          </label>
+          <MultiSelectDropDown
+            options={characteristics}
+            selectedOptions={selectedCharacteristics}
+            setSelectedOptions={setSelectedCharacteristics}
+            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+          />
         </div>
         <div>
           <label
@@ -504,8 +454,7 @@ export const UpdateVehicle = () => {
             </p>
           )}
         </div>
-
-        <div className="mb-4">
+        <div className="mb-4 col-span-1 md:col-span-2">
           <label
             htmlFor="images"
             className="block text-gray-700 font-bold mb-2"
@@ -529,7 +478,6 @@ export const UpdateVehicle = () => {
 
             <span>Agregar imágenes</span>
           </label>
-
           <div className="flex flex-wrap mt-2">
             {previews.map((preview, index) => (
               <div key={index} className="m-1 relative">
@@ -540,7 +488,13 @@ export const UpdateVehicle = () => {
                 />
                 <button
                   onClick={() => {
-                    handleRemoveImage(index);
+                    const newPreviews = [...previews];
+                    newPreviews.splice(index, 1);
+                    setPreviews(newPreviews);
+
+                    const newImages = [...images];
+                    newImages.splice(index, 1);
+                    setImages(newImages);
                   }}
                   className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center hover:bg-red-700 focus:outline-none"
                 >
@@ -548,7 +502,6 @@ export const UpdateVehicle = () => {
                 </button>
               </div>
             ))}
-
             {error.images && (
               <p className="text-red-500 text-sm font-bold mt-1">
                 {error.images}
@@ -556,13 +509,12 @@ export const UpdateVehicle = () => {
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center m-4">
+        <div className="flex items-center justify-center m-4 col-span-1 md:col-span-2">
           <button
             type="submit"
             className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
-            onClick={handleSubmit}
           >
-            Editar Vehiculo
+            Añadir Vehiculo
           </button>
         </div>
       </form>

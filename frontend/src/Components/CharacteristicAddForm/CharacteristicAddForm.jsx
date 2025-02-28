@@ -3,8 +3,13 @@ import axios from "axios";
 
 import ImageIcon from "../../assets/images-input.svg?react";
 import { useAuth } from "../../context/Auth.context";
+import { useDesktop } from "../../context/Desktop.context";
+import DesktopOnly from "../DesktopOnly";
 
-export const AddCharacteristicForm = () => {
+
+
+export const CharacteristicAddForm = () => {
+  const { isDesktop } = useDesktop();
   const [name, setName] = useState("");
   const [preview, setPreview] = useState([]);
   const [error, setError] = useState({
@@ -59,6 +64,9 @@ export const AddCharacteristicForm = () => {
     }
   };
 
+  if(!isDesktop){
+    return ( <DesktopOnly/>)
+  }
   return (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">

@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
+import { useDesktop } from "../../context/Desktop.context";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
-import { useDesktop } from "../../context/Desktop.context";
+import { useNavigate, useParams } from "react-router-dom";
+import ImageIcon from "../../assets/images-input.svg?react";
+import { useAuth } from "../../context/Auth.context";
+import { MultiSelectDropDown } from "../MultiSelectDropDown/MultiSelectDropDown";
 import DesktopOnly from "../DesktopOnly";
-import { useAuth } from "../../context/Auth.Context";
 
-export const AddVehiculoForm = () => {
-  const { isDesktop } = useDesktop();
+export const VehicleUpdateForm = () => {
+  const { id } = useParams();
   const { token } = useAuth();
+  const navigate = useNavigate();
+  const { isDesktop } = useDesktop();
 
   const [categories, setCategories] = useState([]);
-  const [formData, setFormData] = useState({
+  const initialFormState = {
     registrationPlate: "",
     manufacturingYear: "",
     brand: "",
@@ -22,10 +27,18 @@ export const AddVehiculoForm = () => {
     numberOfDoors: "",
     dailyCost: "",
     fuelType: "",
-  });
+  };
+  const [formData, setFormData] = useState(initialFormState);
 
   const [images, setImages] = useState([]);
+  const [newImages, setNewImages] = useState([]);
   const [previews, setPreviews] = useState([]);
+  const [imagesToDelete, setImagesToDelete] = useState([]);
+  const [characteristics, setCharacteristics] = useState([]);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+  const [newSelectedCharacteristics, setNewSelectedCharacteristics] = useState(
+    []
+  );
 
   const [error, setError] = useState({
     brand: "",
@@ -42,22 +55,71 @@ export const AddVehiculoForm = () => {
     images: "",
   });
 
-  // categorias desde la BBDD
   useEffect(() => {
-    const getCategories = async () => {
+    const getVehicleData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/categories");
-        setCategories(response.data);
+        const response = await axios.get(
+          `http://localhost:8080/api/vehicles/${id}`
+        );
 
-        console.log("categories, response: ", response.data);
+        setFormData({
+          registrationPlate: response.data.registrationPlate || "",
+          manufacturingYear: response.data.manufacturingYear || "",
+          brand: response.data.brand || "",
+          model: response.data.model || "",
+          numberOfSeats: response.data.numberOfSeats || "",
+          description: response.data.description || "",
+          categoryId: response.data.category.id || "",
+          gearShift: response.data.gearShift || "",
+          numberOfDoors: response.data.numberOfDoors || "",
+          dailyCost: response.data.dailyCost || "",
+          fuelType: response.data.fuelType || "",
+        });
+
+        setSelectedCharacteristics(
+          response.data.characteristics.map((c) => c.id)
+        );
+
+        if (response.data.images && response.data.images.length > 0) {
+          setImages(response.data.images);
+          const originalPreviews = await response.data.images.map(
+            (img) =>
+              `http://localhost:8080/api/vehicles/uploads/${img.filename}`
+          );
+          setPreviews(originalPreviews);
+        }
+
+        console.log("imagenes:", images);
       } catch (error) {
-        console.error("Error fetching categories", err);
+        console.log(error);
       }
     };
 
-    getCategories()
+    getVehicleData();
   }, []);
 
+  // categorias y characteristicas desde la BBDD
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const [categoriesResponse, characteristicsResponse] = await Promise.all(
+          [
+            axios.get("http://localhost:8080/api/categories"),
+            axios.get("http://localhost:8080/api/characteristics"),
+          ]
+        );
+
+        setCategories(categoriesResponse.data);
+        setCharacteristics(characteristicsResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    getData();
+  }, []);
+
+  // para campos de texto
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -72,60 +134,75 @@ export const AddVehiculoForm = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages(files);
-    console.log("estos files del form crear: ", files);
-    const previewUrls = files.map((file) => URL.createObjectURL(file));
-    setPreviews(previewUrls);
+    setNewImages(files);
+
+    console.log("estos files: ", files);
+    const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviews((prev) => [...prev, ...newPreviewUrls]);
+  };
+
+  const handleRemoveImage = (index) => {
+    // quito la imagen del preview
+    setPreviews((prev) => prev.filter((_, i) => i !== index));
+    if (index < images.length) {
+      // si se trata de imagenes que ya estan persistidad
+      // agrega su filename a imagesToDelete para que las reciba el back-end
+      setImagesToDelete((prev) => [...prev, images[index].filename]);
+
+      // las quita del estado de images que refleja las ya persistidas
+      setImages((prev) => prev.filter((_, i) => i !== index));
+    } else {
+      // si es nueva imagen las quita del estado de newImages
+      const newIndex = index - images.length;
+      setNewImages((prev) => prev.filter((_, i) => i !== newIndex));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formValidated = validateForm({ images, ...formData });
+    // const formValidated = validateForm({ images, ...formData });
 
-    if (!formValidated.isValid) {
-      setError(formValidated.newErrors);
-      return;
-    }
+    // if (!formValidated.isValid) {
+    //   setError(formValidated.newErrors);
+    //   return;
+    // }
 
     const form = new FormData();
     form.append("registrationPlate", formData.registrationPlate.trim());
     form.append("manufacturingYear", formData.manufacturingYear.trim());
     form.append("brand", formData.brand.trim());
     form.append("model", formData.model.trim());
-    form.append("numberOfSeats", formData.numberOfSeats.trim());
+    form.append("numberOfSeats", formData.numberOfSeats);
     form.append("description", formData.description.trim());
     form.append("gearShift", formData.gearShift.trim());
-    form.append("numberOfDoors", formData.numberOfDoors.trim());
-    form.append("dailyCost", formData.dailyCost.trim());
+    form.append("numberOfDoors", formData.numberOfDoors);
+    form.append("dailyCost", formData.dailyCost);
     form.append("fuelType", formData.fuelType.trim());
-
     form.append("categoryId", formData.categoryId);
 
-    images.forEach((image) => {
-      form.append("images", image);
+    // agrego las nuevas imagenes al form para enviar a backend
+    newImages.forEach((file) => {
+      form.append("newImages", file);
+    });
+
+    // envio los nombres de las imagenes a borrar
+    imagesToDelete.forEach((imgId) => {
+      form.append("fileImagesToDelete", imgId);
+    });
+
+    selectedCharacteristics.forEach((charId) => {
+      form.append("characteristics", charId);
     });
 
     try {
-      await axios.post("http://localhost:8080/api/vehicles", form, {
+      await axios.put(`http://localhost:8080/api/vehicles/update/${id}`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Vehiculo guardado exitosamente");
 
-      setFormData({
-        registrationPlate: "",
-        manufacturingYear: "",
-        brand: "",
-        model: "",
-        numberOfSeats: "",
-        description: "",
-        categoryId: "",
-        gearShift: "",
-        numberOfDoors: "",
-        dailyCost: "",
-        fuelType: "",
-      });
+      setFormData(initialFormState);
+
       setError({
         brand: "",
         registrationPlate: "",
@@ -141,13 +218,15 @@ export const AddVehiculoForm = () => {
         images: "",
       });
       setPreviews([]);
+      setImages([]);
+      setNewImages([]);
+      navigate("/administracion/lista-vehiculos");
     } catch (err) {
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
-
         // errores
         switch (errMsg) {
-          case "Error: Violación de integridad de datos.":
+          case "Error: El nombre del vehiculo debe ser único.":
             setError((prev) => ({ ...prev, name: errMsg }));
             break;
 
@@ -166,14 +245,16 @@ export const AddVehiculoForm = () => {
     }
   };
 
-  return !isDesktop ? (
-    <DesktopOnly />
-  ) : (
+  if(!isDesktop){
+    return (<DesktopOnly />)
+  }
+
+  return (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
-        Ingrese un nuevo Vehiculo
+        Actualizar Vehiculo
       </div>
-      <form onSubmit={handleSubmit} className="py-4 px-6">
+      <form onSubmit={handleSubmit} className="py-4 px-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="mb-4">
           <label htmlFor="brand" className="block text-gray-700 font-bold mb-2">
             Marca
@@ -186,7 +267,6 @@ export const AddVehiculoForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
-
           {error.brand && (
             <p className="text-red-500 text-sm font-bold mt-1">{error.brand}</p>
           )}
@@ -206,13 +286,10 @@ export const AddVehiculoForm = () => {
           {error.model && (
             <p className="text-red-500 text-sm font-bold mt-1">{error.model}</p>
           )}
-          {error.name && <p>{error.name}</p>}
+          {error.name && <p className="text-red-500 text-sm font-bold mt-1">{error.name}</p>}
         </div>
         <div>
-          <label
-            htmlFor="manufacturingYear"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="manufacturingYear" className="block text-gray-700 font-bold mb-2">
             Año de fabricación
           </label>
           <input
@@ -226,16 +303,11 @@ export const AddVehiculoForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.manufacturingYear && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.manufacturingYear}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.manufacturingYear}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="description"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="description" className="block text-gray-700 font-bold mb-2">
             Descripcion
           </label>
           <textarea
@@ -245,19 +317,14 @@ export const AddVehiculoForm = () => {
             value={formData.description}
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-            rows={5}
+            rows={3}
           ></textarea>
           {error.description && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.description}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.description}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="categoryId"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="categoryId" className="block text-gray-700 font-bold mb-2">
             Categoria
           </label>
           <select
@@ -275,16 +342,11 @@ export const AddVehiculoForm = () => {
             ))}
           </select>
           {error.categoryId && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.categoryId}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.categoryId}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="gearShift"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="gearShift" className="block text-gray-700 font-bold mb-2">
             Tipo de transmisión
           </label>
           <select
@@ -301,16 +363,11 @@ export const AddVehiculoForm = () => {
             <option value="CVT">CVT</option>
           </select>
           {error.gearShift && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.gearShift}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.gearShift}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="numberOfSeats"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="numberOfSeats" className="block text-gray-700 font-bold mb-2">
             Numero de asientos
           </label>
           <select
@@ -330,17 +387,11 @@ export const AddVehiculoForm = () => {
             <option value="6">6</option>
           </select>
           {error.numberOfSeats && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.numberOfSeats}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfSeats}</p>
           )}
         </div>
-
         <div>
-          <label
-            htmlFor="numberOfDoors"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="numberOfDoors" className="block text-gray-700 font-bold mb-2">
             Número de puertas
           </label>
           <select
@@ -359,16 +410,11 @@ export const AddVehiculoForm = () => {
             <option value="5">5</option>
           </select>
           {error.numberOfDoors && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.numberOfDoors}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfDoors}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="fuelType"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="fuelType" className="block text-gray-700 font-bold mb-2">
             Tipo de combustible
           </label>
           <select
@@ -379,9 +425,7 @@ export const AddVehiculoForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
-            <option value="">
-              Seleccione tipo de combustible del vehiculo
-            </option>
+            <option value="">Seleccione tipo de combustible del vehiculo</option>
             <option value="GASOLINE">GASOLINA</option>
             <option value="ELECTRIC">ELECTRICO</option>
             <option value="DIESEL">DIESEL</option>
@@ -389,16 +433,22 @@ export const AddVehiculoForm = () => {
             <option value="BIODIESEL">BIODIESEL</option>
           </select>
           {error.fuelType && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.fuelType}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.fuelType}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="registrationPlate"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="characteristics" className="block text-gray-700 font-bold mb-2">
+            Caracteristicas para el vehiculo
+          </label>
+          <MultiSelectDropDown
+            options={characteristics}
+            selectedOptions={selectedCharacteristics}
+            setSelectedOptions={setSelectedCharacteristics}
+            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+          />
+        </div>
+        <div>
+          <label htmlFor="registrationPlate" className="block text-gray-700 font-bold mb-2">
             Matricula
           </label>
           <input
@@ -410,16 +460,11 @@ export const AddVehiculoForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.registrationPlate && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.registrationPlate}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.registrationPlate}</p>
           )}
         </div>
         <div>
-          <label
-            htmlFor="dailyCost"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="dailyCost" className="block text-gray-700 font-bold mb-2">
             Costo diario
           </label>
           <input
@@ -431,17 +476,11 @@ export const AddVehiculoForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.dailyCost && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.dailyCost}
-            </p>
+            <p className="text-red-500 text-sm font-bold mt-1">{error.dailyCost}</p>
           )}
         </div>
-
-        <div className="mb-4">
-          <label
-            htmlFor="images"
-            className="block text-gray-700 font-bold mb-2"
-          >
+        <div className="mb-4 col-span-1 md:col-span-2">
+          <label htmlFor="images" className="block text-gray-700 font-bold mb-2">
             Imágenes
           </label>
           <input
@@ -457,23 +496,9 @@ export const AddVehiculoForm = () => {
             htmlFor="images"
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-500 shadow-inner cursor-pointer flex items-center justify-center"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 mr-2 text-gray-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16v4a2 2 0 012 2h12a2 2 0 012-2v-4l-7-5 7-5V5a2 2 0 01-2-2H6a2 2 0 01-2 2v6l7 5-7 5z"
-              />
-            </svg>
+            <ImageIcon width="50" height="50" />
             <span>Agregar imágenes</span>
           </label>
-
           <div className="flex flex-wrap mt-2">
             {previews.map((preview, index) => (
               <div key={index} className="m-1 relative">
@@ -484,13 +509,7 @@ export const AddVehiculoForm = () => {
                 />
                 <button
                   onClick={() => {
-                    const newPreviews = [...previews];
-                    newPreviews.splice(index, 1);
-                    setPreviews(newPreviews);
-
-                    const newImages = [...images];
-                    newImages.splice(index, 1);
-                    setImages(newImages);
+                    handleRemoveImage(index);
                   }}
                   className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center hover:bg-red-700 focus:outline-none"
                 >
@@ -498,20 +517,17 @@ export const AddVehiculoForm = () => {
                 </button>
               </div>
             ))}
-
             {error.images && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.images}
-              </p>
+              <p className="text-red-500 text-sm font-bold mt-1">{error.images}</p>
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center m-4">
+        <div className="flex items-center justify-center m-4 col-span-1 md:col-span-2">
           <button
             type="submit"
             className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
           >
-            Añadir Vehiculo
+            Editar Vehiculo
           </button>
         </div>
       </form>
