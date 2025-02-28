@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useAuth } from "../../context/Auth.Context";
+
 import ImageIcon from "../../assets/images-input.svg?react";
+import { useAuth } from "../../context/Auth.context";
 
 export const AddCharacteristicForm = () => {
   const [name, setName] = useState("");
@@ -61,7 +62,7 @@ export const AddCharacteristicForm = () => {
   return (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
-        Añadir Característica
+        Crear una Caracteristica
       </div>
       <form onSubmit={handleSubmit} className="py-4 px-6">
         <div className="mb-4">

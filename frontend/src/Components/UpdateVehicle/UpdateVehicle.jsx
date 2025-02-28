@@ -4,7 +4,8 @@ import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
 import { useParams } from "react-router-dom";
 import ImageIcon from "../../assets/images-input.svg?react";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.context";
+
 
 export const UpdateVehicle = () => {
   const { id } = useParams();

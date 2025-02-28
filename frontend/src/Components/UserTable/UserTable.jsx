@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/Auth.Context";
+
 import { useDesktop } from "../../context/Desktop.context";
 import { LoadingSpinner } from "../LoadingSpinner";
 import DesktopOnly from "../DesktopOnly";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useAuth } from "../../context/Auth.context";
 
 export const UserTable = () => {
   const { isDesktop } = useDesktop();
-  const { token } = useAuth();
+  const { token, user } = useAuth();
 
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +31,7 @@ export const UserTable = () => {
     };
 
     getUserData();
-  }, [token]);
+  }, [token, user]);
 
 
   const handleRoleChange = async (user) => {

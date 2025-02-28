@@ -6,7 +6,7 @@ export const Unauthorized = () => {
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <AlertIcon width="50" height="50" />
       <span className="flex justify-center font-bold text-red-500 uppercase mt-4">
-        No cuenta con los privilegios necesarios para ver este contenido.
+        No cuenta con los permisos necesarios para ver este contenido.
       </span>
       <span className="flex justify-center font-bold text-red-500 uppercase mt-2">
         Inicie sesión o ir al
