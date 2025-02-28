@@ -135,6 +135,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/categories/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/categories/**").hasAuthority("ROLE_ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, "/api/characteristics/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/characteristics/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/characteristics/**").hasAuthority("ROLE_ADMIN")
+
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/register/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/admin/users").permitAll()
