@@ -1,7 +1,6 @@
 package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
-
 import java.time.Year;
 import java.util.HashSet;
 import java.util.List;
