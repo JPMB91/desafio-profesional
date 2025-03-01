@@ -1,8 +1,6 @@
 package com.digitalhouse.turnos.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.Year;
 import java.util.HashSet;
