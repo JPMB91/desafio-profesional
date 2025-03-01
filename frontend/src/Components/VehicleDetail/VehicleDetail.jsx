@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
+import { CharacteristicsDisplay } from "../CharacteristicsDisplay/CharacteristicsDisplay.jsx";
 
-export const Detail = () => {
+export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
+  const [characteristic, setCharacteristics] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -18,6 +20,9 @@ export const Detail = () => {
           `http://localhost:8080/api/vehicles/${id}`
         );
         setVehicleData(response.data);
+        const { characteristics } = response.data;
+        setCharacteristics(characteristics);
+        console.log(characteristics);
       } catch (error) {
         console.log("Error obteniendo detalle del vehiculo: ", error);
         setError("No se pudo cargar la información del vehículo.");
@@ -79,6 +84,7 @@ export const Detail = () => {
           )}
         </div>
       )}
+      <CharacteristicsDisplay characteristics={characteristic} />
     </div>
   );
 };
