@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.context";
+
 
 export const Header = () => {
-  const { isAuthenticated, logout, token} = useAuth();
+  const { isAuthenticated, logout} = useAuth();
 
   const handleLogout = () =>{
     logout()

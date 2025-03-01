@@ -1,4 +1,6 @@
 package com.digitalhouse.turnos.service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +14,7 @@ import java.util.UUID;
 public class ImageSavingService {
 
     private static final String UPLOAD_DIR = "uploads/";
+    private static final Logger logger = LoggerFactory.getLogger(ImageSavingService.class);
 
     public String saveImage(MultipartFile file) throws IOException {
         String originalName = file.getOriginalFilename();
@@ -30,10 +33,10 @@ public class ImageSavingService {
         try {
             Path filePath = Paths.get(UPLOAD_DIR + filename);
             Files.deleteIfExists(filePath);
+            logger.info("Imagen borrada exitosamente: {}", filename);
         } catch (IOException e) {
 
-            // agregar logger
-            System.err.println("Error deleting image file: " + filename + " - " + e.getMessage());
+            logger.error("Error borrando imagen: {} - {}", filename, e.getMessage(), e);
         }
     }
 }

@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
   const [loading, setLoading] = useState(true);
 
+  // const isAdmin = user && user.roles && user.roles.includes("ROLE_ADMIN");
   useEffect(() => {
     localStorage.setItem("token", token || "");
     setIsAuthenticated(!!token);
@@ -37,6 +38,9 @@ export const AuthProvider = ({ children }) => {
     setUser(null),
     setIsAuthenticated(false)
   }
+
+
+
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, token, login, loading, logout }}>
       {children}

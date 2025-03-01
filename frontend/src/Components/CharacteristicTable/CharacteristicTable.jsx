@@ -1,36 +1,37 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useDesktop } from "../../context/Desktop.context";
-import DesktopOnly from "../DesktopOnly";
-import { LoadingSpinner } from "../LoadingSpinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.context";
+import Swal from "sweetalert2";
 
+export const CharacteristicTable = () => {
+  const [characteristics, setCharacteristics] = useState([]);
+  const { token } = useAuth();
+  const navigate = useNavigate();
 
-export const VehicleTable = () => {
-  const { isDesktop } = useDesktop();
-  const {token} = useAuth()
-
-  const [vehiclesData, setVehiclesData] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+  const getCharacteristics = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/api/characteristics",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setCharacteristics(response.data);
+    } catch (error) {
+      console.error("Error obteniendo caracteristicas", error);
+    }
+  };
 
   useEffect(() => {
-    const getVehicleData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/api/vehicles");
-        setVehiclesData(response.data);
-        setIsloading(false);
-        console.log(vehiclesData);
-      } catch (error) {
-        setIsloading(true);
-        console.log(error);
-      }
-    };
-    getVehicleData();
-  }, []);
+    getCharacteristics();
+  }, [token]);
 
-  const handleDelete = async (vehicleId) => {
+  const handleAddCharacteristic = () => {
+    navigate("/administracion/agregar-caracteristica");
+  };
+
+  const handleDelete = async (characteristicId) => {
     const confirmDelete = Swal.mixin({
       customClass: {
         confirmButton:
@@ -43,23 +44,23 @@ export const VehicleTable = () => {
 
     try {
       const result = await confirmDelete.fire({
-        title: "¿Desea borrar el vehiculo?",
+        title: "¿Desea borrar la característica?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Borrar Vehículo",
+        confirmButtonText: "Borrar Característica",
         cancelButtonText: "Cancelar",
       });
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:8080/api/vehicles/${vehicleId}`, {
+        await axios.delete(`http://localhost:8080/api/characteristics/${characteristicId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setVehiclesData(vehiclesData.filter((v) => v.id !== vehicleId));
+        setCharacteristics(characteristics.filter((c) => c.id !== characteristicId));
 
         await confirmDelete.fire({
           title: "Borrado",
-          text: "El vehiculo ha sido borrado",
+          text: "Característica borrada",
           icon: "success",
           timer: "1500",
           className: "py-1 px-2 rounded",
@@ -67,7 +68,7 @@ export const VehicleTable = () => {
         });
       }
     } catch (error) {
-      console.error("Error borrando el vehiculo: ", error);
+      console.error("Error borrando la característica: ", error);
       confirmDelete.fire({
         title: "Cancelado",
         text: "El borrado ha sido cancelado",
@@ -77,51 +78,60 @@ export const VehicleTable = () => {
     }
   };
 
-  if (!isDesktop) {
-    return <DesktopOnly />;
-  }
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Lista de Vehiculos disponibles
-      </h1>
+      <button
+        onClick={handleAddCharacteristic}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+      >
+        Crear nueva Caracteristica
+      </button>
+      <h1 className="text-2xl font-bold mb-4">Lista de Características</h1>
+
       <div className="overflow-x-auto shadow-lg rounded-lg">
         <table className="min-w-full table-auto border-collapse">
           <thead className="bg-gray-300">
             <tr>
               <th className="text-left py-2 px-4 border border-gray-300">ID</th>
               <th className="text-left py-2 px-4 border border-gray-300">
-                Name
+                Nombre
               </th>
               <th className="text-left py-2 px-4 border border-gray-300">
-                Actions
+                Icono
+              </th>
+              <th className="text-left py-2 px-4 border border-gray-300">
+                Acciones
               </th>
             </tr>
           </thead>
           <tbody>
-            {vehiclesData.map((vehicle) => (
-              <tr key={vehicle.id} className="hover:bg-gray-50">
+            {characteristics.map((charac) => (
+              <tr key={charac.id} className="hover:bg-gray-50">
                 <td className="py-2 px-4 border border-gray-300">
-                  {vehicle.id}
+                  {charac.id}
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
-                  {vehicle.name}
+                  {charac.name}
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
+                  {charac.characteristicImage && (
+                    <img
+                      src={`http://localhost:8080/api/characteristics/image/${charac.characteristicImage.filename}?${new Date().getTime()}`}
+                      alt={`${charac.name} Image`}
+                      className="h-16 w-16 object-cover"
+                    />
+                  )}
+                </td>
+
+                <td>
                   <button
                     type="button"
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                    onClick={() => handleDelete(vehicle.id)}
+                    onClick={() => handleDelete(charac.id)}
                   >
                     Eliminar
                   </button>
-
-                  <Link to={`/administracion/actualizar/${vehicle.id}`}>
+                  <Link to={`/administracion/actualizar-caracteristica/${charac.id}`}>
                     <button className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-1 px-2 rounded m-1">
                       Actualizar
                     </button>

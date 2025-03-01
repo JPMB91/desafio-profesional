@@ -3,17 +3,22 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { Home } from "./Routes/Home.jsx";
-import { AdminPanel } from "./Routes/AdminPanel.jsx";
-import { Detail } from "./Components/Detail/Detail.jsx";
-import { AddVehiculoForm } from "./Components/AddVehiculoForm/AddVehiculoForm.jsx";
+import { Home } from "./Pages/Home.jsx";
 import { VehicleTable } from "./Components/VehicleTable/VehicleTable.jsx";
-import { UpdateVehicle } from "./Components/UpdateVehicle/UpdateVehicle.jsx";
+
 import { RegisterForm } from "./Components/RegisterForm/RegisterForm.jsx";
 import { LoginForm } from "./Components/LoginForm/LoginForm.jsx";
 import { AdminFilter } from "./Components/AdminFilter/AdminFilter.jsx";
 import { Unauthorized } from "./Components/AdminFilter/Unauthorized.jsx";
 import { UserTable } from "./Components/UserTable/UserTable.jsx";
+
+import { AdminLayout } from "./Layouts/AdminLayout.jsx";
+import { Detail } from "./Components/Detail/Detail.jsx";
+import { CharacteristicTable } from "./Components/CharacteristicTable/CharacteristicTable.jsx";
+import { CharacteristicUpdateForm } from "./Components/CharacteristicUpdateForm/CharacteristicUpdateForm.jsx";
+import { VehicleUpdateForm } from "./Components/VehicleUpdateForm/VehicleUpdateForm.jsx";
+import { CharacteristicAddForm } from "./Components/CharacteristicAddForm/CharacteristicAddForm.jsx";
+import { VehicleAddForm } from "./Components/VehicleAddForm/VehicleAddForm.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,22 +26,32 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-
           <Route
             path="/administracion"
             element={
               <AdminFilter>
-                <Outlet />
+                <AdminLayout />
               </AdminFilter>
             }
           >
-            <Route index element={<AdminPanel />} />
-            <Route path="add-vehiculo" element={<AddVehiculoForm />} />
+            <Route index element={<VehicleTable  />} />
+            <Route path="add-vehiculo" element={<VehicleAddForm />} />
             <Route path="lista-vehiculos" element={<VehicleTable />} />
-            <Route path="actualizar/:id" element={<UpdateVehicle />} />
-            <Route path="listar-usuarios" element={<UserTable />}/>
+            <Route path="actualizar/:id" element={<VehicleUpdateForm />} />
+            <Route path="listar-usuarios" element={<UserTable />} />
+            <Route
+              path="agregar-caracteristica"
+              element={<CharacteristicAddForm />}
+            />
+            <Route
+              path="listar-caracteristicas"
+              element={<CharacteristicTable />}
+            />
+            <Route
+              path="actualizar-caracteristica/:id"
+              element={<CharacteristicUpdateForm />}
+            />
           </Route>
-
           <Route path="/vehicle/:id" element={<Detail />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
