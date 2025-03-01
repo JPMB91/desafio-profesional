@@ -13,12 +13,12 @@ import { Unauthorized } from "./Components/AdminFilter/Unauthorized.jsx";
 import { UserTable } from "./Components/UserTable/UserTable.jsx";
 
 import { AdminLayout } from "./Layouts/AdminLayout.jsx";
-import { Detail } from "./Components/Detail/Detail.jsx";
 import { CharacteristicTable } from "./Components/CharacteristicTable/CharacteristicTable.jsx";
 import { CharacteristicUpdateForm } from "./Components/CharacteristicUpdateForm/CharacteristicUpdateForm.jsx";
 import { VehicleUpdateForm } from "./Components/VehicleUpdateForm/VehicleUpdateForm.jsx";
 import { CharacteristicAddForm } from "./Components/CharacteristicAddForm/CharacteristicAddForm.jsx";
 import { VehicleAddForm } from "./Components/VehicleAddForm/VehicleAddForm.jsx";
+import { VehicleDetail } from "./Components/VehicleDetail/VehicleDetail.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -52,7 +52,7 @@ createRoot(document.getElementById("root")).render(
               element={<CharacteristicUpdateForm />}
             />
           </Route>
-          <Route path="/vehicle/:id" element={<Detail />} />
+          <Route path="/vehicle/:id" element={<VehicleDetail   />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
