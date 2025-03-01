@@ -54,6 +54,14 @@ public class CharacteristicService {
 
     @Transactional
     public void deleteCharacteristic(Long id) {
+        Characteristic characteristicFind =
+                characteristicRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No se encontró " +
+                        "la caracteristica con id: " + id));
+
+        if (characteristicFind.getCharacteristicImage() != null) {
+                imageSavingService.deleteImageFile(characteristicFind.getCharacteristicImage().getFilename());
+        }
+
         characteristicRepository.deleteById(id);
     }
 

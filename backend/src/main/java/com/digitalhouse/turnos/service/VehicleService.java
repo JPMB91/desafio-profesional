@@ -2,6 +2,7 @@ package com.digitalhouse.turnos.service;
 
 import com.digitalhouse.turnos.entity.*;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import com.digitalhouse.turnos.repository.CharacteristicRepository;
 import com.digitalhouse.turnos.repository.VehicleImageRepository;
 import com.digitalhouse.turnos.repository.VehicleRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,6 +27,9 @@ public class VehicleService {
     @Autowired
     private VehicleImageRepository vehicleImageRepository;
 
+    @Autowired
+    private CharacteristicRepository characteristicRepository;
+
     @Transactional
     public Vehicle createVehicle(String registrationPlate,
                                  Year manufacturingYear,
@@ -38,15 +42,12 @@ public class VehicleService {
                                  GearShift gearShift,
                                  int numberOfDoors,
                                  double dailyCost,
-                                 FuelType fuelType
-//            ,
-//                                 Set<Characteristic> characteristics
-    ) throws IOException
-    {
+                                 FuelType fuelType,
+                                 Set<Long> characteristics
+    ) throws IOException {
 
         Category categoryFind = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Id de categoria inválida: " + categoryId));
-
 
 
         Vehicle vehicle = new Vehicle();
@@ -61,6 +62,17 @@ public class VehicleService {
         vehicle.setNumberOfDoors(numberOfDoors);
         vehicle.setDailyCost(dailyCost);
         vehicle.setFuelType(fuelType);
+
+        Set<Characteristic> characteristicsSet = new HashSet<>();
+        if (characteristics != null) {
+            for (Long characteristicId : characteristics) {
+                Characteristic characteristicFind = characteristicRepository.findById(characteristicId)
+                        .orElseThrow(() -> new IllegalArgumentException("Id de caracteristica inválida: " + characteristicId));
+                characteristicsSet.add(characteristicFind);
+            }
+            vehicle.setCharacteristics(characteristicsSet);
+        }
+
 
 
         vehicle = vehicleRepository.save(vehicle);
@@ -94,11 +106,20 @@ public class VehicleService {
         return vehicleRepository.findById(id);
     }
 
-    @Transactional
-    public void deleteVehiculo(UUID id) {
+
+    public void deleteVehicle(UUID id) {
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No se encontró el vehiculo con id: " + id));
+
+        if (vehicle.getImages() != null) {
+            for (VehicleImage image : vehicle.getImages()) {
+                imageSavingService.deleteImageFile(image.getFilename());
+            }
+        }
+
+
         vehicleRepository.deleteById(id);
     }
-
     // Lista de vehiculos random
     public List<Vehicle> getRandomVehicles() {
         List<Vehicle> randomVehicles = vehicleRepository.findAll();
@@ -123,11 +144,30 @@ public class VehicleService {
                                  int numberOfDoors,
                                  double dailyCost,
                                  FuelType fuelType,
-                                 String[] fileImagesToDelete) throws IOException {
+                                 String[] fileImagesToDelete,
+                                 Set<Long> characteristics) throws IOException {
 
         // busco el vehiculo antes de actualizar
         Vehicle vehicle = vehicleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Vehiculo no encontrado"));
+
+        // actualizo características
+        Set<Characteristic> characteristicsSet =  new HashSet<>();
+
+        if(characteristics != null){
+            for(Long characteristicId : characteristics) {
+                Characteristic characteristicFind = characteristicRepository.findById(characteristicId)
+                        .orElseThrow(() -> new IllegalArgumentException("Id de caracteristica inválida: " + characteristicId));
+                characteristicsSet.add(characteristicFind);
+            }
+            vehicle.setCharacteristics(null);
+            vehicle.setCharacteristics(characteristicsSet);
+
+        }
+
+        if(characteristics == null){
+            vehicle.setCharacteristics(null);
+        }
 
         // actualizo los campos segun lo recibido desde front
         vehicle.setRegistrationPlate(registrationPlate);
@@ -136,6 +176,7 @@ public class VehicleService {
         vehicle.setModel(model);
         vehicle.setNumberOfSeats(numberOfSeats);
         vehicle.setDescription(description);
+
 
         //actualizo la categoria
 
@@ -147,6 +188,7 @@ public class VehicleService {
         vehicle.setNumberOfDoors(numberOfDoors);
         vehicle.setDailyCost(dailyCost);
         vehicle.setFuelType(fuelType);
+
 
         // si se enviaron archivos para borrar los elimino
         if (fileImagesToDelete != null) {
@@ -170,6 +212,7 @@ public class VehicleService {
             }
             vehicle.getImages().addAll(newImagesList);
         }
+
 
         return vehicleRepository.save(vehicle);
     }

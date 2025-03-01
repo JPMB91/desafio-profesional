@@ -1,6 +1,8 @@
 package com.digitalhouse.turnos.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.Year;
 import java.util.HashSet;
@@ -28,7 +30,6 @@ public class Vehicle {
     private String description;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
-
     private List<VehicleImage> images;
 
     @Column(unique = true)
@@ -44,10 +45,11 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private GearShift gearShift;
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinTable(name = "vehicles_characteristics", joinColumns = @JoinColumn(name = "vehicle_id"), inverseJoinColumns
-//            = @JoinColumn(name = "characteristic_id"))
-//    private Set<Characteristic> characteristics = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "vehicles_characteristics", joinColumns = @JoinColumn(name = "vehicle_id"), inverseJoinColumns
+            = @JoinColumn(name = "characteristic_id"))
+    private Set<Characteristic> characteristics = new HashSet<>();
 
 
     public Vehicle() {
@@ -56,8 +58,8 @@ public class Vehicle {
 
     public Vehicle(String registrationPlate, Year manufacturingYear, String brand, String model, int numberOfSeats,
                    Category category, String description, List<VehicleImage> images, String name, double dailyCost,
-                   int numberOfDoors, FuelType fuelType, GearShift gearShift)
-//                   Set<Characteristic> characteristics)
+                   int numberOfDoors, FuelType fuelType, GearShift gearShift,  Set<Characteristic> characteristics)
+
     {
         this.registrationPlate = registrationPlate;
         this.manufacturingYear = manufacturingYear;
@@ -72,7 +74,7 @@ public class Vehicle {
         this.numberOfDoors = numberOfDoors;
         this.fuelType = fuelType;
         this.gearShift = gearShift;
-//        this.characteristics = characteristics;
+        this.characteristics = characteristics;
     }
 
     @PrePersist
@@ -190,11 +192,11 @@ public class Vehicle {
     }
 
 
-//    public Set<Characteristic> getCharacteristics() {
-//        return characteristics;
-//    }
-//
-//    public void setCharacteristics(Set<Characteristic> characteristics) {
-//        this.characteristics = characteristics;
-//    }
+    public Set<Characteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(Set<Characteristic> characteristics) {
+        this.characteristics = characteristics;
+    }
 }
