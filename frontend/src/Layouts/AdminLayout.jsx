@@ -7,7 +7,7 @@ export const AdminLayout = () => {
   return (
     <div className="flex min-h-full">
       {isDesktop && <AdminPanel />}
-      <div className={`flex-1 p-6 ${isDesktop ? 'ml-64' : ''}`}>
+      <div className={`flex-1 p-6 h-full min-h-screen ${isDesktop ? 'ml-6' : ''}`}>
         <Outlet />
       </div>
     </div>

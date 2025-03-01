@@ -6,3 +6,8 @@
 body{
   margin: 0;
 }
+main{
+  min-height: 100dvh;
+  /* height: fit-content; */
+}
+

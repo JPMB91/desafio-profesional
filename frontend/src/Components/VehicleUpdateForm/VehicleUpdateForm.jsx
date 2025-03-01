@@ -250,7 +250,7 @@ export const VehicleUpdateForm = () => {
   }
 
   return (
-    <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="my-8 h-max max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
         Actualizar Vehiculo
       </div>
