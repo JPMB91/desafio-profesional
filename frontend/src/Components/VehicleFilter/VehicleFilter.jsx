@@ -4,6 +4,7 @@ import { X, Filter, ChevronDown, ChevronUp } from "lucide-react";
 import { VehicleCard } from "../VehicleCard/VehicleCard";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 export const VehicleFilter = () => {
   const [categories, setCategories] = useState([]);
@@ -13,6 +14,9 @@ export const VehicleFilter = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(true);
+  
+  //searchParams
+  const [searchParams, setSearchParams] = useSearchParams();
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,22 +56,39 @@ export const VehicleFilter = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const categoriesParam = searchParams.get("categories");
+    if (categoriesParam) {
+      setSelectedCategories(categoriesParam.split(",").map(Number));
+    }
+  }, []);
+
   const handleCategorySelect = (categoryId) => {
     const isSelected = selectedCategories.includes(categoryId);
+    let newSelectedCategories;
 
     if (isSelected) {
-      // toggle de seleccion de categorias
-      setSelectedCategories((prev) => prev.filter((id) => id !== categoryId));
+      newSelectedCategories = selectedCategories.filter(
+        (id) => id !== categoryId
+      );
     } else {
-      setSelectedCategories((prev) => [...prev, categoryId]);
+      newSelectedCategories = [...selectedCategories, categoryId];
     }
 
-    // reseta paginacion al cambiar filtros
+    setSelectedCategories(newSelectedCategories);
+
+    if (newSelectedCategories.length > 0) {
+      setSearchParams({ categories: newSelectedCategories.join(",") });
+    } else {
+      setSearchParams({});
+    }
+
     setCurrentPage(1);
   };
 
   const clearFilters = () => {
     setSelectedCategories([]);
+    setSearchParams({});
     setCurrentPage(1);
   };
 
@@ -95,7 +116,7 @@ export const VehicleFilter = () => {
     );
     setTotalPages(calculatedTotalPages || 1); // Ensure at least 1 page
 
-   // calcula el numero de los vehiculos que se muestran en cada pagina
+    // calcula el numero de los vehiculos que se muestran en cada pagina
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setPaginatedVehicles(filteredVehicles.slice(startIndex, endIndex));
@@ -126,11 +147,16 @@ export const VehicleFilter = () => {
   };
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <div className="p-4 text-center font-bold text-red-500">{error}</div>;
+  if (error)
+    return (
+      <div className="p-4 text-center font-bold text-red-500">{error}</div>
+    );
 
   return (
     <div className="flex flex-col w-full max-w-6xl mx-auto">
-      <h2 className="font-bold p-4 md:text-base lg:text-2xl">Buscar Vehículo por Categoría</h2>
+      <h2 className="font-bold p-4 md:text-base lg:text-2xl">
+        Buscar Vehículo por Categoría
+      </h2>
       <div className="flex flex-col md:flex-row gap-6 p-4">
         <div className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
@@ -245,17 +271,15 @@ export const VehicleFilter = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {paginatedVehicles.length > 0 ? (
-              paginatedVehicles.map((vehicle) => (
-                <VehicleCard key={vehicle.id} vehicle={vehicle} />
-              ))
-            ) : (
-              selectedCategories.length > 0 && (
-                <div className="col-span-full p-8 text-center text-gray-500">
-                No hay vehículos que coincidan con los filtros aplicados.
-              </div>
-              )
-            )}
+            {paginatedVehicles.length > 0
+              ? paginatedVehicles.map((vehicle) => (
+                  <VehicleCard key={vehicle.id} vehicle={vehicle} />
+                ))
+              : selectedCategories.length > 0 && (
+                  <div className="col-span-full p-8 text-center text-gray-500">
+                    No hay vehículos que coincidan con los filtros aplicados.
+                  </div>
+                )}
           </div>
         </div>
       </div>
