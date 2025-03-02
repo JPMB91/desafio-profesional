@@ -14,7 +14,8 @@
 
         private String categoryDescription;
 
-    //    private String imageUrl;
+        @OneToOne(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+        private CategoryImage categoryImage;
 
 
         public Category() {
@@ -24,10 +25,13 @@
             return id;
         }
 
+        public void setId(Long id) {
+            this.id = id;
+        }
+
         public Category(String name, String categoryDescription) {
             this.name = name;
             this.categoryDescription = categoryDescription;
-    //        this.imageUrl = imageUrl;
         }
 
         public String getName() {
@@ -46,10 +50,11 @@
             this.categoryDescription = categoryDescription;
         }
 
-        //    public String getImageUrl() {
-    //        return imageUrl;
-    //    }
-    //    public void setImageUrl(String imageUrl) {
-    //        this.imageUrl = imageUrl;
-    //    }
+        public CategoryImage getCategoryImage() {
+            return categoryImage;
+        }
+
+        public void setCategoryImage(CategoryImage categoryImage) {
+            this.categoryImage = categoryImage;
+        }
     }

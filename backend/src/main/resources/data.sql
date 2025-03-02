@@ -1,20 +1,20 @@
 
---  Categorias
-    INSERT INTO categories (name, category_description)
-    SELECT 'SUV', 'Sport Utility Vehicle'
-    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'SUV');
-
-    INSERT INTO categories (name, category_description)
-    SELECT 'Sedan', 'Standard passenger car with a three-box configuration'
-    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Sedan');
-
-    INSERT INTO categories (name, category_description)
-    SELECT 'Pick-up', 'Light-duty truck with an open cargo area'
-    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Pick-up');
-
-    INSERT INTO categories (name, category_description)
-    SELECT 'Van', 'Vehicle used for transporting people or goods'
-    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Van');
+----  Categorias
+--    INSERT INTO categories (name, category_description)
+--    SELECT 'SUV', 'Sport Utility Vehicle'
+--    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'SUV');
+--
+--    INSERT INTO categories (name, category_description)
+--    SELECT 'Sedan', 'Standard passenger car with a three-box configuration'
+--    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Sedan');
+--
+--    INSERT INTO categories (name, category_description)
+--    SELECT 'Pick-up', 'Light-duty truck with an open cargo area'
+--    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Pick-up');
+--
+--    INSERT INTO categories (name, category_description)
+--    SELECT 'Van', 'Vehicle used for transporting people or goods'
+--    WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Van');
 
 --  Roles
 
