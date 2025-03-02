@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm.js";
-import { useDesktop } from "../../context/Desktop.context.jsx";
+import { useDesktop } from "../../context/Desktop.Context.jsx";
 import DesktopOnly from "../DesktopOnly.jsx";
-import { useAuth } from "../../context/Auth.context.jsx";
+
 import { MultiSelectDropDown } from "../MultiSelectDropDown/MultiSelectDropDown.jsx";
 import ImageIcon from "../../assets/images-input.svg?react";
+import { useAuth } from "../../context/Auth.Context.jsx";
 
 export const VehicleAddForm = () => {
   const { isDesktop } = useDesktop();
@@ -97,7 +98,7 @@ export const VehicleAddForm = () => {
       setError(formValidated.newErrors);
       return;
     }
-    
+
     const form = new FormData();
     form.append("registrationPlate", formData.registrationPlate.trim());
     form.append("manufacturingYear", formData.manufacturingYear.trim());
@@ -112,10 +113,10 @@ export const VehicleAddForm = () => {
 
     form.append("categoryId", formData.categoryId);
 
-    selectedCharacteristics.forEach((c) =>{
-      form.append("characteristics", c)
-    })
-    
+    selectedCharacteristics.forEach((c) => {
+      form.append("characteristics", c);
+    });
+
     images.forEach((image) => {
       form.append("images", image);
     });
@@ -124,7 +125,7 @@ export const VehicleAddForm = () => {
       await axios.post("http://localhost:8080/api/vehicles", form, {
         headers: {
           Authorization: `Bearer ${token}`,
-        },  
+        },
       });
       console.log("Vehiculo guardado exitosamente");
 
@@ -301,10 +302,11 @@ export const VehicleAddForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
+         
             <option value="">Seleccione un tipo de transmisión</option>
-            <option value="AUTOMATIC">Automatic</option>
+            <option value="AUTOMATIC">Automático</option>
             <option value="MANUAL">Manual</option>
-            <option value="SEMIAUTOMATIC">Semi Automatic</option>
+            <option value="SEMI_AUTOMATIC">Semi-Automático</option>
             <option value="CVT">CVT</option>
           </select>
           {error.gearShift && (
@@ -385,12 +387,13 @@ export const VehicleAddForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
+         
             <option value="">Seleccione tipo de combustible</option>
-            <option value="GASOLINE">GASOLINA</option>
-            <option value="ELECTRIC">ELECTRICO</option>
-            <option value="DIESEL">DIESEL</option>
-            <option value="HYBRID">HIBRIDO</option>
-            <option value="BIODIESEL">BIODIESEL</option>
+            <option value="GASOLINE">Gasolina</option>
+            <option value="ELECTRIC">Eléctrico</option>
+            <option value="DIESEL">Diesel</option>
+            <option value="HYBRID">Híbrido</option>
+            <option value="BIODIESEL">Biodiesel</option>
           </select>
           {error.fuelType && (
             <p className="text-red-500 text-sm font-bold mt-1">

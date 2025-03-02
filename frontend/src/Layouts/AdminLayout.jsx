@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { AdminPanel } from "../Components/AdminPanel/AdminPanel";
-import { useDesktop } from "../context/Desktop.context";
+import { useDesktop } from "../context/Desktop.Context";
 
 export const AdminLayout = () => {
   const {isDesktop} = useDesktop()

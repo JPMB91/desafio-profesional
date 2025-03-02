@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDesktop } from "../../context/Desktop.context";
+import { useDesktop } from "../../context/Desktop.Context";
 import axios from "axios";
 import { validateForm } from "../../utils/validateForm";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageIcon from "../../assets/images-input.svg?react";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 import { MultiSelectDropDown } from "../MultiSelectDropDown/MultiSelectDropDown";
 import DesktopOnly from "../DesktopOnly";
 
@@ -254,7 +254,10 @@ export const VehicleUpdateForm = () => {
       <div className="text-2xl py-4 px-6 bg-[#060809] text-white text-center font-bold uppercase">
         Actualizar Vehiculo
       </div>
-      <form onSubmit={handleSubmit} className="py-4 px-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="py-4 px-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
         <div className="mb-4">
           <label htmlFor="brand" className="block text-gray-700 font-bold mb-2">
             Marca
@@ -286,10 +289,15 @@ export const VehicleUpdateForm = () => {
           {error.model && (
             <p className="text-red-500 text-sm font-bold mt-1">{error.model}</p>
           )}
-          {error.name && <p className="text-red-500 text-sm font-bold mt-1">{error.name}</p>}
+          {error.name && (
+            <p className="text-red-500 text-sm font-bold mt-1">{error.name}</p>
+          )}
         </div>
         <div>
-          <label htmlFor="manufacturingYear" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="manufacturingYear"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Año de fabricación
           </label>
           <input
@@ -303,11 +311,16 @@ export const VehicleUpdateForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.manufacturingYear && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.manufacturingYear}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.manufacturingYear}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="description" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="description"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Descripcion
           </label>
           <textarea
@@ -320,11 +333,16 @@ export const VehicleUpdateForm = () => {
             rows={3}
           ></textarea>
           {error.description && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.description}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.description}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="categoryId" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="categoryId"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Categoria
           </label>
           <select
@@ -342,11 +360,16 @@ export const VehicleUpdateForm = () => {
             ))}
           </select>
           {error.categoryId && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.categoryId}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.categoryId}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="gearShift" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="gearShift"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Tipo de transmisión
           </label>
           <select
@@ -357,18 +380,23 @@ export const VehicleUpdateForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
             <option value="">Seleccione un tipo de transmisión</option>
-            <option value="AUTOMATIC">Automatic</option>
+            <option value="AUTOMATIC">Automático</option>
             <option value="MANUAL">Manual</option>
-            <option value="SEMIAUTOMATIC">Semi Automatic</option>
+            <option value="SEMIAUTOMATIC">Semi-Automátic</option>
             <option value="CVT">CVT</option>
-          </select>
+            </select>
           {error.gearShift && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.gearShift}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.gearShift}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="numberOfSeats" className="block text-gray-700 font-bold mb-2">
-            Numero de asientos
+          <label
+            htmlFor="numberOfSeats"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Número de asientos
           </label>
           <select
             type="number"
@@ -387,11 +415,16 @@ export const VehicleUpdateForm = () => {
             <option value="6">6</option>
           </select>
           {error.numberOfSeats && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfSeats}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.numberOfSeats}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="numberOfDoors" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="numberOfDoors"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Número de puertas
           </label>
           <select
@@ -410,11 +443,16 @@ export const VehicleUpdateForm = () => {
             <option value="5">5</option>
           </select>
           {error.numberOfDoors && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.numberOfDoors}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.numberOfDoors}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="fuelType" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="fuelType"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Tipo de combustible
           </label>
           <select
@@ -425,19 +463,24 @@ export const VehicleUpdateForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
-            <option value="">Seleccione tipo de combustible del vehiculo</option>
-            <option value="GASOLINE">GASOLINA</option>
-            <option value="ELECTRIC">ELECTRICO</option>
-            <option value="DIESEL">DIESEL</option>
-            <option value="HYBRID">HIBRIDO</option>
-            <option value="BIODIESEL">BIODIESEL</option>
+            <option value="">Seleccione tipo de combustible</option>
+            <option value="GASOLINE">Gasolina</option>
+            <option value="ELECTRIC">Eléctrico</option>
+            <option value="DIESEL">Diesel</option>
+            <option value="HYBRID">Híbrido</option>
+            <option value="BIODIESEL">Biodiesel</option>
           </select>
           {error.fuelType && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.fuelType}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.fuelType}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="characteristics" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="characteristics"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Caracteristicas para el vehiculo
           </label>
           <MultiSelectDropDown
@@ -448,7 +491,10 @@ export const VehicleUpdateForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="registrationPlate" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="registrationPlate"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Matricula
           </label>
           <input
@@ -460,11 +506,16 @@ export const VehicleUpdateForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.registrationPlate && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.registrationPlate}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.registrationPlate}
+            </p>
           )}
         </div>
         <div>
-          <label htmlFor="dailyCost" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="dailyCost"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Costo diario
           </label>
           <input
@@ -476,11 +527,16 @@ export const VehicleUpdateForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.dailyCost && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.dailyCost}</p>
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.dailyCost}
+            </p>
           )}
         </div>
         <div className="mb-4 col-span-1 md:col-span-2">
-          <label htmlFor="images" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="images"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Imágenes
           </label>
           <input
@@ -518,7 +574,9 @@ export const VehicleUpdateForm = () => {
               </div>
             ))}
             {error.images && (
-              <p className="text-red-500 text-sm font-bold mt-1">{error.images}</p>
+              <p className="text-red-500 text-sm font-bold mt-1">
+                {error.images}
+              </p>
             )}
           </div>
         </div>

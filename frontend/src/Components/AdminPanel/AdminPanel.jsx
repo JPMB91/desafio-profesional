@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { FaCar, FaUsers, FaPlus, FaList, FaCog } from "react-icons/fa";
-import { useDesktop } from "../../context/Desktop.context";
+import { useDesktop } from "../../context/Desktop.Context";
+import { CarFront, LayoutList, Plus, UsersRound } from "lucide-react";
 
 export const AdminPanel = () => {
   const { isDesktop } = useDesktop();
@@ -15,24 +15,20 @@ export const AdminPanel = () => {
         </div>
 
         <nav className="flex-1 mt-4">
-          <NavItem
-            to="add-vehiculo"
-            icon={<FaPlus />}
-            label="Agregar Vehículo"
-          />
+          <NavItem to="add-vehiculo" icon={<Plus />} label="Agregar Vehículo" />
           <NavItem
             to="lista-vehiculos"
-            icon={<FaCar />}
+            icon={<CarFront />}
             label="Lista Vehículos"
           />
           <NavItem
             to="listar-usuarios"
-            icon={<FaUsers />}
+            icon={<UsersRound />}
             label="Administrar Usuarios"
           />
           <NavItem
             to="listar-caracteristicas"
-            icon={<FaList />}
+            icon={<LayoutList />}
             label="Características"
           />
         </nav>

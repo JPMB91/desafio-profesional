@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ImageIcon from "../../assets/images-input.svg?react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 import axios from "axios";
 
 export const CharacteristicUpdateForm = () => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 
 export const Header = () => {

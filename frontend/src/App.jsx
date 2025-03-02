@@ -1,6 +1,6 @@
 import "./App.css";
 import { AuthProvider } from "./context/Auth.Context";
-import { DesktopProvider } from "./context/Desktop.context";
+import { DesktopProvider } from "./context/Desktop.Context";
 import { Layout } from "./Layouts/Layout";
 
 function App() {

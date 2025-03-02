@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { useDesktop } from "../../context/Desktop.context";
+import { useDesktop } from "../../context/Desktop.Context";
 import { LoadingSpinner } from "../LoadingSpinner";
 import DesktopOnly from "../DesktopOnly";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 export const UserTable = () => {
   const { isDesktop } = useDesktop();

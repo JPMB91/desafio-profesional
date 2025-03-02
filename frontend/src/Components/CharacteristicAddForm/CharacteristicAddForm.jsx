@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import ImageIcon from "../../assets/images-input.svg?react";
-import { useAuth } from "../../context/Auth.context";
-import { useDesktop } from "../../context/Desktop.context";
+import { useAuth } from "../../context/Auth.Context";
+import { useDesktop } from "../../context/Desktop.Context";
 import DesktopOnly from "../DesktopOnly";
 
 

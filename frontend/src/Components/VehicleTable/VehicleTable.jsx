@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useDesktop } from "../../context/Desktop.context";
+import { useDesktop } from "../../context/Desktop.Context";
 import DesktopOnly from "../DesktopOnly";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 
 export const VehicleTable = () => {
