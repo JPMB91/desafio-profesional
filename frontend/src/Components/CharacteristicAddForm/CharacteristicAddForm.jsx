@@ -6,14 +6,12 @@ import { useAuth } from "../../context/Auth.Context";
 import { useDesktop } from "../../context/Desktop.Context";
 import DesktopOnly from "../DesktopOnly";
 
-
-
 export const CharacteristicAddForm = () => {
   const { isDesktop } = useDesktop();
   const [name, setName] = useState("");
-  const [preview, setPreview] = useState([]);
+  const [preview, setPreview] = useState(null);
   const [error, setError] = useState({
-    name: "",
+    descriptionName: "",
     general: "",
   });
   const [characteristicImage, setCharacteristicImage] = useState(null);
@@ -39,10 +37,9 @@ export const CharacteristicAddForm = () => {
         },
       });
 
-      setName(""), setPreview([]);
-      setCharacteristicImage([]);
-      setError({ name: "", general: "" });
-
+      setName(""), setPreview(null);
+      setCharacteristicImage(null);
+      setError({ descriptionName: "", general: "" });
     } catch (error) {
       if (error.response && error.response.data) {
         const errMsg = error.response.data;
@@ -64,8 +61,8 @@ export const CharacteristicAddForm = () => {
     }
   };
 
-  if(!isDesktop){
-    return ( <DesktopOnly/>)
+  if (!isDesktop) {
+    return <DesktopOnly />;
   }
   return (
     <div className="my-8 max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
@@ -95,32 +92,37 @@ export const CharacteristicAddForm = () => {
           )}
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="characteristicImage"
-            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-500 shadow-inner cursor-pointer flex items-center justify-center"
-          >
-            <ImageIcon width="50" height="50" />
-
-            <span>Agregar imágenes</span>
-          </label>
+          <p className="block text-gray-700 font-bold mb-2">Imágen</p>
           <input
             type="file"
             id="characteristicImage"
             accept="image/*"
             onChange={handleImageChange}
             required
-            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+            name="characteristicImage"
+            className="hidden"
           />
-          {preview && (
+
+          <label
+            htmlFor="characteristicImage"
+            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-500 shadow-inner cursor-pointer flex items-center justify-center"
+          >
+            <ImageIcon width="50" height="50" />
+            <span className="ml-2">Agregar imágenes</span>
+          </label>
+
+           {preview && (
             <div className="mt-2">
               <img
                 src={preview}
-                alt={"Preview"}
+                alt="Vista previa"
                 className="w-20 h-20 object-cover rounded"
               />
             </div>
           )}
         </div>
+
+
         <div className="flex items-center justify-center m-4">
           <button
             type="submit"

@@ -8,7 +8,7 @@ export const CharacteristicUpdateForm = () => {
   const { id } = useParams();
   const { token } = useAuth();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [name, setName] = useState({
     name: "",
   });
 
@@ -32,7 +32,7 @@ export const CharacteristicUpdateForm = () => {
           }
         );
 
-        setFormData({
+        setName({
           name: response.data.name || "",
         });
 
@@ -58,7 +58,7 @@ export const CharacteristicUpdateForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setName((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImageChange = (e) => {
@@ -81,7 +81,7 @@ export const CharacteristicUpdateForm = () => {
     e.preventDefault();
 
     const form = new FormData();
-    form.append("name", formData.name.trim());
+    form.append("name", name.name.trim());
 
     if (newImage) {
       form.append("characteristicImage", newImage);
@@ -134,7 +134,7 @@ export const CharacteristicUpdateForm = () => {
             type="text"
             name="name"
             id="name"
-            value={formData.name}
+            value={name.name}
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />

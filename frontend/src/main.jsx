@@ -19,6 +19,7 @@ import { VehicleUpdateForm } from "./Components/VehicleUpdateForm/VehicleUpdateF
 import { CharacteristicAddForm } from "./Components/CharacteristicAddForm/CharacteristicAddForm.jsx";
 import { VehicleAddForm } from "./Components/VehicleAddForm/VehicleAddForm.jsx";
 import { VehicleDetail } from "./Components/VehicleDetail/VehicleDetail.jsx";
+import { CategoryAddForm } from "./Components/CategoryAddForm/CategoryAddForm.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -51,6 +52,11 @@ createRoot(document.getElementById("root")).render(
               path="actualizar-caracteristica/:id"
               element={<CharacteristicUpdateForm />}
             />
+
+            <Route path="agregar-categoria"
+            element={<CategoryAddForm/>}/>
+
+            //! agregar categoria ruta
           </Route>
           <Route path="/vehicle/:id" element={<VehicleDetail   />} />
           <Route path="/register" element={<RegisterForm />} />
