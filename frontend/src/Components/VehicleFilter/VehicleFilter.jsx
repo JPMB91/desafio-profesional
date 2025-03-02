@@ -126,10 +126,11 @@ export const VehicleFilter = () => {
   };
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
+  if (error) return <div className="p-4 text-center font-bold text-red-500">{error}</div>;
 
   return (
     <div className="flex flex-col w-full max-w-6xl mx-auto">
+      <h2 className="font-bold p-4 md:text-base lg:text-2xl">Buscar Vehículo por Categoría</h2>
       <div className="flex flex-col md:flex-row gap-6 p-4">
         <div className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
@@ -249,9 +250,11 @@ export const VehicleFilter = () => {
                 <VehicleCard key={vehicle.id} vehicle={vehicle} />
               ))
             ) : (
-              <div className="col-span-full p-8 text-center text-gray-500">
+              selectedCategories.length > 0 && (
+                <div className="col-span-full p-8 text-center text-gray-500">
                 No hay vehículos que coincidan con los filtros aplicados.
               </div>
+              )
             )}
           </div>
         </div>

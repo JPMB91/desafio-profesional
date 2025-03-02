@@ -11,15 +11,18 @@ export const Pagination = ({
 }) => {
   return (
     <div className="flex place-items-center justify-center">
-      <div>
+       <div>
         <button
           onClick={onPageReset}
           className={`min-w-9 rounded-xl py-2 px-3.5 text-center text-sm transition-all shadow-md ml-2 ${
-            currentPage < totalPages
+            currentPage === 1
+              ? "disabled:bg-slate-200 disabled:hover:bg-slate-200 disabled:text-slate-600"
+              : currentPage < totalPages
               ? "bg-slate-200 text-white"
               : "border border-slate-800 text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800"
           }`}
           aria-label="Ir a la primera página"
+          disabled={currentPage === 1}
         >
           <ChevronsLeft size={18} />
         </button>
