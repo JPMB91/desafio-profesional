@@ -1,0 +1,61 @@
+import { Link } from "react-router-dom";
+
+export const VehicleCard = ({ vehicle }) => {
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+  };
+
+  return (
+    <div className="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
+      {vehicle.images && vehicle.images.length > 0 ? (
+        <img
+          src={`http://localhost:8080/api/vehicles/uploads/${vehicle.images[0].filename}`}
+          alt={vehicle.name}
+          className="w-full h-48 object-cover"
+        />
+      ) : (
+        <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+          <span className="text-gray-500">Sin imagen</span>
+        </div>
+      )}
+      <div className="p-4">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="font-semibold text-lg">{vehicle.name}</h3>
+            <p className="text-sm text-gray-500">
+              {vehicle.manufacturingYear} • {vehicle.numberOfDoors} puertas •{" "}
+              {vehicle.numberOfSeats} asientos
+            </p>
+          </div>
+          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+            {vehicle.category?.name}
+          </span>
+        </div>
+
+        <div className="mt-3 text-lg font-bold text-green-700">
+          {formatCurrency(vehicle.dailyCost)}/día
+        </div>
+
+        <div className="mt-2 flex flex-wrap gap-2">
+          <span className="bg-gray-100 text-xs px-2 py-1 rounded">
+            {vehicle.fuelType}
+          </span>
+          <span className="bg-gray-100 text-xs px-2 py-1 rounded">
+            {vehicle.gearShift}
+          </span>
+        </div>
+
+        <div className="mt-4">
+          <Link to={`/vehicle/${vehicle.id}`}>
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">
+              Ver detalles
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
