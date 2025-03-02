@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useDesktop } from "../../context/Desktop.Context";
-import { CarFront, LayoutList, Plus, UsersRound } from "lucide-react";
+import {
+  CarFront,
+  ClipboardList,
+  FilePlus,
+  FilePlus2,
+  LayoutList,
+  Plus,
+  UsersRound,
+} from "lucide-react";
 
 export const AdminPanel = () => {
   const { isDesktop } = useDesktop();
@@ -9,7 +17,7 @@ export const AdminPanel = () => {
     return null;
   } else
     return (
-      <div className="left-0 w-64 bg-gray-900 text-white flex flex-col h-sc border border-blue-900 ">
+      <div className="left-0 w-fit bg-gray-900 text-white flex flex-col h-sc border border-blue-900 ">
         <div className="p-4 text-2xl font-bold border-b border-gray-700">
           Admin Panel
         </div>
@@ -28,12 +36,16 @@ export const AdminPanel = () => {
           />
           <NavItem
             to="listar-caracteristicas"
-            icon={<LayoutList />}
-            label="Características"
+            icon={<ClipboardList />}
+            label="Administrar Características"
+          />
+          <NavItem
+            to="agregar-categoria"
+            icon={<FilePlus />}
+            label="Agregar Categoría"
           />
         </nav>
       </div>
-      // </main>
     );
 };
 
