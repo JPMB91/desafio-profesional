@@ -169,5 +169,10 @@ public class VehicleController {
         }
     }
 
+    @GetMapping("/category/{name}")
+    public List<Vehicle> getByCategory(@PathVariable("name") String name) {
+        return vehicleService.getVehiclesByCategoryName(name);
+    }
+
 }
 

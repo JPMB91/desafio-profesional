@@ -216,4 +216,8 @@ public class VehicleService {
 
         return vehicleRepository.save(vehicle);
     }
+
+    public List<Vehicle> getVehiclesByCategoryName(String name) {
+        return vehicleRepository.findByCategoryName(name);
+    }
 }

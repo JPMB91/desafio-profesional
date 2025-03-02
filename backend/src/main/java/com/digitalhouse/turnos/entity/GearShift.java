@@ -1,5 +1,10 @@
 package com.digitalhouse.turnos.entity;
 
 public enum GearShift {
-    AUTOMATIC, MANUAL, SEMIAUTOMATIC, CVT
+    AUTOMATIC, MANUAL, SEMI_AUTOMATIC, CVT
 }
+
+
+
+
+
