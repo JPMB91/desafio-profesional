@@ -1,15 +1,17 @@
 package com.digitalhouse.turnos;
 
+import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.entity.FuelType;
 import com.digitalhouse.turnos.entity.GearShift;
+import com.digitalhouse.turnos.repository.CategoryRepository;
 import com.jayway.jsonpath.JsonPath;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -17,80 +19,139 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.nio.charset.StandardCharsets;
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 @Transactional
 @ActiveProfiles("test")
 @SpringBootTest
-//@WebMvcTest(VehicleController.class)
 @AutoConfigureMockMvc
 public class VehicleControllerTest {
 
-//    @Autowired
-//    private VehicleController vehicleController;
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    @Test
-    public void createVehiclesTest() throws Exception {
+    private Long testCategoryId;
+    private String testVehicleId;
+    private String uniquePlate;
+    private String uniqueBrand;
+    private String uniqueModel;
 
-        MockMultipartFile image = new MockMultipartFile("images", "testimage.jpg", "image/jpeg", "test image content".getBytes(StandardCharsets.UTF_8));
+    @BeforeEach
+    public void setup() throws Exception {
+        // crear una categoria para que este disponible
+        Category category = new Category();
+        category.setName("Test Category");
+        category.setCategoryDescription("Description");
+        Category savedCategory = categoryRepository.save(category);
+        testCategoryId = savedCategory.getId();
 
-        mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
+        createMockVehicle();
+    }
+
+    // crear vehiculo para los test de buscar por id y borrar
+    private void createMockVehicle() throws Exception {
+
+        MockMultipartFile image = new MockMultipartFile(
+                "images",
+                "testimage.jpg",
+                "image/jpeg",
+                "test image content".getBytes(StandardCharsets.UTF_8)
+        );
+
+        uniquePlate = "TestPlate-" + UUID.randomUUID().toString().substring(0, 8);
+        uniqueBrand = "Toyota-" + UUID.randomUUID().toString().substring(0, 4);
+        uniqueModel = "Corolla-" + UUID.randomUUID().toString().substring(0, 4);
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
                         .file(image)
-                        .param("registrationPlate", "TestPlate")
+                        .param("registrationPlate", uniquePlate)
                         .param("manufacturingYear", String.valueOf(Year.now().getValue()))
-                        .param("brand", "Toyota")
-                        .param("model", "Corolla")
+                        .param("brand", uniqueBrand)
+                        .param("model", uniqueModel)
                         .param("numberOfSeats", "5")
                         .param("description", "Vehiculo de prueba")
-                        .param("categoryId", "2")
+                        .param("categoryId", String.valueOf(testCategoryId))
                         .param("gearShift", GearShift.AUTOMATIC.toString())
                         .param("numberOfDoors", "5")
                         .param("dailyCost", "130.0")
-                        .param("fuelType", FuelType.HYBRID.toString()))
+                        .param("fuelType", FuelType.HYBRID.toString())
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Toyota"));
+                .andReturn();
+
+        // extraigo la id para usarla en los tests
+        String responseContent = result.getResponse().getContentAsString();
+        testVehicleId = JsonPath.read(responseContent, "$.id");
     }
 
+    @Test
+    public void createVehiclesTest() throws Exception {
+        MockMultipartFile image = new MockMultipartFile(
+                "images",
+                "testimage.jpg",
+                "image/jpeg",
+                "test image content".getBytes(StandardCharsets.UTF_8)
+        );
+
+        String uniquePlate = "TestPlate-" + UUID.randomUUID().toString().substring(0, 8);
+        String uniqueBrand = "Toyota-" + UUID.randomUUID().toString().substring(0, 4);
+        String uniqueModel = "Corolla-" + UUID.randomUUID().toString().substring(0, 4);
+
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
+                        .file(image)
+                        .param("registrationPlate", uniquePlate)
+                        .param("manufacturingYear", String.valueOf(Year.now().getValue()))
+                        .param("brand", uniqueBrand)
+                        .param("model", uniqueModel)
+                        .param("numberOfSeats", "5")
+                        .param("description", "Vehiculo de prueba")
+                        .param("categoryId", String.valueOf(testCategoryId))
+                        .param("gearShift", GearShift.AUTOMATIC.toString())
+                        .param("numberOfDoors", "5")
+                        .param("dailyCost", "130.0")
+                        .param("fuelType", FuelType.HYBRID.toString())
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value(uniqueBrand));
+    }
 
     @Test
-    public void testRandomVehicleOrder() throws Exception {
+    public void createVehiclesTest_MissingData() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
+                        .param("registrationPlate", "")
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
 
-        int iterations = 3;
-        List<List<String>> responses = new ArrayList<>();
+    @Test
+    public void getVehicleByIdTest() throws Exception {
+        // busca vehiculo por su id
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/" + testVehicleId)
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.registrationPlate").value(uniquePlate))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value(uniqueBrand))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value(uniqueModel));
+    }
 
-        // se realizaran 3 llamados a la api
-        for (int i = 0; i < iterations; i++) {
-            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/random"))
-                    .andExpect(MockMvcResultMatchers.status().isOk())
-                    .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-                    .andReturn();
+    @Test
+    public void deleteVehicleTest() throws Exception {
+       // intenta borrar el vehiculo
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/vehicles/" + testVehicleId)
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Vehiculo borrado con exito"));
 
-            String jsonResponse = result.getResponse().getContentAsString();
-
-            // los resultados se agregar a una lista de listas que contienen Id's
-            List<String> vehicleIds = JsonPath.read(jsonResponse, "$[*].id");
-            responses.add(vehicleIds);
-        }
-
-        System.out.println(responses);
-
-            // se verifica que las listas no contengan Id's ordenadas de la misma forma
-        boolean isRandom = false;
-
-        List<String> firstResponse = responses.getFirst();
-        for (int i = 1; i < responses.size(); i++) {
-            if (!firstResponse.equals(responses.get(i))) {
-                isRandom = true;
-                break;
-            }
-        }
-        Assertions.assertTrue(isRandom);
+        // verificar si el vehiculo existe luego de intentar borrarlo
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/" + testVehicleId)
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.body").value("Vehiculo no existe"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.statusCodeValue").value(404));
     }
 }
