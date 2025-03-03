@@ -4,18 +4,16 @@ import { useState } from "react";
 import { Navigate, NavigationType, replace, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
 
-export const LoginForm = () => {
+export const UserLoginForm = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    // password: "",
   });
 
   const [error, setError] = useState({
     email: "",
     general: "",
-    // password: "",
   });
 
   const handleInputChange = (e) => {
@@ -36,7 +34,6 @@ export const LoginForm = () => {
     setError({
       email: "",
       general: "",
-      // password: "",
     });
 
     try {

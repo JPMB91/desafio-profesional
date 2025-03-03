@@ -4,8 +4,6 @@ import {
   CarFront,
   ClipboardList,
   FilePlus,
-  FilePlus2,
-  LayoutList,
   Plus,
   UsersRound,
 } from "lucide-react";

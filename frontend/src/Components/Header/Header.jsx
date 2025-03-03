@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
 import { useAuth } from "../../context/Auth.Context";
-import { LogoutButton } from "../LogoutButton/LogoutButton";
+
 import { jwtDecode } from "jwt-decode";
 import { useDesktop } from "../../context/Desktop.Context";
+import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
+
 
 export const Header = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -51,7 +53,7 @@ export const Header = () => {
           </div>
           <div className="flex flex-col items-center">
             <UserAvatar />
-            <LogoutButton handleLogout={handleLogout} />
+            <UserLogoutButton handleLogout={handleLogout} />
           </div>
         </div>
       )}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { validateRegisterForm } from "../../utils/validateRegisterForm";
 import axios from "axios";
 
-export const RegisterForm = () => {
+export const UserRegisterForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,7 +17,7 @@ export const RegisterForm = () => {
     email: "",
     password: "",
     repeatPassword: "",
-    userExists: "", // !continuar aqui
+    userExists: "", 
   });
 
   const handleInputChange = (e) => {
@@ -114,7 +114,7 @@ export const RegisterForm = () => {
           </h2>
         </div>
         <div className="p-8 space-y-6">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit}noValidate>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label

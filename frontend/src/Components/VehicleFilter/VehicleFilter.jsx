@@ -30,10 +30,10 @@ export const VehicleFilter = () => {
       try {
         setLoading(true);
 
-        const vehiclesResponse = await axios.get(
+        const response = await axios.get(
           "http://localhost:8080/api/vehicles"
         );
-        const vehiclesData = await vehiclesResponse.json();
+        const vehiclesData = response.data; 
         setVehicles(vehiclesData);
         setFilteredVehicles(vehiclesData);
 
@@ -53,7 +53,6 @@ export const VehicleFilter = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -271,7 +270,7 @@ export const VehicleFilter = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div role="grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {paginatedVehicles.length > 0
               ? paginatedVehicles.map((vehicle) => (
                   <VehicleCard key={vehicle.id} vehicle={vehicle} />

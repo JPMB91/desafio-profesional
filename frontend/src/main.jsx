@@ -6,8 +6,6 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Home } from "./Pages/Home.jsx";
 import { VehicleTable } from "./Components/VehicleTable/VehicleTable.jsx";
 
-import { RegisterForm } from "./Components/RegisterForm/RegisterForm.jsx";
-import { LoginForm } from "./Components/LoginForm/LoginForm.jsx";
 import { AdminFilter } from "./Components/AdminFilter/AdminFilter.jsx";
 import { Unauthorized } from "./Components/AdminFilter/Unauthorized.jsx";
 import { UserTable } from "./Components/UserTable/UserTable.jsx";
@@ -20,6 +18,8 @@ import { CharacteristicAddForm } from "./Components/CharacteristicAddForm/Charac
 import { VehicleAddForm } from "./Components/VehicleAddForm/VehicleAddForm.jsx";
 import { VehicleDetail } from "./Components/VehicleDetail/VehicleDetail.jsx";
 import { CategoryAddForm } from "./Components/CategoryAddForm/CategoryAddForm.jsx";
+import { UserRegisterForm } from "./Components/UserRegisterForm/UserRegisterForm.jsx";
+import { UserLoginForm } from "./Components/UserLoginForm/UserLoginForm.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -59,8 +59,8 @@ createRoot(document.getElementById("root")).render(
             //! agregar categoria ruta
           </Route>
           <Route path="/vehicle/:id" element={<VehicleDetail   />} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<UserRegisterForm />} />
+          <Route path="/login" element={<UserLoginForm />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Route>
       </Routes>
