@@ -5,6 +5,7 @@ import { VehicleCard } from "../VehicleCard/VehicleCard";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 export const VehicleFilter = () => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,7 @@ export const VehicleFilter = () => {
       try {
         setLoading(true);
 
-        const vehiclesResponse = await fetch(
+        const vehiclesResponse = await axios.get(
           "http://localhost:8080/api/vehicles"
         );
         const vehiclesData = await vehiclesResponse.json();

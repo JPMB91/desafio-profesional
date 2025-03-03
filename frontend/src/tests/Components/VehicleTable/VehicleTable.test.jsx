@@ -9,12 +9,14 @@ import { BrowserRouter, data } from "react-router-dom";
 import { test, expect, vi } from "vitest";
 import axios from "axios";
 import { VehicleTable } from "../../../Components/VehicleTable/VehicleTable";
-import { DesktopProvider } from "../../../context/Desktop.context";
+import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
+import { AuthProvider, useAuth } from "../../../context/Auth.Context";
 
 const fireMock = vi.fn(() => Promise.resolve({ isConfirmed: true }));
 
 vi.mock("axios");
 
+//mock sweet alert
 vi.mock("sweetalert2", () => {
   return {
     __esModule: true,
@@ -27,6 +29,42 @@ vi.mock("sweetalert2", () => {
   };
 });
 
+// Mock de AuthContext
+vi.mock("../../../context/Auth.Context", async () => {
+  const actual = await vi.importActual("../../../context/Auth.Context");
+  return {
+    ...actual,
+    useAuth: vi.fn(),
+  };
+});
+
+beforeEach(() => {
+  useAuth.mockReturnValue({
+    user: { roles: ["ROLE_ADMIN"] },
+    isAuthenticated: true,
+    token: mockToken,
+    loading: false
+  });
+});
+
+
+//mock DesktopContext
+vi.mock("../../../context/Desktop.Context", () => ({
+  DesktopProvider: ({ children }) => children,
+  useDesktop: vi.fn().mockReturnValue({ isDesktop: true })
+}));
+
+beforeEach(() =>{
+  useDesktop.mockReturnValue({
+    isDesktop: true
+  })
+})
+
+
+// reseta los mocks luego de cada test
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 const vehiculos = [
   {
     id: 1,
@@ -41,14 +79,17 @@ const vehiculos = [
     images: [{ filename: "image2.jpg" }],
   },
 ];
+const mockToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sIm5hbWUiOiJhZG1pbiBhZG1pbiIsInN1YiI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTc0MDk2NjgxNywiZXhwIjoxNzQxMDAyODE3fQ.VZLsBi4H5Dln2uvZ_nItH2MGb6Q8JFiDjDhYwOUJ628";
 
 test("Deberia mostrar vehiculos en una lista", async () => {
   axios.get.mockResolvedValueOnce({ data: vehiculos });
   render(
     <BrowserRouter>
-      <DesktopProvider>
-        <VehicleTable />
-      </DesktopProvider>
+      <AuthProvider>
+        <DesktopProvider>
+          <VehicleTable />
+        </DesktopProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 
@@ -69,7 +110,7 @@ test("Deberia mostrar vehiculos en una lista", async () => {
   });
 });
 
-test("Si el contenido se accede desde mobil debería mostrar un mensaje 'contenido solo disponible en dispositivos de escritorio'", async () => {
+test("Si el contenido se accede desde mobile debería mostrar un mensaje 'contenido solo disponible en dispositivos de escritorio'", async () => {
   axios.get.mockResolvedValueOnce({ data: vehiculos });
 
   render(
@@ -77,6 +118,10 @@ test("Si el contenido se accede desde mobil debería mostrar un mensaje 'conteni
       <VehicleTable />
     </BrowserRouter>
   );
+
+  useDesktop.mockReturnValue({
+    isDesktop: false
+  })
 
   await waitFor(() => {
     expect(
@@ -95,11 +140,22 @@ test("El botón 'Eliminar' deberia permitir la eliminación de un registro", asy
 
   render(
     <BrowserRouter>
-      <DesktopProvider>
-        <VehicleTable />
-      </DesktopProvider>
+      <AuthProvider>
+        <DesktopProvider>
+          <VehicleTable />
+        </DesktopProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
+
+ 
+
+  useAuth.mockReturnValue({
+    user: { roles: ["ROLE_ADMIN"] },
+    isAuthenticated: true,
+    token: mockToken,
+    loading: false
+  });
 
   // verifico que el vehiculo existe en la tabla
   await waitFor(() => {
@@ -118,7 +174,11 @@ test("El botón 'Eliminar' deberia permitir la eliminación de un registro", asy
   // se verifica que se llamo al endpoint y el vehiculo ya no existe en la tabla
   await waitFor(() => {
     expect(axios.delete).toHaveBeenCalledWith(
-      "http://localhost:8080/api/vehicles/1"
+      "http://localhost:8080/api/vehicles/1", {
+        headers: {
+          Authorization: `Bearer ${mockToken}`,
+        }
+      }
     );
     expect(screen.queryByText(/Toyota Corolla/i)).not.toBeInTheDocument();
   });
