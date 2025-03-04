@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Filter, ChevronDown, ChevronUp } from "lucide-react";
 
 import { VehicleCard } from "../VehicleCard/VehicleCard";
@@ -15,12 +15,13 @@ export const VehicleFilter = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(true);
-  
+
+  const vehicleFilterRef = useRef(null);
   //searchParams
   const [searchParams, setSearchParams] = useSearchParams();
 
   //Pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageShown, setCurrentPageShown] = useState(1);
   const itemsPerPage = 6;
   const [totalPages, setTotalPages] = useState(1);
   const [paginatedVehicles, setPaginatedVehicles] = useState([]);
@@ -29,11 +30,8 @@ export const VehicleFilter = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-
-        const response = await axios.get(
-          "http://localhost:8080/api/vehicles"
-        );
-        const vehiclesData = response.data; 
+        const response = await axios.get("http://localhost:8080/api/vehicles");
+        const vehiclesData = response.data;
         setVehicles(vehiclesData);
         setFilteredVehicles(vehiclesData);
 
@@ -83,13 +81,13 @@ export const VehicleFilter = () => {
       setSearchParams({});
     }
 
-    setCurrentPage(1);
+    setCurrentPageShown(1);
   };
 
   const clearFilters = () => {
     setSelectedCategories([]);
     setSearchParams({});
-    setCurrentPage(1);
+    setCurrentPageShown(1);
   };
 
   useEffect(() => {
@@ -106,7 +104,7 @@ export const VehicleFilter = () => {
     }
 
     //cuando cambia el filtro se resetea la paginacion
-    setCurrentPage(1);
+    setCurrentPageShown(1);
   }, [selectedCategories, vehicles]);
 
   // pagination
@@ -114,36 +112,48 @@ export const VehicleFilter = () => {
     const calculatedTotalPages = Math.ceil(
       filteredVehicles.length / itemsPerPage
     );
-    setTotalPages(calculatedTotalPages || 1); // Ensure at least 1 page
+    setTotalPages(calculatedTotalPages || 1);
 
     // calcula el numero de los vehiculos que se muestran en cada pagina
-    const startIndex = (currentPage - 1) * itemsPerPage;
+    const startIndex = (currentPageShown - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setPaginatedVehicles(filteredVehicles.slice(startIndex, endIndex));
-  }, [filteredVehicles, currentPage, itemsPerPage]);
+
+    
+  }, [filteredVehicles, currentPageShown, itemsPerPage]);
 
   const toggleFilterSection = () => {
     setIsFilterOpen(!isFilterOpen);
   };
 
+
+  useEffect(() =>{
+    if (vehicleFilterRef.current) {
+      vehicleFilterRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  },[currentPageShown])
+  
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    setCurrentPageShown(page);
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
+    if (currentPageShown > 1) {
+      setCurrentPageShown((prev) => prev - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
+    if (currentPageShown < totalPages) {
+      setCurrentPageShown((prev) => prev + 1);
     }
   };
 
   const handlePageReset = () => {
-    setCurrentPage(1);
+    setCurrentPageShown(1);
   };
 
   if (loading) return <LoadingSpinner />;
@@ -153,7 +163,10 @@ export const VehicleFilter = () => {
     );
 
   return (
-    <div className="flex flex-col w-full max-w-6xl mx-auto">
+    <div
+      className="flex flex-col w-full max-w-6xl mx-auto"
+      ref={vehicleFilterRef}
+    >
       <h2 className="font-bold p-4 md:text-base lg:text-2xl">
         Buscar Vehículo por Categoría
       </h2>
@@ -258,19 +271,23 @@ export const VehicleFilter = () => {
         </div>
 
         <div className="flex-1">
-          <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200">
-            <div className="flex justify-between items-center">
-              <h2 className="font-semibold text-lg">Vehículos</h2>
-              <div className="text-sm text-gray-600">
+          <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200 ">
+            
+            <div className="flex flex-col sm:flex-row justify-between items-center sm:justify-evenly">
+              <h2 className="font-bold lg:text-lg md:text-base m-0.5">Resultados</h2>
+              <div className="text-sm text-gray-600 mt-2 sm:mt-0">
                 Mostrando{" "}
                 <span className="font-medium">{filteredVehicles.length}</span>{" "}
                 de <span className="font-medium">{vehicles.length}</span>{" "}
-                vehículos
+                vehículo(s) en existencia
               </div>
             </div>
           </div>
 
-          <div role="grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            role="grid"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
             {paginatedVehicles.length > 0
               ? paginatedVehicles.map((vehicle) => (
                   <VehicleCard key={vehicle.id} vehicle={vehicle} />
@@ -287,7 +304,7 @@ export const VehicleFilter = () => {
       {filteredVehicles.length > 0 && (
         <div className="w-full mt-8">
           <Pagination
-            currentPage={currentPage}
+            currentPage={currentPageShown}
             totalPages={totalPages}
             onPageChange={handlePageChange}
             onPageReset={handlePageReset}

@@ -22,7 +22,6 @@ export const UserTable = () => {
         });
 
         setUserData(response.data);
-        console.log("Fetched userData: ", response.data);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching users:", error);

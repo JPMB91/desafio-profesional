@@ -21,7 +21,6 @@ export const VehicleTable = () => {
         const response = await axios.get("http://localhost:8080/api/vehicles");
         setVehiclesData(response.data);
         setIsloading(false);
-        console.log(vehiclesData);
       } catch (error) {
         setIsloading(true);
         console.log(error);

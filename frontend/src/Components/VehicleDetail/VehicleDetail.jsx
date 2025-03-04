@@ -31,6 +31,10 @@ export const VehicleDetail = () => {
     getDetail();
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (error) return <p style={{ color: "red" }}>{error}</p>;
   if (!vehicleData) return <p>Cargando detalles del vehículo...</p>;
 

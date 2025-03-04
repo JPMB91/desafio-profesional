@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes, ScrollRestoration } from "react-router-dom";
 import { Home } from "./Pages/Home.jsx";
 import { VehicleTable } from "./Components/VehicleTable/VehicleTable.jsx";
 
@@ -56,7 +56,6 @@ createRoot(document.getElementById("root")).render(
             <Route path="agregar-categoria"
             element={<CategoryAddForm/>}/>
 
-            //! agregar categoria ruta
           </Route>
           <Route path="/vehicle/:id" element={<VehicleDetail   />} />
           <Route path="/register" element={<UserRegisterForm />} />

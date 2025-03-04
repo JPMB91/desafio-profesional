@@ -145,6 +145,7 @@ export const VehicleAddForm = () => {
         images: "",
       });
       setPreviews([]);
+      setSelectedCharacteristics([])
     } catch (err) {
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
@@ -317,6 +318,34 @@ export const VehicleAddForm = () => {
         </div>
         <div>
           <label
+            htmlFor="numberOfDoors"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Número de puertas
+          </label>
+          <select
+            type="number"
+            name="numberOfDoors"
+            id="numberOfDoors"
+            value={formData.numberOfDoors}
+            onChange={handleInputChange}
+            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+          >
+            <option value="">Seleccione el numero de puertas</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          {error.numberOfDoors && (
+            <p className="text-red-500 text-sm font-bold mt-1">
+              {error.numberOfDoors}
+            </p>
+          )}
+        </div>
+        <div>
+          <label
             htmlFor="numberOfSeats"
             className="block text-gray-700 font-bold mb-2"
           >
@@ -344,34 +373,7 @@ export const VehicleAddForm = () => {
             </p>
           )}
         </div>
-        <div>
-          <label
-            htmlFor="numberOfDoors"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            Número de puertas
-          </label>
-          <select
-            type="number"
-            name="numberOfDoors"
-            id="numberOfDoors"
-            value={formData.numberOfDoors}
-            onChange={handleInputChange}
-            className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-          >
-            <option value="">Seleccione el numero de puertas</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          {error.numberOfDoors && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.numberOfDoors}
-            </p>
-          )}
-        </div>
+        
         <div>
           <label
             htmlFor="fuelType"
