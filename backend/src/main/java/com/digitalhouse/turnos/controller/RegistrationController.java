@@ -1,6 +1,7 @@
 package com.digitalhouse.turnos.controller;
 
 import com.digitalhouse.turnos.dto.UserDTO;
+import com.digitalhouse.turnos.dto.UserResponseDTO;
 import com.digitalhouse.turnos.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping
-    public ResponseEntity<String> registerUser(@RequestBody UserDTO userDTO){
-        registrationService.registerUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con exito");
+    public ResponseEntity<UserResponseDTO> registerUser(@RequestBody UserDTO userDTO) {
+        UserResponseDTO registeredUser = registrationService.registerUser(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(registeredUser);
     }
 }

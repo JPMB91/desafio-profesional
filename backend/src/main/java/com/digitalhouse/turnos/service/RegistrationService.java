@@ -1,6 +1,7 @@
 package com.digitalhouse.turnos.service;
 
 import com.digitalhouse.turnos.dto.UserDTO;
+import com.digitalhouse.turnos.dto.UserResponseDTO;
 import com.digitalhouse.turnos.entity.Role;
 import com.digitalhouse.turnos.entity.User;
 import com.digitalhouse.turnos.repository.RoleRepository;
@@ -26,7 +27,7 @@ public class RegistrationService {
     private RoleRepository roleRepository;
 
 
-    public void registerUser(UserDTO userDTO) {
+    public UserResponseDTO registerUser(UserDTO userDTO) {
 
         // revisar si ya existe
         if (userRepository.getByEmail(userDTO.getEmail()) != null) {
@@ -65,7 +66,16 @@ public class RegistrationService {
 
         user.setRoles(roles);
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return convertUserToUserResponseDTO(savedUser);
     }
-
+    private UserResponseDTO convertUserToUserResponseDTO(User user) {
+        return new UserResponseDTO(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastname(),
+                user.getEmail(),
+                user.getRoles()
+        );
+    }
 }

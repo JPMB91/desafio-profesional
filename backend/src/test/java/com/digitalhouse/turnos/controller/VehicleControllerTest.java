@@ -64,15 +64,13 @@ public class VehicleControllerTest {
         );
 
         uniquePlate = "TestPlate-" + UUID.randomUUID().toString().substring(0, 8);
-        uniqueBrand = "Toyota-" + UUID.randomUUID().toString().substring(0, 4);
-        uniqueModel = "Corolla-" + UUID.randomUUID().toString().substring(0, 4);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
                         .file(image)
                         .param("registrationPlate", uniquePlate)
                         .param("manufacturingYear", String.valueOf(Year.now().getValue()))
-                        .param("brand", uniqueBrand)
-                        .param("model", uniqueModel)
+                        .param("brand", "Toyota")
+                        .param("model", "Corolla")
                         .param("numberOfSeats", "5")
                         .param("description", "Vehiculo de prueba")
                         .param("categoryId", String.valueOf(testCategoryId))
@@ -84,7 +82,7 @@ public class VehicleControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn();
 
-        // extraigo la id para usarla en los tests
+        // extraigo la id para usarla en los tests de delete y getbyid
         String responseContent = result.getResponse().getContentAsString();
         testVehicleId = JsonPath.read(responseContent, "$.id");
     }
@@ -99,15 +97,13 @@ public class VehicleControllerTest {
         );
 
         String uniquePlate = "TestPlate-" + UUID.randomUUID().toString().substring(0, 8);
-        String uniqueBrand = "Toyota-" + UUID.randomUUID().toString().substring(0, 4);
-        String uniqueModel = "Corolla-" + UUID.randomUUID().toString().substring(0, 4);
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
                         .file(image)
                         .param("registrationPlate", uniquePlate)
                         .param("manufacturingYear", String.valueOf(Year.now().getValue()))
-                        .param("brand", uniqueBrand)
-                        .param("model", uniqueModel)
+                        .param("brand", "Kia")
+                        .param("model", "Rio")
                         .param("numberOfSeats", "5")
                         .param("description", "Vehiculo de prueba")
                         .param("categoryId", String.valueOf(testCategoryId))
@@ -117,7 +113,7 @@ public class VehicleControllerTest {
                         .param("fuelType", FuelType.HYBRID.toString())
                         .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value(uniqueBrand));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Kia"));
     }
 
     @Test
@@ -135,8 +131,8 @@ public class VehicleControllerTest {
                         .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.registrationPlate").value(uniquePlate))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value(uniqueBrand))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value(uniqueModel));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Toyota"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("Corolla"));
     }
 
     @Test
