@@ -4,7 +4,7 @@ import axios from "axios";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
 
-export const Recomendaciones = () => {
+export const Recomendations = () => {
   const [vehicles, setVehicles] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
