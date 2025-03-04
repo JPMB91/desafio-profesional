@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { validateRegisterForm } from "../../utils/validateRegisterForm";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const UserRegisterForm = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -77,6 +79,7 @@ export const UserRegisterForm = () => {
         password: "",
         repeatPassword: "",
       });
+      navigate("/login")
     } catch (error) {
       if (error.response && error.response.data) {
         const errMsg = error.response.data;
