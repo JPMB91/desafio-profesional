@@ -1,4 +1,4 @@
-package com.digitalhouse.turnos;
+package com.digitalhouse.turnos.controller;
 
 import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.entity.FuelType;
