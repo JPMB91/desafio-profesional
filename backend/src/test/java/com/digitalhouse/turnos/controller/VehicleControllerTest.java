@@ -4,15 +4,19 @@ import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.entity.FuelType;
 import com.digitalhouse.turnos.entity.GearShift;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import com.digitalhouse.turnos.service.ImageSavingService;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -34,6 +38,9 @@ public class VehicleControllerTest {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @MockitoBean
+    private ImageSavingService imageSavingService;
 
     private Long testCategoryId;
     private String testVehicleId;
