@@ -6,25 +6,41 @@ import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { usePagination } from "../../hooks/usePagination";
 
 export const VehicleFilter = () => {
   const [categories, setCategories] = useState([]);
   const [vehicles, setVehicles] = useState([]);
+
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(true);
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const vehicleFilterRef = useRef(null);
+
   //searchParams
   const [searchParams, setSearchParams] = useSearchParams();
 
   //Pagination
-  const [currentPageShown, setCurrentPageShown] = useState(1);
-  const itemsPerPage = 6;
-  const [totalPages, setTotalPages] = useState(1);
-  const [paginatedVehicles, setPaginatedVehicles] = useState([]);
+  const {
+    currentPage,
+    totalPages,
+    startIndex,
+    endIndex,
+    handlePrevPage,
+    handleNextPage,
+    handlePageClick,
+    handlePageReset,
+  } = usePagination({
+    totalItems: filteredVehicles.length,
+    itemsPerPage: 6, // numero maximo de vehiculos por pagina
+  });
+
+  // vehiculos que se van a mostrar en cada pagina
+  const paginatedVehicles = filteredVehicles.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,14 +96,11 @@ export const VehicleFilter = () => {
     } else {
       setSearchParams({});
     }
-
-    setCurrentPageShown(1);
   };
 
   const clearFilters = () => {
     setSelectedCategories([]);
     setSearchParams({});
-    setCurrentPageShown(1);
   };
 
   useEffect(() => {
@@ -102,58 +115,23 @@ export const VehicleFilter = () => {
       );
       setFilteredVehicles(filtered);
     }
-
-    //cuando cambia el filtro se resetea la paginacion
-    setCurrentPageShown(1);
   }, [selectedCategories, vehicles]);
-
-  // pagination
-  useEffect(() => {
-    const calculatedTotalPages = Math.ceil(
-      filteredVehicles.length / itemsPerPage
-    );
-    setTotalPages(calculatedTotalPages || 1);
-
-    // calcula el numero de los vehiculos que se muestran en cada pagina
-    const startIndex = (currentPageShown - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    setPaginatedVehicles(filteredVehicles.slice(startIndex, endIndex));
-
-    
-  }, [filteredVehicles, currentPageShown, itemsPerPage]);
 
   const toggleFilterSection = () => {
     setIsFilterOpen(!isFilterOpen);
   };
 
-
-  useEffect(() =>{
+  useEffect(() => {
     if (vehicleFilterRef.current) {
       vehicleFilterRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     }
-  },[currentPageShown])
-  
+  }, [currentPage]);
+
   const handlePageChange = (page) => {
     setCurrentPageShown(page);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPageShown > 1) {
-      setCurrentPageShown((prev) => prev - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPageShown < totalPages) {
-      setCurrentPageShown((prev) => prev + 1);
-    }
-  };
-
-  const handlePageReset = () => {
-    setCurrentPageShown(1);
   };
 
   if (loading) return <LoadingSpinner />;
@@ -272,9 +250,10 @@ export const VehicleFilter = () => {
 
         <div className="flex-1">
           <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200 ">
-            
             <div className="flex flex-col sm:flex-row justify-between items-center sm:justify-evenly">
-              <h2 className="font-bold lg:text-lg md:text-base m-0.5">Resultados</h2>
+              <h2 className="font-bold lg:text-lg md:text-base m-0.5">
+                Resultados
+              </h2>
               <div className="text-sm text-gray-600 mt-2 sm:mt-0">
                 Mostrando{" "}
                 <span className="font-medium">{filteredVehicles.length}</span>{" "}
@@ -304,9 +283,9 @@ export const VehicleFilter = () => {
       {filteredVehicles.length > 0 && (
         <div className="w-full mt-8">
           <Pagination
-            currentPage={currentPageShown}
+            currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={handlePageChange}
+            onPageChange={handlePageClick}
             onPageReset={handlePageReset}
             onPrevPage={handlePrevPage}
             onNextPage={handleNextPage}
@@ -317,4 +296,4 @@ export const VehicleFilter = () => {
   );
 };
 
-export default VehicleFilter;
+

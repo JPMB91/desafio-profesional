@@ -144,6 +144,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/register/**").permitAll()
+                        .requestMatchers("/api/vehicles/search").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/admin/users").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated()

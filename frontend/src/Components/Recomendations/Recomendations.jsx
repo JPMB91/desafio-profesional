@@ -3,40 +3,32 @@ import { VehicleCard } from "../VehicleCard/VehicleCard";
 import axios from "axios";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
+import { usePagination } from "../../hooks/usePagination";
 
 export const Recomendations = () => {
   const [vehicles, setVehicles] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
-  // Paginacion
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const totalPages = Math.ceil(vehicles.length / itemsPerPage);
-  const currentVehicles = vehicles.slice(startIndex, startIndex + itemsPerPage);
+  // hook para paginacion
+  const {
+    currentPage,
+    totalPages,
+    startIndex,
+    endIndex,
+    handlePrevPage,
+    handleNextPage,
+    handlePageClick,
+    handlePageReset,
+  } = usePagination({
+    totalItems: vehicles.length,
+    itemsPerPage: 6 
+  });
 
   // referencia del componente en dom
   const vehicleRecomendationRef = useRef(null);
 
-  const handlePrevPage = () => {
-    if (currentPage !== 1) {
-      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    }
-  };
-
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => {
-      return prevPage < totalPages ? prevPage + 1 : prevPage;
-    });
-  };
-
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const handlePageReset = () => {
-    setCurrentPage(1);
-  };
+  // los vehiculos en la pagina actual
+  const currentVehicles = vehicles.slice(startIndex, endIndex);
 
   // actualiza la enfoque de la vista a la referencia del componente
   useEffect(() => {
@@ -70,8 +62,13 @@ export const Recomendations = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 w-full max-w-6xl" ref={vehicleRecomendationRef}>
-      <h2 className="lg:text-2xl font-bold mb-6 md:text-base">Recomendaciones</h2>
+    <div
+      className="container mx-auto px-4 py-8 w-full max-w-6xl"
+      ref={vehicleRecomendationRef}
+    >
+      <h2 className="lg:text-2xl font-bold mb-6 md:text-base">
+        Recomendaciones
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 md:w-2xl w-auto m-auto">
         {currentVehicles.map((vehicle) => (
