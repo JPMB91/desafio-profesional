@@ -220,4 +220,8 @@ public class VehicleService {
     public List<Vehicle> getVehiclesByCategoryName(String name) {
         return vehicleRepository.findByCategoryName(name);
     }
+
+    public List<Vehicle> getVehiclesByKeyword(String keyword){
+        return vehicleRepository.findByKeyword(keyword);
+    }
 }

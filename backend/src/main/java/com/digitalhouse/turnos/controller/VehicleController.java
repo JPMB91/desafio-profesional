@@ -174,5 +174,11 @@ public class VehicleController {
         return vehicleService.getVehiclesByCategoryName(name);
     }
 
+    @GetMapping("/search")
+    public List<Vehicle> getByKeyword(@RequestParam("keyword") String keyword){
+        return vehicleService.getVehiclesByKeyword(keyword);
+
+    }
+
 }
 
