@@ -96,8 +96,6 @@ export const VehicleFilter = () => {
     } else {
       setSearchParams({});
     }
-
-    setCurrentPageShown(1);
   };
 
   const clearFilters = () => {

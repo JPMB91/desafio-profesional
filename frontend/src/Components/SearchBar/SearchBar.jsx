@@ -5,6 +5,8 @@ import { es } from "date-fns/locale/es";
 import axios from "axios";
 import SearchResults from "../SearchResults/SearchResults";
 import { Search } from "lucide-react";
+import { usePagination } from "../../hooks/usePagination";
+import { Pagination } from "../Pagination/Pagination";
 
 registerLocale("es", es);
 
@@ -39,6 +41,23 @@ export const SearchBar = () => {
     // "BioDiesel"
     "Urbano",
   ];
+
+  //Pagination
+  const {
+    currentPage,
+    totalPages,
+    startIndex,
+    endIndex,
+    handlePrevPage,
+    handleNextPage,
+    handlePageClick,
+    handlePageReset,
+  } = usePagination({
+    totalItems: results.length,
+    itemsPerPage: 4, // numero maximo de vehiculos por pagina
+  });
+
+  const currentVehicles = results.slice(startIndex, endIndex);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -168,8 +187,20 @@ export const SearchBar = () => {
       <SearchResults
         className="mt-4"
         results={results}
+        currentVehicles={currentVehicles}
         searchTerm={searchTerm}
       />
+
+      {results.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageClick}
+          onPageReset={handlePageReset}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
+      )}
     </div>
   );
 };
