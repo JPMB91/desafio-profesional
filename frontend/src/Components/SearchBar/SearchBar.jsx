@@ -37,7 +37,7 @@ export const SearchBar = () => {
     // "Eléctrico",
     "Diesel",
     // "BioDiesel"
-    "Urbano"
+    "Urbano",
   ];
 
   const handleSearchChange = (e) => {
@@ -97,22 +97,25 @@ export const SearchBar = () => {
 
         <form className="shadow-md p-4 rounded-lg" onSubmit={handleSubmit}>
           <div className="flex flex-col space-y-2">
-            <input
-              type="search"
-              placeholder="Buscar vehículos..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="p-2 border border-gray-300 rounded-md relative"
-              aria-label="Search"
-            />
-            <button
-              type="submit"
-              className="p-2 bg-blue-500 text-white rounded-md w-fit m-auto hover:bg-blue-600 relative z-20"
-            >
-              <Search />
-            </button>
+            <div className="relative w-2xl">
+              <input
+                type="search"
+                placeholder="Buscar vehículos..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="border border-gray-300 rounded-md h-7 text-xl w-full p-6"
+                aria-label="Search"
+              />
+              <button
+                type="submit"
+                className="absolute inset-y-0 right-2 flex items-center px-2 text-blue-500 hover:cursor-pointer border-l"
+              >
+                <Search />
+              </button>
+            </div>
+
             {suggestions.length > 0 && (
-              <ul className="bg-white border border-gray-300 rounded-md shadow-lg">
+              <ul className="bg-white border hover:bg-blue-900 border-gray-300 rounded-md shadow-lg w-2xl">
                 {suggestions.map((suggestion, index) => (
                   <li
                     key={index}
