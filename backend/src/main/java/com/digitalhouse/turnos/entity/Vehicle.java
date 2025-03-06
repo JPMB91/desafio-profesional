@@ -48,6 +48,9 @@ public class Vehicle {
             = @JoinColumn(name = "characteristic_id"))
     private Set<Characteristic> characteristics = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Reservation> reserves = new HashSet<>();
+
 
     public Vehicle() {
     }

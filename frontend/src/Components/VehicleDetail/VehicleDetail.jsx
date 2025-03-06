@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { CharacteristicsDisplay } from "../CharacteristicsDisplay/CharacteristicsDisplay.jsx";
+import { ReservationCalendar } from "../ReservationCalendar/ReservationCalendar.jsx";
+
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -89,6 +91,8 @@ export const VehicleDetail = () => {
         </div>
       )}
       <CharacteristicsDisplay characteristics={characteristic} />
+
+      <ReservationCalendar id={id}/>
     </div>
   );
 };

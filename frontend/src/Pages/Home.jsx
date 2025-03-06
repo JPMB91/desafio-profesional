@@ -9,6 +9,8 @@ export const Home = () => {
       <VehicleFilter />
 
       <Recomendations />
+
+    
     </>
   );
 };
