@@ -27,6 +27,7 @@ export const SearchBar = () => {
     "Kia",
     "BMW",
     "Toyota",
+    "Nissan",
     "Silla para bebé",
     "Navegación GPS",
     "Pantalla táctil",
