@@ -98,11 +98,11 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
     }
 
-    public List<Vehicle> getAllVehiculos() {
+    public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
 
-    public Optional<Vehicle> getVehiculo(UUID id) {
+    public Optional<Vehicle> getVehicle(UUID id) {
         return vehicleRepository.findById(id);
     }
 

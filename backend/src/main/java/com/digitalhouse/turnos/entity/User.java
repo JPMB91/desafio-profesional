@@ -25,6 +25,8 @@ public class User {
 
     private boolean enabled;
 
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Reserve> reserves = new HashSet<>();
 
     public User() {
     }

@@ -45,8 +45,7 @@ public class VehicleControllerTest {
     private Long testCategoryId;
     private String testVehicleId;
     private String uniquePlate;
-    private String uniqueBrand;
-    private String uniqueModel;
+
 
     @BeforeEach
     public void setup() throws Exception {

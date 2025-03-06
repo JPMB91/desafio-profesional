@@ -142,6 +142,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/characteristics/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/characteristics/**").hasAuthority("ROLE_ADMIN")
 
+
+
+                        .requestMatchers(HttpMethod.POST, "/reservations/**").hasAuthority("ROLE_ADMIN")
+
+
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/register/**").permitAll()
                         .requestMatchers("/api/vehicles/search").permitAll()
