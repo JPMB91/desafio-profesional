@@ -46,7 +46,7 @@ export const Header = () => {
           </Link>
         </nav>
       ) : (
-        <div className="flex items-center justify-items-end gap-8">
+        <div className="flex items-center justify-items-end gap-8 px-3">
           <div className="text-left">
             <p className="text-sm md:text-base align-bottom">Bienvenido/a:</p>
             <p className="font-medium text-base md:text-lg">{getUserName()}</p>

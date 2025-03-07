@@ -4,13 +4,13 @@ import { LoadingSpinner } from "../LoadingSpinner";
 import { useAuth } from "../../context/Auth.Context";
 
 export const AdminFilter = ({ children }) => {
-  const { user, isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, hasRole } = useAuth();
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
-  if (!isAuthenticated || !user || !user.roles.includes("ROLE_ADMIN")) {
+  if (!isAuthenticated || !hasRole("ROLE_ADMIN")) {
     return <Navigate to="/unauthorized" />;
   }
 

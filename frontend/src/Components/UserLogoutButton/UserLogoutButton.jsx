@@ -1,7 +1,7 @@
 export const UserLogoutButton = ({ handleLogout }) => {
   return (
     <button
-      className="bg-red-500 p-1.5 rounded-2xl mt-2 text-sm font-medium"
+      className="bg-red-500 p-2 rounded-xl mt-2 text-sm font-bold hover:cursor-pointer hover:"
       type="button"
       onClick={handleLogout}
     >
