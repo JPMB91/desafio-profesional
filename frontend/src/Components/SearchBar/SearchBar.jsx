@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { es } from "date-fns/locale/es";
 import axios from "axios";
 import SearchResults from "../SearchResults/SearchResults";
-import { Search } from "lucide-react";
+import { Search, Calendar } from "lucide-react";
 import { usePagination } from "../../hooks/usePagination";
 import { Pagination } from "../Pagination/Pagination";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 registerLocale("es", es);
 
@@ -16,10 +17,13 @@ export const SearchBar = () => {
   const [endDate, setEndDate] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const searchBarRef = useRef(null);
 
   const keywords = [
     "Familiar",
-    // "Deportivo",
     "Terreno",
     "Lujo",
     "Compacto",
@@ -35,11 +39,8 @@ export const SearchBar = () => {
     "Manual",
     "Automático",
     "CVT",
-    // "Semi-Automático",
     "Gasoline",
-    // "Eléctrico",
     "Diesel",
-    // "BioDiesel"
     "Urbano",
   ];
 
@@ -55,21 +56,28 @@ export const SearchBar = () => {
     handlePageReset,
   } = usePagination({
     totalItems: results.length,
-    itemsPerPage: 4, // numero maximo de vehiculos por pagina
+    itemsPerPage: 6,
   });
 
   const currentVehicles = results.slice(startIndex, endIndex);
 
+  useEffect(() => {
+    if (searchBarRef.current) {
+      searchBarRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [currentPage]);
+
   const handleSearchChange = (e) => {
     const value = e.target.value;
-
     setSearchTerm(value);
 
     if (value.length > 1) {
       const filteredSuggestions = keywords.filter((keyword) =>
         keyword.toLowerCase().includes(value.toLowerCase())
       );
-
       setSuggestions(filteredSuggestions);
     } else {
       setSuggestions([]);
@@ -79,6 +87,8 @@ export const SearchBar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setResults([]);
+    setLoading(true);
+
     try {
       const response = await axios.get(
         "http://localhost:8080/api/vehicles/search",
@@ -92,6 +102,9 @@ export const SearchBar = () => {
       setSearchTerm("");
     } catch (error) {
       console.log(error);
+      setError("Error obteniendo la información.");
+    } finally {
+      setLoading(false);
     }
     console.log("buscando", {
       term: searchTerm,
@@ -100,108 +113,163 @@ export const SearchBar = () => {
     });
   };
 
+  useEffect(() => {
+    const keyDownHandler = (event) => {
+      if ((event.key === "Enter")) {
+        event.preventDefault();
+        handleSubmit();
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, []);
+
   const handleSuggestionClick = (suggestion) => {
     setSearchTerm(suggestion);
     setSuggestions([]);
   };
 
   return (
-    <div className="flex flex-col w-full max-w-6xl mx-auto  mt-4">
-      <div>
-        <h2 className="font-bold md:text-base lg:text-2xl">Buscador</h2>
+    <div className="flex flex-col w-full max-w-6xl mx-auto" ref={searchBarRef}>
+      <h2 className="font-bold p-4 md:text-base lg:text-2xl">Buscador</h2>
 
-        <h3>
-          Buscar vehiculos por características, (Sunroof, silla para bebé,
-          navegación, etc.)
-        </h3>
+      <div className="flex flex-col gap-6 p-4">
+        <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
+          <h3 className="text-sm md:text-base mb-4">
+            Buscar vehiculos por características, (Sunroof, silla para bebé,
+            navegación, etc.)
+          </h3>
 
-        <form className="shadow-md p-4 rounded-lg" onSubmit={handleSubmit}>
-          <div className="flex flex-col space-y-2">
-            <div className="relative w-2xl">
-              <input
-                type="search"
-                placeholder="Buscar vehículos..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className="border border-gray-300 rounded-md h-7 text-xl w-full p-6"
-                aria-label="Search"
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col space-y-4">
+              <div className="relative w-full">
+                <input
+                  type="search"
+                  placeholder="Buscar vehículos..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="border border-gray-300 rounded-lg py-3 px-4 text-base w-full"
+                  aria-label="Search"
+                />
+                <button
+                  type="submit"
+                  className="absolute inset-y-0 right-2 flex items-center px-2 text-blue-500 hover:cursor-pointer border-l"
+                >
+                  <Search />
+                </button>
+              </div>
+
+              {suggestions.length > 0 && (
+                <ul className="bg-white border hover:bg-blue-900 border-gray-300 rounded-md shadow-lg w-full">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className="p-2 cursor-pointer hover:bg-gray-200"
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1">
+                  <h2 className="text-sm font-medium text-gray-700 mb-1">
+                    Buscar desde
+                  </h2>
+                  <div className="relative">
+                    <DatePicker
+                      locale="es"
+                      dateFormat="dd/MM/yyyy"
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      selectsStart
+                      startDate={startDate}
+                      endDate={endDate}
+                      placeholderText="Fecha de inicio"
+                      className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+                    />
+                    <Calendar
+                      size={18}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1">
+                  <h2 className="text-sm font-medium text-gray-700 mb-1">
+                    Buscar Hasta
+                  </h2>
+                  <div className="relative">
+                    <DatePicker
+                      locale="es"
+                      dateFormat="dd/MM/yyyy"
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      selectsEnd
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                      placeholderText="Fecha de fin"
+                      className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+                    />
+                    <Calendar
+                      size={18}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        {loading ? (
+          <LoadingSpinner />
+        ) : error ? (
+          <div className="p-4 text-center font-bold text-red-500">{error}</div>
+        ) : (
+          results.length > 0 && (
+            <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+                <h2 className="font-bold lg:text-lg md:text-base m-0.5">
+                  Resultados
+                </h2>
+                <div className="text-sm text-gray-600 mt-2 sm:mt-0">
+                  Mostrando{" "}
+                  <span className="font-medium">{results.length}</span>{" "}
+                  vehículo(s)
+                </div>
+              </div>
+
+              <SearchResults
+                results={results}
+                currentVehicles={currentVehicles}
+                searchTerm={searchTerm}
               />
-              <button
-                type="submit"
-                className="absolute inset-y-0 right-2 flex items-center px-2 text-blue-500 hover:cursor-pointer border-l"
-              >
-                <Search />
-              </button>
             </div>
-
-            {suggestions.length > 0 && (
-              <ul className="bg-white border hover:bg-blue-900 border-gray-300 rounded-md shadow-lg w-2xl">
-                {suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleSuggestionClick(suggestion)}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
-                  >
-                    {suggestion}
-                  </li>
-                ))}
-              </ul>
-            )}
-            <div className="flex space-x-4">
-              <div className="flex flex-col">
-                <h2>Buscar desde</h2>
-
-                <DatePicker
-                  locale="es"
-                  dateFormat="dd/MM/yyyy"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  placeholderText="Fecha de inicio"
-                  className="p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <h2>Buscar Hasta</h2>
-
-                <DatePicker
-                  locale="es"
-                  dateFormat="dd/MM/yyyy"
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  placeholderText="Fecha de fin"
-                  className="p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-            </div>
-          </div>
-        </form>
+          )
+        )}
       </div>
 
-      <SearchResults
-        className="mt-4"
-        results={results}
-        currentVehicles={currentVehicles}
-        searchTerm={searchTerm}
-      />
-
       {results.length > 0 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageClick}
-          onPageReset={handlePageReset}
-          onPrevPage={handlePrevPage}
-          onNextPage={handleNextPage}
-        />
+        <div className="w-full mt-8">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageClick}
+            onPageReset={handlePageReset}
+            onPrevPage={handlePrevPage}
+            onNextPage={handleNextPage}
+          />
+        </div>
       )}
+
+     
     </div>
   );
 };

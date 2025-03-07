@@ -5,12 +5,9 @@ import { VehicleFilter } from "../Components/VehicleFilter/VehicleFilter";
 export const Home = () => {
   return (
     <>
-    <SearchBar />
+      <SearchBar />
       <VehicleFilter />
-
       <Recomendations />
-
-    
     </>
   );
 };

@@ -41,8 +41,6 @@ export const FavoriteProvider = ({ children }) => {
     }
   };
 
-  
- 
   const isFavorite = (id) => {
     return favorites.some(fav => fav.id === id);
   };

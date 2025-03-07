@@ -8,7 +8,7 @@ import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
 
 
 export const Header = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, hasRole, user } = useAuth();
     const { isDesktop } = useDesktop();
  
   const handleLogout = () => {
@@ -32,6 +32,14 @@ export const Header = () => {
          
         </Link>
       </div>
+
+      {isAuthenticated && hasRole("ROLE_USER") ? (
+        <Link to="/listar-favoritos">
+        <button className="p-3 rounded-3xl font-bold bg-blue-500">Favoritos</button>
+        </Link>
+      ) : null}
+      
+
       {!isAuthenticated ? (
         <nav className="flex flex-col md:flex-row items-center gap-2 mt-2 md:mt-0">
           <Link to="/register">

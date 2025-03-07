@@ -20,6 +20,7 @@ import { VehicleDetail } from "./Components/VehicleDetail/VehicleDetail.jsx";
 import { CategoryAddForm } from "./Components/CategoryAddForm/CategoryAddForm.jsx";
 import { UserRegisterForm } from "./Components/UserRegisterForm/UserRegisterForm.jsx";
 import { UserLoginForm } from "./Components/UserLoginForm/UserLoginForm.jsx";
+import { FavoriteList } from "./Components/FavoriteList/FavoriteList.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -61,6 +62,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/register" element={<UserRegisterForm />} />
           <Route path="/login" element={<UserLoginForm />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/listar-favoritos" element={<FavoriteList/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
