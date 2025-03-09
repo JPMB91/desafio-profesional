@@ -146,6 +146,9 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.POST, "/reservations/**").hasAuthority("ROLE_ADMIN")
 
+                        .requestMatchers(HttpMethod.POST, "/reviews/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/reviews/**").permitAll()
+
 
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/register/**").permitAll()

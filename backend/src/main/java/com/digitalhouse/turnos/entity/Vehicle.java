@@ -1,5 +1,7 @@
 package com.digitalhouse.turnos.entity;
 
+import com.digitalhouse.turnos.entity.enums.FuelType;
+import com.digitalhouse.turnos.entity.enums.GearShift;
 import jakarta.persistence.*;
 import java.time.Year;
 import java.util.HashSet;
@@ -51,6 +53,9 @@ public class Vehicle {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Reservation> reserves = new HashSet<>();
 
+    @Column(name = "avg_rating")
+    private Double rating;
+
 
     public Vehicle() {
     }
@@ -58,7 +63,8 @@ public class Vehicle {
 
     public Vehicle(String registrationPlate, Year manufacturingYear, String brand, String model, int numberOfSeats,
                    Category category, String description, List<VehicleImage> images, String name, double dailyCost,
-                   int numberOfDoors, FuelType fuelType, GearShift gearShift,  Set<Characteristic> characteristics)
+                   int numberOfDoors, FuelType fuelType, GearShift gearShift,  Set<Characteristic> characteristics,
+                   Double avgRating)
 
     {
         this.registrationPlate = registrationPlate;
@@ -75,6 +81,7 @@ public class Vehicle {
         this.fuelType = fuelType;
         this.gearShift = gearShift;
         this.characteristics = characteristics;
+        this.rating = avgRating;
     }
 
     @PrePersist
@@ -198,5 +205,22 @@ public class Vehicle {
 
     public void setCharacteristics(Set<Characteristic> characteristics) {
         this.characteristics = characteristics;
+    }
+
+
+    public Set<Reservation> getReserves() {
+        return reserves;
+    }
+
+    public void setReserves(Set<Reservation> reserves) {
+        this.reserves = reserves;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }

@@ -1,6 +1,8 @@
 package com.digitalhouse.turnos.service;
 
 import com.digitalhouse.turnos.entity.*;
+import com.digitalhouse.turnos.entity.enums.FuelType;
+import com.digitalhouse.turnos.entity.enums.GearShift;
 import com.digitalhouse.turnos.repository.CategoryRepository;
 import com.digitalhouse.turnos.repository.CharacteristicRepository;
 import com.digitalhouse.turnos.repository.VehicleImageRepository;

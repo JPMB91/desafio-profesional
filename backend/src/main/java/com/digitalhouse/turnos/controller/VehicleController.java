@@ -1,7 +1,7 @@
 package com.digitalhouse.turnos.controller;
 
-import com.digitalhouse.turnos.entity.FuelType;
-import com.digitalhouse.turnos.entity.GearShift;
+import com.digitalhouse.turnos.entity.enums.FuelType;
+import com.digitalhouse.turnos.entity.enums.GearShift;
 import com.digitalhouse.turnos.entity.Vehicle;
 import com.digitalhouse.turnos.service.ReservationService;
 import com.digitalhouse.turnos.service.VehicleService;
