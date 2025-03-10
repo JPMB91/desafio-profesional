@@ -1,4 +1,4 @@
-const Politicas = () => {
+const Policies = () => {
   return (
     <div className="mx-auto p-6">
       <h1 className="underline text-center lg:text-4xl text-bold">POLÍTICAS DE USO</h1>
@@ -41,7 +41,7 @@ const Politicas = () => {
         </p>
       </div>
       <div className="flex-1 m-2 p-4 border rounded shadow">
-        <h2 className="text-xl font-bold mb-2">DEVOLUCION TARDIA</h2>
+        <h2 className="text-xl font-bold mb-9">DEVOLUCION TARDIA</h2>
         <p>
           Se cobrarán multas por el retraso en la devolución acordada en el
           contrato de arriendo. Cada hora de retraso será cobrada a un valor de
@@ -56,4 +56,4 @@ const Politicas = () => {
   );
 };
 
-export default Politicas;
+export default Policies;

@@ -8,6 +8,7 @@ import { Search, Calendar } from "lucide-react";
 import { usePagination } from "../../hooks/usePagination";
 import { Pagination } from "../Pagination/Pagination";
 import { LoadingSpinner } from "../LoadingSpinner";
+import { format } from "date-fns";
 
 registerLocale("es", es);
 
@@ -27,7 +28,7 @@ export const SearchBar = () => {
     "Terreno",
     "Lujo",
     "Compacto",
-    "Sedan",
+    "Sedán",
     "Kia",
     "BMW",
     "Toyota",
@@ -90,11 +91,16 @@ export const SearchBar = () => {
     setLoading(true);
 
     try {
+      const formattedStartDate = startDate ? format(startDate, "yyyy-MM-dd") : "";
+      const formattedEndDate = endDate ? format(endDate, "yyyy-MM-dd") : "";
+
       const response = await axios.get(
         "http://localhost:8080/api/vehicles/search",
         {
           params: {
             keyword: searchTerm,
+            startDate: formattedStartDate,
+            endDate: formattedEndDate
           },
         }
       );

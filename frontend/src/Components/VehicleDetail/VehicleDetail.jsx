@@ -4,9 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { CharacteristicsDisplay } from "../CharacteristicsDisplay/CharacteristicsDisplay.jsx";
 import { ReservationCalendar } from "../ReservationCalendar/ReservationCalendar.jsx";
-import Politicas from "../Politicas/Politicas.jsx";
+import Policies from "../Policies/Policies.jsx";
 import { ShareBar } from "../ShareBar/ShareBar.jsx";
-import { FacebookIcon, FacebookShareButton } from "react-share";
+import { StarRating } from "../StarRating/StarRating.jsx";
+import { LoadingSpinner } from "../LoadingSpinner.jsx";
+
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -17,6 +19,8 @@ export const VehicleDetail = () => {
   const [image, setImage] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const [userRating, setUserRating] = useState(0);
 
   const url = window.location.href;
 
@@ -55,7 +59,7 @@ export const VehicleDetail = () => {
     return (
       <p className="text-red-500 text-3xl font-bold text-center p-8">{error}</p>
     );
-  if (!vehicleData) return <p>Cargando detalles del vehículo...</p>;
+  if (!vehicleData) return <LoadingSpinner />
 
   return (
     <div className="max-w-full mx-auto p-5">
@@ -127,9 +131,9 @@ export const VehicleDetail = () => {
         description={title}
       />
 
-      <Politicas />
-
-      
+<StarRating value={userRating} onChange={(newValue) => setUserRating(newValue)} readOnly={false} />
+      {/* <StarRating /> */}
+      <Policies />
     </div>
   );
 };
