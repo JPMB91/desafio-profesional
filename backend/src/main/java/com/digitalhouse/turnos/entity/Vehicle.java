@@ -2,6 +2,7 @@ package com.digitalhouse.turnos.entity;
 
 import com.digitalhouse.turnos.entity.enums.FuelType;
 import com.digitalhouse.turnos.entity.enums.GearShift;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.Year;
 import java.util.HashSet;
@@ -51,6 +52,7 @@ public class Vehicle {
     private Set<Characteristic> characteristics = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     private Set<Reservation> reserves = new HashSet<>();
 
     @Column(name = "avg_rating")

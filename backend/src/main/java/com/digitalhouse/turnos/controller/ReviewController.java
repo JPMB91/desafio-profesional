@@ -3,6 +3,7 @@ package com.digitalhouse.turnos.controller;
 import com.digitalhouse.turnos.dto.ReviewDTO;
 import com.digitalhouse.turnos.entity.Review;
 import com.digitalhouse.turnos.service.ReviewService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,30 +14,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/api/reviews")
 @CrossOrigin(origins = "http://localhost:5173")
 public class ReviewController {
-
-    Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @Autowired
     private ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<?> createReview(
-                                          @RequestBody ReviewDTO reviewDTO) {
-
-        try {
-            Review savedReview = reviewService.saveRating(reviewDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedReview);
-
-        } catch (Exception e) {
-            logger.error("Error creando reseña{}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error creando reseña");
-
-        }
-
+    public ResponseEntity<?> createReview(@RequestBody @Valid ReviewDTO reviewDTO) {
+        Review savedReview = reviewService.saveRating(reviewDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedReview);
     }
+
 
     @GetMapping("/{vehicleId}")
     public ResponseEntity<?> getAverageScore(@PathVariable("vehicleId") UUID vehicleId){

@@ -1,6 +1,9 @@
 package com.digitalhouse.turnos.service;
 
-import com.digitalhouse.turnos.entity.*;
+import com.digitalhouse.turnos.entity.Category;
+import com.digitalhouse.turnos.entity.Characteristic;
+import com.digitalhouse.turnos.entity.Vehicle;
+import com.digitalhouse.turnos.entity.VehicleImage;
 import com.digitalhouse.turnos.entity.enums.FuelType;
 import com.digitalhouse.turnos.entity.enums.GearShift;
 import com.digitalhouse.turnos.repository.CategoryRepository;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.*;
 
@@ -76,7 +80,6 @@ public class VehicleService {
         }
 
 
-
         vehicle = vehicleRepository.save(vehicle);
 
         List<VehicleImage> imageList = new ArrayList<>();
@@ -122,6 +125,7 @@ public class VehicleService {
 
         vehicleRepository.deleteById(id);
     }
+
     // Lista de vehiculos random
     public List<Vehicle> getRandomVehicles() {
         List<Vehicle> randomVehicles = vehicleRepository.findAll();
@@ -154,10 +158,10 @@ public class VehicleService {
                 .orElseThrow(() -> new EntityNotFoundException("Vehiculo no encontrado"));
 
         // actualizo características
-        Set<Characteristic> characteristicsSet =  new HashSet<>();
+        Set<Characteristic> characteristicsSet = new HashSet<>();
 
-        if(characteristics != null){
-            for(Long characteristicId : characteristics) {
+        if (characteristics != null) {
+            for (Long characteristicId : characteristics) {
                 Characteristic characteristicFind = characteristicRepository.findById(characteristicId)
                         .orElseThrow(() -> new IllegalArgumentException("Id de caracteristica inválida: " + characteristicId));
                 characteristicsSet.add(characteristicFind);
@@ -167,7 +171,7 @@ public class VehicleService {
 
         }
 
-        if(characteristics == null){
+        if (characteristics == null) {
             vehicle.setCharacteristics(null);
         }
 
@@ -223,7 +227,12 @@ public class VehicleService {
         return vehicleRepository.findByCategoryName(name);
     }
 
-    public List<Vehicle> getVehiclesByKeyword(String keyword){
-        return vehicleRepository.findByKeyword(keyword);
+//    public List<Vehicle> getVehiclesByKeyword(String keyword) {
+//        return vehicleRepository.findByKeyword(keyword);
+//    }
+
+    public List<Vehicle> getReservedDataByKeyword(String keyword, LocalDate startDate, LocalDate endDate) {
+        List<Vehicle> availableVehicles = vehicleRepository.findByKeywordAvailableDate(keyword, startDate, endDate);
+        return availableVehicles;
     }
 }

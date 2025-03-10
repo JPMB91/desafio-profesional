@@ -1,11 +1,15 @@
 package com.digitalhouse.turnos.dto;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public class ReviewDTO {
 
+    @Min(1)
+    @Max(5)
     private int score;
 
     private String comment;
