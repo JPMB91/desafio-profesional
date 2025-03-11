@@ -40,8 +40,7 @@ public class ReviewService {
         Vehicle findVehicle = vehicleRepository.findById(reviewDTO.getVehicleId())
                 .orElseThrow(() -> new VehicleNotFoundException("Error: Vehículo no encontrado"));
 
-        User findUser = userRepository.findById(reviewDTO.getUserId()).orElseThrow(() -> new UserNotFoundException(
-                "Error: Usuario no existe"));
+        User findUser = userRepository.getByEmail(reviewDTO.getEmail());
 
         Review review = new Review(reviewDTO.getComment(), findUser, findVehicle, reviewDTO.getScore());
 

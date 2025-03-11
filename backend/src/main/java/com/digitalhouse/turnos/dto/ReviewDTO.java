@@ -15,18 +15,25 @@ public class ReviewDTO {
     private String comment;
 
     @NotNull
-    private UUID userId;
+//    private UUID userId;
+    private String email;
 
     @NotNull
     private UUID vehicleId;
 
-
-    public ReviewDTO(int score, String comment, UUID userId, UUID vehicleId) {
+    public ReviewDTO(int score, UUID vehicleId, String email, String comment) {
         this.score = score;
-        this.comment = comment;
-        this.userId = userId;
         this.vehicleId = vehicleId;
+        this.email = email;
+        this.comment = comment;
     }
+
+    //    public ReviewDTO(int score, String comment, UUID userId, UUID vehicleId) {
+//        this.score = score;
+//        this.comment = comment;
+//        this.userId = userId;
+//        this.vehicleId = vehicleId;
+//    }
 
     public int getScore() {
         return score;
@@ -44,13 +51,7 @@ public class ReviewDTO {
         this.vehicleId = vehicleId;
     }
 
-    public UUID getUserId() {
-        return userId;
-    }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
 
     public String getComment() {
         return comment;
@@ -59,4 +60,20 @@ public class ReviewDTO {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public @NotNull String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotNull String email) {
+        this.email = email;
+    }
+
+    //    public UUID getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(UUID userId) {
+//        this.userId = userId;
+//    }
 }
