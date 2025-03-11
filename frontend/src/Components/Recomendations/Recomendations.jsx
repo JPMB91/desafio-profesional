@@ -48,6 +48,7 @@ export const Recomendations = () => {
           "http://localhost:8080/api/vehicles/random"
         );
         setVehicles(response.data);
+        console.log("API response:", response.data);
       } catch (error) {
         console.log("Error al obtener vehiculos: ", error);
       } finally {

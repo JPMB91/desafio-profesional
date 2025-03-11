@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 // import { es } from "date-fns/locale/es";
 
-// registerLocale("es", es);
+// registerLocale("cl", es);
 
 export const ReservationCalendar = ({ id }) => {
   const [startDate, setStartDate] = useState(null);
@@ -47,7 +47,6 @@ export const ReservationCalendar = ({ id }) => {
     );
   };
 
-  // Helper function to get all dates between start and end
   function getDatesBetween(startDate, endDate) {
     const dates = [];
     let currentDate = new Date(startDate);
@@ -83,7 +82,7 @@ export const ReservationCalendar = ({ id }) => {
       setEndDate(null);
       setError((prev) => ({
         ...prev,
-        datePeriodNotValid: "No es posible seleccionar ese rango de fechas",
+        datePeriodNotValid: "No es posible seleccionar ese rango de fechas ya que se encuentra reservado",
       }));
       setStartDate(null);
     } else {

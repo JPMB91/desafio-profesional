@@ -1,4 +1,4 @@
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
@@ -8,6 +8,10 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
   const [loading, setLoading] = useState(true);
+
+  const hasRole = (roleName) => {
+    return user && user.roles && user.roles.includes(roleName);
+  };
 
   // const isAdmin = user && user.roles && user.roles.includes("ROLE_ADMIN");
   useEffect(() => {
@@ -30,21 +34,18 @@ export const AuthProvider = ({ children }) => {
   const login = (newToken) => {
     setLoading(true);
     setToken(newToken);
-    setUser(user)
+    setUser(user);
   };
 
-  const logout = () =>{
+  const logout = () => {
     setToken(null);
-    setUser(null),
-    setIsAuthenticated(false)
-  }
-
-  const hasRole = (roleName) => {
-    return user && user.roles && user.roles.includes(roleName);
+    setUser(null), setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, token, login, loading, logout, hasRole }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, token, login, loading, logout, hasRole }}
+    >
       {children}
     </AuthContext.Provider>
   );

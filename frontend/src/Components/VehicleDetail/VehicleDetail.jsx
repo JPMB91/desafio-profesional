@@ -8,7 +8,9 @@ import Policies from "../Policies/Policies.jsx";
 import { ShareBar } from "../ShareBar/ShareBar.jsx";
 import { StarRating } from "../StarRating/StarRating.jsx";
 import { LoadingSpinner } from "../LoadingSpinner.jsx";
-
+import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm.jsx";
+import { useAuth } from "../../context/Auth.Context.jsx";
+import { useVehicleRating } from "../../hooks/useVehicleRating";
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -19,8 +21,9 @@ export const VehicleDetail = () => {
   const [image, setImage] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+  const { vehicleRating, refreshRating } = useVehicleRating(id);
 
-  const [userRating, setUserRating] = useState(0);
+  const { hasRole, isAuthenticated, user } = useAuth();
 
   const url = window.location.href;
 
@@ -55,18 +58,26 @@ export const VehicleDetail = () => {
   const useLocation = () => {
     console.log(window.location.href);
   };
+
   if (error)
     return (
       <p className="text-red-500 text-3xl font-bold text-center p-8">{error}</p>
     );
-  if (!vehicleData) return <LoadingSpinner />
+
+  if (!vehicleData) return <LoadingSpinner />;
 
   return (
     <div className="max-w-full mx-auto p-5">
       <div className="flex justify-between items-center">
-        <h2 className="text-left text-2xl font-bold">
-          {vehicleData.brand} {vehicleData.model}
-        </h2>
+        <div>
+          <h2 className="text-left text-2xl font-bold">
+            {vehicleData.brand} {vehicleData.model}
+          </h2>
+          <div className="flex items-center mt-2">
+            <StarRating value={vehicleRating} readOnly={true} />
+            <span className="ml-2 text-gray-600">{vehicleRating}</span>
+          </div>
+        </div>
         <div>
           <button
             className="bg-none border-none text-lg cursor-pointer font-bold"
@@ -131,8 +142,14 @@ export const VehicleDetail = () => {
         description={title}
       />
 
-<StarRating value={userRating} onChange={(newValue) => setUserRating(newValue)} readOnly={false} />
-      {/* <StarRating /> */}
+      {hasRole("ROLE_USER") && isAuthenticated && (
+        <ReviewAddForm
+          vehicleId={id}
+          user={user}
+          onReviewAdded={refreshRating}
+        />
+      )}
+
       <Policies />
     </div>
   );
