@@ -1,12 +1,16 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
-import { Navigate, NavigationType, replace, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
 
 export const UserLoginForm = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from || "/";
+
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -16,6 +20,7 @@ export const UserLoginForm = () => {
     general: "",
   });
 
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -56,7 +61,8 @@ export const UserLoginForm = () => {
       if (roles.includes("ROLE_ADMIN")) {   
           navigate("/administracion")
       } else if (roles.includes("ROLE_USER")) {
-          navigate("/");
+          // navigate("/");
+          navigate(from);
       }
       setFormData({
         email: "",

@@ -11,6 +11,8 @@ import { LoadingSpinner } from "../LoadingSpinner.jsx";
 import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm.jsx";
 import { useAuth } from "../../context/Auth.Context.jsx";
 import { useVehicleRating } from "../../hooks/useVehicleRating";
+import { ReviewSection } from "../ReviewSection/ReviewSection.jsx";
+import { ReviewCards } from "../ReviewCards/ReviewCards.jsx";
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -142,15 +144,10 @@ export const VehicleDetail = () => {
         description={title}
       />
 
-      {hasRole("ROLE_USER") && isAuthenticated && (
-        <ReviewAddForm
-          vehicleId={id}
-          user={user}
-          onReviewAdded={refreshRating}
-        />
-      )}
-
+      <ReviewSection vehicleId={id} onReviewAdded={refreshRating} />
       <Policies />
+
+      
     </div>
   );
 };
