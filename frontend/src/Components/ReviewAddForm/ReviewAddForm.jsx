@@ -1,38 +1,49 @@
 import { useState } from "react";
 import { StarRating } from "../StarRating/StarRating";
 import axios from "axios";
+import { useAuth } from "../../context/Auth.Context";
 
 export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
   const [userRating, setUserRating] = useState(0);
   const [comment, setComment] = useState("");
   const [error, setError] = useState({ emptyRating: "", general: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { token } = useAuth();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (userRating === 0) {
       setError({
         ...error,
-        emptyRating: "La puntuación no puede quedar vacía"
+        emptyRating: "La puntuación no puede quedar vacía",
       });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
-      await axios.post("http://localhost:8080/api/reviews", {
-        score: userRating,
-        comment: comment,
-        email: user.sub,
-        vehicleId: vehicleId,
-      });
-      
+      await axios.post(
+        "http://localhost:8080/api/reviews",
+        {
+          score: userRating,
+          comment: comment,
+          email: user.sub,
+          vehicleId: vehicleId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json", 
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setComment("");
       setUserRating(0);
       setError({ emptyRating: "", general: "" });
-      
+
       if (onReviewAdded) {
         onReviewAdded();
       }
@@ -57,8 +68,10 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
 
   return (
     <div className="bg-white shadow rounded-lg p-6 border border-gray-200">
-      <h3 className="text-lg font-semibold mb-4 text-center">Dejar una Reseña</h3>
-      
+      <h3 className="text-lg font-semibold mb-4 text-center">
+        Dejar una Reseña
+      </h3>
+
       {(error.emptyRating || error.general) && (
         <div className="bg-red-50 p-3 rounded-md mb-4">
           {error.emptyRating && (
@@ -69,7 +82,7 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
           )}
         </div>
       )}
-      
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2 font-medium">
@@ -81,7 +94,7 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
               onChange={(newValue) => {
                 setUserRating(newValue);
                 if (newValue > 0) {
-                  setError({...error, emptyRating: ""});
+                  setError({ ...error, emptyRating: "" });
                 }
               }}
               readOnly={false}
@@ -91,9 +104,12 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
             {userRating > 0 ? `${userRating}/5` : "Selecciona una puntuación"}
           </div>
         </div>
-        
+
         <div className="mb-4">
-          <label htmlFor="comment" className="block text-gray-700 mb-2 font-medium">
+          <label
+            htmlFor="comment"
+            className="block text-gray-700 mb-2 font-medium"
+          >
             Comentario (opcional):
           </label>
           <textarea
@@ -106,7 +122,7 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
             placeholder="Comparte tu experiencia..."
           ></textarea>
         </div>
-        
+
         <button
           className="w-full p-3 bg-amber-400 hover:bg-amber-500 font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           type="submit"

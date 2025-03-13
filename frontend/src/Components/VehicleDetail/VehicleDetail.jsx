@@ -83,7 +83,7 @@ export const VehicleDetail = () => {
         <div>
           <button
             className="bg-none border-none text-lg cursor-pointer font-bold"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
           >
             ← Volver
           </button>
@@ -132,7 +132,6 @@ export const VehicleDetail = () => {
       )}
       <CharacteristicsDisplay characteristics={characteristic} />
 
-      <ReservationCalendar id={id} />
       <ShareBar
         image={
           vehicleData.images?.[0]?.filename
@@ -144,10 +143,10 @@ export const VehicleDetail = () => {
         description={title}
       />
 
+      <ReservationCalendar id={id} />
+
       <ReviewSection vehicleId={id} onReviewAdded={refreshRating} />
       <Policies />
-
-      
     </div>
   );
 };

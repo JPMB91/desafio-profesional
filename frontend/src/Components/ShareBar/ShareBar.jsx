@@ -64,10 +64,10 @@ export const ShareBar = ({ title, url, image, description }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-lg font-semibold">Compartir</h3>
+    <div className="flex flex-col items-end mt-4">
+      {/* <h3 className="text-lg font-semibold">Compartir</h3> */}
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1">
         <button
           onClick={() => shareModal(shareLinks.facebook)}
           className="transition-transform hover:scale-110"
