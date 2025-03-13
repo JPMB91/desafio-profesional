@@ -15,7 +15,6 @@ public class ReviewDTO {
     private String comment;
 
     @NotNull
-//    private UUID userId;
     private String email;
 
     @NotNull
@@ -28,12 +27,6 @@ public class ReviewDTO {
         this.comment = comment;
     }
 
-    //    public ReviewDTO(int score, String comment, UUID userId, UUID vehicleId) {
-//        this.score = score;
-//        this.comment = comment;
-//        this.userId = userId;
-//        this.vehicleId = vehicleId;
-//    }
 
     public int getScore() {
         return score;
@@ -61,7 +54,7 @@ public class ReviewDTO {
         this.comment = comment;
     }
 
-    public @NotNull String getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -69,11 +62,4 @@ public class ReviewDTO {
         this.email = email;
     }
 
-    //    public UUID getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(UUID userId) {
-//        this.userId = userId;
-//    }
 }

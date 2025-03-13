@@ -1,11 +1,11 @@
 package com.digitalhouse.turnos.service;
 
 import com.digitalhouse.turnos.dto.ReviewDTO;
+import com.digitalhouse.turnos.dto.ReviewResponseDTO;
+import com.digitalhouse.turnos.dto.ReviewStatsDTO;
 import com.digitalhouse.turnos.entity.Review;
 import com.digitalhouse.turnos.entity.User;
 import com.digitalhouse.turnos.entity.Vehicle;
-import com.digitalhouse.turnos.exception.UserNotFoundException;
-import com.digitalhouse.turnos.exception.VehicleNotFoundException;
 import com.digitalhouse.turnos.repository.ReservationRepository;
 import com.digitalhouse.turnos.repository.ReviewRepository;
 import com.digitalhouse.turnos.repository.UserRepository;
@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,45 +33,36 @@ public class ReviewService {
     private UserRepository userRepository;
 
     @Transactional
-    public Review saveRating(ReviewDTO reviewDTO) {
+    public ReviewResponseDTO saveReview(ReviewDTO reviewDTO) {
 
-        Vehicle findVehicle = vehicleRepository.findById(reviewDTO.getVehicleId())
-                .orElseThrow(() -> new VehicleNotFoundException("Error: Vehículo no encontrado"));
+        User user = userRepository.getByEmail(reviewDTO.getEmail());
+        Vehicle vehicle = vehicleRepository.findById(reviewDTO.getVehicleId())
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
 
-        User findUser = userRepository.getByEmail(reviewDTO.getEmail());
+        Review review = new Review(reviewDTO.getComment(), user, vehicle, reviewDTO.getScore());
+        Review savedReview = reviewRepository.save(review);
 
-        Review review = new Review(reviewDTO.getComment(), findUser, findVehicle, reviewDTO.getScore());
+        String userName = user.getFirstName() + " " + user.getLastname();
 
-        return reviewRepository.save(review);
-
+        return new ReviewResponseDTO(
+                savedReview.getId(),
+                vehicle.getId(),
+                savedReview.getComment(),
+                savedReview.getCreatedAt(),
+                userName,
+                reviewDTO.getScore()
+        );
     }
 
-    public List<Review> getAllRatings() {
-        return reviewRepository.findAll();
+
+    public List<ReviewResponseDTO> getAllReviewsByVehicleId(UUID vehicleId) {
+        return reviewRepository.getReviewsByVehicleId(vehicleId);
     }
 
-    public double getAverageReviewScore(UUID vehicleId) {
-        List<Review> reviewsScore = reviewRepository.getReviewsByVehicleId(vehicleId);
 
-        if (reviewsScore.isEmpty()) return 0.0;
-
-        int totalScore = 0;
-
-        for (Review review : reviewsScore) {
-            totalScore += review.getScore();
-        }
-
-        double average = (double) totalScore / reviewsScore.size();
-
-        BigDecimal bigDecimal = new BigDecimal(average);
-        bigDecimal = bigDecimal.setScale(1, RoundingMode.HALF_UP);
-
-        return bigDecimal.doubleValue();
-
+    public ReviewStatsDTO getVehicleReviewStats(UUID vehicleId) {
+        return reviewRepository.getReviewStatsByVehicleId(vehicleId);
     }
 
-    public Long getReviewsTotal(UUID vehicleId) {
-        return reviewRepository.countByVehicle_Id(vehicleId);
-    }
 
 }

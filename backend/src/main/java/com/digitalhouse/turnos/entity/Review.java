@@ -83,4 +83,10 @@ public class Review {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+
 }
