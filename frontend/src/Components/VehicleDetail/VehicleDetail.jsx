@@ -4,9 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { CharacteristicsDisplay } from "../CharacteristicsDisplay/CharacteristicsDisplay.jsx";
 import { ReservationCalendar } from "../ReservationCalendar/ReservationCalendar.jsx";
-import Politicas from "../Politicas/Politicas.jsx";
+import Policies from "../Policies/Policies.jsx";
 import { ShareBar } from "../ShareBar/ShareBar.jsx";
-import { FacebookIcon, FacebookShareButton } from "react-share";
+import { StarRating } from "../StarRating/StarRating.jsx";
+import { LoadingSpinner } from "../LoadingSpinner.jsx";
+import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm.jsx";
+import { useAuth } from "../../context/Auth.Context.jsx";
+import { useVehicleRating } from "../../hooks/useVehicleRating";
+import { ReviewSection } from "../ReviewSection/ReviewSection.jsx";
+import { ReviewCards } from "../ReviewCards/ReviewCards.jsx";
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -17,6 +23,9 @@ export const VehicleDetail = () => {
   const [image, setImage] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+  const { vehicleRating, refreshRating } = useVehicleRating(id);
+
+  const { hasRole, isAuthenticated, user } = useAuth();
 
   const url = window.location.href;
 
@@ -51,22 +60,30 @@ export const VehicleDetail = () => {
   const useLocation = () => {
     console.log(window.location.href);
   };
+
   if (error)
     return (
       <p className="text-red-500 text-3xl font-bold text-center p-8">{error}</p>
     );
-  if (!vehicleData) return <p>Cargando detalles del vehículo...</p>;
+
+  if (!vehicleData) return <LoadingSpinner />;
 
   return (
     <div className="max-w-full mx-auto p-5">
       <div className="flex justify-between items-center">
-        <h2 className="text-left text-2xl font-bold">
-          {vehicleData.brand} {vehicleData.model}
-        </h2>
+        <div>
+          <h2 className="text-left text-2xl font-bold">
+            {vehicleData.brand} {vehicleData.model}
+          </h2>
+          <div className="flex items-center mt-2">
+            <StarRating value={vehicleRating} readOnly={true} />
+            <span className="ml-2 text-gray-600">{vehicleRating}</span>
+          </div>
+        </div>
         <div>
           <button
             className="bg-none border-none text-lg cursor-pointer font-bold"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
           >
             ← Volver
           </button>
@@ -115,7 +132,6 @@ export const VehicleDetail = () => {
       )}
       <CharacteristicsDisplay characteristics={characteristic} />
 
-      <ReservationCalendar id={id} />
       <ShareBar
         image={
           vehicleData.images?.[0]?.filename
@@ -127,9 +143,10 @@ export const VehicleDetail = () => {
         description={title}
       />
 
-      <Politicas />
+      <ReservationCalendar id={id} />
 
-      
+      <ReviewSection vehicleId={id} onReviewAdded={refreshRating} />
+      <Policies />
     </div>
   );
 };

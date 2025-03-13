@@ -3,6 +3,8 @@ package com.digitalhouse.turnos.service;
 import com.digitalhouse.turnos.entity.Reservation;
 import com.digitalhouse.turnos.entity.User;
 import com.digitalhouse.turnos.entity.Vehicle;
+import com.digitalhouse.turnos.exception.VehicleAlreadyReservedException;
+import com.digitalhouse.turnos.exception.VehicleNotFoundException;
 import com.digitalhouse.turnos.repository.ReservationRepository;
 import com.digitalhouse.turnos.repository.UserRepository;
 import com.digitalhouse.turnos.repository.VehicleRepository;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,22 +31,30 @@ public class ReservationService {
     private UserRepository userRepository;
 
     @Autowired
-    VehicleRepository vehicleRepository;
+    private VehicleRepository vehicleRepository;
 
     @Autowired
     private VehicleService vehicleService;
 
 
     @Transactional
-    public Reservation createReserve(LocalDate startDate, LocalDate endDate, UUID userId, UUID vehicleId){
+    public Reservation createReserve(LocalDate startDate, LocalDate endDate, UUID userId, UUID vehicleId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("Usuario no " +
-                "encontrado"));
+        Vehicle vehicle = vehicleRepository.findById(vehicleId)
+                .orElseThrow(() -> new EntityNotFoundException("Vehículo no encontrado"));
 
-        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new EntityNotFoundException(
-                "Vehiculo no encontrado"));
+        // ver si esta disponible para reservas
+        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(
+                vehicle.getId(), startDate, endDate);
 
-        Reservation reservation =  new Reservation();
+        if (!overlappingReservations.isEmpty()) {
+            throw new VehicleAlreadyReservedException("Error: El vehículo ya está reservado en el período " +
+                    "seleccionado");
+        }
+
+        Reservation reservation = new Reservation();
         reservation.setStartDate(startDate);
         reservation.setEndDate(endDate);
         reservation.setVehicle(vehicle);
@@ -55,7 +66,7 @@ public class ReservationService {
 
     public Map<String, Object> getVehicleReservedDates(UUID vehicleId) {
         Vehicle vehicle = vehicleService.getVehicle(vehicleId)
-                .orElseThrow(() -> new EntityNotFoundException("Vehiculo no encontrado"));
+                .orElseThrow(() -> new VehicleNotFoundException("Error: Vehiculo no encontrado"));
 
         List<Reservation> reservations = reservationRepository.findReservationsByVehicleId(
                 //LocalDateTime
@@ -76,5 +87,6 @@ public class ReservationService {
 
         return reservedDates;
     }
+
 
 }

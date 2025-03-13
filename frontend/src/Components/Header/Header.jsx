@@ -60,7 +60,7 @@ export const Header = () => {
             <p className="font-medium text-base md:text-lg">{getUserName()}</p>
           </div>
           <div className="flex flex-col items-center">
-            <UserAvatar />
+            <UserAvatar name={getUserName()} />
             <UserLogoutButton handleLogout={handleLogout} />
           </div>
         </div>

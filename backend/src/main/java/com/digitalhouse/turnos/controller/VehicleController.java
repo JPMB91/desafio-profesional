@@ -1,12 +1,13 @@
 package com.digitalhouse.turnos.controller;
 
-import com.digitalhouse.turnos.entity.FuelType;
-import com.digitalhouse.turnos.entity.GearShift;
 import com.digitalhouse.turnos.entity.Vehicle;
+import com.digitalhouse.turnos.entity.enums.FuelType;
+import com.digitalhouse.turnos.entity.enums.GearShift;
 import com.digitalhouse.turnos.service.ReservationService;
 import com.digitalhouse.turnos.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.*;
 
@@ -175,9 +177,13 @@ public class VehicleController {
     }
 
     @GetMapping("/search")
-    public List<Vehicle> getByKeyword(@RequestParam("keyword") String keyword) {
-        return vehicleService.getVehiclesByKeyword(keyword);
+    public ResponseEntity<List<Vehicle>> searchAvailableVehicles(
+            @RequestParam String keyword,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
 
+        List<Vehicle> vehicles = vehicleService.getReservedDataByKeyword(keyword, startDate, endDate);
+        return ResponseEntity.ok(vehicles);
     }
 
     @GetMapping("/{id}/calendar")
@@ -191,6 +197,7 @@ public class VehicleController {
         Map<String, Object> calendarData = reservationService.getVehicleReservedDates(id);
         return ResponseEntity.ok(calendarData);
     }
+
 
 }
 

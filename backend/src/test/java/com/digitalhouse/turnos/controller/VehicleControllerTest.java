@@ -1,15 +1,13 @@
 package com.digitalhouse.turnos.controller;
 
 import com.digitalhouse.turnos.entity.Category;
-import com.digitalhouse.turnos.entity.FuelType;
-import com.digitalhouse.turnos.entity.GearShift;
+import com.digitalhouse.turnos.entity.enums.FuelType;
+import com.digitalhouse.turnos.entity.enums.GearShift;
 import com.digitalhouse.turnos.repository.CategoryRepository;
 import com.digitalhouse.turnos.service.ImageSavingService;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

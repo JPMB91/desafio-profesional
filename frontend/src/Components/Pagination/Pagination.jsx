@@ -10,7 +10,7 @@ export const Pagination = ({
   onNextPage,
 }) => {
   return (
-    <div className="flex place-items-center justify-center">
+    <div className="flex place-items-center justify-center mt-2.5">
        <div>
         <button
           onClick={onPageReset}
