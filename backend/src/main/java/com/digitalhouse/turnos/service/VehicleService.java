@@ -1,15 +1,10 @@
 package com.digitalhouse.turnos.service;
 
-import com.digitalhouse.turnos.entity.Category;
-import com.digitalhouse.turnos.entity.Characteristic;
-import com.digitalhouse.turnos.entity.Vehicle;
-import com.digitalhouse.turnos.entity.VehicleImage;
+import com.digitalhouse.turnos.dto.ReviewResponseDTO;
+import com.digitalhouse.turnos.entity.*;
 import com.digitalhouse.turnos.entity.enums.FuelType;
 import com.digitalhouse.turnos.entity.enums.GearShift;
-import com.digitalhouse.turnos.repository.CategoryRepository;
-import com.digitalhouse.turnos.repository.CharacteristicRepository;
-import com.digitalhouse.turnos.repository.VehicleImageRepository;
-import com.digitalhouse.turnos.repository.VehicleRepository;
+import com.digitalhouse.turnos.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +30,9 @@ public class VehicleService {
 
     @Autowired
     private CharacteristicRepository characteristicRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Transactional
     public Vehicle createVehicle(String registrationPlate,
@@ -121,7 +119,10 @@ public class VehicleService {
                 imageSavingService.deleteImageFile(image.getFilename());
             }
         }
-
+        List<Review> reviews = reviewRepository.findByVehicleId(id);
+        if (!reviews.isEmpty()) {
+            reviewRepository.deleteAll(reviews);
+        }
 
         vehicleRepository.deleteById(id);
     }

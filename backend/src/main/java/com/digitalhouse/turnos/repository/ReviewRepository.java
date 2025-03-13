@@ -24,10 +24,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "FROM Review r JOIN r.user u WHERE r.vehicle.id = :vehicleId")
     List<ReviewResponseDTO> getReviewsByVehicleId(@Param("vehicleId") UUID vehicleId);
 
-
-//    @Query("SELECT new com.digitalhouse.turnos.dto.ReviewResponseDTO(" +
-//            "r.id, r.vehicle.id, r.comment, r.createdAt, CONCAT(u.firstName, ' ', u.lastname)) " +
-//            "FROM Review r JOIN r.user u")
-//    List<ReviewResponseDTO> getAllReviews();
+    List<Review>findByVehicleId(UUID vehicleid);
 
 }

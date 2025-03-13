@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +20,7 @@ public class Review {
     @Max(5)
     private int score;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "vehicle_id")
     @JsonIgnore
     private Vehicle vehicle;
