@@ -86,12 +86,21 @@ export const SearchBar = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
+
+    if (!searchTerm || !startDate || !endDate) {
+      setError("Debe ingresar un término de búsqueda y seleccionar fechas para encontrar coincidencias");
+      return;
+    }
+
     setResults([]);
     setLoading(true);
+    setError(null);
 
     try {
-      const formattedStartDate = startDate ? format(startDate, "yyyy-MM-dd") : "";
+      const formattedStartDate = startDate
+        ? format(startDate, "yyyy-MM-dd")
+        : "";
       const formattedEndDate = endDate ? format(endDate, "yyyy-MM-dd") : "";
 
       const response = await axios.get(
@@ -100,28 +109,22 @@ export const SearchBar = () => {
           params: {
             keyword: searchTerm,
             startDate: formattedStartDate,
-            endDate: formattedEndDate
+            endDate: formattedEndDate,
           },
         }
       );
       setResults(response.data);
       setSearchTerm("");
     } catch (error) {
-      console.log(error);
       setError("Error obteniendo la información.");
     } finally {
       setLoading(false);
     }
-    console.log("buscando", {
-      term: searchTerm,
-      startDate,
-      endDate,
-    });
   };
 
   useEffect(() => {
     const keyDownHandler = (event) => {
-      if ((event.key === "Enter")) {
+      if (event.key === "Enter") {
         event.preventDefault();
         handleSubmit();
       }
@@ -231,6 +234,14 @@ export const SearchBar = () => {
                 </div>
               </div>
             </div>
+
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className=" m-2.5 p-3 text-white font-bold bg-blue-800 rounded-xl"
+            >
+              Realizar Búsqueda
+            </button>
           </form>
         </div>
 
@@ -274,8 +285,6 @@ export const SearchBar = () => {
           />
         </div>
       )}
-
-     
     </div>
   );
 };

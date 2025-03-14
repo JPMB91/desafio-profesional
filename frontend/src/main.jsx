@@ -21,6 +21,7 @@ import { CategoryAddForm } from "./Components/CategoryAddForm/CategoryAddForm.js
 import { UserRegisterForm } from "./Components/UserRegisterForm/UserRegisterForm.jsx";
 import { UserLoginForm } from "./Components/UserLoginForm/UserLoginForm.jsx";
 import { FavoriteList } from "./Components/FavoriteList/FavoriteList.jsx";
+import { CategoryTable } from "./Components/CategoryTable/CategoryTable.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -56,6 +57,9 @@ createRoot(document.getElementById("root")).render(
 
             <Route path="agregar-categoria"
             element={<CategoryAddForm/>}/>
+            
+            <Route path="listar-categorias"
+            element={<CategoryTable />}/>
 
           </Route>
           <Route path="/vehicle/:id" element={<VehicleDetail   />} />

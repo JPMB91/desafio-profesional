@@ -1,37 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
 import Swal from "sweetalert2";
 
-export const CharacteristicTable = () => {
-  const [characteristics, setCharacteristics] = useState([]);
+export const CategoryTable = () => {
+  const [categories, setCategories] = useState([]);
   const { token } = useAuth();
   const navigate = useNavigate();
 
-  const getCharacteristics = async () => {
+  const getCategories = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8080/api/characteristics",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setCharacteristics(response.data);
+      const response = await axios.get("http://localhost:8080/api/categories", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCategories(response.data);
     } catch (error) {
-      console.error("Error obteniendo caracteristicas", error);
+      console.error("Error obteniendo categorías", error);
     }
   };
 
   useEffect(() => {
-    getCharacteristics();
+    getCategories();
   }, [token]);
 
-  const handleAddCharacteristic = () => {
-    navigate("/administracion/agregar-caracteristica");
+  const handleAddCategory = () => {
+    navigate("/administracion/agregar-categoria");
   };
 
-  const handleDelete = async (characteristicId) => {
+  const handleDelete = async (categoryId) => {
     const confirmDelete = Swal.mixin({
       customClass: {
         confirmButton:
@@ -44,23 +41,27 @@ export const CharacteristicTable = () => {
 
     try {
       const result = await confirmDelete.fire({
-        title: "¿Desea borrar la característica?",
+        title: "¿Está seguro/a?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Borrar Característica",
+        confirmButtonText: "Borrar Categória",
+        text: "Esta acción no elimina los vehiculos asociados, pero deberá reasignarlos a una nueva categoría",
         cancelButtonText: "Cancelar",
       });
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:8080/api/characteristics/${characteristicId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setCharacteristics(characteristics.filter((c) => c.id !== characteristicId));
+        await axios.delete(
+          `http://localhost:8080/api/categories/${categoryId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setCategories(categories.filter((c) => c.id !== categoryId));
 
         await confirmDelete.fire({
           title: "Borrado",
-          text: "Característica borrada",
+          text: "Categoría borrada",
           icon: "success",
           timer: "1500",
           className: "py-1 px-2 rounded",
@@ -68,7 +69,7 @@ export const CharacteristicTable = () => {
         });
       }
     } catch (error) {
-      console.error("Error borrando la característica: ", error);
+      console.error("Error borrando la categoría: ", error);
       confirmDelete.fire({
         title: "Cancelado",
         text: "El borrado ha sido cancelado",
@@ -81,12 +82,12 @@ export const CharacteristicTable = () => {
   return (
     <div className="container mx-auto p-4">
       <button
-        onClick={handleAddCharacteristic}
+        onClick={handleAddCategory}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
       >
-        Crear nueva Caracteristica
+        Crear nueva Categoría
       </button>
-      <h1 className="text-2xl font-bold mb-4">Lista de Características</h1>
+      <h1 className="text-2xl font-bold mb-4">Lista de Categorías</h1>
 
       <div className="overflow-x-auto shadow-lg rounded-lg">
         <table className="min-w-full table-auto border-collapse">
@@ -97,7 +98,7 @@ export const CharacteristicTable = () => {
                 Nombre
               </th>
               <th className="text-left py-2 px-4 border border-gray-300">
-                Icono
+                Imágen
               </th>
               <th className="text-left py-2 px-4 border border-gray-300">
                 Acciones
@@ -105,19 +106,19 @@ export const CharacteristicTable = () => {
             </tr>
           </thead>
           <tbody>
-            {characteristics.map((charac) => (
-              <tr key={charac.id} className="hover:bg-gray-50">
+            {categories.map((category) => (
+              <tr key={category.id} className="hover:bg-gray-50">
                 <td className="py-2 px-4 border border-gray-300">
-                  {charac.id}
+                  {category.id}
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
-                  {charac.name}
+                  {category.name}
                 </td>
-                <td className="py-2 px-4 border border-gray-300">
-                  {charac.characteristicImage && (
+                <td className="py-2 px-4 w-fit border border-gray-300">
+                  {category.categoryImage && (
                     <img
-                      src={`http://localhost:8080/api/characteristics/image/${charac.characteristicImage.filename}`}
-                      alt={`${charac.name} Image`}
+                      src={`http://localhost:8080/api/categories/uploads/${category.categoryImage.filename}`}
+                      alt={`${category.name} Image`}
                       className="h-16 w-16 object-cover"
                     />
                   )}
@@ -127,15 +128,15 @@ export const CharacteristicTable = () => {
                   <button
                     type="button"
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                    onClick={() => handleDelete(charac.id)}
+                    onClick={() => handleDelete(category.id)}
                   >
                     Eliminar
                   </button>
-                  <Link to={`/administracion/actualizar-caracteristica/${charac.id}`}>
+                  {/* <Link to={`/administracion/actualizar-categoria/${category.id}`}>
                     <button className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-1 px-2 rounded m-1">
                       Actualizar
                     </button>
-                  </Link>
+                  </Link> */}
                 </td>
               </tr>
             ))}
