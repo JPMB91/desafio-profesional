@@ -36,9 +36,9 @@ export const VehicleUpdateForm = () => {
   const [imagesToDelete, setImagesToDelete] = useState([]);
   const [characteristics, setCharacteristics] = useState([]);
   const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
-  const [newSelectedCharacteristics, setNewSelectedCharacteristics] = useState(
-    []
-  );
+  // const [newSelectedCharacteristics, setNewSelectedCharacteristics] = useState(
+  //   []
+  // );
 
   const [error, setError] = useState({
     brand: "",
@@ -69,7 +69,7 @@ export const VehicleUpdateForm = () => {
           model: response.data.model || "",
           numberOfSeats: response.data.numberOfSeats || "",
           description: response.data.description || "",
-          categoryId: response.data.category.id || "",
+          categoryId: response.data.category ? response.data.category.id : "",
           gearShift: response.data.gearShift || "",
           numberOfDoors: response.data.numberOfDoors || "",
           dailyCost: response.data.dailyCost || "",
