@@ -3,6 +3,7 @@ package com.digitalhouse.turnos.service;
 import com.digitalhouse.turnos.entity.Category;
 import com.digitalhouse.turnos.entity.CategoryImage;
 import com.digitalhouse.turnos.repository.CategoryRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,7 @@ public class CategoryService {
     @Transactional
     public Category createCategory(String name, String categoryDescription, MultipartFile image) throws IOException {
 
-        Category category =  new Category();
+        Category category = new Category();
         category.setName(name);
         category.setCategoryDescription(categoryDescription);
 
@@ -43,5 +44,21 @@ public class CategoryService {
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+
+    @Transactional
+    public void deleteCategory(Long id) {
+
+        Category category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No existe " +
+                "una categoria con esa id"));
+
+        if (category.getCategoryImage() != null) {
+
+            imageSavingService.deleteImageFile(category.getCategoryImage().getFilename());
+        }
+
+        categoryRepository.setVehicleCategoryNull(id);
+        categoryRepository.deleteById(id);
     }
 }

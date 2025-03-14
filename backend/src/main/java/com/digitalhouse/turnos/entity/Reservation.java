@@ -20,7 +20,7 @@ public class Reservation {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "vehicle_id", nullable = false)
+    @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
 //    @Enumerated(EnumType.STRING)

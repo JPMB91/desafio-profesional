@@ -23,6 +23,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
             "  LOWER(v.gearShift) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "  LOWER(v.fuelType) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "  LOWER(v.description) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
+            "  LOWER(v.category.name) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "  CAST(v.manufacturingYear AS string) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "  EXISTS (SELECT c FROM v.characteristics c WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :keyword, '%')))" +
             ") " +

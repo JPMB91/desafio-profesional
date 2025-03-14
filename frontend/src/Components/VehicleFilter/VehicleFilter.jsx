@@ -49,18 +49,21 @@ export const VehicleFilter = () => {
         const response = await axios.get("http://localhost:8080/api/vehicles");
         const vehiclesData = response.data;
         setVehicles(vehiclesData);
-        setFilteredVehicles(vehiclesData);
 
-        const uniqueCategories = [
-          ...new Map(
-            vehiclesData.map((vehicle) => [
-              vehicle.category.id,
-              vehicle.category,
-            ])
-          ).values(),
-        ];
+        const uniqueCategories = [];
+        const categoryMap = new Map();
+
+        vehiclesData.forEach((vehicle) => {
+          if (vehicle && vehicle.category && vehicle.category.id) {
+            if (!categoryMap.has(vehicle.category.id)) {
+              categoryMap.set(vehicle.category.id, vehicle.category);
+              uniqueCategories.push(vehicle.category);
+            }
+          }
+        });
 
         setCategories(uniqueCategories);
+        setFilteredVehicles([]);
         setLoading(false);
       } catch (err) {
         setError("Error obteniendo la infomacion.");
@@ -130,10 +133,6 @@ export const VehicleFilter = () => {
     }
   }, [currentPage]);
 
-  const handlePageChange = (page) => {
-    setCurrentPageShown(page);
-  };
-
   if (loading) return <LoadingSpinner />;
   if (error)
     return (
@@ -146,7 +145,7 @@ export const VehicleFilter = () => {
       ref={vehicleFilterRef}
     >
       <h2 className="font-bold p-4 md:text-base lg:text-2xl">
-        Buscar Vehículo por Categoría
+        Filtrar Vehículos por Categoría
       </h2>
       <div className="flex flex-col md:flex-row gap-6 p-4">
         <div className="w-full md:w-64 flex-shrink-0">
@@ -186,33 +185,71 @@ export const VehicleFilter = () => {
                   )}
                 </div>
 
-                <div className="space-y-2 mt-2">
-                  {categories.map((category) => (
-                    <div key={category.id} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id={`category-${category.id}`}
-                        checked={selectedCategories.includes(category.id)}
-                        onChange={() => handleCategorySelect(category.id)}
-                        className="mr-2 h-4 w-4 text-blue-600 rounded"
-                      />
-                      <label
-                        htmlFor={`category-${category.id}`}
-                        className="text-sm cursor-pointer flex-1"
+                {categories && categories.length > 0 ? (
+                  <div className="space-y-3 mt-3">
+                    {categories.map((category) => (
+                      <div
+                        key={category.id}
+                        className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors ${
+                          selectedCategories.includes(category.id)
+                            ? "bg-blue-50"
+                            : "hover:bg-gray-50"
+                        }`}
+                        onClick={() => handleCategorySelect(category.id)}
                       >
-                        {category.name}
-                      </label>
-                      <span className="text-xs text-gray-500">
-                        (
-                        {
-                          vehicles.filter((v) => v.category.id === category.id)
-                            .length
-                        }
-                        )
-                      </span>
+                        <div className="flex items-center flex-1">
+                          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden mr-3 border border-gray-200">
+                            {category.categoryImage ? (
+                              <img
+                                src={`http://localhost:8080/api/categories/uploads/${category.categoryImage.filename}`}
+                                alt={category.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div className="text-lg text-gray-400">
+                                {category.name.charAt(0)}
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="flex-1">
+                            <label
+                              htmlFor={`category-${category.id}`}
+                              className="text-sm cursor-pointer flex-1 font-medium"
+                            >
+                              {category.name}
+                            </label>
+                            <span className="text-xs text-gray-500 block">
+                              {
+                                vehicles.filter(
+                                  (v) => v.category.id === category.id
+                                ).length
+                              }{" "}
+                              vehículo(s)
+                            </span>
+                          </div>
+                        </div>
+
+                        <input
+                          type="checkbox"
+                          id={`category-${category.id}`}
+                          checked={selectedCategories.includes(category.id)}
+                          className="h-4 w-4 text-blue-600 rounded"
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
+                    <div className="text-gray-500 mb-2">
+                      No hay categorías disponibles
                     </div>
-                  ))}
-                </div>
+                    <div className="text-sm text-gray-400">
+                      Se necesitan categorías para filtrar vehículos
+                    </div>
+                  </div>
+                )}
               </div>
 
               {selectedCategories.length > 0 && (
@@ -228,16 +265,15 @@ export const VehicleFilter = () => {
                       return (
                         <div
                           key={categoryId}
-                          className="bg-gray-100 text-sm py-1 px-2 rounded-full flex items-center"
+                          className="bg-blue-100 text-blue-800 text-sm py-1 px-2 rounded-full flex items-center cursor-pointer hover:bg-blue-200"
+                          onClick={() => handleCategorySelect(categoryId)}
+                          aria-label={`Quitar filtro ${category?.name}`}
+                          role="button"
                         >
                           <span>{category?.name}</span>
-                          <button
-                            onClick={() => handleCategorySelect(categoryId)}
-                            className="ml-1 text-gray-500 hover:text-gray-700"
-                            aria-label={`Quitar filtro ${category?.name}`}
-                          >
+                          <span className="ml-1 text-blue-600">
                             <X size={14} />
-                          </button>
+                          </span>
                         </div>
                       );
                     })}
@@ -295,5 +331,3 @@ export const VehicleFilter = () => {
     </div>
   );
 };
-
-

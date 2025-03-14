@@ -37,10 +37,15 @@ export const AdminPanel = () => {
             icon={<ClipboardList />}
             label="Administrar Características"
           />
-          <NavItem
+          {/* <NavItem
             to="agregar-categoria"
             icon={<FilePlus />}
             label="Agregar Categoría"
+          /> */}
+          <NavItem
+            to="listar-categorias"
+            icon={<FilePlus />}
+            label="Administrar categorías"
           />
         </nav>
       </div>

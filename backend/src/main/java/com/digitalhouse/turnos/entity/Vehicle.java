@@ -23,7 +23,7 @@ public class Vehicle {
     private int numberOfSeats;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Column(length = 1000)

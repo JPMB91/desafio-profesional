@@ -22,7 +22,7 @@ export const CharacteristicsDisplay = ({ characteristics }) => {
           ))
         ) : (
           <div className="col-span-full text-center py-4">
-            <p>Loading...</p>
+            <p>Este vehiculo no cuenta con características adicionales por ahora</p>
           </div>
         )}
       </div>
