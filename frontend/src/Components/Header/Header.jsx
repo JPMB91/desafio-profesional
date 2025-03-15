@@ -5,11 +5,11 @@ import { UserAvatar } from "../UserAvatar/UserAvatar";
 import { jwtDecode } from "jwt-decode";
 import { useDesktop } from "../../context/Desktop.Context";
 import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 
 export const Header = () => {
-  const { isAuthenticated, logout,user } = useAuth()
+  const { isAuthenticated, logout, user, hasRole } = useAuth()
     const { isDesktop } = useDesktop();
  
   const handleLogout = () => {
@@ -35,7 +35,7 @@ export const Header = () => {
       </div>
 
       {/* {isAuthenticated && hasRole("ROLE_USER") ? ( */}
-      {isAuthenticated && user.roles.includes("ROLE_USER") ? (
+       {isAuthenticated && user && user.roles && user.roles.includes("ROLE_USER") ? (
         <Link to="/listar-favoritos">
         <button className="p-3 rounded-3xl font-bold bg-blue-500">Favoritos</button>
         </Link>

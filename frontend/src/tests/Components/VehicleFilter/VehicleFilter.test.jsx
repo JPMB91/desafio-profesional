@@ -2,7 +2,7 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { BrowserRouter, useSearchParams } from "react-router-dom";
 import { expect, describe, vi, beforeEach, afterEach, test } from "vitest";
 import axios from "axios";
-import * as AuthContext from "../../../context/Auth.context";
+import * as AuthContext from "../../../context/Auth.Context";
 import { DesktopProvider } from "../../../context/Desktop.Context";
 import { VehicleFilter } from "../../../Components/VehicleFilter/VehicleFilter";
 import { FavoriteProvider } from "../../../context/Favorite.Context";
@@ -78,9 +78,6 @@ describe("VehicleFilter Component", () => {
     
     // ver si esta vacio
     expect(vehicleGrid).toBeEmptyDOMElement();
-
-
-   
     
   });
 

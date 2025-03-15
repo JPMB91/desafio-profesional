@@ -13,3 +13,24 @@ body {
 main{
   min-height: 100dvh;
 }
+
+
+.custom-datepicker {
+  @apply rounded-lg border border-gray-200 shadow-lg overflow-hidden;
+}
+
+.custom-datepicker .react-datepicker__header {
+  @apply bg-gray-200 border-b border-blue-900 font-bold  ;
+}
+
+.custom-datepicker .react-datepicker__day--highlighted-custom-1 {
+  @apply bg-red-100 text-red-700 font-semibold;
+}
+
+.custom-datepicker .react-datepicker__day--selected {
+  @apply bg-black text-white;
+}
+
+.custom-datepicker .react-datepicker__day--in-selecting-range {
+  @apply bg-gray-600 text-white;
+}

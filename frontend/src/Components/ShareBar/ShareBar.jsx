@@ -28,9 +28,6 @@ export const ShareBar = ({ title, url, image, description }) => {
     )}&media=${encodeURIComponent(image)}&description=${encodeURIComponent(
       title
     )}`,
-    reddit: `https://www.reddit.com/submit?url=${encodeURIComponent(
-      url
-    )}&title=${encodeURIComponent(title)}`,
     telegram: `https://t.me/share/url?url=${encodeURIComponent(
       url
     )}&text=${encodeURIComponent(title)}`,
@@ -62,56 +59,53 @@ export const ShareBar = ({ title, url, image, description }) => {
   const shareModal = (url) => {
     window.open(url, "_blank", "width=600,height=400");
   };
-
   return (
-    <div className="flex flex-col items-end mt-4">
-      {/* <h3 className="text-lg font-semibold">Compartir</h3> */}
+    <div className="flex flex-col items-end mt-4  ">
+       <h3 className="text-lg font-semibold">Compartir</h3>
 
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-2 p-2">
         <button
           onClick={() => shareModal(shareLinks.facebook)}
           className="transition-transform hover:scale-110"
         >
-          <Facebook width="40" height="40" />
+          <Facebook width="30" height="30" className="md:w-10 md:h-10" />
         </button>
 
         <button
           onClick={() => shareModal(shareLinks.x)}
           className="transition-transform hover:scale-110"
         >
-          <X width="40" height="40" />
-        </button>
-
-        <button
-          onClick={() => shareModal(shareLinks.linkedin)}
-          className="transition-transform hover:scale-110"
-        >
-          <LinkedIn width="40" height="40" />
+          <X width="30" height="30" className="md:w-10 md:h-10"/>
         </button>
 
         <button
           onClick={() => shareModal(shareLinks.pinterest)}
           className="transition-transform hover:scale-110"
         >
-          <Pinterest width="40" height="40"/>
+          <Pinterest width="30" height="30" className="md:w-10 md:h-10"/>
         </button>
         <button
           onClick={() => shareModal(shareLinks.telegram)}
           className="transition-transform hover:scale-110"
         >
-          <Telegram width="40" height="40" />
+          <Telegram width="30" height="30" className="md:w-10 md:h-10"/>
         </button>
-
+       <button
+          onClick={() => shareModal(shareLinks.linkedin)}
+          className="transition-transform hover:scale-110 "
+        >
+          <LinkedIn width="40" height="40"className="md:w-10 md:h-10" />
+      </button> 
         <button
           onClick={handleInstagramShare}
           className="transition-transform hover:scale-110"
         >
-          <Instagram width="40" height="40" />
+          <Instagram width="30" height="30" className="md:w-10 md:h-10" />
         </button>
 
         <button
           onClick={copyToClipboard}
-          className="px-4 py-2 font-semibold bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+          className="px-3 py-1 text-sm md:px-4 md:py-2 md:text-base font-semibold bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
         >
           {isCopied ? "link copiado!" : "Copiar Link"}
         </button>

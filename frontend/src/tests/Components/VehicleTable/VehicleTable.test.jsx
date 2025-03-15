@@ -110,7 +110,7 @@ test("Deberia mostrar vehiculos en una lista", async () => {
   });
 });
 
-test("Si el contenido se accede desde mobile debería mostrar un mensaje 'contenido solo disponible en dispositivos de escritorio'", async () => {
+test("Si el contenido protegido se accede desde mobile debería mostrar un mensaje 'contenido solo disponible en dispositivos de escritorio'", async () => {
   axios.get.mockResolvedValueOnce({ data: vehiculos });
 
   render(
