@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { X, Filter, ChevronDown, ChevronUp } from "lucide-react";
-
 import { VehicleCard } from "../VehicleCard/VehicleCard";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { Pagination } from "../Pagination/Pagination";
@@ -11,20 +10,15 @@ import { usePagination } from "../../hooks/usePagination";
 export const VehicleFilter = () => {
   const [categories, setCategories] = useState([]);
   const [vehicles, setVehicles] = useState([]);
-
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(true);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const vehicleFilterRef = useRef(null);
-
-  //searchParams
+  
   const [searchParams, setSearchParams] = useSearchParams();
 
-  //Pagination
   const {
     currentPage,
     totalPages,
@@ -36,10 +30,9 @@ export const VehicleFilter = () => {
     handlePageReset,
   } = usePagination({
     totalItems: filteredVehicles.length,
-    itemsPerPage: 6, // numero maximo de vehiculos por pagina
+    itemsPerPage: 6,
   });
 
-  // vehiculos que se van a mostrar en cada pagina
   const paginatedVehicles = filteredVehicles.slice(startIndex, endIndex);
 
   useEffect(() => {
@@ -52,21 +45,16 @@ export const VehicleFilter = () => {
 
         const uniqueCategories = [];
         const categoryMap = new Map();
-
         vehiclesData.forEach((vehicle) => {
-          if (vehicle && vehicle.category && vehicle.category.id) {
-            if (!categoryMap.has(vehicle.category.id)) {
-              categoryMap.set(vehicle.category.id, vehicle.category);
-              uniqueCategories.push(vehicle.category);
-            }
+          if (vehicle?.category?.id && !categoryMap.has(vehicle.category.id)) {
+            categoryMap.set(vehicle.category.id, vehicle.category);
+            uniqueCategories.push(vehicle.category);
           }
         });
-
         setCategories(uniqueCategories);
-        setFilteredVehicles([]);
         setLoading(false);
       } catch (err) {
-        setError("Error obteniendo la infomacion.");
+        setError("Error obteniendo la información.");
         setLoading(false);
       }
     };
@@ -78,24 +66,18 @@ export const VehicleFilter = () => {
     if (categoriesParam) {
       setSelectedCategories(categoriesParam.split(",").map(Number));
     }
-  }, []);
+  }, [searchParams]);
 
   const handleCategorySelect = (categoryId) => {
-    const isSelected = selectedCategories.includes(categoryId);
-    let newSelectedCategories;
-
-    if (isSelected) {
-      newSelectedCategories = selectedCategories.filter(
-        (id) => id !== categoryId
-      );
+    let newSelected;
+    if (selectedCategories.includes(categoryId)) {
+      newSelected = selectedCategories.filter((id) => id !== categoryId);
     } else {
-      newSelectedCategories = [...selectedCategories, categoryId];
+      newSelected = [...selectedCategories, categoryId];
     }
-
-    setSelectedCategories(newSelectedCategories);
-
-    if (newSelectedCategories.length > 0) {
-      setSearchParams({ categories: newSelectedCategories.join(",") });
+    setSelectedCategories(newSelected);
+    if (newSelected.length > 0) {
+      setSearchParams({ categories: newSelected.join(",") });
     } else {
       setSearchParams({});
     }
@@ -108,11 +90,8 @@ export const VehicleFilter = () => {
 
   useEffect(() => {
     if (selectedCategories.length === 0) {
-      //Si no se selecciono filtro no muestra vehiculos
-      // setFilteredVehicles(vehicles);
       setFilteredVehicles([]);
     } else {
-      // si hay selecion muestra los filtrados
       const filtered = vehicles.filter((vehicle) =>
         selectedCategories.includes(vehicle.category.id)
       );
@@ -125,7 +104,7 @@ export const VehicleFilter = () => {
   };
 
   useEffect(() => {
-    if (vehicleFilterRef.current) {
+    if (vehicleFilterRef.current && typeof vehicleFilterRef.current.scrollIntoView === "function") {
       vehicleFilterRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -134,39 +113,23 @@ export const VehicleFilter = () => {
   }, [currentPage]);
 
   if (loading) return <LoadingSpinner />;
-  if (error)
-    return (
-      <div className="p-4 text-center font-bold text-red-500">{error}</div>
-    );
+  if (error) return <div className="p-4 text-center font-bold text-red-500">{error}</div>;
 
   return (
-    <div
-      className="flex flex-col w-full max-w-6xl mx-auto"
-      ref={vehicleFilterRef}
-    >
-      <h2 className="font-bold p-4 md:text-base lg:text-2xl">
-        Filtrar Vehículos por Categoría
-      </h2>
+    <div className="flex flex-col w-full max-w-6xl mx-auto" ref={vehicleFilterRef}>
+      <h2 className="font-bold p-4 md:text-base lg:text-2xl">Filtrar Vehículos por Categoría</h2>
       <div className="flex flex-col md:flex-row gap-6 p-4">
         <div className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
-            <div
-              className="flex justify-between items-center mb-4"
-              onClick={toggleFilterSection}
-            >
+            <div className="flex justify-between items-center mb-4" onClick={toggleFilterSection}>
               <div className="flex gap-2 items-center">
                 <Filter size={18} />
                 <h2 className="font-semibold text-lg">Filtrar por Categoría</h2>
               </div>
               <button className="md:hidden">
-                {isFilterOpen ? (
-                  <ChevronUp size={20} />
-                ) : (
-                  <ChevronDown size={20} />
-                )}
+                {isFilterOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
             </div>
-
             <div className={`${isFilterOpen ? "block" : "hidden md:block"}`}>
               <div className="mb-4">
                 <div className="flex justify-between items-center mb-2">
@@ -176,24 +139,18 @@ export const VehicleFilter = () => {
                       : "Todas las categorías"}
                   </span>
                   {selectedCategories.length > 0 && (
-                    <button
-                      onClick={clearFilters}
-                      className="text-sm text-blue-600 hover:text-blue-800"
-                    >
+                    <button onClick={clearFilters} className="text-sm text-blue-600 hover:text-blue-800">
                       Limpiar filtros
                     </button>
                   )}
                 </div>
-
                 {categories && categories.length > 0 ? (
                   <div className="space-y-3 mt-3">
                     {categories.map((category) => (
                       <div
                         key={category.id}
                         className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors ${
-                          selectedCategories.includes(category.id)
-                            ? "bg-blue-50"
-                            : "hover:bg-gray-50"
+                          selectedCategories.includes(category.id) ? "bg-blue-50" : "hover:bg-gray-50"
                         }`}
                         onClick={() => handleCategorySelect(category.id)}
                       >
@@ -211,7 +168,6 @@ export const VehicleFilter = () => {
                               </div>
                             )}
                           </div>
-
                           <div className="flex-1">
                             <label
                               htmlFor={`category-${category.id}`}
@@ -220,98 +176,53 @@ export const VehicleFilter = () => {
                               {category.name}
                             </label>
                             <span className="text-xs text-gray-500 block">
-                              {
-                                vehicles.filter(
-                                  (v) => v.category.id === category.id
-                                ).length
-                              }{" "}
-                              vehículo(s)
+                              {vehicles.filter((v) => v.category.id === category.id).length} vehículo(s)
                             </span>
                           </div>
                         </div>
-
                         <input
                           type="checkbox"
                           id={`category-${category.id}`}
                           checked={selectedCategories.includes(category.id)}
                           className="h-4 w-4 text-blue-600 rounded"
-                          onClick={(e) => e.stopPropagation()}
+                          onChange={() => handleCategorySelect(category.id)}
                         />
                       </div>
                     ))}
                   </div>
                 ) : (
                   <div className="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
-                    <div className="text-gray-500 mb-2">
-                      No hay categorías disponibles
-                    </div>
+                    <div className="text-gray-500 mb-2">No hay categorías disponibles</div>
                     <div className="text-sm text-gray-400">
                       Se necesitan categorías para filtrar vehículos
                     </div>
                   </div>
                 )}
               </div>
-
-              {selectedCategories.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <h3 className="text-sm font-medium mb-2">
-                    Filtros aplicados
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedCategories.map((categoryId) => {
-                      const category = categories.find(
-                        (c) => c.id === categoryId
-                      );
-                      return (
-                        <div
-                          key={categoryId}
-                          className="bg-blue-100 text-blue-800 text-sm py-1 px-2 rounded-full flex items-center cursor-pointer hover:bg-blue-200"
-                          onClick={() => handleCategorySelect(categoryId)}
-                          aria-label={`Quitar filtro ${category?.name}`}
-                          role="button"
-                        >
-                          <span>{category?.name}</span>
-                          <span className="ml-1 text-blue-600">
-                            <X size={14} />
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
 
         <div className="flex-1">
-          <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200 ">
+          <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between items-center sm:justify-evenly">
-              <h2 className="font-bold lg:text-lg md:text-base m-0.5">
-                Resultados
-              </h2>
+              <h2 className="font-bold lg:text-lg md:text-base m-0.5">Resultados</h2>
               <div className="text-sm text-gray-600 mt-2 sm:mt-0">
-                Mostrando{" "}
-                <span className="font-medium">{filteredVehicles.length}</span>{" "}
-                de <span className="font-medium">{vehicles.length}</span>{" "}
-                vehículo(s) en existencia
+                Mostrando <span className="font-medium">{filteredVehicles.length}</span> de{" "}
+                <span className="font-medium">{vehicles.length}</span> vehículo(s) en existencia
               </div>
             </div>
           </div>
-
-          <div
-            role="grid"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {paginatedVehicles.length > 0
-              ? paginatedVehicles.map((vehicle) => (
-                  <VehicleCard key={vehicle.id} vehicle={vehicle} />
-                ))
-              : selectedCategories.length > 0 && (
-                  <div className="col-span-full p-8 text-center text-gray-500">
-                    No hay vehículos que coincidan con los filtros aplicados.
-                  </div>
-                )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" role="grid">
+            {paginatedVehicles.length > 0 ? (
+              paginatedVehicles.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))
+            ) : selectedCategories.length > 0 ? (
+              <div className="col-span-full p-8 text-center text-gray-500">
+                No hay vehículos que coincidan con los filtros aplicados.
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

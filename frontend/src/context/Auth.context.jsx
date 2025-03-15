@@ -9,9 +9,9 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
   const [loading, setLoading] = useState(true);
 
-  const hasRole = (roleName) => {
-    return user && user.roles && user.roles.includes(roleName);
-  };
+  // const hasRole = (roleName) => {
+  //   return user && user.roles && user.roles.includes(roleName);
+  // };
 
   // const isAdmin = user && user.roles && user.roles.includes("ROLE_ADMIN");
   useEffect(() => {
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, token, login, loading, logout, hasRole }}
+      value={{ user, isAuthenticated, token, login, loading, logout}}
     >
       {children}
     </AuthContext.Provider>

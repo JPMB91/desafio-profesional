@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
-import { useAuth } from "../../context/Auth.Context";
+
 
 import { jwtDecode } from "jwt-decode";
 import { useDesktop } from "../../context/Desktop.Context";
 import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
+import { useAuth } from "../../context/Auth.context";
 
 
 export const Header = () => {
-  const { isAuthenticated, logout, hasRole, user } = useAuth();
+  const { isAuthenticated, logout,user } = useAuth()
     const { isDesktop } = useDesktop();
  
   const handleLogout = () => {
@@ -33,7 +34,8 @@ export const Header = () => {
         </Link>
       </div>
 
-      {isAuthenticated && hasRole("ROLE_USER") ? (
+      {/* {isAuthenticated && hasRole("ROLE_USER") ? ( */}
+      {isAuthenticated && user.roles.includes("ROLE_USER") ? (
         <Link to="/listar-favoritos">
         <button className="p-3 rounded-3xl font-bold bg-blue-500">Favoritos</button>
         </Link>

@@ -4,6 +4,7 @@ import { test, expect, vi } from "vitest";
 import { VehicleCard } from "../../../Components/VehicleCard/VehicleCard";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
 import { AuthProvider, useAuth } from "../../../context/Auth.Context";
+import { FavoriteProvider } from "../../../context/Favorite.Context";
 
 const mockToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sIm5hbWUiOiJhZG1pbiBhZG1pbiIsInN1YiI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTc0MDk2NjgxNywiZXhwIjoxNzQxMDAyODE3fQ.VZLsBi4H5Dln2uvZ_nItH2MGb6Q8JFiDjDhYwOUJ628";
 
@@ -56,7 +57,10 @@ test("muestra la data del vehiculo", async () => {
         <BrowserRouter>
             <AuthProvider>
                 <DesktopProvider>
-                    <VehicleCard vehicle={vehicle} />
+                  <FavoriteProvider >
+                  <VehicleCard vehicle={vehicle} />
+                  </FavoriteProvider>
+                    
                 </DesktopProvider>
             </AuthProvider>
         </BrowserRouter>

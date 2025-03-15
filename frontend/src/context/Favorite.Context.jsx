@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useAuth } from "./Auth.Context";
+import { useAuth } from "./Auth.context";
+
 
 function getFavoritesFromStorage() {
   const stored = localStorage.getItem("favoriteVehicles");
@@ -14,7 +15,7 @@ const FavoriteContext = createContext(initialState);
 
 export const FavoriteProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(initialState.favorites);
-  const { isAuthenticated, hasRole } = useAuth();
+  const { isAuthenticated, user } = useAuth()
 
   useEffect(() => {
     localStorage.setItem("favoriteVehicles", JSON.stringify(favorites));
@@ -45,7 +46,7 @@ export const FavoriteProvider = ({ children }) => {
     return favorites.some(fav => fav.id === id);
   };
 
-  const isFavoritesEnabled = isAuthenticated && hasRole("ROLE_USER");
+  const isFavoritesEnabled = isAuthenticated ;
 
   return (
     <FavoriteContext.Provider

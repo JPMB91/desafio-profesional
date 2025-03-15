@@ -1,16 +1,18 @@
 import { Navigate } from "react-router-dom";
 
 import { LoadingSpinner } from "../LoadingSpinner";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.context";
+
 
 export const AdminFilter = ({ children }) => {
-  const { isAuthenticated, loading, hasRole } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
-  if (!isAuthenticated || !hasRole("ROLE_ADMIN")) {
+  // if (!isAuthenticated || !hasRole("ROLE_ADMIN")) {
+  if(!isAuthenticated || !user.roles.includes("ROLE_ADMIN")){
     return <Navigate to="/unauthorized" />;
   }
 

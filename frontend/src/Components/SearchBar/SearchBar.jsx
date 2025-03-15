@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { es } from "date-fns/locale/es";
+
 import axios from "axios";
 import SearchResults from "../SearchResults/SearchResults";
 import { Search, Calendar } from "lucide-react";
@@ -10,6 +10,7 @@ import { Pagination } from "../Pagination/Pagination";
 import { LoadingSpinner } from "../LoadingSpinner";
 import { format } from "date-fns";
 
+import { es } from "date-fns/locale/es";
 registerLocale("es", es);
 
 export const SearchBar = () => {

@@ -8,11 +8,12 @@ import Policies from "../Policies/Policies.jsx";
 import { ShareBar } from "../ShareBar/ShareBar.jsx";
 import { StarRating } from "../StarRating/StarRating.jsx";
 import { LoadingSpinner } from "../LoadingSpinner.jsx";
-import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm.jsx";
-import { useAuth } from "../../context/Auth.Context.jsx";
 import { useVehicleRating } from "../../hooks/useVehicleRating";
 import { ReviewSection } from "../ReviewSection/ReviewSection.jsx";
-import { ReviewCards } from "../ReviewCards/ReviewCards.jsx";
+
+import { es } from "date-fns/locale/es";
+import { registerLocale } from "react-datepicker";
+registerLocale("es", es);
 
 export const VehicleDetail = () => {
   const [vehicleData, setVehicleData] = useState({});
@@ -25,7 +26,6 @@ export const VehicleDetail = () => {
   const { id } = useParams();
   const { vehicleRating, refreshRating } = useVehicleRating(id);
 
-  const { hasRole, isAuthenticated, user } = useAuth();
 
   const url = window.location.href;
 
@@ -36,9 +36,10 @@ export const VehicleDetail = () => {
           `http://localhost:8080/api/vehicles/${id}`
         );
         setVehicleData(response.data);
-        const { characteristics } = response.data;
+        // const { characteristics } = response.data;
 
-        setCharacteristics(characteristics);
+        // console.log("response: ",response.data.characteristics);
+        setCharacteristics(response.data.characteristics);
         setTitle(
           `Encontré este increible ${response.data.name} en Aurora Motors`
         );
@@ -76,8 +77,8 @@ export const VehicleDetail = () => {
             {vehicleData.brand} {vehicleData.model}
           </h2>
           <div className="flex items-center mt-2">
-            <StarRating value={vehicleRating} readOnly={true} />
-            <span className="ml-2 text-gray-600">{vehicleRating}</span>
+            {/* <StarRating value={vehicleRating} readOnly={true} />
+            <span className="ml-2 text-gray-600">{vehicleRating}</span> */}
           </div>
         </div>
         <div>

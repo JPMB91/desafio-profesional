@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/Auth.Context";
+
 import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm";
 import { ReviewCards } from "../ReviewCards/ReviewCards";
 import { useEffect, useRef, useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { usePagination } from "../../hooks/usePagination";
 import axios from "axios";
+import { useAuth } from "../../context/Auth.context";
 
 export const ReviewSection = ({ vehicleId }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user } = useAuth()
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -34,8 +35,16 @@ export const ReviewSection = ({ vehicleId }) => {
   const reviewsRef = useRef(null)
 
   //vuelve a la referencia cada vez que se cambia de página
+  // useEffect(() => {
+  //   if (reviewsRef.current) {
+  //     reviewsRef.current.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // }, [currentPage]);
   useEffect(() => {
-    if (reviewsRef.current) {
+    if (reviewsRef.current && typeof reviewsRef.current.scrollIntoView === 'function') {
       reviewsRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",

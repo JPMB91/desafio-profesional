@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StarRating } from "../StarRating/StarRating";
 import axios from "axios";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.context";
 
 export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
   const [userRating, setUserRating] = useState(0);

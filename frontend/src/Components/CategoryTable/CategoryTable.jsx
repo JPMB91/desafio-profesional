@@ -45,7 +45,7 @@ export const CategoryTable = () => {
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Borrar Categória",
-        text: "Esta acción no elimina los vehiculos asociados, pero deberá reasignarlos a una nueva categoría",
+        text: "Esta acción no elimina los vehículos asociados a la categoría, pero deberá reasignarlos a una nueva categoría de manera manual",
         cancelButtonText: "Cancelar",
       });
       if (result.isConfirmed) {

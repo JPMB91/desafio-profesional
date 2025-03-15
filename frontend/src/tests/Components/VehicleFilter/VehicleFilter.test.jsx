@@ -2,9 +2,10 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { BrowserRouter, useSearchParams } from "react-router-dom";
 import { expect, describe, vi, beforeEach, afterEach, test } from "vitest";
 import axios from "axios";
-import * as AuthContext from "../../../context/Auth.Context";
+import * as AuthContext from "../../../context/Auth.context";
 import { DesktopProvider } from "../../../context/Desktop.Context";
 import { VehicleFilter } from "../../../Components/VehicleFilter/VehicleFilter";
+import { FavoriteProvider } from "../../../context/Favorite.Context";
 
 vi.mock("axios");
 vi.mock("react-router-dom", async () => {
@@ -60,7 +61,9 @@ describe("VehicleFilter Component", () => {
       <BrowserRouter>
         <AuthContext.AuthProvider>
           <DesktopProvider>
+            <FavoriteProvider>
             <VehicleFilter />
+            </FavoriteProvider>
           </DesktopProvider>
         </AuthContext.AuthProvider>
       </BrowserRouter>
@@ -75,6 +78,9 @@ describe("VehicleFilter Component", () => {
     
     // ver si esta vacio
     expect(vehicleGrid).toBeEmptyDOMElement();
+
+
+   
     
   });
 
@@ -106,5 +112,6 @@ describe("VehicleFilter Component", () => {
       // este vehiculo no deberia estar presente
       expect(screen.queryByText(/Honda Civic/i)).not.toBeInTheDocument();
     });
+
   });
 });
