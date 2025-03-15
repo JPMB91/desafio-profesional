@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { expect, test } from "vitest";
 import axios from "axios";
-import * as AuthContext from "../../../context/Auth.context";
+import * as AuthContext from "../../../context/Auth.Context";
 import { DesktopProvider } from "../../../context/Desktop.Context";
 import { CharacteristicsDisplay } from "../../../Components/CharacteristicsDisplay/CharacteristicsDisplay";
 import { VehicleDetail } from "../../../Components/VehicleDetail/VehicleDetail";

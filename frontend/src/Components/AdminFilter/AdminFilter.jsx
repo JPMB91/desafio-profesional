@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 import { LoadingSpinner } from "../LoadingSpinner";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 
 export const AdminFilter = ({ children }) => {

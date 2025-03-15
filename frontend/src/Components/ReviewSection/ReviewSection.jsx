@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { usePagination } from "../../hooks/usePagination";
 import axios from "axios";
-import { useAuth } from "../../context/Auth.context";
+import { useAuth } from "../../context/Auth.Context";
 
 export const ReviewSection = ({ vehicleId }) => {
   const { isAuthenticated, user } = useAuth()
@@ -34,15 +34,6 @@ export const ReviewSection = ({ vehicleId }) => {
 
   const reviewsRef = useRef(null)
 
-  //vuelve a la referencia cada vez que se cambia de página
-  // useEffect(() => {
-  //   if (reviewsRef.current) {
-  //     reviewsRef.current.scrollIntoView({
-  //       behavior: "smooth",
-  //       block: "start",
-  //     });
-  //   }
-  // }, [currentPage]);
   useEffect(() => {
     if (reviewsRef.current && typeof reviewsRef.current.scrollIntoView === 'function') {
       reviewsRef.current.scrollIntoView({
