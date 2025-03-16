@@ -22,7 +22,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Transactional
@@ -153,5 +155,29 @@ public class VehicleControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.body").value("Vehiculo no existe"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.statusCodeValue").value(404));
+    }
+
+    @Test
+    public void searchAvailableVehiclesByKeywordTest() throws Exception {
+        String keyword = "Toyota";
+        LocalDate startDate = LocalDate.now().plusDays(1);
+        LocalDate endDate = LocalDate.now().plusDays(5);
+
+        // Format dates according to ISO standard
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+        String formattedStartDate = startDate.format(formatter);
+        String formattedEndDate = endDate.format(formatter);
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/vehicles/search")
+                        .param("keyword", keyword)
+                        .param("startDate", formattedStartDate)
+                        .param("endDate", formattedEndDate)
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+
+                //entrega una lista de resultados
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+
+                // If you know your test vehicle should be returned:
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].brand").value("Toyota"));
     }
 }

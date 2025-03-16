@@ -3,13 +3,10 @@ package com.digitalhouse.turnos.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -22,23 +19,16 @@ import java.util.stream.Collectors;
 @Component
 public class JwtUtil {
 
-
-//    @Autowired
-//    private UserDetailsSecurity userDetailsSecurity;
-
     private final SecretKey SECRET_KEY;
 
-    public JwtUtil(@Value("${jwt.secret}") String secret){
+    public JwtUtil(@Value("${jwt.secret}") String secret) {
         this.SECRET_KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
 
     public String generateToken(Authentication authentication) {
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
         UserDetailsSecurity userDetails = (UserDetailsSecurity) authentication.getPrincipal();
-
-
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("roles", userDetails.getAuthorities().stream()
@@ -55,26 +45,14 @@ public class JwtUtil {
                 .signWith(SECRET_KEY)
                 .compact();
 
-        //        return Jwts.builder()
-//                .subject(userDetails.getUsername())
-//                .issuedAt(new Date())
-//                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 horas
-//                .signWith(SECRET_KEY)
-//                .compact();
+
     }
 
 
-//    public boolean validateToken(String token, UserDetails userDetails) {
-//        final String username = extractUsername(token);
-//        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-//    }
-
-        public boolean validateToken(String token, UserDetailsSecurity userDetails) {
+    public boolean validateToken(String token, UserDetailsSecurity userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
-
-
 
 
     public String extractUsername(String token) {

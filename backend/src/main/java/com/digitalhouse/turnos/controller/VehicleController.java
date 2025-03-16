@@ -177,7 +177,7 @@ public class VehicleController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Vehicle>> searchAvailableVehicles(
+    public ResponseEntity<List<Vehicle>> searchAvailableVehiclesByKeyword(
             @RequestParam String keyword,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {

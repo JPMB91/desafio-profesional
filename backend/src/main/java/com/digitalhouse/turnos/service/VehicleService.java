@@ -233,7 +233,6 @@ public class VehicleService {
 //    }
 
     public List<Vehicle> getReservedDataByKeyword(String keyword, LocalDate startDate, LocalDate endDate) {
-        List<Vehicle> availableVehicles = vehicleRepository.findByKeywordAvailableDate(keyword, startDate, endDate);
-        return availableVehicles;
+        return vehicleRepository.findByKeywordAvailableDate(keyword, startDate, endDate);
     }
 }
