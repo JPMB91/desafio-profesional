@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useAuth } from "./Auth.context";
+import { useAuth } from "./Auth.Context";
 
 
 function getFavoritesFromStorage() {

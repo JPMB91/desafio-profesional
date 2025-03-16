@@ -16,7 +16,7 @@ export const VehicleFilter = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const vehicleFilterRef = useRef(null);
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const {
@@ -104,7 +104,10 @@ export const VehicleFilter = () => {
   };
 
   useEffect(() => {
-    if (vehicleFilterRef.current && typeof vehicleFilterRef.current.scrollIntoView === "function") {
+    if (
+      vehicleFilterRef.current &&
+      typeof vehicleFilterRef.current.scrollIntoView === "function"
+    ) {
       vehicleFilterRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -113,21 +116,36 @@ export const VehicleFilter = () => {
   }, [currentPage]);
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <div className="p-4 text-center font-bold text-red-500">{error}</div>;
+  if (error)
+    return (
+      <div className="p-4 text-center font-bold text-red-500">{error}</div>
+    );
 
   return (
-    <div className="flex flex-col w-full max-w-6xl mx-auto" ref={vehicleFilterRef}>
-      <h2 className="font-bold p-4 md:text-base lg:text-2xl">Filtrar Vehículos por Categoría</h2>
+    <div
+      className="flex flex-col w-full max-w-6xl mx-auto"
+      ref={vehicleFilterRef}
+    >
+      <h2 className="font-bold p-4 md:text-base lg:text-2xl">
+        Filtrar Vehículos por Categoría
+      </h2>
       <div className="flex flex-col md:flex-row gap-6 p-4">
         <div className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
-            <div className="flex justify-between items-center mb-4" onClick={toggleFilterSection}>
+            <div
+              className="flex justify-between items-center mb-4"
+              onClick={toggleFilterSection}
+            >
               <div className="flex gap-2 items-center">
                 <Filter size={18} />
                 <h2 className="font-semibold text-lg">Filtrar por Categoría</h2>
               </div>
               <button className="md:hidden">
-                {isFilterOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {isFilterOpen ? (
+                  <ChevronUp size={20} />
+                ) : (
+                  <ChevronDown size={20} />
+                )}
               </button>
             </div>
             <div className={`${isFilterOpen ? "block" : "hidden md:block"}`}>
@@ -139,7 +157,10 @@ export const VehicleFilter = () => {
                       : "Todas las categorías"}
                   </span>
                   {selectedCategories.length > 0 && (
-                    <button onClick={clearFilters} className="text-sm text-blue-600 hover:text-blue-800">
+                    <button
+                      onClick={clearFilters}
+                      className="text-sm text-blue-600 hover:text-blue-800"
+                    >
                       Limpiar filtros
                     </button>
                   )}
@@ -149,13 +170,15 @@ export const VehicleFilter = () => {
                     {categories.map((category) => (
                       <div
                         key={category.id}
-                        className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors ${
-                          selectedCategories.includes(category.id) ? "bg-blue-50" : "hover:bg-gray-50"
+                        className={`flex items-center p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                          selectedCategories.includes(category.id)
+                            ? "bg-indigo-50 border-l-4 border-indigo-500 shadow-sm"
+                            : "hover:bg-gray-50"
                         }`}
                         onClick={() => handleCategorySelect(category.id)}
                       >
                         <div className="flex items-center flex-1">
-                          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden mr-3 border border-gray-200">
+                          <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden mr-3 border-2 border-gray-200 shadow-sm">
                             {category.categoryImage ? (
                               <img
                                 src={`http://localhost:8080/api/categories/uploads/${category.categoryImage.filename}`}
@@ -175,8 +198,13 @@ export const VehicleFilter = () => {
                             >
                               {category.name}
                             </label>
-                            <span className="text-xs text-gray-500 block">
-                              {vehicles.filter((v) => v.category.id === category.id).length} vehículo(s)
+                            <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                              {
+                                vehicles.filter(
+                                  (v) => v.category.id === category.id
+                                ).length
+                              }{" "}
+                              vehículo(s)
                             </span>
                           </div>
                         </div>
@@ -192,7 +220,9 @@ export const VehicleFilter = () => {
                   </div>
                 ) : (
                   <div className="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
-                    <div className="text-gray-500 mb-2">No hay categorías disponibles</div>
+                    <div className="text-gray-500 mb-2">
+                      No hay categorías disponibles
+                    </div>
                     <div className="text-sm text-gray-400">
                       Se necesitan categorías para filtrar vehículos
                     </div>
@@ -206,14 +236,21 @@ export const VehicleFilter = () => {
         <div className="flex-1">
           <div className="mb-4 bg-white rounded-lg shadow p-4 border border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between items-center sm:justify-evenly">
-              <h2 className="font-bold lg:text-lg md:text-base m-0.5">Resultados</h2>
+              <h2 className="font-bold lg:text-lg md:text-base m-0.5">
+                Resultados
+              </h2>
               <div className="text-sm text-gray-600 mt-2 sm:mt-0">
-                Mostrando <span className="font-medium">{filteredVehicles.length}</span> de{" "}
-                <span className="font-medium">{vehicles.length}</span> vehículo(s) en existencia
+                Mostrando{" "}
+                <span className="font-medium">{filteredVehicles.length}</span>{" "}
+                de <span className="font-medium">{vehicles.length}</span>{" "}
+                vehículo(s) en existencia
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" role="grid">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            role="grid"
+          >
             {paginatedVehicles.length > 0 ? (
               paginatedVehicles.map((vehicle) => (
                 <VehicleCard key={vehicle.id} vehicle={vehicle} />
