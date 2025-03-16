@@ -14,7 +14,6 @@ main{
   min-height: 100dvh;
 }
 
-
 .custom-datepicker {
   @apply rounded-lg border border-gray-200 shadow-lg overflow-hidden;
 }

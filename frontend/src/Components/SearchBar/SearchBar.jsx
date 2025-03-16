@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import axios from "axios";
 import SearchResults from "../SearchResults/SearchResults";
-import { Search, Calendar } from "lucide-react";
+import { Search, Calendar, CircleAlert, Info } from "lucide-react";
 import { usePagination } from "../../hooks/usePagination";
 import { Pagination } from "../Pagination/Pagination";
 import { LoadingSpinner } from "../LoadingSpinner";
@@ -20,7 +20,11 @@ export const SearchBar = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({
+    noDataInputError: "",
+    noResultsError: "",
+    fetchError: ""
+  });
 
   const searchBarRef = useRef(null);
 
@@ -76,6 +80,12 @@ export const SearchBar = () => {
     const value = e.target.value;
     setSearchTerm(value);
 
+    // limpiar errores en onChange
+    setError(prev => ({
+      ...prev,
+      noDataInputError: ""
+    }));
+
     if (value.length > 1) {
       const filteredSuggestions = keywords.filter((keyword) =>
         keyword.toLowerCase().includes(value.toLowerCase())
@@ -86,23 +96,42 @@ export const SearchBar = () => {
     }
   };
 
+  const clearErrors = () => {
+    setError({
+      noDataInputError: "",
+      noResultsError: "",
+      fetchError: ""
+    });
+  };
+
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
+    
+    clearErrors();
 
-    if (!searchTerm || !startDate || !endDate) {
-      setError("Debe ingresar un término de búsqueda y seleccionar fechas para encontrar coincidencias");
+ 
+    if (!searchTerm) {
+      setError(prev => ({
+        ...prev,
+        noDataInputError: "Debe ingresar un término de búsqueda"
+      }));
+      return;
+    }
+
+    if (!startDate || !endDate) {
+      setError(prev => ({
+        ...prev,
+        noDataInputError: "Debe seleccionar fechas de inicio y fin"
+      }));
       return;
     }
 
     setResults([]);
     setLoading(true);
-    setError(null);
 
     try {
-      const formattedStartDate = startDate
-        ? format(startDate, "yyyy-MM-dd")
-        : "";
-      const formattedEndDate = endDate ? format(endDate, "yyyy-MM-dd") : "";
+      const formattedStartDate = format(startDate, "yyyy-MM-dd");
+      const formattedEndDate = format(endDate, "yyyy-MM-dd");
 
       const response = await axios.get(
         "http://localhost:8080/api/vehicles/search",
@@ -114,10 +143,22 @@ export const SearchBar = () => {
           },
         }
       );
-      setResults(response.data);
-      setSearchTerm("");
-    } catch (error) {
-      setError("Error obteniendo la información.");
+      
+      if (response.data && response.data.length > 0) {
+        setResults(response.data);
+        setSearchTerm("");
+      } else {
+        setError(prev => ({
+          ...prev,
+          noResultsError: "No se encontraron vehículos que coincidan con su búsqueda."
+        }));
+      }
+    } catch (err) {
+      setError(prev => ({
+        ...prev,
+        fetchError: "Error obteniendo la información. Por favor, intente de nuevo."
+      }));
+      console.error("Search error:", err);
     } finally {
       setLoading(false);
     }
@@ -135,11 +176,24 @@ export const SearchBar = () => {
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
-  }, []);
+  }, [searchTerm, startDate, endDate]);
 
   const handleSuggestionClick = (suggestion) => {
     setSearchTerm(suggestion);
     setSuggestions([]);
+    clearErrors();
+  };
+
+  const handleDateChange = (date, isStartDate) => {
+    if (isStartDate) {
+      setStartDate(date);
+    } else {
+      setEndDate(date);
+    }
+
+    if (error.noDataInputError.includes("fechas")) {
+      clearErrors();
+    }
   };
 
   return (
@@ -196,7 +250,7 @@ export const SearchBar = () => {
                       locale="es"
                       dateFormat="dd/MM/yyyy"
                       selected={startDate}
-                      onChange={(date) => setStartDate(date)}
+                      onChange={(date) => handleDateChange(date, true)}
                       selectsStart
                       startDate={startDate}
                       endDate={endDate}
@@ -219,7 +273,7 @@ export const SearchBar = () => {
                       locale="es"
                       dateFormat="dd/MM/yyyy"
                       selected={endDate}
-                      onChange={(date) => setEndDate(date)}
+                      onChange={(date) => handleDateChange(date, false)}
                       selectsEnd
                       startDate={startDate}
                       endDate={endDate}
@@ -238,8 +292,7 @@ export const SearchBar = () => {
 
             <button
               type="submit"
-              onClick={handleSubmit}
-              className=" m-2.5 p-3 text-white font-bold bg-blue-800 rounded-xl"
+              className="m-2.5 p-3 text-white font-bold bg-blue-800 rounded-xl"
             >
               Realizar Búsqueda
             </button>
@@ -248,8 +301,39 @@ export const SearchBar = () => {
 
         {loading ? (
           <LoadingSpinner />
-        ) : error ? (
-          <div className="p-4 text-center font-bold text-red-500">{error}</div>
+        ) : error.noDataInputError ? (
+          <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
+            
+            <div className="flex items-center">
+              <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
+              <p className="text-lg font-medium">
+                {error.noDataInputError}
+              </p>
+            </div>
+
+          </div>
+        ) : error.noResultsError ? (
+          <div className="bg-blue-100 border-2 border-blue-400 text-blue-700 p-6 rounded-lg shadow-md">
+            
+            <div className="flex items-center">
+              <Info className="h-6 w-6 mr-3 text-blue-500" />
+              <p className="text-lg font-medium">
+                {error.noResultsError}
+              </p>
+            </div>
+
+          </div>
+        ) : error.fetchError ? (
+          <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
+            
+          <div className="flex items-center">
+            <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
+            <p className="text-lg font-medium">
+              {error.fetchError}
+            </p>
+          </div>
+
+        </div>
         ) : (
           results.length > 0 && (
             <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
