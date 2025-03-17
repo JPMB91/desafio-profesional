@@ -23,7 +23,7 @@ export const SearchBar = () => {
   const [error, setError] = useState({
     noDataInputError: "",
     noResultsError: "",
-    fetchError: ""
+    fetchError: "",
   });
 
   const searchBarRef = useRef(null);
@@ -81,9 +81,9 @@ export const SearchBar = () => {
     setSearchTerm(value);
 
     // limpiar errores en onChange
-    setError(prev => ({
+    setError((prev) => ({
       ...prev,
-      noDataInputError: ""
+      noDataInputError: "",
     }));
 
     if (value.length > 1) {
@@ -100,28 +100,27 @@ export const SearchBar = () => {
     setError({
       noDataInputError: "",
       noResultsError: "",
-      fetchError: ""
+      fetchError: "",
     });
   };
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-    
+
     clearErrors();
 
- 
     if (!searchTerm) {
-      setError(prev => ({
+      setError((prev) => ({
         ...prev,
-        noDataInputError: "Debe ingresar un término de búsqueda"
+        noDataInputError: "Debe ingresar un término de búsqueda",
       }));
       return;
     }
 
     if (!startDate || !endDate) {
-      setError(prev => ({
+      setError((prev) => ({
         ...prev,
-        noDataInputError: "Debe seleccionar fechas de inicio y fin"
+        noDataInputError: "Debe seleccionar fechas de inicio y fin",
       }));
       return;
     }
@@ -143,20 +142,22 @@ export const SearchBar = () => {
           },
         }
       );
-      
+
       if (response.data && response.data.length > 0) {
         setResults(response.data);
         setSearchTerm("");
       } else {
-        setError(prev => ({
+        setError((prev) => ({
           ...prev,
-          noResultsError: "No se encontraron vehículos que coincidan con su búsqueda."
+          noResultsError:
+            "No se encontraron vehículos que coincidan con su búsqueda.",
         }));
       }
     } catch (err) {
-      setError(prev => ({
+      setError((prev) => ({
         ...prev,
-        fetchError: "Error obteniendo la información. Por favor, intente de nuevo."
+        fetchError:
+          "Error obteniendo la información. Por favor, intente de nuevo.",
       }));
       console.error("Search error:", err);
     } finally {
@@ -253,9 +254,10 @@ export const SearchBar = () => {
                       onChange={(date) => handleDateChange(date, true)}
                       selectsStart
                       startDate={startDate}
+                      minDate={new Date()}
                       endDate={endDate}
                       placeholderText="Fecha de inicio"
-                      className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+                      className="w-72 border border-gray-300 rounded-lg p-3 text-sm"
                     />
                     <Calendar
                       size={18}
@@ -277,9 +279,9 @@ export const SearchBar = () => {
                       selectsEnd
                       startDate={startDate}
                       endDate={endDate}
-                      minDate={startDate}
+                      minDate={new Date()}
                       placeholderText="Fecha de fin"
-                      className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+                      className="w-72 border border-gray-300 rounded-lg p-3 text-sm"
                     />
                     <Calendar
                       size={18}
@@ -292,7 +294,7 @@ export const SearchBar = () => {
 
             <button
               type="submit"
-              className="m-2.5 p-3 text-white font-bold bg-blue-800 rounded-xl"
+              className="mt-4 p-3 text-white font-bold bg-blue-800 rounded-xl"
             >
               Realizar Búsqueda
             </button>
@@ -303,51 +305,28 @@ export const SearchBar = () => {
           <LoadingSpinner />
         ) : error.noDataInputError ? (
           <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
-            
             <div className="flex items-center">
               <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
-              <p className="text-lg font-medium">
-                {error.noDataInputError}
-              </p>
+              <p className="text-lg font-medium">{error.noDataInputError}</p>
             </div>
-
           </div>
         ) : error.noResultsError ? (
           <div className="bg-blue-100 border-2 border-blue-400 text-blue-700 p-6 rounded-lg shadow-md">
-            
             <div className="flex items-center">
               <Info className="h-6 w-6 mr-3 text-blue-500" />
-              <p className="text-lg font-medium">
-                {error.noResultsError}
-              </p>
+              <p className="text-lg font-medium">{error.noResultsError}</p>
             </div>
-
           </div>
         ) : error.fetchError ? (
           <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
-            
-          <div className="flex items-center">
-            <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
-            <p className="text-lg font-medium">
-              {error.fetchError}
-            </p>
+            <div className="flex items-center">
+              <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
+              <p className="text-lg font-medium">{error.fetchError}</p>
+            </div>
           </div>
-
-        </div>
         ) : (
           results.length > 0 && (
             <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
-              <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-                <h2 className="font-bold lg:text-lg md:text-base m-0.5">
-                  Resultados
-                </h2>
-                <div className="text-sm text-gray-600 mt-2 sm:mt-0">
-                  Mostrando{" "}
-                  <span className="font-medium">{results.length}</span>{" "}
-                  vehículo(s)
-                </div>
-              </div>
-
               <SearchResults
                 results={results}
                 currentVehicles={currentVehicles}

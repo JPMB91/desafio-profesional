@@ -16,24 +16,37 @@
   background: white;
   padding: 20px;
   border-radius: 8px;
-  width: 80dvw;
+  width: 70dvw;
   text-align: center;
   position: relative;
-  height: 90%;
+  /* height: 90%; */
   overflow: auto;
 }
 
 
 .closeButton {
   position: absolute;
-  top: 10px;
+  top: 5px;
   right: 10px;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 
+.prevButton {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  font-weight: bold;
+}
+
+.nextButton {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  font-weight: bold;
+}
 
 .modalGallery {
   display: flex;
@@ -41,20 +54,43 @@
   gap: 10px;
   justify-content: center;
   align-items: center;
-  width: 100dvw;
   padding: 10px;
-  width: calc(100% - 20px);
 }
 
 .modalGallery img {
-  width: 100%;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
   border-radius: 5px;
-  object-fit: cover;
+  transition: 0.6s ease-in;
 }
+
+.dots {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+.active,
+.dot:hover {
+  background-color: black;
+}
+
 
 @media (max-width: 768px) {
   .modal {
     width: 90%;
+    height: auto;
   }
-  
+
 }

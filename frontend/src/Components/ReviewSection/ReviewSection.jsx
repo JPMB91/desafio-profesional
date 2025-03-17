@@ -71,7 +71,7 @@ export const ReviewSection = ({ vehicleId }) => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8" ref={reviewsRef}>
-      <h2 className="text-2xl font-bold mb-6 text-center">
+      <h2 className="text-2xl font-bold mb-6 ">
         Opiniones de Clientes
       </h2>
       <div className="grid md:grid-cols-3 gap-8">

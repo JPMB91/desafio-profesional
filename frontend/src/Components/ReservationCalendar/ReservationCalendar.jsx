@@ -99,7 +99,7 @@ export const ReservationCalendar = ({ id }) => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="w-full mx-auto sm:px-6 lg:px-8 py-6">
       <div className="flex flex-col space-y-6">
         <div className="border-b pb-4">
           <h2 className="text-2xl font-bold text-gray-800">
@@ -120,7 +120,7 @@ export const ReservationCalendar = ({ id }) => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-6">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-4 mb-6">
               <div className="w-full flex flex-col items-center lg:items-start">
                 <h3 className="text-lg font-bold text-gray-700 mb-3 self-center lg:self-start">
                   Fecha de inicio
