@@ -10,7 +10,6 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { token } = useAuth();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,7 +34,7 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
         },
         {
           headers: {
-            "Content-Type": "application/json", 
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
