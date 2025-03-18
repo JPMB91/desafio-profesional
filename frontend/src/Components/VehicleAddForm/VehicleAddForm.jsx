@@ -196,11 +196,11 @@ export const VehicleAddForm = () => {
           />
           {error.brand && (
             <div className="flex items-center align-middle mt-1">
-            <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-            <span className="text-sm text-red-500 te font-bold mt-1">
-              {error.brand}
-            </span>
-          </div>
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.brand}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -217,19 +217,19 @@ export const VehicleAddForm = () => {
           />
           {error.model && (
             <div className="flex items-center align-middle mt-1">
-            <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-            <span className="text-sm text-red-500 te font-bold mt-1">
-              {error.model}
-            </span>
-          </div>
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.model}
+              </span>
+            </div>
           )}
           {error.name && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.name}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.name}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -250,12 +250,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.manufacturingYear && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.manufacturingYear}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.manufacturingYear}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -275,12 +275,12 @@ export const VehicleAddForm = () => {
             rows={5}
           ></textarea>
           {error.description && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.description}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.description}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -305,12 +305,12 @@ export const VehicleAddForm = () => {
             ))}
           </select>
           {error.categoryId && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.categoryId}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.categoryId}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -334,12 +334,12 @@ export const VehicleAddForm = () => {
             <option value="CVT">CVT</option>
           </select>
           {error.gearShift && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.gearShift}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.gearShift}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -365,12 +365,12 @@ export const VehicleAddForm = () => {
             <option value="5">5</option>
           </select>
           {error.numberOfDoors && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.numberOfDoors}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.numberOfDoors}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -397,12 +397,12 @@ export const VehicleAddForm = () => {
             <option value="6">6</option>
           </select>
           {error.numberOfSeats && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.numberOfSeats}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.numberOfSeats}
+              </span>
+            </div>
           )}
         </div>
 
@@ -429,12 +429,12 @@ export const VehicleAddForm = () => {
             <option value="BIODIESEL">Biodiesel</option>
           </select>
           {error.fuelType && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.fuelType}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.fuelType}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -467,12 +467,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.registrationPlate && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.registrationPlate}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.registrationPlate}
+              </span>
+            </div>
           )}
         </div>
         <div>
@@ -491,12 +491,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.dailyCost && (
-             <div className="flex items-center align-middle mt-1">
-             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
-             <span className="text-sm text-red-500 te font-bold mt-1">
-               {error.dailyCost}
-             </span>
-           </div>
+            <div className="flex items-center align-middle mt-1">
+              <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+              <span className="text-sm text-red-500 te font-bold mt-1">
+                {error.dailyCost}
+              </span>
+            </div>
           )}
         </div>
         <div className="mb-4 col-span-1 md:col-span-2">

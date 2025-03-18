@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
+import { CircleAlert } from "lucide-react";
 
 export const UserLoginForm = () => {
   const { login } = useAuth();
@@ -20,7 +21,6 @@ export const UserLoginForm = () => {
     general: "",
   });
 
- 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryId") {
@@ -58,11 +58,11 @@ export const UserLoginForm = () => {
       const decodedToken = jwtDecode(token);
       const roles = decodedToken.roles || [];
 
-      if (roles.includes("ROLE_ADMIN")) {   
-          navigate("/administracion")
+      if (roles.includes("ROLE_ADMIN")) {
+        navigate("/administracion");
       } else if (roles.includes("ROLE_USER")) {
-          // navigate("/");
-          navigate(from);
+        // navigate("/");
+        navigate(from);
       }
       setFormData({
         email: "",
@@ -71,7 +71,7 @@ export const UserLoginForm = () => {
 
       setError({
         email: "",
-        password: "",
+        general: "",
       });
     } catch (error) {
       if (error.response && error.response.data) {
@@ -96,7 +96,7 @@ export const UserLoginForm = () => {
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
-          <img className="w-32" src="/logo.png" alt="Logo" />
+          <img className="w-32" src="/public/logo.png" alt="Logo" />
         </div>
         <div>
           <h2 className="text-black text-2xl font-bold p-4 flex flex-col items-center">
@@ -120,10 +120,13 @@ export const UserLoginForm = () => {
                 onChange={handleInputChange}
                 required
               />
-              {error.email && (
-                <p className="text-red-600 text-sm font-bold mt-1">
-                  {error.email}
-                </p>
+              {error.general && (
+                <div className="flex items-center align-middle mt-1">
+                  <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                  <span className="text-sm text-red-500 te font-bold mt-1">
+                    {error.general}
+                  </span>
+                </div>
               )}
             </div>
 
@@ -144,9 +147,12 @@ export const UserLoginForm = () => {
                   required
                 />
                 {error.password && (
-                  <p className="text-red-600 text-sm font-bold mt-1">
-                    {error.password}
-                  </p>
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.password}
+                    </span>
+                  </div>
                 )}
               </div>
             </div>

@@ -2,9 +2,10 @@ import { useState } from "react";
 import { validateRegisterForm } from "../../utils/validateRegisterForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { CircleAlert } from "lucide-react";
 
 export const UserRegisterForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,7 +20,8 @@ export const UserRegisterForm = () => {
     email: "",
     password: "",
     repeatPassword: "",
-    userExists: "", 
+    userExists: "",
+    general: "",
   });
 
   const handleInputChange = (e) => {
@@ -44,6 +46,7 @@ export const UserRegisterForm = () => {
       password: "",
       repeatPassword: "",
       userExists: "",
+      general: "",
     });
 
     const validatedForm = validateRegisterForm(formData);
@@ -78,8 +81,9 @@ export const UserRegisterForm = () => {
         email: "",
         password: "",
         repeatPassword: "",
+        general: "",
       });
-      navigate("/login")
+      navigate("/login");
     } catch (error) {
       if (error.response && error.response.data) {
         const errMsg = error.response.data;
@@ -96,7 +100,7 @@ export const UserRegisterForm = () => {
           default:
             setError((prev) => ({
               ...prev,
-              general: "Ocurrió un error desconocido.",
+              general: "Ha ocurrido un error, intente más tarde.",
             }));
             break;
         }
@@ -106,7 +110,6 @@ export const UserRegisterForm = () => {
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
-      
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
           <img className="w-32" src="/logo.png" alt="Logo" />
@@ -117,7 +120,7 @@ export const UserRegisterForm = () => {
           </h2>
         </div>
         <div className="p-8 space-y-6">
-          <form className="space-y-6" onSubmit={handleSubmit}noValidate>
+          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label
@@ -135,9 +138,12 @@ export const UserRegisterForm = () => {
                   required
                 />
                 {error.firstName && (
-                  <p className="text-red-600 text-sm font-medium mt-1">
-                    {error.firstName}
-                  </p>
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.firstName}
+                    </span>
+                  </div>
                 )}
               </div>
               <div className="space-y-2">
@@ -156,9 +162,12 @@ export const UserRegisterForm = () => {
                   required
                 />
                 {error.lastName && (
-                  <p className="text-red-600 text-sm font-medium mt-1">
-                    {error.lastName}
-                  </p>
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.lastName}
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
@@ -179,14 +188,20 @@ export const UserRegisterForm = () => {
                 required
               />
               {error.email && (
-                <p className="text-red-600 text-sm font-medium mt-1">
-                  {error.email}
-                </p>
+                <div className="flex items-center align-middle mt-1">
+                  <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                  <span className="text-sm text-red-500 te font-bold mt-1">
+                    {error.email}
+                  </span>
+                </div>
               )}
               {error.userExists && (
-                <p className="text-red-600 text-sm font-medium mt-1">
-                  {error.userExists}
-                </p>
+                <div className="flex items-center align-middle mt-1">
+                  <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                  <span className="text-sm text-red-500 te font-bold mt-1">
+                    {error.userExists}
+                  </span>
+                </div>
               )}
             </div>
 
@@ -208,9 +223,12 @@ export const UserRegisterForm = () => {
                   required
                 />
                 {error.password && (
-                  <p className="text-red-600 text-sm font-medium mt-1">
-                    {error.password}
-                  </p>
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.password}
+                    </span>
+                  </div>
                 )}
               </div>
               <div className="space-y-2">
@@ -230,9 +248,21 @@ export const UserRegisterForm = () => {
                   required
                 />
                 {error.repeatPassword && (
-                  <p className="text-red-600 text-sm font-medium mt-1">
-                    {error.repeatPassword}
-                  </p>
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.repeatPassword}
+                    </span>
+                  </div>
+                )}
+
+                {error.general && (
+                  <div className="flex items-center align-middle mt-1">
+                    <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+                    <span className="text-sm text-red-500 te font-bold mt-1">
+                      {error.general}
+                    </span>
+                  </div>
                 )}
               </div>
             </div>

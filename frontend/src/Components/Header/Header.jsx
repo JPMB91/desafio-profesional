@@ -1,21 +1,19 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
 
-
 import { jwtDecode } from "jwt-decode";
 import { useDesktop } from "../../context/Desktop.Context";
 import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
 import { useAuth } from "../../context/Auth.Context";
 
-
 export const Header = () => {
-  const { isAuthenticated, logout, user, hasRole } = useAuth()
-    const { isDesktop } = useDesktop();
- 
+  const { isAuthenticated, logout, user, hasRole } = useAuth();
+  const { isDesktop } = useDesktop();
+
   const handleLogout = () => {
     logout();
   };
- 
+
   return (
     <header className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white w-full p-2 box-border">
       <div className="sm:flex-col">
@@ -25,22 +23,25 @@ export const Header = () => {
             src="/src/assets/images/logo.png"
             alt="Logo Aurora Motors"
           />
-          {isDesktop ?(
-             <span className="font-bold text-lg md:text-xl">
-             Muevete con Confianza
-           </span>
-          ): null}
-         
+          {isDesktop ? (
+            <span className="font-bold text-lg md:text-xl">
+              Muevete con Confianza
+            </span>
+          ) : null}
         </Link>
       </div>
 
       {/* {isAuthenticated && hasRole("ROLE_USER") ? ( */}
-       {isAuthenticated && user && user.roles && user.roles.includes("ROLE_USER") ? (
+      {isAuthenticated &&
+      user &&
+      user.roles &&
+      user.roles.includes("ROLE_USER") ? (
         <Link to="/listar-favoritos">
-        <button className="p-3 rounded-3xl font-bold bg-blue-500">Favoritos</button>
+          <button className="p-3 rounded-3xl font-bold bg-blue-500">
+            Favoritos
+          </button>
         </Link>
       ) : null}
-      
 
       {!isAuthenticated ? (
         <nav className="flex flex-col md:flex-row items-center gap-2 mt-2 md:mt-0">
@@ -49,8 +50,9 @@ export const Header = () => {
               Crear Cuenta
             </button>
           </Link>
+          {"|"}
           <Link to="/login">
-            <button className="px-4 py-2 border border-transparent rounded bg-transparent text-white font-semibold cursor-pointer">
+            <button className="px-3 py-2 border border-transparent rounded bg-transparent text-white font-semibold cursor-pointer">
               Iniciar sesión
             </button>
           </Link>
