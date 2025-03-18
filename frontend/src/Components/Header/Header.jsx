@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
 
 import { jwtDecode } from "jwt-decode";
@@ -7,8 +7,9 @@ import { UserLogoutButton } from "../UserLogoutButton/UserLogoutButton";
 import { useAuth } from "../../context/Auth.Context";
 
 export const Header = () => {
-  const { isAuthenticated, logout, user, hasRole } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   const { isDesktop } = useDesktop();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -31,7 +32,6 @@ export const Header = () => {
         </Link>
       </div>
 
-      {/* {isAuthenticated && hasRole("ROLE_USER") ? ( */}
       {isAuthenticated &&
       user &&
       user.roles &&
@@ -51,7 +51,10 @@ export const Header = () => {
             </button>
           </Link>
           {"|"}
-          <Link to="/login">
+          <Link
+            to="/login"
+            state={{ from: window.location.pathname }}
+          >
             <button className="px-3 py-2 border border-transparent rounded bg-transparent text-white font-semibold cursor-pointer">
               Iniciar sesión
             </button>

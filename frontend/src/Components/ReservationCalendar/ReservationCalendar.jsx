@@ -1,12 +1,12 @@
 import axios from "axios";
 import { CircleAlert, CircleX, MessageCircleWarning } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 import { es } from "date-fns/locale/es";
+import { useAuth } from "../../context/Auth.Context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 registerLocale("es", es);
 
@@ -14,6 +14,13 @@ export const ReservationCalendar = ({ id }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [reservedPeriods, setReservedPeriods] = useState([]);
+
+  const { isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const reservationRef = useRef(null);
+
   const [error, setError] = useState({
     datePeriodNotValid: "",
     informationNotAvailable: "",
@@ -98,8 +105,52 @@ export const ReservationCalendar = ({ id }) => {
     }
   };
 
+  //redirecciona a login con informacion del componente fuente
+  const handleLoginRedirect = () => {
+    navigate("/login", {
+      state: {
+        from: `/vehicle/${id}`,
+        source: "reservation",
+        dates: {
+          startDate: startDate ? startDate.toISOString() : null,
+          endDate: endDate ? endDate.toISOString() : null,
+        },
+      },
+    });
+  };
+
+  // si hay fechas seleccionadas previas al login las vuelve a cargar en el date picker
+  useEffect(() => {
+    if (location.state?.dates && location.state?.source === "reservation") {
+      const { startDate: selectedStartDate, endDate: selectedEndDate } =
+        location.state.dates;
+
+      if (selectedStartDate) {
+        setStartDate(new Date(selectedStartDate));
+      }
+
+      if (selectedEndDate) {
+        setEndDate(new Date(selectedEndDate));
+      }
+
+      // redirecciona al componente fuente
+      setTimeout(() => {
+        if (reservationRef.current) {
+          reservationRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100);
+    }
+  }, [location.state]);
+
+  const handleReservationNavigate = () =>{
+    navigate("/")
+  }
+
   return (
-    <div className="w-full mx-auto sm:px-6 lg:px-8 py-6">
+    <div className="w-full mx-auto sm:px-6 lg:px-8 py-4" ref={reservationRef}>
       <div className="flex flex-col space-y-6">
         <div className="border-b pb-4">
           <h2 className="text-2xl font-bold text-gray-800">
@@ -120,12 +171,12 @@ export const ReservationCalendar = ({ id }) => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-4 mb-6">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-4 mb-5">
               <div className="w-full flex flex-col items-center lg:items-start">
                 <h3 className="text-lg font-bold text-gray-700 mb-3 self-center lg:self-start">
                   Fecha de inicio
                 </h3>
-                <div className=" bg-white shadow-md overflow-hidden w-full py-4 flex justify-center">
+                <div className=" bg-white shadow-md overflow-hidden w-full py-2 flex justify-center">
                   <DatePicker
                     locale="es"
                     dateFormat="dd/MM/yyyy"
@@ -155,7 +206,7 @@ export const ReservationCalendar = ({ id }) => {
                 <h3 className="text-lg font-bold text-gray-700 mb-3 self-center lg:self-start">
                   Fecha de fin
                 </h3>
-                <div className="bg-white shadow-md overflow-hidden py-4 w-full flex justify-center ">
+                <div className="bg-white shadow-md overflow-hidden py-2 w-full flex justify-center ">
                   <DatePicker
                     locale="es"
                     dateFormat="dd/MM/yyyy"
@@ -164,7 +215,7 @@ export const ReservationCalendar = ({ id }) => {
                     selectsEnd
                     startDate={startDate}
                     endDate={endDate}
-                    minDate={startDate}
+                    minDate={new Date()}
                     placeholderText="Fecha de fin"
                     filterDate={(date) => !isDateDisabled(date)}
                     inline
@@ -183,7 +234,7 @@ export const ReservationCalendar = ({ id }) => {
             </div>
 
             {error.datePeriodNotValid && (
-              <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-md shadow-sm mt-2 items-center">
+              <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-md shadow-sm mt-0.5 items-center">
                 <div className="flex">
                   <div className="flex-shrink-0">
                     <CircleX className="h-5 w-5 text-red-500" />
@@ -197,7 +248,7 @@ export const ReservationCalendar = ({ id }) => {
               </div>
             )}
 
-            <div className="mt-2 bg-blue-50 p-3 font-semibold rounded-md border border-blue-100">
+            <div className="mt-0.5 bg-blue-50 p-3 font-semibold rounded-md border border-blue-100">
               <div className="flex items-center">
                 <MessageCircleWarning className="h-5 w-5 text-blue-500 mr-2" />
                 <p className="text-sm text-blue-800">
@@ -206,18 +257,41 @@ export const ReservationCalendar = ({ id }) => {
                 </p>
               </div>
             </div>
+
             <div className="flex justify-center sm:justify-start md:justify-center mt-1.5">
-              <button
-                type="button"
-                disabled={!startDate || !endDate}
-                className={`px-6 py-3 rounded-lg font-bold text-white transition-colors ${
-                  startDate && endDate
-                    ? "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    : "bg-gray-400 cursor-not-allowed"
-                } w-full sm:w-auto`}
-              >
-                {startDate && endDate ? "Reservar ahora" : "Seleccione fechas"}
-              </button>
+              {!isAuthenticated ? (
+                <div className="bg-white shadow rounded-lg p-6 border border-gray-200">
+                  <div className="text-center">
+                    <p className="mb-4 text-gray-600">
+                      Necesitas iniciar crear una reserva
+                    </p>
+                    <button
+                      className="w-full p-2 bg-blue-600 font-bold text-white rounded hover:bg-blue-700 transition-colors"
+                      onClick={handleLoginRedirect}
+                    >
+                      Iniciar Sesión
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  disabled={!startDate || !endDate}
+                  className={`px-6 py-3 rounded-lg font-bold text-white transition-colors  ${
+                    startDate && endDate
+                      ? "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer "
+                      : "bg-gray-400 cursor-not-allowed"
+                  } w-full sm:w-auto`}
+
+                  startDate={startDate} endDate={endDate} user={user}
+                  onClick={handleReservationNavigate}
+                  
+                >
+                  {startDate && endDate
+                    ? "Reservar ahora"
+                    : "Seleccione fechas"}
+                </button>
+              )}
             </div>
           </>
         )}

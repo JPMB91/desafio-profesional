@@ -61,8 +61,12 @@ export const UserLoginForm = () => {
       if (roles.includes("ROLE_ADMIN")) {
         navigate("/administracion");
       } else if (roles.includes("ROLE_USER")) {
-        // navigate("/");
-        navigate(from);
+        navigate(from, {
+          state: {
+            dates: location.state?.dates,
+            source: location.state?.source
+          }
+        });
       }
       setFormData({
         email: "",
