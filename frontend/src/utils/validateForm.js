@@ -42,7 +42,7 @@ export const validateForm = ({images, ...formData}) => {
     newErrors.registrationPlate = "Matrícula es requerida";
     isValid = false;
   }
-  if (!formData.dailyCost.trim()) {
+  if (!formData.dailyCost) {
     newErrors.dailyCost = "Costo diario es requerido";
     isValid = false;
   }

@@ -7,6 +7,7 @@ import DesktopOnly from "../DesktopOnly.jsx";
 import { MultiSelectDropDown } from "../MultiSelectDropDown/MultiSelectDropDown.jsx";
 import ImageIcon from "../../assets/images-input.svg?react";
 import { useAuth } from "../../context/Auth.Context.jsx";
+import { CircleAlert, MessageCircleWarning } from "lucide-react";
 
 export const VehicleAddForm = () => {
   const { isDesktop } = useDesktop();
@@ -127,7 +128,6 @@ export const VehicleAddForm = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Vehiculo guardado exitosamente");
 
       setFormData(initialFormState);
       setError({
@@ -145,7 +145,7 @@ export const VehicleAddForm = () => {
         images: "",
       });
       setPreviews([]);
-      setSelectedCharacteristics([])
+      setSelectedCharacteristics([]);
     } catch (err) {
       if (err.response && err.response.data) {
         const errMsg = err.response.data;
@@ -195,7 +195,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.brand && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.brand}</p>
+            <div className="flex items-center align-middle mt-1">
+            <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+            <span className="text-sm text-red-500 te font-bold mt-1">
+              {error.brand}
+            </span>
+          </div>
           )}
         </div>
         <div>
@@ -211,10 +216,20 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.model && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.model}</p>
+            <div className="flex items-center align-middle mt-1">
+            <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+            <span className="text-sm text-red-500 te font-bold mt-1">
+              {error.model}
+            </span>
+          </div>
           )}
           {error.name && (
-            <p className="text-red-500 text-sm font-bold mt-1">{error.name}</p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.name}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -235,9 +250,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.manufacturingYear && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.manufacturingYear}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.manufacturingYear}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -254,12 +272,15 @@ export const VehicleAddForm = () => {
             value={formData.description}
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-            rows={3}
+            rows={5}
           ></textarea>
           {error.description && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.description}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.description}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -267,7 +288,7 @@ export const VehicleAddForm = () => {
             htmlFor="categoryId"
             className="block text-gray-700 font-bold mb-2"
           >
-            Categoria
+            Categoría
           </label>
           <select
             name="categoryId"
@@ -284,9 +305,12 @@ export const VehicleAddForm = () => {
             ))}
           </select>
           {error.categoryId && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.categoryId}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.categoryId}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -303,7 +327,6 @@ export const VehicleAddForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
-         
             <option value="">Seleccione un tipo de transmisión</option>
             <option value="AUTOMATIC">Automático</option>
             <option value="MANUAL">Manual</option>
@@ -311,9 +334,12 @@ export const VehicleAddForm = () => {
             <option value="CVT">CVT</option>
           </select>
           {error.gearShift && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.gearShift}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.gearShift}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -339,9 +365,12 @@ export const VehicleAddForm = () => {
             <option value="5">5</option>
           </select>
           {error.numberOfDoors && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.numberOfDoors}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.numberOfDoors}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -368,12 +397,15 @@ export const VehicleAddForm = () => {
             <option value="6">6</option>
           </select>
           {error.numberOfSeats && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.numberOfSeats}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.numberOfSeats}
+             </span>
+           </div>
           )}
         </div>
-        
+
         <div>
           <label
             htmlFor="fuelType"
@@ -389,7 +421,6 @@ export const VehicleAddForm = () => {
             onChange={handleInputChange}
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           >
-         
             <option value="">Seleccione tipo de combustible</option>
             <option value="GASOLINE">Gasolina</option>
             <option value="ELECTRIC">Eléctrico</option>
@@ -398,9 +429,12 @@ export const VehicleAddForm = () => {
             <option value="BIODIESEL">Biodiesel</option>
           </select>
           {error.fuelType && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.fuelType}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.fuelType}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -433,9 +467,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.registrationPlate && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.registrationPlate}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.registrationPlate}
+             </span>
+           </div>
           )}
         </div>
         <div>
@@ -454,9 +491,12 @@ export const VehicleAddForm = () => {
             className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
           />
           {error.dailyCost && (
-            <p className="text-red-500 text-sm font-bold mt-1">
-              {error.dailyCost}
-            </p>
+             <div className="flex items-center align-middle mt-1">
+             <CircleAlert className="h-5 w-5 text-red-500 mr-2 " />
+             <span className="text-sm text-red-500 te font-bold mt-1">
+               {error.dailyCost}
+             </span>
+           </div>
           )}
         </div>
         <div className="mb-4 col-span-1 md:col-span-2">
@@ -508,16 +548,19 @@ export const VehicleAddForm = () => {
               </div>
             ))}
             {error.images && (
-              <p className="text-red-500 text-sm font-bold mt-1">
-                {error.images}
-              </p>
+              <div className="flex items-center align-middle mt-1">
+                <CircleAlert className="h-5 w-5 text-red-500 mr-2" />
+                <span className="text-sm text-red-500 te font-bold mt-1">
+                  {error.images}
+                </span>
+              </div>
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center m-4 col-span-1 md:col-span-2">
+        <div className="flex items-center justify-center mb-3 col-span-1 md:col-span-2">
           <button
             type="submit"
-            className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+            className="bg-gray-900 text-white py-3.5 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline font-bold"
           >
             Añadir Vehiculo
           </button>

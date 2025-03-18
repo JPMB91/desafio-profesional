@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { BrowserRouter } from "react-router-dom";
 import { expect, test, vi, beforeEach, afterEach } from "vitest";
@@ -6,7 +6,6 @@ import userEvent from "@testing-library/user-event";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
 import { VehicleAddForm } from "../../../Components/VehicleAddForm/VehicleAddForm";
 import * as AuthContext from "../../../context/Auth.Context";
-
 
 vi.mock("axios");
 vi.mock("jwt-decode");
@@ -48,7 +47,6 @@ const categoriasDeVehiculos = [
 ];
 
 const characteristics = [{ id: 1, name: "Sunroof" }];
-
 
 test("Debe mostrar el mensaje de error si 'fuelType' no se ingresa en el form", async () => {
   axios.get.mockResolvedValueOnce({ data: categoriasDeVehiculos });
@@ -143,5 +141,68 @@ test("Debe mostrar mensaje de error si no se selecionan imagenes", async () => {
 
   await waitFor(() => {
     expect(screen.getByText(/Debe insertar imagenes/i)).toBeInTheDocument();
+  });
+});
+
+test("Debe poder crearse un nuevo vehículo si se ingresan los datos correctamente", async () => {
+  axios.get.mockResolvedValueOnce({ data: categoriasDeVehiculos });
+  axios.get.mockResolvedValueOnce({ data: characteristics });
+
+  const mockCreateObjectURL = vi.fn();
+  URL.createObjectURL = mockCreateObjectURL;
+  mockCreateObjectURL.mockReturnValue("mock-url");
+
+  render(
+    <BrowserRouter>
+      <AuthContext.AuthProvider>
+        <DesktopProvider>
+          <VehicleAddForm />
+        </DesktopProvider>
+      </AuthContext.AuthProvider>
+    </BrowserRouter>
+  );
+
+  const user = userEvent.setup();
+
+  await user.type(screen.getByLabelText("Marca"), "Toyota");
+  await user.type(screen.getByLabelText("Modelo"), "Corolla");
+  await user.type(screen.getByLabelText("Año de fabricación"), "2019");
+  await user.type(
+    screen.getByLabelText("Descripcion"),
+    "Vehículo toyota corolla"
+  );
+  await user.type(screen.getByLabelText("Matricula"), "ABCD22");
+  await user.type(screen.getByLabelText("Costo diario"), "70");
+
+  await user.selectOptions(
+    screen.getByLabelText("Categoría"),
+    String(categoriasDeVehiculos[0].id)
+  );
+  await user.selectOptions(screen.getByLabelText("Numero de asientos"), "5");
+  await user.selectOptions(screen.getByLabelText("Número de puertas"), "4");
+  await user.selectOptions(
+    screen.getByLabelText("Tipo de transmisión"),
+    "AUTOMATIC"
+  );
+  await user.selectOptions(
+    screen.getByLabelText("Tipo de combustible"),
+    "GASOLINE"
+  );
+
+  //imagenes
+
+  const fileInput = screen.getByLabelText("Imágenes");
+  const file = new File([" images "], "example.png", {
+    type: "image/png",
+  });
+
+  fireEvent.change(fileInput, { target: { files: [file] } });
+
+  const submitButton = screen.getByRole("button", { name: /Añadir Vehiculo/i });
+  await user.click(submitButton);
+
+  await waitFor(() => {
+    expect(screen.getByLabelText("Marca")).toHaveValue("");
+    expect(screen.getByLabelText("Modelo")).toHaveValue("");
   });
 });
