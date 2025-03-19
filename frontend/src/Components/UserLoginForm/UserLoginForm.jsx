@@ -64,8 +64,8 @@ export const UserLoginForm = () => {
         navigate(from, {
           state: {
             dates: location.state?.dates,
-            source: location.state?.source
-          }
+            source: location.state?.source,
+          },
         });
       }
       setFormData({
@@ -97,17 +97,17 @@ export const UserLoginForm = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+    <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-3">
+      <div className="w-full lg:max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
           <img className="w-32" src="/public/logo.png" alt="Logo" />
         </div>
         <div>
-          <h2 className="text-black text-2xl font-bold p-4 flex flex-col items-center">
+          <h2 className="text-black text-2xl font-bold p-3 flex flex-col items-center">
             Login
           </h2>
         </div>
-        <div className="p-8 space-y-6">
+        <div className="p-4 space-y-6">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label
@@ -164,7 +164,7 @@ export const UserLoginForm = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 shadow-md"
+                className="w-full bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-101 shadow-md"
               >
                 Login
               </button>

@@ -76,7 +76,7 @@ export const Header = () => {
   );
 };
 
-function getUserName() {
+export function getUserName() {
   try {
     const token = localStorage.getItem("token");
     if (!token) return "";

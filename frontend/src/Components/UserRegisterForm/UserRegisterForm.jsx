@@ -110,7 +110,7 @@ export const UserRegisterForm = () => {
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
           <img className="w-32" src="/logo.png" alt="Logo" />
         </div>

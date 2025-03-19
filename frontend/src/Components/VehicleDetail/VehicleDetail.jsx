@@ -146,7 +146,7 @@ export const VehicleDetail = () => {
 
       <ReservationCalendar id={id} />
 
-      <ReviewSection vehicleId={id} onReviewAdded={refreshRating} />
+      <ReviewSection vehicleId={id} onReviewAdded={refreshRating} vehicleName={vehicleData.name}/>
       <Policies />
     </div>
   );

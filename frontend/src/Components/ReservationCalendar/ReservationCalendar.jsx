@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 registerLocale("es", es);
 
-export const ReservationCalendar = ({ id }) => {
+export const ReservationCalendar = ({ id, vehicleName }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [reservedPeriods, setReservedPeriods] = useState([]);
@@ -145,9 +145,17 @@ export const ReservationCalendar = ({ id }) => {
     }
   }, [location.state]);
 
-  const handleReservationNavigate = () =>{
-    navigate("/")
-  }
+  const handleReservationNavigate = () => {
+    navigate("/crear-reserva", {
+      state: {
+        startDate: startDate,
+        endDate: endDate,
+        user: user,
+        vehicleId: id,
+        vehicleName: vehicleName,
+      },
+    });
+  };
 
   return (
     <div className="w-full mx-auto sm:px-6 lg:px-8 py-4" ref={reservationRef}>
@@ -173,7 +181,7 @@ export const ReservationCalendar = ({ id }) => {
           <>
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-4 mb-5">
               <div className="w-full flex flex-col items-center lg:items-start">
-                <h3 className="text-lg font-bold text-gray-700 mb-3 self-center lg:self-start">
+                <h3 className="text-lg font-bold text-gray-700 mb-1 self-center lg:self-start">
                   Fecha de inicio
                 </h3>
                 <div className=" bg-white shadow-md overflow-hidden w-full py-2 flex justify-center">
@@ -203,7 +211,7 @@ export const ReservationCalendar = ({ id }) => {
               </div>
 
               <div className="w-full flex flex-col items-center lg:items-start mt-6 lg:mt-0 ">
-                <h3 className="text-lg font-bold text-gray-700 mb-3 self-center lg:self-start">
+                <h3 className="text-lg font-bold text-gray-700 mb-1 self-center lg:self-start">
                   Fecha de fin
                 </h3>
                 <div className="bg-white shadow-md overflow-hidden py-2 w-full flex justify-center ">
@@ -258,12 +266,12 @@ export const ReservationCalendar = ({ id }) => {
               </div>
             </div>
 
-            <div className="flex justify-center sm:justify-start md:justify-center mt-1.5">
+            <div className="flex justify-center sm:justify-start md:justify-center">
               {!isAuthenticated ? (
                 <div className="bg-white shadow rounded-lg p-6 border border-gray-200">
                   <div className="text-center">
-                    <p className="mb-4 text-gray-600">
-                      Necesitas iniciar crear una reserva
+                    <p className="mb-4 text-gray-600 font-bold">
+                      Necesitas iniciar sesión para hacer una reserva
                     </p>
                     <button
                       className="w-full p-2 bg-blue-600 font-bold text-white rounded hover:bg-blue-700 transition-colors"
@@ -282,10 +290,7 @@ export const ReservationCalendar = ({ id }) => {
                       ? "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer "
                       : "bg-gray-400 cursor-not-allowed"
                   } w-full sm:w-auto`}
-
-                  startDate={startDate} endDate={endDate} user={user}
                   onClick={handleReservationNavigate}
-                  
                 >
                   {startDate && endDate
                     ? "Reservar ahora"
