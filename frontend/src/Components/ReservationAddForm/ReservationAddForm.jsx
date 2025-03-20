@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { redirect, replace, useLocation, useNavigate } from "react-router-dom";
 import { getUserName } from "../Header/Header";
 import { differenceInDays } from "date-fns";
 import axios from "axios";
 import { useAuth } from "../../context/Auth.Context";
+import { Unauthorized } from "../AdminFilter/Unauthorized";
 
 export const ReservationAddForm = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const userFullName = getUserName();
-  const { token } = useAuth();
+  const { token, isAuthenticated } = useAuth();
 
   const {
     user,
@@ -33,6 +35,7 @@ export const ReservationAddForm = () => {
   });
 
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
@@ -56,7 +59,7 @@ export const ReservationAddForm = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Succes");
+      setSuccess(true);
     } catch (error) {
       console.log(error);
       if (error.response?.status === 409) {
@@ -67,6 +70,25 @@ export const ReservationAddForm = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // redireccion a pagina de éxito
+  useEffect(() => {
+    const handleSuccessRedirect = () => {
+      if (success) {
+        setTimeout(() => {
+          navigate("/reserva-exitosa", { replace: true });
+        }, 900);
+      }
+    };
+    handleSuccessRedirect();
+  }, [success]);
+
+  if (!isAuthenticated) {
+    return <Unauthorized />;
+  }
   return (
     <div className="flex justify-center items-center w-full p-6 bg-gray-50">
       <form
@@ -188,9 +210,7 @@ export const ReservationAddForm = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 resize-none"
             ></textarea>
           </div>
-          {error &&(
-            <h4>{error}</h4>
-          )}
+          {error && <h4>{error}</h4>}
           <div className="flex justify-center mt-4">
             <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
               Confirmar Reserva

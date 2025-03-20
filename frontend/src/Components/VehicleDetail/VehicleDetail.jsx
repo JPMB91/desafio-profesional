@@ -148,6 +148,7 @@ export const VehicleDetail = () => {
       ) : (
         <LoadingSpinner />
       )}
+      <ReviewSection vehicleId={id} /> 
       <Policies />
     </div>
   );

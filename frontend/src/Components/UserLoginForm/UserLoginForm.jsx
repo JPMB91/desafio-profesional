@@ -104,7 +104,7 @@ export const UserLoginForm = () => {
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-3">
       <div className="w-full lg:max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
-          <img className="w-32" src="/public/logo.png" alt="Logo" />
+          <img className="w-32" src="/logo.png" alt="Logo" />
         </div>
         <div>
           <h2 className="text-black text-2xl font-bold p-3 flex flex-col items-center">

@@ -34,6 +34,7 @@ export const ReservationCalendar = ({ id, vehicleData }) => {
           `http://localhost:8080/api/vehicles/${id}/calendar`
         );
 
+        // actualizo el estado sobre los periodos reservados por reservas ya hechas anteriormente
         const periods = response.data.reservedPeriods.map((period) => {
           const startDate = startOfDay(parseISO(period.startDate));
           const endDate = startOfDay(parseISO(period.endDate));
