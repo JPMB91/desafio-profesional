@@ -1,6 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
 import { CircleAlert } from "lucide-react";
@@ -95,6 +95,10 @@ export const UserLoginForm = () => {
       }
     }
   };
+
+  useEffect(() =>{
+    window.scrollTo(0,0)
+  },[])
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-3">

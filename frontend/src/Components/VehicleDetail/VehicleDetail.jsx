@@ -54,10 +54,6 @@ export const VehicleDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const useLocation = () => {
-    console.log(window.location.href);
-  };
-
   if (error)
     return (
       <p className="text-red-500 text-3xl font-bold text-center p-8">{error}</p>
@@ -144,9 +140,14 @@ export const VehicleDetail = () => {
         description={title}
       />
 
-      <ReservationCalendar id={id} />
-
-      <ReviewSection vehicleId={id} onReviewAdded={refreshRating} vehicleName={vehicleData.name}/>
+      {vehicleData ? (
+        <ReservationCalendar
+          id={id}
+          vehicleData={vehicleData}
+        />
+      ) : (
+        <LoadingSpinner />
+      )}
       <Policies />
     </div>
   );
