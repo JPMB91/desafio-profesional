@@ -51,8 +51,7 @@ export const Recomendations = () => {
         );
         setVehicles(response.data);
       } catch (error) {
-        setError("Error al obtener vehiculos");
-        console.error("Error al obtener vehiculos: ", error);
+        setError("Error al obtener recomendaciones de vehículos");
       } finally {
         setIsloading(false);
       }
@@ -74,7 +73,7 @@ export const Recomendations = () => {
       </h2>
 
       {error && (
-        <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
+        <div className="bg-red-100 border-t-4 border-red-400 text-red-700 p-6 rounded-b shadow-md">
           <div className="flex items-center">
             <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
             <p className="text-lg font-medium">{error}</p>

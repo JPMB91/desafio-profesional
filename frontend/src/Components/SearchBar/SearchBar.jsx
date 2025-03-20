@@ -67,14 +67,14 @@ export const SearchBar = () => {
 
   const currentVehicles = results.slice(startIndex, endIndex);
 
-  useEffect(() => {
-    if (searchBarRef.current) {
-      searchBarRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [currentPage]);
+  // useEffect(() => {
+  //   if (searchBarRef.current) {
+  //     searchBarRef.current.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // }, [currentPage]);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;

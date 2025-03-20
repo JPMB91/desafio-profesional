@@ -1,6 +1,9 @@
 package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,6 +18,9 @@ public class Reservation {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    @Nullable
+    private String message;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -23,20 +29,22 @@ public class Reservation {
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
-//    @Enumerated(EnumType.STRING)
-//    private ReservationState reservationState;
+
+    private LocalDateTime createdAt;
+
 
     public Reservation() {
     }
 
-    public Reservation(LocalDate startDate, LocalDate endDate, User user, Vehicle vehicle
-//                       ,ReservationState reservationState
-    ) {
+    public Reservation(LocalDate startDate, LocalDate endDate, User user, Vehicle vehicle,
+
+                       String message) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.user = user;
         this.vehicle = vehicle;
-//        this.reservationState = reservationState;
+        this.message = message;
+        this.createdAt = LocalDateTime.now();
     }
 
     public UUID getId() {
@@ -79,11 +87,20 @@ public class Reservation {
         this.vehicle = vehicle;
     }
 
-//    public ReservationState getReserveState() {
-//        return reservationState;
-//    }
-//
-//    public void setReserveState(ReservationState reservationState) {
-//        this.reservationState = reservationState;
-//    }
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }

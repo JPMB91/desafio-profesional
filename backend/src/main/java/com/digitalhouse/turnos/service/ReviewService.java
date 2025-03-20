@@ -40,6 +40,7 @@ public class ReviewService {
                 .orElseThrow(() -> new RuntimeException("Vehicle not found"));
 
         Review review = new Review(reviewDTO.getComment(), user, vehicle, reviewDTO.getScore());
+
         Review savedReview = reviewRepository.save(review);
 
         String userName = user.getFirstName() + " " + user.getLastname();

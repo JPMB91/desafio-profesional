@@ -22,6 +22,9 @@ import { UserRegisterForm } from "./Components/UserRegisterForm/UserRegisterForm
 import { UserLoginForm } from "./Components/UserLoginForm/UserLoginForm.jsx";
 import { FavoriteList } from "./Components/FavoriteList/FavoriteList.jsx";
 import { CategoryTable } from "./Components/CategoryTable/CategoryTable.jsx";
+import { ReservationAddForm } from "./Components/ReservationAddForm/ReservationAddForm.jsx";
+import { ReservationSuccess } from "./Pages/ReservationSuccess.jsx";
+import { UserReservationHistory } from "./Components/UserReservationHistory/UserReservationHistory.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -67,6 +70,9 @@ createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<UserLoginForm />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/listar-favoritos" element={<FavoriteList/>}/>
+          <Route path="crear-reserva" element={<ReservationAddForm/>}/>
+          <Route path="reserva-exitosa" element={<ReservationSuccess/>}/>
+          <Route path="historial-reservas" element={<UserReservationHistory />}/>
         </Route>
       </Routes>
     </BrowserRouter>

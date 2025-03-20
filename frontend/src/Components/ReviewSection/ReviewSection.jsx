@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { ReviewAddForm } from "../ReviewAddForm/ReviewAddForm";
 import { ReviewCards } from "../ReviewCards/ReviewCards";
@@ -9,12 +9,13 @@ import axios from "axios";
 import { useAuth } from "../../context/Auth.Context";
 
 export const ReviewSection = ({ vehicleId }) => {
-  const { isAuthenticated, user } = useAuth()
+  const { isAuthenticated, user } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [reviewsUpdated, setReviewsUpdated] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation()
 
   const {
     currentPage,
@@ -32,14 +33,21 @@ export const ReviewSection = ({ vehicleId }) => {
 
   const currentReviews = reviews.slice(startIndex, endIndex);
 
-  const reviewsRef = useRef(null)
+  const reviewsRef = useRef(null);
 
   useEffect(() => {
-    if (reviewsRef.current && typeof reviewsRef.current.scrollIntoView === 'function') {
-      reviewsRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (location.state?.source === "reviews") {
+      if (
+        reviewsRef.current &&
+        typeof reviewsRef.current.scrollIntoView === "function"
+      ) {
+        setTimeout(() => {
+          reviewsRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100);
+      }
     }
   }, [currentPage]);
 
@@ -62,7 +70,9 @@ export const ReviewSection = ({ vehicleId }) => {
   }, [vehicleId, reviewsUpdated]);
 
   const handleLoginRedirect = () => {
-    navigate("/login", { state: { from: `/vehicle/${vehicleId}` } });
+    navigate("/login", {
+      state: { from: `/vehicle/${vehicleId}`, source: "reviews" },
+    });
   };
 
   const handleReviewAdded = () => {
@@ -71,9 +81,7 @@ export const ReviewSection = ({ vehicleId }) => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8" ref={reviewsRef}>
-      <h2 className="text-2xl font-bold mb-6 ">
-        Opiniones de Clientes
-      </h2>
+      <h2 className="text-2xl font-bold mb-6 ">Opiniones de Clientes</h2>
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-1">
           {!isAuthenticated ? (

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth.Context";
 import { CircleAlert } from "lucide-react";
@@ -61,8 +61,12 @@ export const UserLoginForm = () => {
       if (roles.includes("ROLE_ADMIN")) {
         navigate("/administracion");
       } else if (roles.includes("ROLE_USER")) {
-        // navigate("/");
-        navigate(from);
+        navigate(from, {
+          state: {
+            dates: location.state?.dates,
+            source: location.state?.source,
+          },
+        });
       }
       setFormData({
         email: "",
@@ -92,18 +96,22 @@ export const UserLoginForm = () => {
     }
   };
 
+  useEffect(() =>{
+    window.scrollTo(0,0)
+  },[])
+
   return (
-    <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+    <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-3">
+      <div className="w-full lg:max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0C1010] p-2 flex flex-col items-center">
-          <img className="w-32" src="/public/logo.png" alt="Logo" />
+          <img className="w-32" src="/logo.png" alt="Logo" />
         </div>
         <div>
-          <h2 className="text-black text-2xl font-bold p-4 flex flex-col items-center">
+          <h2 className="text-black text-2xl font-bold p-3 flex flex-col items-center">
             Login
           </h2>
         </div>
-        <div className="p-8 space-y-6">
+        <div className="p-4 space-y-6">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label
@@ -160,7 +168,7 @@ export const UserLoginForm = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 shadow-md"
+                className="w-full bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-101 shadow-md"
               >
                 Login
               </button>
