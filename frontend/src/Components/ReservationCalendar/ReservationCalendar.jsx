@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { es } from "date-fns/locale/es";
+// import { es } from "date-fns/locale/es";
 import { useAuth } from "../../context/Auth.Context";
 import { useLocation, useNavigate } from "react-router-dom";
+import { addDays, parseISO, startOfDay } from "date-fns";
 
-registerLocale("es", es);
+// registerLocale("es", es);
 
-export const ReservationCalendar = ({ id, vehicleName }) => {
+export const ReservationCalendar = ({ id, vehicleData }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [reservedPeriods, setReservedPeriods] = useState([]);
@@ -33,10 +34,12 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
           `http://localhost:8080/api/vehicles/${id}/calendar`
         );
 
-        const periods = response.data.reservedPeriods.map((period) => ({
-          startDate: new Date(period.startDate),
-          endDate: new Date(period.endDate),
-        }));
+        const periods = response.data.reservedPeriods.map((period) => {
+          const startDate = startOfDay(parseISO(period.startDate));
+          const endDate = startOfDay(parseISO(period.endDate));
+          return { startDate, endDate };
+        });
+        
         setReservedPeriods(periods);
       } catch (error) {
         setError((prev) => ({
@@ -51,19 +54,19 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
   }, []);
 
   const isDateDisabled = (date) => {
-    const dateTime = new Date(date);
+    const dateTime = startOfDay(new Date(date));
 
-    // si la fecha cae o no en algun periodo reservado
     return reservedPeriods.some(
       (period) => dateTime >= period.startDate && dateTime <= period.endDate
     );
   };
-
+ 
   function getDatesBetween(startDate, endDate) {
     const dates = [];
-    let currentDate = new Date(startDate);
+    let currentDate = startOfDay(new Date(startDate));
+    const lastDate = startOfDay(new Date(endDate));
 
-    while (currentDate <= endDate) {
+    while (currentDate <= lastDate) {
       dates.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
@@ -72,14 +75,15 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
   }
 
   const handleStartDateChange = (date) => {
-    setStartDate(date);
+    
+    setStartDate(startOfDay(date));
     setEndDate(null);
     setError((prev) => ({ ...prev, datePeriodNotValid: "" }));
   };
 
   const handleEndDateChange = (date) => {
     if (!startDate) {
-      setEndDate(date);
+      setEndDate(startOfDay(date));
       return;
     }
 
@@ -104,7 +108,6 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
       setError((prev) => ({ ...prev, datePeriodNotValid: "" }));
     }
   };
-
   //redirecciona a login con informacion del componente fuente
   const handleLoginRedirect = () => {
     navigate("/login", {
@@ -118,7 +121,7 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
       },
     });
   };
-
+  
   // si hay fechas seleccionadas previas al login las vuelve a cargar en el date picker
   useEffect(() => {
     if (location.state?.dates && location.state?.source === "reservation") {
@@ -146,13 +149,18 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
   }, [location.state]);
 
   const handleReservationNavigate = () => {
+    const formattedStartDate = startOfDay(startDate);
+    const formattedEndDate = startOfDay(endDate);
     navigate("/crear-reserva", {
       state: {
-        startDate: startDate,
-        endDate: endDate,
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
         user: user,
         vehicleId: id,
-        vehicleName: vehicleName,
+        vehicleDailyCost: vehicleData?.dailyCost,
+        vehicleImage: vehicleData?.images?.[0]?.filename,
+        vehicleBrand: vehicleData?.brand,
+        vehicleModel: vehicleData?.model,
       },
     });
   };
@@ -271,7 +279,7 @@ export const ReservationCalendar = ({ id, vehicleName }) => {
                 <div className="bg-white shadow rounded-lg p-6 border border-gray-200">
                   <div className="text-center">
                     <p className="mb-4 text-gray-600 font-bold">
-                      Necesitas iniciar sesión para hacer una reserva
+                      inicie sesión para hacer una reserva
                     </p>
                     <button
                       className="w-full p-2 bg-blue-600 font-bold text-white rounded hover:bg-blue-700 transition-colors"
