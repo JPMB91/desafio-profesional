@@ -2,9 +2,11 @@ package com.digitalhouse.turnos.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -28,6 +30,9 @@ public class Reservation {
     private Vehicle vehicle;
 
 
+    private LocalDateTime createdAt;
+
+
     public Reservation() {
     }
 
@@ -39,6 +44,7 @@ public class Reservation {
         this.user = user;
         this.vehicle = vehicle;
         this.message = message;
+        this.createdAt = LocalDateTime.now();
     }
 
     public UUID getId() {
@@ -87,5 +93,14 @@ public class Reservation {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

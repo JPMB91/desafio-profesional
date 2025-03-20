@@ -3,6 +3,7 @@ package com.digitalhouse.turnos.dto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class ReservationRequestDTO {
@@ -18,6 +19,9 @@ public class ReservationRequestDTO {
 
 
     private String message;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime createdAt;
 
 
     public LocalDate getStartDate() {
@@ -58,5 +62,13 @@ public class ReservationRequestDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

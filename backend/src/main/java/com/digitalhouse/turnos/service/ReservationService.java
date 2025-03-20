@@ -1,8 +1,11 @@
 package com.digitalhouse.turnos.service;
 
+import com.digitalhouse.turnos.dto.ReservationRequestDTO;
+import com.digitalhouse.turnos.dto.ReservationResponseDTO;
 import com.digitalhouse.turnos.entity.Reservation;
 import com.digitalhouse.turnos.entity.User;
 import com.digitalhouse.turnos.entity.Vehicle;
+import com.digitalhouse.turnos.exception.UserNotFoundException;
 import com.digitalhouse.turnos.exception.VehicleAlreadyReservedException;
 import com.digitalhouse.turnos.exception.VehicleNotFoundException;
 import com.digitalhouse.turnos.repository.ReservationRepository;
@@ -37,31 +40,31 @@ public class ReservationService {
 
 
     @Transactional
-    public Reservation createReservation(LocalDate startDate, LocalDate endDate, String email, UUID vehicleId, String message) {
+    public ReservationResponseDTO createReservation(ReservationRequestDTO reservationDTO) {
 
-        User user = userRepository.getByEmail(email);
+        User user = userRepository.getByEmail(reservationDTO.getEmail());
 
         if (user == null) {
             throw new EntityNotFoundException("Usuario no encontrado");
         }
 
-        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new EntityNotFoundException("Vehículo no encontrado"));
+        Vehicle vehicle =
+                vehicleRepository.findById(reservationDTO.getVehicleId()).orElseThrow(() -> new EntityNotFoundException("Veh" +
+                        "ículo no encontrado"));
 
         // ver si esta disponible para reservas
-        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(vehicle.getId(), startDate, endDate);
+        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(vehicle.getId()
+                , reservationDTO.getStartDate(), reservationDTO.getEndDate());
 
         if (!overlappingReservations.isEmpty()) {
             throw new VehicleAlreadyReservedException("Error: El vehículo ya está reservado en el período " + "seleccionado");
         }
 
-        Reservation reservation = new Reservation();
-        reservation.setStartDate(startDate);
-        reservation.setEndDate(endDate);
-        reservation.setVehicle(vehicle);
-        reservation.setUser(user);
-        reservation.setMessage(message);
+        Reservation reservation = new Reservation(reservationDTO.getStartDate(), reservationDTO.getEndDate(), user,
+                vehicle, reservationDTO.getMessage());
+        Reservation savedReservation = reservationRepository.save(reservation);
 
-        return reservationRepository.save(reservation);
+        return convertToDTO(savedReservation);
     }
 
 
@@ -70,7 +73,6 @@ public class ReservationService {
                 " Vehículo no encontrado"));
 
         List<Reservation> reservations = reservationRepository.findReservationsByVehicleId(
-                //LocalDateTime
                 vehicleId, LocalDate.now());
 
         List<Map<String, Object>> reservedPeriods = reservations.stream().map(reservation -> {
@@ -89,5 +91,31 @@ public class ReservationService {
         return reservedDates;
     }
 
+    public List<ReservationResponseDTO> getReservationByUserEmail(String email) {
+        User user = userRepository.getByEmail(email);
+
+        if (user == null) {
+            throw new UserNotFoundException("Usuario no encontrado");
+
+        }
+        List<Reservation> reservations = reservationRepository.findReservavationsByUserEmail(email);
+        return reservations.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+
+    public ReservationResponseDTO convertToDTO(Reservation reservation) {
+        ReservationResponseDTO dto = new ReservationResponseDTO();
+        dto.setId(reservation.getId());
+        dto.setStartDate(reservation.getStartDate());
+        dto.setEndDate(reservation.getEndDate());
+        dto.setUserId(reservation.getUser().getId());
+        dto.setUserFullName(reservation.getUser().getFirstName() + " " + reservation.getUser().getLastname()); //
+        dto.setVehicleId(reservation.getVehicle().getId());
+        dto.setVehicleName(reservation.getVehicle().getName());
+        dto.setCreatedAt(reservation.getCreatedAt());
+        return dto;
+    }
 
 }

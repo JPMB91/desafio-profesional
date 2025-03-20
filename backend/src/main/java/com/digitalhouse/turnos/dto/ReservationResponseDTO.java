@@ -1,6 +1,9 @@
 package com.digitalhouse.turnos.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class ReservationResponseDTO {
@@ -11,6 +14,10 @@ public class ReservationResponseDTO {
     private String userFullName;
     private UUID vehicleId;
     private String vehicleName;
+
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime createdAt;
 
     public String getVehicleName() {
         return vehicleName;
@@ -36,13 +43,13 @@ public class ReservationResponseDTO {
         this.userFullName = userFullName;
     }
 
-    //    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public UUID getUserId() {
         return userId;

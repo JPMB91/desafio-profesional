@@ -115,6 +115,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
@@ -143,7 +144,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/characteristics/**").hasAuthority("ROLE_ADMIN")
 
 
-                        .requestMatchers(HttpMethod.POST, "/api/reservations/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/reservations/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, "/api/reservations/**").hasAnyAuthority("ROLE_USER",
+                                "ROLE_ADMIN")
 
                         .requestMatchers(HttpMethod.POST, "/api/reviews/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/reviews/**").permitAll()
