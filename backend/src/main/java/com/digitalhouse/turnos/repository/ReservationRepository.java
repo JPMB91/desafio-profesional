@@ -17,17 +17,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
             @Param("today") LocalDate today
     );
 
-//    @Query("SELECT r FROM Reservation r WHERE r.vehicle.id = :vehicleId " +
-//            "AND r.startDate < :endDate AND r.endDate > :startDate")
-//    List<Reservation> findOverlappingReservations(
-//            @Param("vehicleId") UUID vehicleId,
-//            @Param("startDate") LocalDateTime startDate,
-//            @Param("endDate") LocalDate endDate);
 
 
-    @Query("SELECT r FROM Reservation r WHERE r.vehicle.id = :vehicleId " +
-            "AND r.startDate <= :endDate " +
-            "AND r.endDate >= :startDate")
+@Query("SELECT r FROM Reservation r WHERE r.vehicle.id = :vehicleId " +
+        "AND (r.startDate <= :endDate) " +
+        "AND (r.endDate >= :startDate)")
     List<Reservation> findOverlappingReservations(
             @Param("vehicleId") UUID vehicleId,
             @Param("startDate") LocalDate startDate,

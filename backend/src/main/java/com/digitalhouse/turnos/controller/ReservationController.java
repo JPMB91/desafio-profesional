@@ -1,20 +1,13 @@
 package com.digitalhouse.turnos.controller;
 
+import com.digitalhouse.turnos.dto.ReservationRequestDTO;
 import com.digitalhouse.turnos.dto.ReservationResponseDTO;
 import com.digitalhouse.turnos.entity.Reservation;
 import com.digitalhouse.turnos.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.UUID;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -24,18 +17,16 @@ public class ReservationController {
     ReservationService reservationService;
 
     @PostMapping
-    public ResponseEntity<ReservationResponseDTO> createReservation(
-            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-            // @RequestParam("startDate") LocalDate startDate,
-//          @RequestParam("endDate") LocalDate endDate,
-            @RequestParam("userId") UUID userId,
-            @RequestParam("vehicleId") UUID vehicleId) {
-
-        Reservation reservation = reservationService.createReserve(startDate, endDate, userId, vehicleId);
+    public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody ReservationRequestDTO requestDTO) {
+        Reservation reservation = reservationService.createReservation(
+                requestDTO.getStartDate(),
+                requestDTO.getEndDate(),
+                requestDTO.getEmail(),
+                requestDTO.getVehicleId(),
+                requestDTO.getMessage()
+        );
 
         ReservationResponseDTO reservationResponseDTO = convertToDTO(reservation);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(reservationResponseDTO);
     }
 

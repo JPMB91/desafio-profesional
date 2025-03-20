@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,20 +37,21 @@ public class ReservationService {
 
 
     @Transactional
-    public Reservation createReserve(LocalDate startDate, LocalDate endDate, UUID userId, UUID vehicleId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+    public Reservation createReservation(LocalDate startDate, LocalDate endDate, String email, UUID vehicleId, String message) {
 
-        Vehicle vehicle = vehicleRepository.findById(vehicleId)
-                .orElseThrow(() -> new EntityNotFoundException("Vehículo no encontrado"));
+        User user = userRepository.getByEmail(email);
+
+        if (user == null) {
+            throw new EntityNotFoundException("Usuario no encontrado");
+        }
+
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new EntityNotFoundException("Vehículo no encontrado"));
 
         // ver si esta disponible para reservas
-        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(
-                vehicle.getId(), startDate, endDate);
+        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(vehicle.getId(), startDate, endDate);
 
         if (!overlappingReservations.isEmpty()) {
-            throw new VehicleAlreadyReservedException("Error: El vehículo ya está reservado en el período " +
-                    "seleccionado");
+            throw new VehicleAlreadyReservedException("Error: El vehículo ya está reservado en el período " + "seleccionado");
         }
 
         Reservation reservation = new Reservation();
@@ -59,14 +59,15 @@ public class ReservationService {
         reservation.setEndDate(endDate);
         reservation.setVehicle(vehicle);
         reservation.setUser(user);
+        reservation.setMessage(message);
 
         return reservationRepository.save(reservation);
     }
 
 
     public Map<String, Object> getVehicleReservedDates(UUID vehicleId) {
-        Vehicle vehicle = vehicleService.getVehicle(vehicleId)
-                .orElseThrow(() -> new VehicleNotFoundException("Error: Vehiculo no encontrado"));
+        Vehicle vehicle = vehicleService.getVehicle(vehicleId).orElseThrow(() -> new VehicleNotFoundException("Error:" +
+                " Vehículo no encontrado"));
 
         List<Reservation> reservations = reservationRepository.findReservationsByVehicleId(
                 //LocalDateTime
