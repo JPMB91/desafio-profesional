@@ -11,14 +11,19 @@ export const UserReservationHistory = () => {
   const [reservationData, setReservationData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const email = "user@user.com";
+ 
+  const userEmail = user?.sub; 
 
   useEffect(() => {
     const getReservationData = async () => {
       try {
+
+        if (!userEmail) {
+          return;
+        }
         setIsLoading(true);
         const response = await axios.get(
-          `http://localhost:8080/api/reservations/${email}`,
+          `http://localhost:8080/api/reservations/${userEmail}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -34,7 +39,7 @@ export const UserReservationHistory = () => {
     };
 
     getReservationData();
-  }, [email, token]);
+  }, [userEmail, token]);
 
   const formatDateTime = (dateString) => {
     try {
@@ -86,7 +91,7 @@ export const UserReservationHistory = () => {
                 Vehículo
               </th>
               <th className="text-left py-2 px-2 border border-gray-300">
-                Fecha de Reservacíon
+                Fecha Reservacíon
               </th>
               <th className="text-left py-2 px-2 border border-gray-300">
                 Fecha Inicio
