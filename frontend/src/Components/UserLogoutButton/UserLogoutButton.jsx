@@ -1,11 +1,14 @@
+import { LogOut, LucideLogOut } from "lucide-react";
+
 export const UserLogoutButton = ({ handleLogout }) => {
   return (
     <button
-      className="bg-red-500 p-2 rounded-xl mt-2 text-sm font-bold hover:cursor-pointer hover:"
+      className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg transition-colors duration-200 flex items-center gap-2 w-fit"
       type="button"
       onClick={handleLogout}
     >
-      Cerrar sesión
+      <LogOut size={18} />
+      <span className="font-medium">Salir</span>
     </button>
   );
 };
