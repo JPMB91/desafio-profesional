@@ -98,7 +98,7 @@ public class ReservationService {
             throw new UserNotFoundException("Usuario no encontrado");
 
         }
-        List<Reservation> reservations = reservationRepository.findReservavationsByUserEmail(email);
+        List<Reservation> reservations = reservationRepository.findReservationsByUserEmail(email);
         return reservations.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

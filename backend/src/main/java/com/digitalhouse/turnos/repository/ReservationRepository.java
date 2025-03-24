@@ -1,6 +1,5 @@
 package com.digitalhouse.turnos.repository;
 
-import com.digitalhouse.turnos.dto.ReservationResponseDTO;
 import com.digitalhouse.turnos.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,13 +26,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate);
 
-//    List<ReservationResponseDTO> findReservavationsByUserEmail(String email);
-List<Reservation> findReservavationsByUserEmail(String email);
+
+    List<Reservation> findReservationsByUserEmail(String email);
 
 
-//    @Query("SELECT r FROM Reservation r WHERE r.vehicle.id = :vehicleId AND r.endDate > :today ORDER BY r.startDate")
-//    List<Reservation> findReservationsByUserEmail(
-//            @Param("vehicleId") UUID vehicleId,
-//            @Param("today") LocalDate today
-//    );
 }
