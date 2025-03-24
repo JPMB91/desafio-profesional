@@ -1,8 +1,7 @@
-// 
-
 import { Outlet } from "react-router-dom";
 import { Header } from "../Components/Header/Header";
 import { Footer } from "../Components/Footer/Footer";
+import { WhatsAppButton } from "../Components/WhatsAppButton/whatsAppButton";
 
 export const Layout = () => {
   return (
@@ -11,6 +10,9 @@ export const Layout = () => {
       <main className="flex-1">
         <Outlet />
       </main>
+
+      <WhatsAppButton />
+
       <Footer />
     </div>
   );
