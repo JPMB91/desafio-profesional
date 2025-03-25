@@ -13,6 +13,8 @@ import com.digitalhouse.turnos.repository.UserRepository;
 import com.digitalhouse.turnos.repository.VehicleRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,9 @@ public class ReservationService {
 
     @Autowired
     private VehicleService vehicleService;
+
+    @Autowired
+  private EmailService emailService;
 
 
     @Transactional
@@ -63,6 +68,9 @@ public class ReservationService {
         Reservation reservation = new Reservation(reservationDTO.getStartDate(), reservationDTO.getEndDate(), user,
                 vehicle, reservationDTO.getMessage());
         Reservation savedReservation = reservationRepository.save(reservation);
+
+        // enviar email de confimación:
+        emailService.sendReservationEmail(reservation);
 
         return convertToDTO(savedReservation);
     }
