@@ -5,12 +5,15 @@ import { differenceInDays } from "date-fns";
 import axios from "axios";
 import { useAuth } from "../../context/Auth.Context";
 import { Unauthorized } from "../AdminFilter/Unauthorized";
+import { LoadingSpinner } from "../LoadingSpinner";
+import { CircleAlert } from "lucide-react";
 
 export const ReservationAddForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const userFullName = getUserName();
   const { token, isAuthenticated } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     user,
@@ -51,6 +54,7 @@ export const ReservationAddForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setIsLoading(true);
 
     try {
       await axios.post("http://localhost:8080/api/reservations", formData, {
@@ -67,6 +71,8 @@ export const ReservationAddForm = () => {
       } else {
         setError("Error al enviar la reserva.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,7 +86,7 @@ export const ReservationAddForm = () => {
       if (success) {
         setTimeout(() => {
           navigate("/reserva-exitosa", { replace: true });
-        }, 900);
+        }, 300);
       }
     };
     handleSuccessRedirect();
@@ -88,6 +94,19 @@ export const ReservationAddForm = () => {
 
   if (!isAuthenticated) {
     return <Unauthorized />;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+        <div className="bg-white p-8 rounded-lg shadow-xl">
+          <LoadingSpinner />
+          <p className="mt-4 text-center text-gray-700 font-bold">
+            Procesando su reserva...
+          </p>
+        </div>
+      </div>
+    );
   }
   return (
     <div className="flex justify-center items-center w-full p-6 bg-gray-50">
@@ -132,9 +151,6 @@ export const ReservationAddForm = () => {
             </dl>
           </div>
           <div className="mb-6">
-            {/* <h3 className="font-bold text-lg border-b border-gray-200 pb-2 mb-4">
-              Fechas de reserva:
-            </h3> */}
             <dl className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
               <div>
                 <dt className="text-gray-700 text-sm font-medium mb-2">
@@ -210,7 +226,16 @@ export const ReservationAddForm = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 resize-none"
             ></textarea>
           </div>
-          {error && <h4>{error}</h4>}
+
+          {error && (
+             <div className="bg-red-100 border-2 border-red-400 text-red-700 p-6 rounded-lg shadow-md">
+             <div className="flex items-center">
+               <CircleAlert className="h-6 w-6 mr-3 text-red-500" />
+               <p className="text-lg font-medium">{error}</p>
+             </div>
+           </div>
+          )}
+          
           <div className="flex justify-center mt-4">
             <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
               Confirmar Reserva
