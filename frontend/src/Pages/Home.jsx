@@ -1,14 +1,14 @@
-import { Recomendations } from "../Components/Recomendations/Recomendations";
+import { VehicleRecommendation } from "../Components/Vehicle/VehicleRecommendation/VehicleRecomendation";
 
-import { SearchBar } from "../Components/SearchBar/SearchBar";
-import { VehicleFilter } from "../Components/VehicleFilter/VehicleFilter";
+import { VehicleSearchBar } from "../Components/Vehicle/VehicleSearchBar/VehicleSearchBar";
+import { VehicleFilter } from "../Components/Vehicle/VehicleFilter/VehicleFilter";
 
 export const Home = () => {
   return (
     <>
-      <SearchBar />
+      <VehicleSearchBar />
       <VehicleFilter />
-      <Recomendations />
+      <VehicleRecommendation />
     </>
   );
 };

@@ -9,11 +9,6 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
   const [loading, setLoading] = useState(true);
 
-  // const hasRole = (roleName) => {
-  //   return user && user.roles && user.roles.includes(roleName);
-  // };
-
-  // const isAdmin = user && user.roles && user.roles.includes("ROLE_ADMIN");
   useEffect(() => {
     localStorage.setItem("token", token || "");
     setIsAuthenticated(!!token);

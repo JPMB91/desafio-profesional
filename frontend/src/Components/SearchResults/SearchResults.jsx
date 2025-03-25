@@ -1,5 +1,5 @@
 import React from "react";
-import { VehicleCard } from "../VehicleCard/VehicleCard";
+import { VehicleCard } from "../Vehicle/VehicleCard/VehicleCard";
 
 const SearchResults = ({ results, currentVehicles, searchTerm }) => {
   return (

@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Components/Header/Header";
-import { Footer } from "../Components/Footer/Footer";
-import { WhatsAppButton } from "../Components/WhatsAppButton/whatsAppButton";
+import { Footer } from "../Components/UI/Footer/Footer";
+import { WhatsAppButton } from "../Components/WhatsAppButton/WhatsAppButton";
+
 
 export const Layout = () => {
   return (

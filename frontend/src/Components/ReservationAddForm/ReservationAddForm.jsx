@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { redirect, replace, useLocation, useNavigate } from "react-router-dom";
-import { getUserName } from "../Header/Header";
+
 import { differenceInDays } from "date-fns";
 import axios from "axios";
 import { useAuth } from "../../context/Auth.Context";
-import { Unauthorized } from "../AdminFilter/Unauthorized";
-import { LoadingSpinner } from "../LoadingSpinner";
+import { Unauthorized } from "../Admin/AdminFilter/Unauthorized";
+import { LoadingSpinner } from "../UI/LoadingSpinner";
 import { CircleAlert } from "lucide-react";
 
 export const ReservationAddForm = () => {

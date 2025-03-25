@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { AdminPanel } from "../Components/AdminPanel/AdminPanel";
+import { AdminPanel } from "../Components/Admin/AdminPanel/AdminPanel";
 import { useDesktop } from "../context/Desktop.Context";
 
 export const AdminLayout = () => {
