@@ -4,14 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { differenceInDays } from "date-fns";
 import { CircleAlert } from "lucide-react";
-import { useAuth } from "../../context/Auth.Context";
-import { Unauthorized } from "../Admin/AdminFilter/Unauthorized";
-import { LoadingSpinner } from "../UI/LoadingSpinner";
+import { useAuth } from "../../../context/Auth.Context";
+import { Unauthorized } from "../../Admin/AdminFilter/Unauthorized";
+import { LoadingSpinner } from "../../UI/LoadingSpinner";
+import { getUserName } from "../../../utils/getUsername";
 
 export const ReservationAddForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userFullName = getUserName();
+  const userFullName = getUserName()
   const { token, isAuthenticated } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -146,6 +147,15 @@ export const ReservationAddForm = () => {
                 </dt>
                 <dd className="w-full px-3 py-2 rounded-md border-b border-gray-200 text-gray-700">
                   {vehicleModel}
+                </dd>
+              </div>
+
+              <div>
+                <dt className="text-gray-700 text-sm font-medium mb-2">
+                  Ubicación:
+                </dt>
+                <dd className="w-full px-3 py-2 rounded-md border-b border-gray-200 text-gray-700">
+                  <p>Aeropuerto Internacional Arturo Merino Benítez. Armando Cortinez Ote. 1704, Pudahuel, Región Metropolitana, Chile</p>
                 </dd>
               </div>
             </dl>

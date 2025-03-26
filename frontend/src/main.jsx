@@ -22,12 +22,13 @@ import { UserRegisterForm } from "./Components/User/UserRegisterForm/UserRegiste
 import { UserLoginForm } from "./Components/User/UserLoginForm/UserLoginForm.jsx";
 
 import { CategoryTable } from "./Components/Category/CategoryTable/CategoryTable.jsx";
-import { ReservationAddForm } from "./Components/ReservationAddForm/ReservationAddForm.jsx";
+
 import { ReservationSuccess } from "./Pages/ReservationSuccess.jsx";
 import { UserReservationHistory } from "./Components/User/UserReservationHistory/UserReservationHistory.jsx";
 import { AdminLayout } from "./Layouts/AdminLayout.jsx";
 import { VehicleTable } from "./Components/Vehicle/VehicleTable/VehicleTable.jsx";
 import { UserFavoriteList } from "./Components/User/UserFavoriteList/UserFavoriteList.jsx";
+import { ReservationAddForm } from "./Components/Reservation/ReservationAddForm/ReservationAddForm.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

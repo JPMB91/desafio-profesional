@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { VehicleImageGallery } from "../VehicleImageGallery/VehicleImageGallery.jsx";
 import { CharacteristicsDisplay } from "../../Characteristic/CharacteristicsDisplay/CharacteristicsDisplay.jsx";
-import { ReservationCalendar } from "../../ReservationCalendar/ReservationCalendar.jsx";
+
 
 import { ShareBar } from "../../UI/ShareBar/ShareBar.jsx";
 
@@ -15,6 +15,7 @@ import { es } from "date-fns/locale/es";
 import { registerLocale } from "react-datepicker";
 import VehicleReservationPolicy from "../VehicleReservationPolicy/VehicleReservationPolicy.jsx";
 import { StarRating } from "../../UI/StarRating/StarRating.jsx";
+import { ReservationCalendar } from "../../Reservation/ReservationCalendar/ReservationCalendar.jsx";
 registerLocale("es", es);
 
 export const VehicleDetail = () => {

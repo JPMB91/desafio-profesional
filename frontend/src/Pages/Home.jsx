@@ -3,6 +3,7 @@ import { VehicleRecommendation } from "../Components/Vehicle/VehicleRecommendati
 import { VehicleSearchBar } from "../Components/Vehicle/VehicleSearchBar/VehicleSearchBar";
 import { VehicleFilter } from "../Components/Vehicle/VehicleFilter/VehicleFilter";
 
+
 export const Home = () => {
   return (
     <>

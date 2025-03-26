@@ -5,7 +5,7 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 // import { es } from "date-fns/locale/es";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../../context/Auth.Context";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addDays, parseISO, startOfDay } from "date-fns";
 

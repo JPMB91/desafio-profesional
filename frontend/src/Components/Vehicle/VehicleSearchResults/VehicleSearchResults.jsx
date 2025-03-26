@@ -1,7 +1,7 @@
 import React from "react";
-import { VehicleCard } from "../Vehicle/VehicleCard/VehicleCard";
+import { VehicleCard } from "../VehicleCard/VehicleCard";
 
-const SearchResults = ({ results, currentVehicles, searchTerm }) => {
+const VehicleSearchResults = ({ results, currentVehicles, searchTerm }) => {
   return (
     <div className="flex-1 mt-4 ">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
@@ -29,4 +29,4 @@ const SearchResults = ({ results, currentVehicles, searchTerm }) => {
   );
 };
 
-export default SearchResults;
+export default VehicleSearchResults;

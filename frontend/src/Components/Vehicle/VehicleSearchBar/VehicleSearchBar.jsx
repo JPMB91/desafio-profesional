@@ -3,14 +3,16 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import axios from "axios";
-import SearchResults from "../../SearchResults/SearchResults";
+import VehicleSearchResults from "../VehicleSearchResults/VehicleSearchResults";
 import { Search, Calendar, CircleAlert, Info } from "lucide-react";
-import { usePagination } from "../../../hooks/usePagination";
+
 
 import { LoadingSpinner } from "../../UI/LoadingSpinner";
 import { format } from "date-fns";
 
 import { es } from "date-fns/locale/es";
+import { usePagination } from "../../../hooks/usePagination";
+import { Pagination } from "../../UI/Pagination/Pagination";
 registerLocale("es", es);
 
 export const VehicleSearchBar = () => {
@@ -327,7 +329,7 @@ export const VehicleSearchBar = () => {
         ) : (
           results.length > 0 && (
             <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
-              <SearchResults
+              <VehicleSearchResults
                 results={results}
                 currentVehicles={currentVehicles}
                 searchTerm={searchTerm}
