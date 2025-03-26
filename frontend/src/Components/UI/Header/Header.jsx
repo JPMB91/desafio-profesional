@@ -1,19 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
-import { UserAvatar } from "../User/UserAvatar/UserAvatar";
-import { useDesktop } from "../../context/Desktop.Context";
-import { UserLogoutButton } from "../User/UserLogoutButton/UserLogoutButton";
-import { useAuth } from "../../context/Auth.Context";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 import { Calendar, Heart, Home, Menu, User, X } from "lucide-react";
-import { getUserName } from "../../utils/getUsername";
+import { useState } from "react";
+
+import { useAuth } from "../../../context/Auth.Context";
+import { useDesktop } from "../../../context/Desktop.Context";
+import { getUserName } from "../../../utils/getUsername";
+import { UserAvatar } from "../../User/UserAvatar/UserAvatar";
+import { UserLogoutButton } from "../../User/UserLogoutButton/UserLogoutButton";
 
 export const Header = () => {
   const { isAuthenticated, logout, user } = useAuth();
-  const { isDesktop } = useDesktop();
+  const { isDesktop } = useDesktop()
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const name = getUserName()
+  const name = getUserName();
 
   const handleLogout = () => {
     logout();
@@ -91,9 +94,7 @@ to-gray-700 text-white p-3 box-border "
             <UserAvatar name={name} />
             <div className="text-left">
               <p className="text-sm md:text-base align-bottom">Hola,</p>
-              <p className="font-medium text-base md:text-base">
-                {name}
-              </p>
+              <p className="font-medium text-base md:text-base">{name}</p>
             </div>
             <div className="flex items-center">
               <UserLogoutButton handleLogout={handleLogout} />
@@ -178,5 +179,3 @@ to-gray-700 text-white p-3 box-border "
     </header>
   );
 };
-
-

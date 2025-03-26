@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { validateForm } from "../../../utils/validateForm.js";
+import { useEffect, useState } from "react";
 import { useDesktop } from "../../../context/Desktop.Context.jsx";
+import { validateForm } from "../../../utils/validateForm.js";
 import DesktopOnly from "../../UI/DesktopOnly.jsx";
 
-import { MultiSelectDropDown } from "../../MultiSelectDropDown/MultiSelectDropDown.jsx";
+import { CircleAlert } from "lucide-react";
 import ImageIcon from "../../../assets/images-input.svg?react";
 import { useAuth } from "../../../context/Auth.Context.jsx";
-import { CircleAlert, MessageCircleWarning } from "lucide-react";
+import { MultiSelectDropDown } from "../../UI/MultiSelectDropDown/MultiSelectDropDown.jsx";
 
 export const VehicleAddForm = () => {
   const { isDesktop } = useDesktop();

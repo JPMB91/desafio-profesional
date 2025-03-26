@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context/Auth.Context";
 import Swal from "sweetalert2";
+import { useAuth } from "../../../context/Auth.Context";
 
 export const CategoryTable = () => {
   const [categories, setCategories] = useState([]);

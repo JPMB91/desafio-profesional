@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDesktop } from "../../../context/Desktop.Context";
 import axios from "axios";
-import { validateForm } from "../../../utils/validateForm";
+import { CircleAlert } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageIcon from "../../../assets/images-input.svg?react";
 import { useAuth } from "../../../context/Auth.Context";
-import { MultiSelectDropDown } from "../../MultiSelectDropDown/MultiSelectDropDown";
+import { useDesktop } from "../../../context/Desktop.Context";
+import { validateForm } from "../../../utils/validateForm";
 import DesktopOnly from "../../UI/DesktopOnly";
-import { CircleAlert } from "lucide-react";
+import { MultiSelectDropDown } from "../../UI/MultiSelectDropDown/MultiSelectDropDown.jsx";
 
 export const VehicleUpdateForm = () => {
   const { id } = useParams();
