@@ -1,4 +1,4 @@
-import { CircleCheckBig, CircleCheckBigIcon } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
