@@ -5,7 +5,7 @@ import { test, vi } from "vitest";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import * as AuthContext from "../../../context/Auth.Context";
-import { UserLoginForm } from "../../../Components/UserLoginForm/UserLoginForm";
+import { UserLoginForm } from "../../../Components/User/UserLoginForm/UserLoginForm";
 
 
 vi.mock("axios");
@@ -101,7 +101,12 @@ test("Debe redirigir a / si el rol del usuario es ROLE_USER", async () => {
   await user.type(screen.getByLabelText("Contraseña"), "password123");
   await user.click(screen.getByRole("button", { name: /Login/i }));
 
+  // await waitFor(() => {
+  //   expect(mockNavigate).toHaveBeenCalledWith("/");
+  // });
   await waitFor(() => {
-    expect(mockNavigate).toHaveBeenCalledWith("/");
+    expect(mockNavigate).toHaveBeenCalledWith("/", {
+      state: { dates: undefined, source: undefined },
+    });
   });
 });

@@ -1,11 +1,11 @@
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import * as AuthContext from "../../../context/Auth.Context";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
-import { UserTable } from "../../../Components/UserTable/UserTable";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { test } from "vitest";
+import { UserTable } from "../../../Components/User/UserTable/UserTable";
 
 vi.mock("axios");
 vi.mock("jwt-decode");

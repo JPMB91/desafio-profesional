@@ -4,8 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { expect, test, vi, beforeEach, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
-import { VehicleAddForm } from "../../../Components/VehicleAddForm/VehicleAddForm";
+
 import * as AuthContext from "../../../context/Auth.Context";
+import { VehicleAddForm } from "../../../Components/Vehicle/VehicleAddForm/VehicleAddForm";
 
 vi.mock("axios");
 vi.mock("jwt-decode");

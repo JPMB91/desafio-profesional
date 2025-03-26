@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { test, expect, vi } from "vitest";
-import { VehicleCard } from "../../../Components/VehicleCard/VehicleCard";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
 import { AuthProvider, useAuth } from "../../../context/Auth.Context";
 import { FavoriteProvider } from "../../../context/Favorite.Context";
 import axios from "axios"; 
+import { VehicleCard } from "../../../Components/Vehicle/VehicleCard/VehicleCard";
 
 vi.mock("axios"); 
 

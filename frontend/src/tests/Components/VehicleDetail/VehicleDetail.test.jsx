@@ -4,8 +4,8 @@ import { expect, test } from "vitest";
 import axios from "axios";
 import * as AuthContext from "../../../context/Auth.Context";
 import { DesktopProvider } from "../../../context/Desktop.Context";
-import { CharacteristicsDisplay } from "../../../Components/CharacteristicsDisplay/CharacteristicsDisplay";
-import { VehicleDetail } from "../../../Components/VehicleDetail/VehicleDetail";
+import { VehicleDetail } from "../../../Components/Vehicle/VehicleDetail/VehicleDetail";
+import { CharacteristicsDisplay } from "../../../Components/Characteristic/CharacteristicsDisplay/CharacteristicsDisplay";
 
 //mock de scroll into view
 global.scrollTo = vi.fn();

@@ -9,8 +9,8 @@ import axios from "axios";
 import { BrowserRouter,  } from "react-router-dom";
 import { expect, test, vi, beforeEach, afterEach, describe, it } from "vitest";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
-import { CategoryTable } from "../../../Components/CategoryTable/CategoryTable";
 import * as AuthContext from "../../../context/Auth.Context";
+import { CategoryTable } from "../../../Components/Category/CategoryTable/CategoryTable";
 
 vi.mock("axios");
 vi.mock("jwt-decode");

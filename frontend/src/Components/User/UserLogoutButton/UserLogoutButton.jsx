@@ -1,4 +1,4 @@
-import { LogOut, LucideLogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 
 export const UserLogoutButton = ({ handleLogout }) => {
   return (

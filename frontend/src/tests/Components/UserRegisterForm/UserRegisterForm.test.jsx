@@ -5,7 +5,7 @@ import { test, expect, vi, beforeEach, afterEach } from "vitest";
 import axios from "axios";
 import { AuthProvider, useAuth } from "../../../context/Auth.Context";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
-import { UserRegisterForm } from "../../../Components/UserRegisterForm/UserRegisterForm";
+import { UserRegisterForm } from "../../../Components/User/UserRegisterForm/UserRegisterForm";
 
 vi.mock("axios");
 

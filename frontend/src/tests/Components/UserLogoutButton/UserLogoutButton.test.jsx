@@ -1,10 +1,12 @@
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import * as AuthContext from "../../../context/Auth.Context";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
-import { AdminPanel } from "../../../Components/AdminPanel/AdminPanel";
+
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Header } from "../../../Components/Header/Header";
+import { Header } from "../../../Components/UI/Header/Header";
+import { AdminPanel } from "../../../Components/Admin/AdminPanel/AdminPanel";
+
 
 vi.mock("axios");
 vi.mock("jwt-decode");
@@ -83,7 +85,7 @@ describe("Admin Logout Functionality", () => {
 
     const user = userEvent.setup();
 
-    const logoutButton = screen.getByRole("button", { name: /Cerrar sesión/i });
+    const logoutButton = screen.getByRole("button", { name: /Salir/i });
     await user.click(logoutButton);
 
     await waitFor(() => {
@@ -102,7 +104,7 @@ describe("Admin Logout Functionality", () => {
       </BrowserRouter>
     );
 
-    const logoutButton = screen.getByRole("button", { name: /Cerrar sesión/i });
+    const logoutButton = screen.getByRole("button", { name: /Salir/i });
     expect(logoutButton).toBeInTheDocument();
   });
 

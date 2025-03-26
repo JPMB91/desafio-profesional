@@ -1,12 +1,20 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
+import * as AuthContext from "../../../context/Auth.Context";
 
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "../../../context/Auth.Context";
-import { ReservationCalendar } from "../../../Components/ReservationCalendar/ReservationCalendar";
+import { ReservationCalendar } from "../../../Components/Reservation/ReservationCalendar/ReservationCalendar";
 
 vi.mock("axios");
+
+vi.mock("../../../context/Auth.Context", async () => {
+  const actual = await vi.importActual("../../../context/Auth.Context");
+  return {
+    ...actual,
+  };
+});
 
 describe("<ReservationCalendar/>", () => {
   const mockId = "123";
@@ -68,10 +76,17 @@ describe("<ReservationCalendar/>", () => {
   it("deshabilita el botón reservar si no se seleccionan fechas", async () => {
     axios.get.mockResolvedValueOnce({ data: mockReservations });
 
+    vi.spyOn(AuthContext, "useAuth").mockReturnValue({
+      user: { roles: ["ROLE_USER"] },
+      isAuthenticated: true,
+      loading: false,
+      token: "mocktoken",
+    });
+
     render(
       <BrowserRouter>
         <AuthProvider>
-          <ReservationCalendar id={mockId} />
+          <ReservationCalendar id="1" vehicleData={{ dailyCost: 100 }} />{" "}
         </AuthProvider>
       </BrowserRouter>
     );

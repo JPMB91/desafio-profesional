@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useFavorites } from "../../../context/Favorite.Context";
 import { Heart } from "lucide-react";
 
 import { useVehicleRating } from "../../../hooks/useVehicleRating";
 import { StarRating } from "../../UI/StarRating/StarRating";
+import { useFavorites } from "../../../context/Favorite.Context";
 
 export const VehicleCard = ({ vehicle }) => {
   const { isFavorite, toggleFavorite, isFavoritesEnabled } = useFavorites();

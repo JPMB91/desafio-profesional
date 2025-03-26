@@ -8,9 +8,9 @@ import {
 import { BrowserRouter, data } from "react-router-dom";
 import { test, expect, vi } from "vitest";
 import axios from "axios";
-import { VehicleTable } from "../../../Components/VehicleTable/VehicleTable";
 import { DesktopProvider, useDesktop } from "../../../context/Desktop.Context";
 import { AuthProvider, useAuth } from "../../../context/Auth.Context";
+import { VehicleTable } from "../../../Components/Vehicle/VehicleTable/VehicleTable";
 
 const fireMock = vi.fn(() => Promise.resolve({ isConfirmed: true }));
 
