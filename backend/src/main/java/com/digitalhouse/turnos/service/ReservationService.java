@@ -13,8 +13,6 @@ import com.digitalhouse.turnos.repository.UserRepository;
 import com.digitalhouse.turnos.repository.VehicleRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,7 +39,7 @@ public class ReservationService {
     private VehicleService vehicleService;
 
     @Autowired
-  private EmailService emailService;
+    private EmailService emailService;
 
 
     @Transactional
