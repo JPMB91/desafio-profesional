@@ -94,7 +94,7 @@ export const ReviewSection = ({ vehicleId }) => {
                   Necesitas iniciar sesión para dejar una reseña
                 </p>
                 <button
-                  className="w-full p-2 bg-blue-600 font-bold text-white rounded hover:bg-blue-700 transition-colors"
+                  className="w-full p-2 bg-[#FF5F00] font-bold text-white rounded hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)] transition-colors"
                   onClick={handleLoginRedirect}
                 >
                   Iniciar Sesión

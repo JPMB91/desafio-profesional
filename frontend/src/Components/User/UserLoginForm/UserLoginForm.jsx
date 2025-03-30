@@ -103,7 +103,7 @@ export const UserLoginForm = () => {
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-3">
       <div className="w-full lg:max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div className="bg-[#0C1010] p-2 flex flex-col items-center">
+        <div className="bg-[var(--header-dark)] p-2 flex flex-col items-center">
           <img className="w-32" src="/logo.png" alt="Logo" />
         </div>
         <div>
@@ -168,7 +168,7 @@ export const UserLoginForm = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-101 shadow-md"
+                className="w-full bg-[var(--color-accent-primary)] rounded-xl hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)] text-white font-bold py-3  transition duration-300 ease-in-out transform hover:scale-101 shadow-md"
               >
                 Login
               </button>

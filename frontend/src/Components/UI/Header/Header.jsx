@@ -42,7 +42,7 @@ to-gray-700 text-white p-3 box-border "
               src="/src/assets/images/logo.png"
               alt="Logo Aurora Motors"
             />
-            <span className="font-semibold lg:text-lg md:text-sm">
+            <span className="font-semibold lg:text-lg md:text-sm font-display">
               Muevete con Confianza
             </span>
           </Link>

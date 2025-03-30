@@ -66,7 +66,7 @@ export const VehicleCard = ({ vehicle }) => {
           </span>
         </div>
         <div className="flex items-center justify-between w-full">
-          <div className="text-lg font-bold text-green-700">
+          <div className="text-lg font-bold text-green-600">
             {formatCurrency(vehicle.dailyCost)}/día
           </div>
 
@@ -86,7 +86,7 @@ export const VehicleCard = ({ vehicle }) => {
         </div>
         <div className="mt-4">
           <Link to={`/vehicle/${vehicle.id}`}>
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">
+            <button className="w-full bg-[var(--color-accent-primary)] font-semibold hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)] text-white py-2 rounded transition">
               Ver detalles
             </button>
           </Link>

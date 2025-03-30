@@ -124,7 +124,7 @@ export const ReviewAddForm = ({ user, vehicleId, onReviewAdded }) => {
         </div>
 
         <button
-          className="w-full p-3 bg-amber-400 hover:bg-amber-500 font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full p-3 bg-[var(--color-accent-secondary)] hover:bg-amber-400 font-bold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-white"
           type="submit"
           disabled={isSubmitting}
         >

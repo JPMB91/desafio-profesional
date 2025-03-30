@@ -111,7 +111,7 @@ export const UserRegisterForm = () => {
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div className="bg-[#0C1010] p-2 flex flex-col items-center">
+        <div className="bg-[var(--header-dark)] p-2 flex flex-col items-center">
           <img className="w-32" src="/logo.png" alt="Logo" />
         </div>
         <div>
@@ -270,7 +270,7 @@ export const UserRegisterForm = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 shadow-md"
+                className="w-full bg-[var(--color-accent-primary)] rounded-xl hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)] text-white  py-3  transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 shadow-md font-bold"
               >
                 Registrarse
               </button>

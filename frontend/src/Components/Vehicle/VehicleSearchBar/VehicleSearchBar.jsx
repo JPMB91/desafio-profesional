@@ -296,7 +296,7 @@ export const VehicleSearchBar = () => {
 
             <button
               type="submit"
-              className="mt-4 p-3 text-white font-bold bg-blue-800 rounded-xl"
+              className="mt-4 p-3 text-white font-bold bg-[var(--color-accent-primary)] rounded-xl hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)]"
             >
               Realizar Búsqueda
             </button>

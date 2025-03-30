@@ -172,7 +172,7 @@ export const VehicleFilter = () => {
                         key={category.id}
                         className={`flex items-center p-3 rounded-lg cursor-pointer transition-all duration-200 ${
                           selectedCategories.includes(category.id)
-                            ? "bg-indigo-50 border-l-4 border-indigo-500 shadow-sm"
+                            ? "bg-indigo-50 border-l-4 border-[var(--color-accent-primary)] shadow-sm"
                             : "hover:bg-gray-50"
                         }`}
                         onClick={() => handleCategorySelect(category.id)}

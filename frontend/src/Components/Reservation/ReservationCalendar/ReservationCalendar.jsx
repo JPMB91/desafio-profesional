@@ -280,10 +280,10 @@ export const ReservationCalendar = ({ id, vehicleData }) => {
                 <div className="bg-white shadow rounded-lg p-6 border border-gray-200">
                   <div className="text-center">
                     <p className="mb-4 text-gray-600 font-bold">
-                      inicie sesión para hacer una reserva
+                      Inicie sesión para hacer una reserva
                     </p>
                     <button
-                      className="w-full p-2 bg-blue-600 font-bold text-white rounded hover:bg-blue-700 transition-colors"
+                      className="w-full p-2 bg-[var(--color-accent-primary)] font-bold text-white rounded transition-colors hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)]"
                       onClick={handleLoginRedirect}
                     >
                       Iniciar Sesión
@@ -293,10 +293,10 @@ export const ReservationCalendar = ({ id, vehicleData }) => {
               ) : (
                 <button
                   type="button"
-                  disabled={!startDate || !endDate}
+                  disabled={!startDate || !endDate || endDate < startDate}
                   className={`px-6 py-3 rounded-lg font-bold text-white transition-colors  ${
                     startDate && endDate
-                      ? "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer "
+                      ? " bg-[var(--color-accent-primary)] font-bold hover:cursor-pointer hover:bg-[var(--color-accent-primary-hover)]focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
                       : "bg-gray-400 cursor-not-allowed"
                   } w-full sm:w-auto`}
                   onClick={handleReservationNavigate}

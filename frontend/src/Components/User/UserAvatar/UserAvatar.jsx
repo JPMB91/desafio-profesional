@@ -6,7 +6,7 @@ export const UserAvatar = ({ name }) => {
     .toUpperCase();
 
   return (
-    <div className="rounded-full bg-blue-500 w-10 h-10 flex items-center justify-center">
+    <div className="rounded-full bg-[var(--color-accent-secondary)] w-10 h-10 flex items-center justify-center">
       <span className="text-white font-bold text-lg">{initials}</span>
     </div>
   );
