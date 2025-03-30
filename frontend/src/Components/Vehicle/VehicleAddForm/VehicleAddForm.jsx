@@ -480,7 +480,7 @@ export const VehicleAddForm = () => {
             htmlFor="dailyCost"
             className="block text-gray-700 font-bold mb-2"
           >
-            Costo diario
+            Costo diario (En USD)
           </label>
           <input
             type="number"

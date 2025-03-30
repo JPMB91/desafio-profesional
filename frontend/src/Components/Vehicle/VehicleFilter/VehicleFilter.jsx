@@ -194,7 +194,7 @@ export const VehicleFilter = () => {
                           <div className="flex-1">
                             <label
                               htmlFor={`category-${category.id}`}
-                              className="text-sm cursor-pointer flex-1 font-medium"
+                              className="text-sm cursor-pointer flex-1 font-medium block"
                             >
                               {category.name}
                             </label>

@@ -4,8 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import axios from "axios";
 import VehicleSearchResults from "../VehicleSearchResults/VehicleSearchResults";
-import { Search, Calendar, CircleAlert, Info } from "lucide-react";
-
+import { Search, Calendar, CircleAlert, Info, BadgeInfo } from "lucide-react";
 
 import { LoadingSpinner } from "../../UI/LoadingSpinner";
 import { format } from "date-fns";
@@ -205,9 +204,10 @@ export const VehicleSearchBar = () => {
 
       <div className="flex flex-col gap-6 p-4">
         <div className="bg-white rounded-lg shadow p-4 border border-gray-200">
-          <h3 className="text-sm md:text-base mb-4">
-            Buscar vehiculos por características, (Sunroof, silla para bebé,
-            navegación, etc.)
+          <h3 className="text-sm md:text-base mb-4 flex items-center font-body">
+            <Info className="text-blue-600 mr-2" />
+            Buscar vehiculos por tipo, ej. Familiar, deportivo, etc. Por
+            características, (Sunroof, silla para bebé, navegación, entre otros)
           </h3>
 
           <form onSubmit={handleSubmit}>
@@ -245,7 +245,7 @@ export const VehicleSearchBar = () => {
 
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
-                  <h2 className="text-sm font-medium text-gray-700 mb-1">
+                  <h2 className="text-sm  text-gray-700 mb-1 font-bold">
                     Buscar desde
                   </h2>
                   <div className="relative">
@@ -269,7 +269,7 @@ export const VehicleSearchBar = () => {
                 </div>
 
                 <div className="flex-1">
-                  <h2 className="text-sm font-medium text-gray-700 mb-1">
+                  <h2 className="text-sm  text-gray-700 mb-1 font-bold">
                     Buscar Hasta
                   </h2>
                   <div className="relative">

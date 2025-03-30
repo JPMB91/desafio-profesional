@@ -45,6 +45,8 @@ export const VehicleDetail = () => {
         setImage(
           `http://localhost:8080/api/vehicles/uploads/${response.data.images[0]}.filename`
         );
+
+        console.log(response.data);
       } catch (error) {
         console.log("Error obteniendo detalle del vehiculo: ", error);
         setError("No se pudo cargar la información del vehículo.");
@@ -130,7 +132,7 @@ export const VehicleDetail = () => {
           )}
         </div>
       )}
-      <CharacteristicsDisplay characteristics={characteristic} />
+      <CharacteristicsDisplay characteristics={characteristic} doors={vehicleData.numberOfDoors} seats={vehicleData.numberOfSeats} fueltype={vehicleData.fuelType} transmision={vehicleData.gearShift}/>
 
       <ShareBar
         image={
@@ -151,7 +153,7 @@ export const VehicleDetail = () => {
       ) : (
         <LoadingSpinner />
       )}
-      <ReviewSection vehicleId={id} /> 
+      <ReviewSection vehicleId={id} onRatingUpdate={refreshRating} /> 
       <VehicleReservationPolicy />
     </div>
   );

@@ -23,7 +23,7 @@ export const ReservationSuccess = () => {
               Reserva Éxitosa
             </h2>
             <p className="text-center font-bold text-xl text-gray-600">
-              Gracias por confiar en Aurora Motors
+              Gracias por confiar en Aurora Motors. Pronto recibirá un correo con la información
             </p>
           </div>
           <div className="flex justify-center">

@@ -21,12 +21,13 @@ export const AdminPanel = () => {
         </div>
 
         <nav className="flex-1 mt-4">
-          <NavItem to="add-vehiculo" icon={<Plus />} label="Agregar Vehículo" />
           <NavItem
             to="lista-vehiculos"
             icon={<CarFront />}
-            label="Lista Vehículos"
+            label="Lista de Productos"
           />
+          <NavItem to="add-vehiculo" icon={<Plus />} label="Agregar Vehículo" />
+
           <NavItem
             to="listar-usuarios"
             icon={<UsersRound />}
@@ -37,15 +38,10 @@ export const AdminPanel = () => {
             icon={<ClipboardList />}
             label="Administrar Características"
           />
-          {/* <NavItem
-            to="agregar-categoria"
-            icon={<FilePlus />}
-            label="Agregar Categoría"
-          /> */}
           <NavItem
             to="listar-categorias"
             icon={<FilePlus />}
-            label="Administrar categorías"
+            label="Administrar Categorías"
           />
         </nav>
       </div>

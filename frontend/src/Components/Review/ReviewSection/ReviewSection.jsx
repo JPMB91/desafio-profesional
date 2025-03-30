@@ -8,7 +8,7 @@ import { usePagination } from "../../../hooks/usePagination";
 import axios from "axios";
 import { useAuth } from "../../../context/Auth.Context";
 
-export const ReviewSection = ({ vehicleId }) => {
+export const ReviewSection = ({ vehicleId, onRatingUpdate }) => {
   const { isAuthenticated, user } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState("");
@@ -77,6 +77,9 @@ export const ReviewSection = ({ vehicleId }) => {
 
   const handleReviewAdded = () => {
     setReviewsUpdated((prev) => !prev);
+    if(onRatingUpdate){
+      onRatingUpdate()
+    }
   };
 
   return (

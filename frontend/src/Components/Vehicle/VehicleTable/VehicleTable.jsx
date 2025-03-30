@@ -95,10 +95,13 @@ export const VehicleTable = () => {
             <tr>
               <th className="text-left py-2 px-4 border border-gray-300">ID</th>
               <th className="text-left py-2 px-4 border border-gray-300">
-                Name
+                Nombre
               </th>
               <th className="text-left py-2 px-4 border border-gray-300">
-                Actions
+                Categoría
+              </th>
+              <th className="text-left py-2 px-4 border border-gray-300">
+                Acciones
               </th>
             </tr>
           </thead>
@@ -110,6 +113,9 @@ export const VehicleTable = () => {
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
                   {vehicle.name}
+                </td>
+                <td className="py-2 px-4 border border-gray-300">
+                {vehicle.category ? vehicle.category.name : "Sin categoría asignada"}
                 </td>
                 <td className="py-2 px-4 border border-gray-300">
                   <button
