@@ -1,26 +1,21 @@
-2025-03-26T00:54:52.544-03:00  INFO 192 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T00:54:52.575-03:00  INFO 192 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T00:54:52.582-03:00  INFO 192 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T00:54:52.587-03:00  INFO 192 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T00:54:52.674-03:00  INFO 192 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T10:45:01.529-03:00  INFO 6320 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 6320 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T10:45:01.532-03:00  INFO 6320 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T10:45:02.320-03:00  INFO 6320 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T10:45:02.415-03:00  INFO 6320 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 10 JPA repository interfaces.
-2025-03-26T10:45:03.055-03:00  INFO 6320 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T10:45:03.072-03:00  INFO 6320 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T10:45:03.073-03:00  INFO 6320 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T10:45:03.137-03:00  INFO 6320 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T10:45:03.137-03:00  INFO 6320 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1562 ms
-2025-03-26T10:45:03.282-03:00  INFO 6320 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T10:45:03.379-03:00  INFO 6320 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T10:45:03.428-03:00  INFO 6320 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T10:45:03.755-03:00  INFO 6320 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T10:45:03.797-03:00  INFO 6320 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T10:45:04.055-03:00  INFO 6320 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T10:45:04.058-03:00  INFO 6320 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T10:45:04.083-03:00  WARN 6320 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T10:45:04.103-03:00  INFO 6320 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T15:22:06.160-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20368 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T15:22:06.169-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T15:22:07.011-03:00  INFO 20368 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T15:22:07.108-03:00  INFO 20368 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 10 JPA repository interfaces.
+2025-03-30T15:22:07.836-03:00  INFO 20368 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T15:22:07.854-03:00  INFO 20368 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T15:22:07.856-03:00  INFO 20368 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T15:22:07.942-03:00  INFO 20368 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T15:22:07.943-03:00  INFO 20368 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1703 ms
+2025-03-30T15:22:08.120-03:00  INFO 20368 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T15:22:08.227-03:00  INFO 20368 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T15:22:08.274-03:00  INFO 20368 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T15:22:08.642-03:00  INFO 20368 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T15:22:08.684-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T15:22:08.947-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T15:22:08.949-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T15:22:08.978-03:00  WARN 20368 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T15:22:09.002-03:00  INFO 20368 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -28,20 +23,20 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T10:45:05.156-03:00  INFO 6320 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T10:45:05.214-03:00  INFO 6320 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T10:45:05.576-03:00  INFO 6320 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T10:45:05.674-03:00  INFO 6320 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T10:45:07.697-03:00  WARN 6320 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T10:45:08.180-03:00  INFO 6320 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T10:45:08.282-03:00  INFO 6320 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T10:45:08.290-03:00  INFO 6320 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.299 seconds (process running for 16.143)
-2025-03-26T10:45:48.653-03:00  INFO 6320 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T10:45:48.654-03:00  INFO 6320 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T10:45:48.656-03:00  INFO 6320 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-03-26T10:45:49.111-03:00 ERROR 6320 --- [turnos] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2025-03-30T15:22:10.143-03:00  INFO 20368 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T15:22:10.201-03:00  INFO 20368 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T15:22:10.683-03:00  INFO 20368 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T15:22:10.796-03:00  INFO 20368 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T15:22:13.101-03:00  WARN 20368 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T15:22:13.772-03:00  INFO 20368 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T15:22:13.910-03:00  INFO 20368 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T15:22:13.921-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 8.351 seconds (process running for 18.77)
+2025-03-30T15:22:54.098-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-30T15:22:54.100-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-30T15:22:54.103-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-03-30T15:22:54.344-03:00 ERROR 20368 --- [turnos] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-io.jsonwebtoken.ExpiredJwtException: JWT expired 3134110 milliseconds ago at 2025-03-26T12:53:35.000Z. Current time: 2025-03-26T13:45:49.110Z. Allowed clock skew: 0 milliseconds.
+io.jsonwebtoken.ExpiredJwtException: JWT expired 134024343 milliseconds ago at 2025-03-29T05:09:10.000Z. Current time: 2025-03-30T18:22:54.343Z. Allowed clock skew: 0 milliseconds.
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
@@ -113,9 +108,9 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 3134110 milliseconds ago at 202
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-26T11:07:18.383-03:00 ERROR 6320 --- [turnos] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2025-03-30T15:23:40.240-03:00 ERROR 20368 --- [turnos] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 2025-03-26T12:53:35.000Z. Current time: 2025-03-26T14:07:18.383Z. Allowed clock skew: 0 milliseconds.
+io.jsonwebtoken.ExpiredJwtException: JWT expired 134070239 milliseconds ago at 2025-03-29T05:09:10.000Z. Current time: 2025-03-30T18:23:40.239Z. Allowed clock skew: 0 milliseconds.
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
@@ -187,30 +182,33 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-26T11:07:58.885-03:00  INFO 6320 --- [turnos] [http-nio-8080-exec-4] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
-2025-03-26T11:15:05.693-03:00  INFO 6320 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:15:05.717-03:00  INFO 6320 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:15:05.722-03:00  INFO 6320 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:15:05.723-03:00  INFO 6320 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:15:05.837-03:00  INFO 6320 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T11:15:09.735-03:00  INFO 13492 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 13492 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T11:15:09.737-03:00  INFO 13492 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T11:15:10.541-03:00  INFO 13492 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T11:15:10.634-03:00  INFO 13492 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 10 JPA repository interfaces.
-2025-03-26T11:15:11.323-03:00  INFO 13492 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T11:15:11.337-03:00  INFO 13492 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T11:15:11.337-03:00  INFO 13492 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T11:15:11.394-03:00  INFO 13492 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T11:15:11.394-03:00  INFO 13492 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1610 ms
-2025-03-26T11:15:11.546-03:00  INFO 13492 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T11:15:11.620-03:00  INFO 13492 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T11:15:11.672-03:00  INFO 13492 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T11:15:11.971-03:00  INFO 13492 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T11:15:12.011-03:00  INFO 13492 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T11:15:12.241-03:00  INFO 13492 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T11:15:12.243-03:00  INFO 13492 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T11:15:12.266-03:00  WARN 13492 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T11:15:12.284-03:00  INFO 13492 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T15:24:02.288-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-6] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
+2025-03-30T16:02:27.810-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-3] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
+2025-03-30T16:03:28.140-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-8] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
+2025-03-30T16:44:49.730-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-3] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
+2025-03-30T16:51:35.102-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T16:51:35.126-03:00  INFO 20368 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T16:51:35.139-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:51:35.145-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T16:51:35.185-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T16:53:03.384-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 2092 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T16:53:03.388-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T16:53:04.516-03:00  INFO 2092 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T16:53:04.611-03:00  INFO 2092 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 10 JPA repository interfaces.
+2025-03-30T16:53:05.247-03:00  INFO 2092 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T16:53:05.266-03:00  INFO 2092 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T16:53:05.267-03:00  INFO 2092 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T16:53:05.350-03:00  INFO 2092 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T16:53:05.350-03:00  INFO 2092 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1912 ms
+2025-03-30T16:53:05.506-03:00  INFO 2092 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T16:53:05.572-03:00  INFO 2092 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T16:53:05.626-03:00  INFO 2092 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T16:53:05.933-03:00  INFO 2092 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T16:53:05.967-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T16:53:06.199-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T16:53:06.200-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T16:53:06.222-03:00  WARN 2092 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T16:53:06.242-03:00  INFO 2092 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -218,40 +216,55 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T11:15:13.379-03:00  INFO 13492 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T11:15:13.434-03:00  INFO 13492 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:15:13.820-03:00  INFO 13492 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T11:15:13.927-03:00  INFO 13492 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T11:15:15.955-03:00  WARN 13492 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T11:15:16.433-03:00  INFO 13492 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T11:15:16.529-03:00  INFO 13492 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T11:15:16.536-03:00  INFO 13492 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.437 seconds (process running for 7.855)
-2025-03-26T11:15:19.448-03:00  INFO 13492 --- [turnos] [http-nio-8080-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T11:15:19.450-03:00  INFO 13492 --- [turnos] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T11:15:19.452-03:00  INFO 13492 --- [turnos] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-03-26T11:19:20.350-03:00  INFO 13492 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:19:20.373-03:00  INFO 13492 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:19:20.377-03:00  INFO 13492 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:19:20.379-03:00  INFO 13492 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:19:20.380-03:00  INFO 13492 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T11:19:23.358-03:00  INFO 18488 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 18488 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T11:19:23.360-03:00  INFO 18488 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T11:19:24.119-03:00  INFO 18488 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T11:19:24.226-03:00  INFO 18488 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 10 JPA repository interfaces.
-2025-03-26T11:19:24.848-03:00  INFO 18488 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T11:19:24.860-03:00  INFO 18488 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T11:19:24.861-03:00  INFO 18488 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T11:19:24.918-03:00  INFO 18488 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T11:19:24.918-03:00  INFO 18488 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1516 ms
-2025-03-26T11:19:25.045-03:00  INFO 18488 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T11:19:25.118-03:00  INFO 18488 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T11:19:25.179-03:00  INFO 18488 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T11:19:25.477-03:00  INFO 18488 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T11:19:25.518-03:00  INFO 18488 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T11:19:25.767-03:00  INFO 18488 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T11:19:25.769-03:00  INFO 18488 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T11:19:25.797-03:00  WARN 18488 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T11:19:25.819-03:00  INFO 18488 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T16:53:07.238-03:00  INFO 2092 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T16:53:07.290-03:00  INFO 2092 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:53:07.632-03:00  INFO 2092 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T16:53:07.729-03:00  INFO 2092 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T16:53:09.960-03:00  WARN 2092 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T16:53:10.567-03:00  INFO 2092 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T16:53:10.671-03:00  INFO 2092 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T16:53:10.682-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.961 seconds (process running for 8.403)
+2025-03-30T16:53:20.144-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-30T16:53:20.145-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-30T16:53:20.146-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-30T16:53:59.101-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-6] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030x950xb6)0xa10xd30xd70xee0x9ejyr0xd8C0xedj0xd8Ed0x880xf2p_0xcea0x1e0x02x0xd70xe80x80/4 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-03-30T16:54:31.887-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T16:54:31.911-03:00  INFO 2092 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T16:54:31.915-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:54:31.917-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T16:54:31.957-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T16:54:47.652-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20876 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T16:54:47.655-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T16:54:48.617-03:00  INFO 20876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T16:54:48.703-03:00  INFO 20876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 10 JPA repository interfaces.
+2025-03-30T16:54:49.366-03:00  INFO 20876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T16:54:49.380-03:00  INFO 20876 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T16:54:49.381-03:00  INFO 20876 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T16:54:49.441-03:00  INFO 20876 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T16:54:49.442-03:00  INFO 20876 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1740 ms
+2025-03-30T16:54:49.570-03:00  INFO 20876 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T16:54:49.652-03:00  INFO 20876 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T16:54:49.696-03:00  INFO 20876 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T16:54:50.012-03:00  INFO 20876 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T16:54:50.062-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T16:54:50.303-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T16:54:50.305-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T16:54:50.326-03:00  WARN 20876 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T16:54:50.344-03:00  INFO 20876 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -259,40 +272,52 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T11:19:26.870-03:00  INFO 18488 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T11:19:26.924-03:00  INFO 18488 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:19:27.268-03:00  INFO 18488 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T11:19:27.364-03:00  INFO 18488 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T11:19:29.350-03:00  WARN 18488 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T11:19:29.787-03:00  INFO 18488 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T11:19:29.872-03:00  INFO 18488 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T11:19:29.880-03:00  INFO 18488 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.08 seconds (process running for 7.46)
-2025-03-26T11:19:29.941-03:00  INFO 18488 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T11:19:29.941-03:00  INFO 18488 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T11:19:29.942-03:00  INFO 18488 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-26T11:25:59.409-03:00  INFO 18488 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:25:59.431-03:00  INFO 18488 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:25:59.436-03:00  INFO 18488 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:25:59.438-03:00  INFO 18488 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:25:59.559-03:00  INFO 18488 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T11:26:02.527-03:00  INFO 21228 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 21228 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T11:26:02.530-03:00  INFO 21228 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T11:26:03.285-03:00  INFO 21228 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T11:26:03.372-03:00  INFO 21228 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 10 JPA repository interfaces.
-2025-03-26T11:26:03.976-03:00  INFO 21228 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T11:26:03.991-03:00  INFO 21228 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T11:26:03.991-03:00  INFO 21228 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T11:26:04.046-03:00  INFO 21228 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T11:26:04.046-03:00  INFO 21228 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1470 ms
-2025-03-26T11:26:04.174-03:00  INFO 21228 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T11:26:04.256-03:00  INFO 21228 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T11:26:04.298-03:00  INFO 21228 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T11:26:04.586-03:00  INFO 21228 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T11:26:04.625-03:00  INFO 21228 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T11:26:04.848-03:00  INFO 21228 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T11:26:04.851-03:00  INFO 21228 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T11:26:04.877-03:00  WARN 21228 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T11:26:04.895-03:00  INFO 21228 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T16:54:51.363-03:00  INFO 20876 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T16:54:51.415-03:00  INFO 20876 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:54:51.788-03:00  INFO 20876 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T16:54:51.878-03:00  INFO 20876 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T16:54:53.856-03:00  WARN 20876 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T16:54:54.352-03:00  INFO 20876 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T16:54:54.463-03:00  INFO 20876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T16:54:54.470-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.422 seconds (process running for 7.838)
+2025-03-30T16:54:58.310-03:00  INFO 20876 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030x12&0xb1+0x030xa10xb40x930xb320x0f0xee'0xbc0x110xbc0xd70xc80xc4h0x920x180xb90xe40x9aN!0xadU_|2 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-03-30T16:57:16.286-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T16:57:16.310-03:00  INFO 20876 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T16:57:16.314-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:57:16.318-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T16:57:16.344-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T16:58:00.837-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 520 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T16:58:00.839-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T16:58:01.699-03:00  INFO 520 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T16:58:01.803-03:00  INFO 520 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 10 JPA repository interfaces.
+2025-03-30T16:58:02.489-03:00  INFO 520 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T16:58:02.505-03:00  INFO 520 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T16:58:02.506-03:00  INFO 520 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T16:58:02.577-03:00  INFO 520 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T16:58:02.577-03:00  INFO 520 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1689 ms
+2025-03-30T16:58:02.714-03:00  INFO 520 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T16:58:02.805-03:00  INFO 520 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T16:58:02.853-03:00  INFO 520 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T16:58:03.159-03:00  INFO 520 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T16:58:03.200-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T16:58:03.432-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T16:58:03.434-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T16:58:03.453-03:00  WARN 520 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T16:58:03.472-03:00  INFO 520 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -300,40 +325,52 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T11:26:05.829-03:00  INFO 21228 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T11:26:05.879-03:00  INFO 21228 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:26:06.215-03:00  INFO 21228 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T11:26:06.304-03:00  INFO 21228 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T11:26:08.150-03:00  WARN 21228 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T11:26:08.610-03:00  INFO 21228 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T11:26:08.696-03:00  INFO 21228 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T11:26:08.703-03:00  INFO 21228 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 6.737 seconds (process running for 7.105)
-2025-03-26T11:26:13.074-03:00  INFO 21228 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T11:26:13.074-03:00  INFO 21228 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T11:26:13.075-03:00  INFO 21228 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-26T11:28:52.360-03:00  INFO 21228 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:28:52.385-03:00  INFO 21228 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:28:52.389-03:00  INFO 21228 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:28:52.390-03:00  INFO 21228 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:28:52.532-03:00  INFO 21228 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T11:28:55.219-03:00  INFO 20060 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20060 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T11:28:55.222-03:00  INFO 20060 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T11:28:55.984-03:00  INFO 20060 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T11:28:56.084-03:00  INFO 20060 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 10 JPA repository interfaces.
-2025-03-26T11:28:56.735-03:00  INFO 20060 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T11:28:56.752-03:00  INFO 20060 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T11:28:56.752-03:00  INFO 20060 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T11:28:56.822-03:00  INFO 20060 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T11:28:56.822-03:00  INFO 20060 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1557 ms
-2025-03-26T11:28:56.951-03:00  INFO 20060 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T11:28:57.028-03:00  INFO 20060 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T11:28:57.077-03:00  INFO 20060 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T11:28:57.372-03:00  INFO 20060 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T11:28:57.409-03:00  INFO 20060 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T11:28:57.634-03:00  INFO 20060 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T11:28:57.636-03:00  INFO 20060 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T11:28:57.656-03:00  WARN 20060 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T11:28:57.674-03:00  INFO 20060 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T16:58:04.480-03:00  INFO 520 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T16:58:04.532-03:00  INFO 520 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:58:04.909-03:00  INFO 520 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T16:58:05.003-03:00  INFO 520 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T16:58:06.958-03:00  WARN 520 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T16:58:07.487-03:00  INFO 520 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T16:58:07.601-03:00  INFO 520 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T16:58:07.616-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.357 seconds (process running for 7.74)
+2025-03-30T16:58:33.718-03:00  INFO 520 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x0330xb50xd80xed0x9d0x170xdfL0xb2E0xb00xdd0xe70xec0x9ba0xc70x030x960xaaNf^0x8f>0x03W0x8f0xd30x1e0x060xad ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-03-30T16:58:46.727-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T16:58:46.752-03:00  INFO 520 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T16:58:46.756-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:58:46.758-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T16:58:46.850-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T16:58:48.837-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 12952 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T16:58:48.840-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T16:58:49.625-03:00  INFO 12952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T16:58:49.731-03:00  INFO 12952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 10 JPA repository interfaces.
+2025-03-30T16:58:50.434-03:00  INFO 12952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T16:58:50.453-03:00  INFO 12952 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T16:58:50.453-03:00  INFO 12952 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T16:58:50.516-03:00  INFO 12952 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T16:58:50.517-03:00  INFO 12952 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1632 ms
+2025-03-30T16:58:50.663-03:00  INFO 12952 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T16:58:50.755-03:00  INFO 12952 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T16:58:50.801-03:00  INFO 12952 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T16:58:51.102-03:00  INFO 12952 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T16:58:51.151-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T16:58:51.379-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T16:58:51.381-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T16:58:51.401-03:00  WARN 12952 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T16:58:51.420-03:00  INFO 12952 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -341,40 +378,52 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T11:28:58.624-03:00  INFO 20060 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T11:28:58.675-03:00  INFO 20060 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:28:59.026-03:00  INFO 20060 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T11:28:59.113-03:00  INFO 20060 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T11:29:01.090-03:00  WARN 20060 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T11:29:01.602-03:00  INFO 20060 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T11:29:01.702-03:00  INFO 20060 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T11:29:01.710-03:00  INFO 20060 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.055 seconds (process running for 7.43)
-2025-03-26T11:29:01.782-03:00  INFO 20060 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T11:29:01.783-03:00  INFO 20060 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T11:29:01.784-03:00  INFO 20060 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-26T11:30:44.761-03:00  INFO 20060 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:30:44.788-03:00  INFO 20060 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:30:44.793-03:00  INFO 20060 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:30:44.795-03:00  INFO 20060 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:30:44.921-03:00  INFO 20060 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-26T11:34:13.311-03:00  INFO 6064 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 6064 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-26T11:34:13.325-03:00  INFO 6064 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-26T11:34:14.151-03:00  INFO 6064 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-26T11:34:14.244-03:00  INFO 6064 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 10 JPA repository interfaces.
-2025-03-26T11:34:14.906-03:00  INFO 6064 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-26T11:34:14.915-03:00  INFO 6064 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-26T11:34:14.915-03:00  INFO 6064 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-26T11:34:14.979-03:00  INFO 6064 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-26T11:34:14.979-03:00  INFO 6064 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1604 ms
-2025-03-26T11:34:15.123-03:00  INFO 6064 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-26T11:34:15.206-03:00  INFO 6064 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-26T11:34:15.250-03:00  INFO 6064 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-26T11:34:15.575-03:00  INFO 6064 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-26T11:34:15.615-03:00  INFO 6064 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-26T11:34:15.850-03:00  INFO 6064 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-26T11:34:15.852-03:00  INFO 6064 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-26T11:34:15.875-03:00  WARN 6064 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-26T11:34:15.896-03:00  INFO 6064 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-30T16:58:52.407-03:00  INFO 12952 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T16:58:52.459-03:00  INFO 12952 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T16:58:52.817-03:00  INFO 12952 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T16:58:52.898-03:00  INFO 12952 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T16:58:54.932-03:00  WARN 12952 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T16:58:55.385-03:00  INFO 12952 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T16:58:55.472-03:00  INFO 12952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T16:58:55.480-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.238 seconds (process running for 7.707)
+2025-03-30T16:59:00.605-03:00  INFO 12952 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030xb80xf9a0x8do0xecB"0x970x8c]}0x170xec0xefxWk0xb50xad232C30xf0"H,0x110xc10xf6 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-03-30T17:00:35.190-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T17:00:35.215-03:00  INFO 12952 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T17:00:35.219-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T17:00:35.221-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T17:00:35.367-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T17:00:40.222-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 19096 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T17:00:40.224-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T17:00:41.320-03:00  INFO 19096 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T17:00:41.396-03:00  INFO 19096 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 10 JPA repository interfaces.
+2025-03-30T17:00:42.008-03:00  INFO 19096 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T17:00:42.023-03:00  INFO 19096 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T17:00:42.023-03:00  INFO 19096 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T17:00:42.095-03:00  INFO 19096 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T17:00:42.095-03:00  INFO 19096 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1828 ms
+2025-03-30T17:00:42.241-03:00  INFO 19096 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T17:00:42.316-03:00  INFO 19096 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T17:00:42.359-03:00  INFO 19096 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T17:00:42.667-03:00  INFO 19096 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T17:00:42.704-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T17:00:42.919-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T17:00:42.921-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T17:00:42.941-03:00  WARN 19096 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T17:00:42.965-03:00  INFO 19096 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -382,19 +431,66 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 4423383 milliseconds ago at 202
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-26T11:34:16.887-03:00  INFO 6064 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-26T11:34:16.943-03:00  INFO 6064 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:34:17.298-03:00  INFO 6064 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-26T11:34:17.387-03:00  INFO 6064 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-26T11:34:19.519-03:00  WARN 6064 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-26T11:34:20.020-03:00  INFO 6064 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-26T11:34:20.115-03:00  INFO 6064 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-26T11:34:20.123-03:00  INFO 6064 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.375 seconds (process running for 7.807)
-2025-03-26T11:34:20.201-03:00  INFO 6064 --- [turnos] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-26T11:34:20.202-03:00  INFO 6064 --- [turnos] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-26T11:34:20.203-03:00  INFO 6064 --- [turnos] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-26T11:39:53.679-03:00  INFO 6064 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-26T11:39:53.704-03:00  INFO 6064 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-26T11:39:53.709-03:00  INFO 6064 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-26T11:39:53.711-03:00  INFO 6064 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-26T11:39:53.851-03:00  INFO 6064 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T17:00:43.926-03:00  INFO 19096 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T17:00:43.976-03:00  INFO 19096 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T17:00:44.343-03:00  INFO 19096 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T17:00:44.428-03:00  INFO 19096 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T17:00:46.470-03:00  WARN 19096 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T17:00:46.990-03:00  INFO 19096 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T17:00:47.078-03:00  INFO 19096 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T17:00:47.087-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.411 seconds (process running for 7.794)
+2025-03-30T17:01:29.005-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-30T17:01:29.005-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-30T17:01:29.007-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-30T17:03:34.792-03:00 ERROR 19096 --- [turnos] [http-nio-8080-exec-8] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
+2025-03-30T17:03:43.616-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T17:03:43.641-03:00  INFO 19096 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T17:03:43.645-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T17:03:43.647-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T17:03:43.796-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-30T17:03:45.923-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20956 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-30T17:03:45.925-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-30T17:03:47.061-03:00  INFO 20956 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-30T17:03:47.150-03:00  INFO 20956 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 10 JPA repository interfaces.
+2025-03-30T17:03:47.829-03:00  INFO 20956 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-30T17:03:47.846-03:00  INFO 20956 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-30T17:03:47.846-03:00  INFO 20956 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-30T17:03:47.913-03:00  INFO 20956 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-30T17:03:47.913-03:00  INFO 20956 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1941 ms
+2025-03-30T17:03:48.091-03:00  INFO 20956 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-30T17:03:48.175-03:00  INFO 20956 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-30T17:03:48.215-03:00  INFO 20956 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-30T17:03:48.502-03:00  INFO 20956 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-30T17:03:48.536-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-30T17:03:48.746-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-30T17:03:48.748-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-30T17:03:48.769-03:00  WARN 20956 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-30T17:03:48.789-03:00  INFO 20956 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-30T17:03:49.815-03:00  INFO 20956 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-30T17:03:49.875-03:00  INFO 20956 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T17:03:50.251-03:00  INFO 20956 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-30T17:03:50.342-03:00  INFO 20956 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-30T17:03:52.322-03:00  WARN 20956 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-30T17:03:52.888-03:00  INFO 20956 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-30T17:03:52.997-03:00  INFO 20956 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-30T17:03:53.007-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.706 seconds (process running for 8.206)
+2025-03-30T17:04:03.079-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-30T17:04:03.079-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-30T17:04:03.081-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-30T17:04:03.125-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-1] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
+2025-03-30T17:04:04.399-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-2] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
+2025-03-30T17:04:12.504-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-3] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
+2025-03-30T17:05:06.578-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-5] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
+2025-03-30T18:25:08.889-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-9] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
+2025-03-30T18:41:00.858-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-30T18:41:00.883-03:00  INFO 20956 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-30T18:41:00.894-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-30T18:41:00.897-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-30T18:41:00.899-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
