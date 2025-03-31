@@ -31,11 +31,8 @@
 - Mockito, JUnit
 
 ## 🚀 Guía de instalación
-
 ### Requisitos previos
-
 Antes de comenzar, asegúrese de tener instalado:
-
 - Node.js (versión 16.x o superior)
 - npm o yarn
 - Java SDK 22.0.2
@@ -44,15 +41,13 @@ Antes de comenzar, asegúrese de tener instalado:
 
 ### Pasos de instalación
 
-#### 1. Clonar el repositorio
-
+### 1. Clonar el repositorio
 ```sh
 git clone https://github.com/JPMB91/desafio-profesional.git
 cd desafio-profesional
 ```
 
-#### 2. Configurar el Backend
-
+### 2. Configuración e Inicialización del Backend
 1. Navegue a la carpeta del backend:
    ```sh
    cd backend
@@ -69,9 +64,19 @@ cd desafio-profesional
      
      ![Instalar dependencias Maven](maven.png)
 
-#### 3. Configurar el Frontend
+3. Inicie el servidor backend:
+   - **Opción A:** Con Maven instalado:
+     ```sh
+     mvn spring-boot:run
+     ```
+   - **Opción B:** Desde IntelliJ IDEA:
+     1. Localice el archivo `RentApplication.java` en `src/main/java/com/digitalhouse/turnos`
+     2. Haga clic derecho y seleccione "Run RentApplication"
+ 
+     ![Ejecutar aplicación](runBackend.png)
 
-1. Navegue a la carpeta del frontend:
+### 3. Configuración e Inicialización del Frontend
+1. Navegue a la carpeta del frontend (desde la raíz del proyecto):
    ```sh
    cd frontend
    ```
@@ -81,42 +86,21 @@ cd desafio-profesional
    npm install
    ```
 
-#### 4. Iniciar la aplicación
-
-**Backend:**
-- **Opción A:** Con Maven instalado:
-  ```sh
-  cd backend
-  mvn spring-boot:run
-  ```
-- **Opción B:** Desde IntelliJ IDEA:
-  1. Localice el archivo `RentApplication.java` en `src/main/java/com/digitalhouse/turnos`
-  2. Haga clic derecho y seleccione "Run RentApplication"
-  
-  ![Ejecutar aplicación](runBackend.png)
-
-**Frontend:**
-```sh
-cd frontend
-npm run dev
-```
+3. Inicie la aplicación frontend:
+   ```sh
+   npm run dev
+   ```
 
 Una vez que ambos servicios estén funcionando, acceda a la aplicación a través de su navegador en la dirección que muestra la terminal al iniciar el frontend: http://localhost:5173
 
-
 > ⚠️ **NOTA:**  
 > Este proyecto viene precargado con una cuenta con privilegios de administrador con el que se puede acceder a las rutas especiales.
-> 
+>
 > - **E-mail:** `admin@admin.com`  
 > - **Contraseña:** `adminadmin`
-
-
-
+> 
 > ⚠️ **NOTA:**  
 > Para que reciba el correo electrónico luego de confimación de reserva, recuerde crear una cuenta de usuario desde la aplicación usando un correo electrónico al que tenga acceso.
->
-
-
 
 ## Paleta de colores
 
