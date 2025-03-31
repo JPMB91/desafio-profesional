@@ -109,3 +109,12 @@ Una vez que ambos servicios estén funcionando, acceda a la aplicación a travé
 > 
 > - **E-mail:** `admin@admin.com`  
 > - **Contraseña:** `adminadmin`
+
+
+
+> ⚠️ **NOTA:**  
+> Para que reciba el correo electrónico luego de confimación de reserva, recuerde crear una cuenta de usuario desde la aplicación usando un correo electrónico al que tenga acceso.
+>
+
+
+
