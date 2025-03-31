@@ -1,7 +1,7 @@
 # 🚗Proyecto Integrador CTD:
 
 
-Aplicación web para la renta de vehículos desarrollada con Reactjs (frontend) y Java Spring Boot (backend).
+**Definición del proyecto**: Aplicación web para la renta de vehículos desarrollada con Reactjs (frontend) y Java Spring Boot (backend).
 
 ## 📋 Características principales
 
@@ -67,7 +67,7 @@ cd desafio-profesional
      1. Abra la carpeta `/backend` con IntelliJ IDEA
      2. Haga clic en el botón de Maven y luego en "Reload All Maven Projects"
      
-     ![Instalar dependencias Maven](image.png)
+     ![Instalar dependencias Maven](maven.png)
 
 #### 3. Configurar el Frontend
 
@@ -93,7 +93,7 @@ cd desafio-profesional
   1. Localice el archivo `RentApplication.java` en `src/main/java/com/digitalhouse/turnos`
   2. Haga clic derecho y seleccione "Run RentApplication"
   
-  ![Ejecutar aplicación](image-1.png)
+  ![Ejecutar aplicación](runBackend.png)
 
 **Frontend:**
 ```sh
@@ -117,4 +117,8 @@ Una vez que ambos servicios estén funcionando, acceda a la aplicación a travé
 >
 
 
+
+## Paleta de colores
+
+![colores](paletaColores.png)
 
