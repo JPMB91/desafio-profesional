@@ -33,11 +33,12 @@
 ## 🚀 Guía de instalación
 ### Requisitos previos
 Antes de comenzar, asegúrese de tener instalado:
-- Node.js (versión 16.x o superior)
-- npm o yarn
-- Java SDK 22.0.2
-- IntelliJ IDEA (para backend)
-- Visual Studio Code (recomendado para frontend)
+- Node.js (versión 16.x o superior) [Descargar Node](https://nodejs.org/es/download)
+- npm o yarn. (npm ya viene incluido en la instalación de Node)
+- Java SDK 22.0.2 - Se puede instalar desde IntelliJ Idea o [Descargar SDK](https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html)
+- IntelliJ IDEA Community Edition (para backend) [Descargar IntelliJ](https://www.jetbrains.com/es-es/idea/download/?section=windows)
+- Visual Studio Code (Opcional) [Descargar VSCode](https://code.visualstudio.com/download)
+- Maven (Opcional) [Descargar Maven](https://maven.apache.org/download.cgi?.)
 
 ### Pasos de instalación
 
@@ -98,7 +99,9 @@ Una vez que ambos servicios estén funcionando, acceda a la aplicación a travé
 >
 > - **E-mail:** `admin@admin.com`  
 > - **Contraseña:** `adminadmin`
-> 
+
+
+
 > ⚠️ **NOTA:**  
 > Para que reciba el correo electrónico luego de confimación de reserva, recuerde crear una cuenta de usuario desde la aplicación usando un correo electrónico al que tenga acceso.
 
