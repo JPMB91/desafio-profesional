@@ -1,21 +1,21 @@
-2025-03-30T15:22:06.160-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20368 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T15:22:06.169-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T15:22:07.011-03:00  INFO 20368 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T15:22:07.108-03:00  INFO 20368 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 10 JPA repository interfaces.
-2025-03-30T15:22:07.836-03:00  INFO 20368 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T15:22:07.854-03:00  INFO 20368 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T15:22:07.856-03:00  INFO 20368 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T15:22:07.942-03:00  INFO 20368 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T15:22:07.943-03:00  INFO 20368 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1703 ms
-2025-03-30T15:22:08.120-03:00  INFO 20368 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T15:22:08.227-03:00  INFO 20368 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T15:22:08.274-03:00  INFO 20368 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T15:22:08.642-03:00  INFO 20368 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T15:22:08.684-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T15:22:08.947-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T15:22:08.949-03:00  INFO 20368 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T15:22:08.978-03:00  WARN 20368 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T15:22:09.002-03:00  INFO 20368 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-31T12:14:03.430-03:00  INFO 16876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 16876 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T12:14:03.440-03:00  INFO 16876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-31T12:14:04.455-03:00  INFO 16876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T12:14:04.585-03:00  INFO 16876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 10 JPA repository interfaces.
+2025-03-31T12:14:05.301-03:00  INFO 16876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-31T12:14:05.316-03:00  INFO 16876 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-31T12:14:05.316-03:00  INFO 16876 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-31T12:14:05.388-03:00  INFO 16876 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-31T12:14:05.388-03:00  INFO 16876 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1880 ms
+2025-03-31T12:14:05.538-03:00  INFO 16876 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T12:14:05.634-03:00  INFO 16876 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T12:14:05.689-03:00  INFO 16876 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T12:14:06.143-03:00  INFO 16876 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T12:14:06.195-03:00  INFO 16876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T12:14:06.503-03:00  INFO 16876 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-31T12:14:06.505-03:00  INFO 16876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T12:14:06.531-03:00  WARN 16876 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T12:14:06.551-03:00  INFO 16876 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -23,20 +23,21 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-30T15:22:10.143-03:00  INFO 20368 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T15:22:10.201-03:00  INFO 20368 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T15:22:10.683-03:00  INFO 20368 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T15:22:10.796-03:00  INFO 20368 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T15:22:13.101-03:00  WARN 20368 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T15:22:13.772-03:00  INFO 20368 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T15:22:13.910-03:00  INFO 20368 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T15:22:13.921-03:00  INFO 20368 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 8.351 seconds (process running for 18.77)
-2025-03-30T15:22:54.098-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T15:22:54.100-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T15:22:54.103-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2025-03-30T15:22:54.344-03:00 ERROR 20368 --- [turnos] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2025-03-31T12:14:07.902-03:00  INFO 16876 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T12:14:07.958-03:00  INFO 16876 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T12:14:08.571-03:00  INFO 16876 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T12:14:08.714-03:00  INFO 16876 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T12:14:11.829-03:00  WARN 16876 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T12:14:12.486-03:00  INFO 16876 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-31T12:14:12.618-03:00  INFO 16876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-31T12:14:12.629-03:00  INFO 16876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 9.864 seconds (process running for 10.348)
+2025-03-31T12:14:16.841-03:00  INFO 16876 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-31T12:14:16.841-03:00  INFO 16876 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-31T12:14:16.842-03:00  INFO 16876 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-31T12:18:47.998-03:00  INFO 16876 --- [turnos] [http-nio-8080-exec-3] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
+2025-03-31T12:18:57.174-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-io.jsonwebtoken.ExpiredJwtException: JWT expired 134024343 milliseconds ago at 2025-03-29T05:09:10.000Z. Current time: 2025-03-30T18:22:54.343Z. Allowed clock skew: 0 milliseconds.
+io.jsonwebtoken.ExpiredJwtException: JWT expired 1153864173 milliseconds ago at 2025-03-18T06:47:53.000Z. Current time: 2025-03-31T15:18:57.173Z. Allowed clock skew: 0 milliseconds.
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
@@ -108,9 +109,11 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 134024343 milliseconds ago at 2
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T15:23:40.240-03:00 ERROR 20368 --- [turnos] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2025-03-31T12:19:05.096-03:00  INFO 16876 --- [turnos] [http-nio-8080-exec-9] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
+2025-03-31T12:20:22.637-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-10] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource auth/logout.
+2025-03-31T12:21:32.068-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-io.jsonwebtoken.ExpiredJwtException: JWT expired 134070239 milliseconds ago at 2025-03-29T05:09:10.000Z. Current time: 2025-03-30T18:23:40.239Z. Allowed clock skew: 0 milliseconds.
+io.jsonwebtoken.ExpiredJwtException: JWT expired 2698630067 milliseconds ago at 2025-02-28T09:44:22.000Z. Current time: 2025-03-31T15:21:32.067Z. Allowed clock skew: 0 milliseconds.
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
 	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
@@ -182,57 +185,71 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 134070239 milliseconds ago at 2
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T15:24:02.288-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-6] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
-2025-03-30T16:02:27.810-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-3] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
-2025-03-30T16:03:28.140-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-8] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
-2025-03-30T16:44:49.730-03:00  INFO 20368 --- [turnos] [http-nio-8080-exec-3] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
-2025-03-30T16:51:35.102-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T16:51:35.126-03:00  INFO 20368 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T16:51:35.139-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:51:35.145-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T16:51:35.185-03:00  INFO 20368 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T16:53:03.384-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 2092 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T16:53:03.388-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T16:53:04.516-03:00  INFO 2092 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T16:53:04.611-03:00  INFO 2092 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 10 JPA repository interfaces.
-2025-03-30T16:53:05.247-03:00  INFO 2092 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T16:53:05.266-03:00  INFO 2092 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T16:53:05.267-03:00  INFO 2092 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T16:53:05.350-03:00  INFO 2092 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T16:53:05.350-03:00  INFO 2092 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1912 ms
-2025-03-30T16:53:05.506-03:00  INFO 2092 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T16:53:05.572-03:00  INFO 2092 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T16:53:05.626-03:00  INFO 2092 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T16:53:05.933-03:00  INFO 2092 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T16:53:05.967-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T16:53:06.199-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T16:53:06.200-03:00  INFO 2092 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T16:53:06.222-03:00  WARN 2092 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T16:53:06.242-03:00  INFO 2092 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-03-30T16:53:07.238-03:00  INFO 2092 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T16:53:07.290-03:00  INFO 2092 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:53:07.632-03:00  INFO 2092 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T16:53:07.729-03:00  INFO 2092 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T16:53:09.960-03:00  WARN 2092 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T16:53:10.567-03:00  INFO 2092 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T16:53:10.671-03:00  INFO 2092 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T16:53:10.682-03:00  INFO 2092 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.961 seconds (process running for 8.403)
-2025-03-30T16:53:20.144-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T16:53:20.145-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T16:53:20.146-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-30T16:53:59.101-03:00  INFO 2092 --- [turnos] [http-nio-8080-exec-6] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
- Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+2025-03-31T12:21:59.169-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030x950xb6)0xa10xd30xd70xee0x9ejyr0xd8C0xedj0xd8Ed0x880xf2p_0xcea0x1e0x02x0xd70xe80x80/4 ]. HTTP method names must be tokens
-	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+io.jsonwebtoken.ExpiredJwtException: JWT expired 2698657168 milliseconds ago at 2025-02-28T09:44:22.000Z. Current time: 2025-03-31T15:21:59.168Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at com.digitalhouse.turnos.security.JwtUtil.extractAllClaims(JwtUtil.java:75) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractClaim(JwtUtil.java:67) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractUsername(JwtUtil.java:59) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:41) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
@@ -242,50 +259,71 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T16:54:31.887-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T16:54:31.911-03:00  INFO 2092 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T16:54:31.915-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:54:31.917-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T16:54:31.957-03:00  INFO 2092 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T16:54:47.652-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20876 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T16:54:47.655-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T16:54:48.617-03:00  INFO 20876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T16:54:48.703-03:00  INFO 20876 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 10 JPA repository interfaces.
-2025-03-30T16:54:49.366-03:00  INFO 20876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T16:54:49.380-03:00  INFO 20876 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T16:54:49.381-03:00  INFO 20876 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T16:54:49.441-03:00  INFO 20876 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T16:54:49.442-03:00  INFO 20876 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1740 ms
-2025-03-30T16:54:49.570-03:00  INFO 20876 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T16:54:49.652-03:00  INFO 20876 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T16:54:49.696-03:00  INFO 20876 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T16:54:50.012-03:00  INFO 20876 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T16:54:50.062-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T16:54:50.303-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T16:54:50.305-03:00  INFO 20876 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T16:54:50.326-03:00  WARN 20876 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T16:54:50.344-03:00  INFO 20876 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-03-30T16:54:51.363-03:00  INFO 20876 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T16:54:51.415-03:00  INFO 20876 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:54:51.788-03:00  INFO 20876 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T16:54:51.878-03:00  INFO 20876 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T16:54:53.856-03:00  WARN 20876 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T16:54:54.352-03:00  INFO 20876 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T16:54:54.463-03:00  INFO 20876 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T16:54:54.470-03:00  INFO 20876 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.422 seconds (process running for 7.838)
-2025-03-30T16:54:58.310-03:00  INFO 20876 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
- Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+2025-03-31T12:23:45.802-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030x12&0xb1+0x030xa10xb40x930xb320x0f0xee'0xbc0x110xbc0xd70xc80xc4h0x920x180xb90xe40x9aN!0xadU_|2 ]. HTTP method names must be tokens
-	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+io.jsonwebtoken.ExpiredJwtException: JWT expired 1436199802 milliseconds ago at 2025-03-15T00:27:06.000Z. Current time: 2025-03-31T15:23:45.802Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at com.digitalhouse.turnos.security.JwtUtil.extractAllClaims(JwtUtil.java:75) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractClaim(JwtUtil.java:67) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractUsername(JwtUtil.java:59) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:41) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
@@ -295,50 +333,71 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T16:57:16.286-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T16:57:16.310-03:00  INFO 20876 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T16:57:16.314-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:57:16.318-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T16:57:16.344-03:00  INFO 20876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T16:58:00.837-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 520 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T16:58:00.839-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T16:58:01.699-03:00  INFO 520 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T16:58:01.803-03:00  INFO 520 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 10 JPA repository interfaces.
-2025-03-30T16:58:02.489-03:00  INFO 520 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T16:58:02.505-03:00  INFO 520 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T16:58:02.506-03:00  INFO 520 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T16:58:02.577-03:00  INFO 520 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T16:58:02.577-03:00  INFO 520 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1689 ms
-2025-03-30T16:58:02.714-03:00  INFO 520 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T16:58:02.805-03:00  INFO 520 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T16:58:02.853-03:00  INFO 520 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T16:58:03.159-03:00  INFO 520 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T16:58:03.200-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T16:58:03.432-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T16:58:03.434-03:00  INFO 520 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T16:58:03.453-03:00  WARN 520 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T16:58:03.472-03:00  INFO 520 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-03-30T16:58:04.480-03:00  INFO 520 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T16:58:04.532-03:00  INFO 520 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:58:04.909-03:00  INFO 520 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T16:58:05.003-03:00  INFO 520 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T16:58:06.958-03:00  WARN 520 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T16:58:07.487-03:00  INFO 520 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T16:58:07.601-03:00  INFO 520 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T16:58:07.616-03:00  INFO 520 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.357 seconds (process running for 7.74)
-2025-03-30T16:58:33.718-03:00  INFO 520 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
- Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+2025-03-31T12:24:49.941-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x0330xb50xd80xed0x9d0x170xdfL0xb2E0xb00xdd0xe70xec0x9ba0xc70x030x960xaaNf^0x8f>0x03W0x8f0xd30x1e0x060xad ]. HTTP method names must be tokens
-	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+io.jsonwebtoken.ExpiredJwtException: JWT expired 973875941 milliseconds ago at 2025-03-20T08:53:34.000Z. Current time: 2025-03-31T15:24:49.941Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at com.digitalhouse.turnos.security.JwtUtil.extractAllClaims(JwtUtil.java:75) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractClaim(JwtUtil.java:67) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractUsername(JwtUtil.java:59) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:41) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
@@ -348,50 +407,74 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T16:58:46.727-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T16:58:46.752-03:00  INFO 520 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T16:58:46.756-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:58:46.758-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T16:58:46.850-03:00  INFO 520 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T16:58:48.837-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 12952 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T16:58:48.840-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T16:58:49.625-03:00  INFO 12952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T16:58:49.731-03:00  INFO 12952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 10 JPA repository interfaces.
-2025-03-30T16:58:50.434-03:00  INFO 12952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T16:58:50.453-03:00  INFO 12952 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T16:58:50.453-03:00  INFO 12952 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T16:58:50.516-03:00  INFO 12952 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T16:58:50.517-03:00  INFO 12952 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1632 ms
-2025-03-30T16:58:50.663-03:00  INFO 12952 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T16:58:50.755-03:00  INFO 12952 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T16:58:50.801-03:00  INFO 12952 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T16:58:51.102-03:00  INFO 12952 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T16:58:51.151-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T16:58:51.379-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T16:58:51.381-03:00  INFO 12952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T16:58:51.401-03:00  WARN 12952 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T16:58:51.420-03:00  INFO 12952 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-03-30T16:58:52.407-03:00  INFO 12952 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T16:58:52.459-03:00  INFO 12952 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T16:58:52.817-03:00  INFO 12952 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T16:58:52.898-03:00  INFO 12952 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T16:58:54.932-03:00  WARN 12952 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T16:58:55.385-03:00  INFO 12952 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T16:58:55.472-03:00  INFO 12952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T16:58:55.480-03:00  INFO 12952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.238 seconds (process running for 7.707)
-2025-03-30T16:59:00.605-03:00  INFO 12952 --- [turnos] [http-nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
- Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+2025-03-31T12:26:19.652-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-10] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Content-Type 'multipart/form-data;boundary=--------------------------590894680123820642351001;charset=UTF-8' is not supported
+2025-03-31T12:26:44.763-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-4] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Content-Type 'multipart/form-data;boundary=--------------------------977065304278583471424189;charset=UTF-8' is not supported
+2025-03-31T12:37:55.209-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-2] c.d.t.exception.GlobalExceptionHandler   : Reservation conflict: Error: El vehículo ya está reservado en el período seleccionado
+2025-03-31T12:41:28.739-03:00 ERROR 16876 --- [turnos] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x07a0x010x000x07]0x030x030xb80xf9a0x8do0xecB"0x970x8c]}0x170xec0xefxWk0xb50xad232C30xf0"H,0x110xc10xf6 ]. HTTP method names must be tokens
-	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+io.jsonwebtoken.ExpiredJwtException: JWT expired 1502831738 milliseconds ago at 2025-03-14T06:14:17.000Z. Current time: 2025-03-31T15:41:28.738Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at com.digitalhouse.turnos.security.JwtUtil.extractAllClaims(JwtUtil.java:75) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractClaim(JwtUtil.java:67) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtUtil.extractUsername(JwtUtil.java:59) ~[classes/:na]
+	at com.digitalhouse.turnos.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:41) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.2.jar:6.4.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.2.jar:6.2.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
@@ -401,29 +484,29 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
 	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
 
-2025-03-30T17:00:35.190-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T17:00:35.215-03:00  INFO 12952 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T17:00:35.219-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T17:00:35.221-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T17:00:35.367-03:00  INFO 12952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T17:00:40.222-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 19096 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T17:00:40.224-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T17:00:41.320-03:00  INFO 19096 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T17:00:41.396-03:00  INFO 19096 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 10 JPA repository interfaces.
-2025-03-30T17:00:42.008-03:00  INFO 19096 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T17:00:42.023-03:00  INFO 19096 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T17:00:42.023-03:00  INFO 19096 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T17:00:42.095-03:00  INFO 19096 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T17:00:42.095-03:00  INFO 19096 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1828 ms
-2025-03-30T17:00:42.241-03:00  INFO 19096 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T17:00:42.316-03:00  INFO 19096 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T17:00:42.359-03:00  INFO 19096 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T17:00:42.667-03:00  INFO 19096 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T17:00:42.704-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T17:00:42.919-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T17:00:42.921-03:00  INFO 19096 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T17:00:42.941-03:00  WARN 19096 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T17:00:42.965-03:00  INFO 19096 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-31T12:46:55.930-03:00  INFO 16876 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-31T12:46:55.953-03:00  INFO 16876 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-31T12:46:55.958-03:00  INFO 16876 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T12:46:55.960-03:00  INFO 16876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T12:46:55.962-03:00  INFO 16876 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:10:36.163-03:00  INFO 20864 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20864 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:10:36.167-03:00  INFO 20864 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-31T13:10:36.982-03:00  INFO 20864 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:10:37.086-03:00  INFO 20864 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:10:37.754-03:00  INFO 20864 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-31T13:10:37.772-03:00  INFO 20864 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-31T13:10:37.772-03:00  INFO 20864 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-31T13:10:37.839-03:00  INFO 20864 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-31T13:10:37.839-03:00  INFO 20864 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1624 ms
+2025-03-31T13:10:37.985-03:00  INFO 20864 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:10:38.074-03:00  INFO 20864 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:10:38.121-03:00  INFO 20864 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:10:38.436-03:00  INFO 20864 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:10:38.483-03:00  INFO 20864 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:10:38.740-03:00  INFO 20864 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-31T13:10:38.742-03:00  INFO 20864 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:10:38.768-03:00  WARN 20864 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:10:38.789-03:00  INFO 20864 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -431,41 +514,40 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-30T17:00:43.926-03:00  INFO 19096 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T17:00:43.976-03:00  INFO 19096 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T17:00:44.343-03:00  INFO 19096 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T17:00:44.428-03:00  INFO 19096 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T17:00:46.470-03:00  WARN 19096 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T17:00:46.990-03:00  INFO 19096 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T17:00:47.078-03:00  INFO 19096 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T17:00:47.087-03:00  INFO 19096 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.411 seconds (process running for 7.794)
-2025-03-30T17:01:29.005-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T17:01:29.005-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T17:01:29.007-03:00  INFO 19096 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-03-30T17:03:34.792-03:00 ERROR 19096 --- [turnos] [http-nio-8080-exec-8] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
-2025-03-30T17:03:43.616-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T17:03:43.641-03:00  INFO 19096 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T17:03:43.645-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T17:03:43.647-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T17:03:43.796-03:00  INFO 19096 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T17:03:45.923-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 20956 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T17:03:45.925-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T17:03:47.061-03:00  INFO 20956 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T17:03:47.150-03:00  INFO 20956 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 10 JPA repository interfaces.
-2025-03-30T17:03:47.829-03:00  INFO 20956 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T17:03:47.846-03:00  INFO 20956 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T17:03:47.846-03:00  INFO 20956 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T17:03:47.913-03:00  INFO 20956 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T17:03:47.913-03:00  INFO 20956 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1941 ms
-2025-03-30T17:03:48.091-03:00  INFO 20956 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T17:03:48.175-03:00  INFO 20956 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T17:03:48.215-03:00  INFO 20956 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T17:03:48.502-03:00  INFO 20956 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T17:03:48.536-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T17:03:48.746-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T17:03:48.748-03:00  INFO 20956 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T17:03:48.769-03:00  WARN 20956 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T17:03:48.789-03:00  INFO 20956 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-31T13:10:39.834-03:00  INFO 20864 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:10:39.892-03:00  INFO 20864 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:10:40.275-03:00  INFO 20864 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:10:40.377-03:00  INFO 20864 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:10:42.518-03:00  WARN 20864 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:10:43.056-03:00  INFO 20864 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-31T13:10:43.156-03:00  INFO 20864 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-31T13:10:43.164-03:00  INFO 20864 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.605 seconds (process running for 8.063)
+2025-03-31T13:13:36.025-03:00  INFO 20864 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-31T13:13:36.025-03:00  INFO 20864 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-31T13:13:36.027-03:00  INFO 20864 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-31T13:17:01.642-03:00  INFO 20864 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-31T13:17:01.666-03:00  INFO 20864 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-31T13:17:01.671-03:00  INFO 20864 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:17:01.673-03:00  INFO 20864 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T13:17:01.728-03:00  INFO 20864 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:17:03.888-03:00  INFO 21484 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 21484 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:17:03.893-03:00  INFO 21484 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-31T13:17:04.729-03:00  INFO 21484 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:17:04.823-03:00  INFO 21484 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:17:05.476-03:00  INFO 21484 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-31T13:17:05.493-03:00  INFO 21484 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-31T13:17:05.493-03:00  INFO 21484 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-31T13:17:05.563-03:00  INFO 21484 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-31T13:17:05.563-03:00  INFO 21484 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1618 ms
+2025-03-31T13:17:05.709-03:00  INFO 21484 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:17:05.795-03:00  INFO 21484 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:17:05.840-03:00  INFO 21484 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:17:06.179-03:00  INFO 21484 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:17:06.219-03:00  INFO 21484 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:17:06.448-03:00  INFO 21484 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-31T13:17:06.450-03:00  INFO 21484 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:17:06.473-03:00  WARN 21484 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:17:06.492-03:00  INFO 21484 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -473,45 +555,32 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-30T17:03:49.815-03:00  INFO 20956 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T17:03:49.875-03:00  INFO 20956 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T17:03:50.251-03:00  INFO 20956 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T17:03:50.342-03:00  INFO 20956 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T17:03:52.322-03:00  WARN 20956 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T17:03:52.888-03:00  INFO 20956 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T17:03:52.997-03:00  INFO 20956 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T17:03:53.007-03:00  INFO 20956 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.706 seconds (process running for 8.206)
-2025-03-30T17:04:03.079-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T17:04:03.079-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T17:04:03.081-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-30T17:04:03.125-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-1] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
-2025-03-30T17:04:04.399-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-2] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
-2025-03-30T17:04:12.504-03:00 ERROR 20956 --- [turnos] [http-nio-8080-exec-3] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: No static resource api/vehicles.
-2025-03-30T17:05:06.578-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-5] c.d.turnos.service.LoginService          : Login attempt for email: admin@admin.com, Success: true
-2025-03-30T18:25:08.889-03:00  INFO 20956 --- [turnos] [http-nio-8080-exec-9] c.d.turnos.service.LoginService          : Login attempt for email: trueblue.aetos@gmail.com, Success: true
-2025-03-30T18:41:00.858-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T18:41:00.883-03:00  INFO 20956 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T18:41:00.894-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T18:41:00.897-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T18:41:00.899-03:00  INFO 20956 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T19:03:41.930-03:00  INFO 16952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 16952 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T19:03:41.935-03:00  INFO 16952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T19:03:43.837-03:00  INFO 16952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T19:03:44.018-03:00  INFO 16952 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 166 ms. Found 10 JPA repository interfaces.
-2025-03-30T19:03:45.413-03:00  INFO 16952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T19:03:45.446-03:00  INFO 16952 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T19:03:45.447-03:00  INFO 16952 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T19:03:45.569-03:00  INFO 16952 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T19:03:45.570-03:00  INFO 16952 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3500 ms
-2025-03-30T19:03:45.840-03:00  INFO 16952 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T19:03:45.938-03:00  INFO 16952 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T19:03:46.004-03:00  INFO 16952 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T19:03:46.445-03:00  INFO 16952 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T19:03:46.498-03:00  INFO 16952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T19:03:46.821-03:00  INFO 16952 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T19:03:46.824-03:00  INFO 16952 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T19:03:46.853-03:00  WARN 16952 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T19:03:46.884-03:00  INFO 16952 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-31T13:17:07.497-03:00  INFO 21484 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:17:07.547-03:00  INFO 21484 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:17:07.940-03:00  INFO 21484 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:17:08.042-03:00  INFO 21484 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:17:10.138-03:00  WARN 21484 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:17:10.679-03:00  INFO 21484 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-31T13:17:10.782-03:00  INFO 21484 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-31T13:17:10.791-03:00  INFO 21484 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.51 seconds (process running for 7.92)
+2025-03-31T13:17:14.036-03:00  INFO 21484 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-31T13:17:14.060-03:00  INFO 21484 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-31T13:17:14.064-03:00  INFO 21484 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:17:14.065-03:00  INFO 21484 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T13:17:14.152-03:00  INFO 21484 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:17:41.874-03:00  INFO 9336 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Starting VehicleControllerTest using Java 22.0.2 with PID 9336 (started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:17:41.875-03:00  INFO 9336 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : The following 1 profile is active: "test"
+2025-03-31T13:17:42.619-03:00  INFO 9336 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:17:42.705-03:00  INFO 9336 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:17:43.919-03:00  INFO 9336 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:17:43.999-03:00  INFO 9336 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:17:44.045-03:00  INFO 9336 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:17:44.232-03:00  INFO 9336 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:17:44.274-03:00  INFO 9336 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:17:44.486-03:00  INFO 9336 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-03-31T13:17:44.489-03:00  INFO 9336 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:17:44.520-03:00  WARN 9336 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:17:44.553-03:00  INFO 9336 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -519,40 +588,33 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-30T19:03:48.499-03:00  INFO 16952 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T19:03:48.578-03:00  INFO 16952 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T19:03:49.219-03:00  INFO 16952 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T19:03:49.380-03:00  INFO 16952 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T19:03:52.042-03:00  WARN 16952 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T19:03:52.751-03:00  INFO 16952 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T19:03:52.865-03:00  INFO 16952 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T19:03:52.876-03:00  INFO 16952 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 12.404 seconds (process running for 13.032)
-2025-03-30T19:04:42.107-03:00  INFO 16952 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T19:04:42.107-03:00  INFO 16952 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T19:04:42.108-03:00  INFO 16952 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-03-30T19:59:45.018-03:00  INFO 16952 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T19:59:45.048-03:00  INFO 16952 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T19:59:45.057-03:00  INFO 16952 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T19:59:45.066-03:00  INFO 16952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T19:59:45.133-03:00  INFO 16952 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-03-30T20:50:54.883-03:00  INFO 22960 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 22960 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
-2025-03-30T20:50:54.885-03:00  INFO 22960 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-03-30T20:50:55.945-03:00  INFO 22960 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-30T20:50:56.041-03:00  INFO 22960 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 10 JPA repository interfaces.
-2025-03-30T20:50:56.698-03:00  INFO 22960 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-03-30T20:50:56.709-03:00  INFO 22960 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-03-30T20:50:56.720-03:00  INFO 22960 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-03-30T20:50:56.787-03:00  INFO 22960 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-30T20:50:56.787-03:00  INFO 22960 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1848 ms
-2025-03-30T20:50:56.937-03:00  INFO 22960 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-03-30T20:50:57.038-03:00  INFO 22960 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-03-30T20:50:57.073-03:00  INFO 22960 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-03-30T20:50:57.402-03:00  INFO 22960 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-30T20:50:57.439-03:00  INFO 22960 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-03-30T20:50:57.692-03:00  INFO 22960 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
-2025-03-30T20:50:57.693-03:00  INFO 22960 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-03-30T20:50:57.718-03:00  WARN 22960 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-30T20:50:57.737-03:00  INFO 22960 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-03-31T13:17:45.664-03:00  INFO 9336 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:17:45.750-03:00  INFO 9336 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:17:46.043-03:00  INFO 9336 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:17:46.249-03:00  INFO 9336 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:17:48.354-03:00  WARN 9336 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:17:49.031-03:00  INFO 9336 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-31T13:17:49.148-03:00  INFO 9336 --- [turnos] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-31T13:17:49.149-03:00  INFO 9336 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-31T13:17:49.150-03:00  INFO 9336 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-31T13:17:49.198-03:00  INFO 9336 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Started VehicleControllerTest in 7.769 seconds (process running for 9.119)
+2025-03-31T13:17:49.521-03:00 ERROR 9336 --- [turnos] [main] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Required request parameter 'manufacturingYear' for method parameter type Year is not present
+2025-03-31T13:17:49.772-03:00  INFO 9336 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:17:49.774-03:00  INFO 9336 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T13:17:49.776-03:00  INFO 9336 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:18:24.816-03:00  INFO 19976 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Starting VehicleControllerTest using Java 22.0.2 with PID 19976 (started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:18:24.818-03:00  INFO 19976 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : The following 1 profile is active: "test"
+2025-03-31T13:18:25.556-03:00  INFO 19976 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:18:25.647-03:00  INFO 19976 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:18:26.839-03:00  INFO 19976 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:18:26.928-03:00  INFO 19976 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:18:26.973-03:00  INFO 19976 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:18:27.161-03:00  INFO 19976 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:18:27.199-03:00  INFO 19976 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:18:27.409-03:00  INFO 19976 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-03-31T13:18:27.412-03:00  INFO 19976 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:18:27.442-03:00  WARN 19976 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:18:27.468-03:00  INFO 19976 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -560,19 +622,93 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-03-30T20:50:58.782-03:00  INFO 22960 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-30T20:50:58.839-03:00  INFO 22960 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T20:50:59.246-03:00  INFO 22960 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-30T20:50:59.346-03:00  INFO 22960 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
-2025-03-30T20:51:01.338-03:00  WARN 22960 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-30T20:51:01.922-03:00  INFO 22960 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
-2025-03-30T20:51:02.023-03:00  INFO 22960 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-03-30T20:51:02.031-03:00  INFO 22960 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 7.743 seconds (process running for 8.24)
-2025-03-30T21:52:27.184-03:00  INFO 22960 --- [turnos] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-30T21:52:27.187-03:00  INFO 22960 --- [turnos] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-03-30T21:52:27.195-03:00  INFO 22960 --- [turnos] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
-2025-03-30T21:55:14.628-03:00  INFO 22960 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-30T21:55:14.653-03:00  INFO 22960 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-03-30T21:55:14.660-03:00  INFO 22960 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-30T21:55:14.662-03:00  INFO 22960 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-03-30T21:55:14.689-03:00  INFO 22960 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:18:28.594-03:00  INFO 19976 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:18:28.679-03:00  INFO 19976 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:18:28.973-03:00  INFO 19976 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:18:29.170-03:00  INFO 19976 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:18:31.232-03:00  WARN 19976 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:18:31.897-03:00  INFO 19976 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-31T13:18:32.015-03:00  INFO 19976 --- [turnos] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-31T13:18:32.016-03:00  INFO 19976 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-31T13:18:32.017-03:00  INFO 19976 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-31T13:18:32.051-03:00  INFO 19976 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Started VehicleControllerTest in 7.685 seconds (process running for 8.865)
+2025-03-31T13:18:32.430-03:00 ERROR 19976 --- [turnos] [main] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Required request parameter 'manufacturingYear' for method parameter type Year is not present
+2025-03-31T13:18:32.687-03:00  INFO 19976 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:18:32.690-03:00  INFO 19976 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T13:18:32.692-03:00  INFO 19976 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:23:19.470-03:00  INFO 12056 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Starting VehicleControllerTest using Java 22.0.2 with PID 12056 (started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:23:19.472-03:00  INFO 12056 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : The following 1 profile is active: "test"
+2025-03-31T13:23:20.224-03:00  INFO 12056 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:23:20.317-03:00  INFO 12056 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:23:21.578-03:00  INFO 12056 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:23:21.668-03:00  INFO 12056 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:23:21.718-03:00  INFO 12056 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:23:21.922-03:00  INFO 12056 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:23:21.965-03:00  INFO 12056 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:23:22.188-03:00  INFO 12056 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-03-31T13:23:22.190-03:00  INFO 12056 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:23:22.222-03:00  WARN 12056 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:23:22.257-03:00  INFO 12056 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-31T13:23:23.404-03:00  INFO 12056 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:23:23.494-03:00  INFO 12056 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:23:23.795-03:00  INFO 12056 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:23:24.009-03:00  INFO 12056 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:23:26.343-03:00  WARN 12056 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:23:27.321-03:00  INFO 12056 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-31T13:23:27.341-03:00  INFO 2348 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Starting RentApplication using Java 22.0.2 with PID 2348 (C:\Users\juanm\Escritorio\Desafio-Profesional\backend\target\classes started by juanm in C:\Users\juanm\Escritorio\Desafio-Profesional\backend)
+2025-03-31T13:23:27.345-03:00  INFO 2348 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-31T13:23:27.483-03:00  INFO 12056 --- [turnos] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-31T13:23:27.485-03:00  INFO 12056 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-31T13:23:27.487-03:00  INFO 12056 --- [turnos] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-03-31T13:23:27.540-03:00  INFO 12056 --- [turnos] [main] c.d.t.controller.VehicleControllerTest   : Started VehicleControllerTest in 8.515 seconds (process running for 9.712)
+2025-03-31T13:23:27.987-03:00 ERROR 12056 --- [turnos] [main] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Required request parameter 'manufacturingYear' for method parameter type Year is not present
+2025-03-31T13:23:28.341-03:00  INFO 12056 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:23:28.345-03:00  INFO 12056 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T13:23:28.348-03:00  INFO 12056 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-31T13:23:28.352-03:00  INFO 2348 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-31T13:23:28.451-03:00  INFO 2348 --- [turnos] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 10 JPA repository interfaces.
+2025-03-31T13:23:29.150-03:00  INFO 2348 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-31T13:23:29.166-03:00  INFO 2348 --- [turnos] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-31T13:23:29.167-03:00  INFO 2348 --- [turnos] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-31T13:23:29.248-03:00  INFO 2348 --- [turnos] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-31T13:23:29.248-03:00  INFO 2348 --- [turnos] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1835 ms
+2025-03-31T13:23:29.409-03:00  INFO 2348 --- [turnos] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-31T13:23:29.488-03:00  INFO 2348 --- [turnos] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-31T13:23:29.608-03:00  INFO 2348 --- [turnos] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-31T13:23:29.988-03:00  INFO 2348 --- [turnos] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-31T13:23:30.027-03:00  INFO 2348 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-31T13:23:30.251-03:00  INFO 2348 --- [turnos] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/rentacar-db user=RENTACAR
+2025-03-31T13:23:30.254-03:00  INFO 2348 --- [turnos] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-31T13:23:30.276-03:00  WARN 2348 --- [turnos] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-31T13:23:30.297-03:00  INFO 2348 --- [turnos] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-31T13:23:31.353-03:00  INFO 2348 --- [turnos] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-31T13:23:31.407-03:00  INFO 2348 --- [turnos] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T13:23:31.787-03:00  INFO 2348 --- [turnos] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-31T13:23:31.898-03:00  INFO 2348 --- [turnos] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsSecurityService
+2025-03-31T13:23:33.934-03:00  WARN 2348 --- [turnos] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-31T13:23:34.478-03:00  INFO 2348 --- [turnos] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/rentacar-db'
+2025-03-31T13:23:34.585-03:00  INFO 2348 --- [turnos] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-31T13:23:34.596-03:00  INFO 2348 --- [turnos] [main] c.digitalhouse.turnos.RentApplication    : Started RentApplication in 8.065 seconds (process running for 8.605)
+2025-03-31T13:23:35.176-03:00  INFO 2348 --- [turnos] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-31T13:23:35.177-03:00  INFO 2348 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-31T13:23:35.178-03:00  INFO 2348 --- [turnos] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-31T13:23:35.492-03:00 ERROR 2348 --- [turnos] [http-nio-8080-exec-1] c.d.t.exception.GlobalExceptionHandler   : Error inesperado: Required request parameter 'manufacturingYear' for method parameter type Year is not present
+2025-03-31T15:57:15.986-03:00  INFO 2348 --- [turnos] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-31T15:57:16.016-03:00  INFO 2348 --- [turnos] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-31T15:57:16.026-03:00  INFO 2348 --- [turnos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-31T15:57:16.035-03:00  INFO 2348 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-31T15:57:16.121-03:00  INFO 2348 --- [turnos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

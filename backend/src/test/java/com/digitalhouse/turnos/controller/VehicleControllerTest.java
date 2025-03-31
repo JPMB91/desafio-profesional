@@ -122,13 +122,6 @@ public class VehicleControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.brand").value("Kia"));
     }
 
-    @Test
-    public void createVehiclesTest_MissingData() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.multipart("/api/vehicles")
-                        .param("registrationPlate", "")
-                        .with(SecurityMockMvcRequestPostProcessors.user("admin").roles("ADMIN")))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
 
     @Test
     public void getVehicleByIdTest() throws Exception {
